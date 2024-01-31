@@ -1,0 +1,222 @@
+;Por Jedah12
+
+[Info]
+name="Tomb Entrance - Pharaoh Man"
+author= Jedah12
+
+[BGdef]
+spr = pharoah-man_stage.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/Pharaoh Man Metal Remix.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -92
+boundright = 92
+boundhigh = -90
+boundlow = 0
+floortension = 95
+verticalfollow = 1
+tension = 50
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 230
+autoturn = 1
+resetBG = 1
+
+[Shadow]
+color = 128,128,128
+yscale = .159
+
+
+[Reflection]
+intensity = 0
+
+;----------------------------------------[PCX IMAGE]
+[BG Fondo]
+type  = anim
+actionno = 0
+layerno = 0                
+delta =  0.6, 1
+mask = 1
+trans = none
+start = 0, -2
+
+[BG Cometa]
+type  = anim
+actionno = 1
+layerno = 0
+start = 0, -2
+delta =  0.6, 1
+mask = 1
+trans = none
+
+[BG Base]
+type  = anim
+actionno = 2
+layerno = 0
+delta =  1, 1
+mask = 1
+trans = none
+start = 0, -2
+
+[BG Base light]
+type  = anim
+actionno = 90
+layerno = 0
+delta =  1, 1
+mask = 1
+trans = none
+start = 0, -2
+
+[BG mummy]
+type  = anim
+actionno = 100
+layerno = 0
+delta =  1, 1
+mask = 1
+trans = none
+start = -13, 209
+
+[BG Base]
+type  = normal
+spriteno = 11,0
+actionno = 2
+layerno = 0
+start = 0, -2
+delta =  1, 1
+mask = 1
+trans = none
+
+[BG Columna 1]
+type  = anim
+actionno = 3
+layerno = 0
+start = 7, -2
+delta =  1, 1
+mask = 1
+trans = none
+
+[BG Columna 2]
+type  = anim
+actionno = 4
+layerno = 0
+start = 55, -2
+delta =  1, 1
+mask = 1
+trans = none
+
+
+[Begin action 0]
+0,0,0,0,4
+0,1,0,0,4
+
+[Begin action 1]
+-1,0,0,0,70
+10,0,0,0,3
+10,1,0,0,3
+10,2,0,0,3
+10,3,0,0,3
+10,4,0,0,3
+10,5,0,0,3
+10,6,0,0,3
+10,7,0,0,3
+10,8,0,0,3
+10,9,0,0,3
+10,10,0,0,3
+10,11,0,0,3
+10,12,0,0,3
+10,13,0,0,3
+
+[Begin action 2]
+1,1,0,0,3
+1,2,0,0,3
+1,3,0,0,3
+1,4,0,0,3
+1,5,0,0,3
+
+[Begin action 3]
+2,0,0,0,5
+2,1,0,0,5
+2,2,0,0,5
+
+[Begin action 4]
+3,0,0,0,5
+3,1,0,0,5
+3,2,0,0,5
+; floow light
+[Begin Action 90]
+-1,0, 0,0, 2400
+LoopStart
+90,0, 0,0, 6, , AS32D256
+90,1, 0,0, 6, , AS256D32
+90,2, 0,0, 6, , AS256D32
+90,3, 0,0, 6, , AS256D32
+90,4, 0,0, 6, , AS256D32
+90,5, 0,0, 6, , AS256D32
+90,6, 0,0, 6, , AS256D32
+90,7, 0,0, 6, , AS256D32
+90,8, 0,0, 6, , AS256D32
+90,9, 0,0, 6, , AS256D32
+90,10, 0,0, 6, , AS256D32
+90,11, 0,0, 6, , AS256D32
+90,12, 0,0, 6, , AS256D32
+90,13, 0,0, 6, , AS256D32
+90,14, 0,0, 6, , AS256D32
+90,15, 0,0, 6, , AS256D32
+90,16, 0,0, 6, , AS256D32
+90,17, 0,0, 6, , AS256D32
+90,18, 0,0, 6, , AS256D32
+90,19, 0,0, 6, , AS256D32
+90,20, 0,0, 6, , AS256D32
+
+; mummy
+[Begin Action 100]
+100,0, 0,0, 1200
+100,1, 0,0, 6
+100,2, 0,0, 6
+100,3, 0,0, 6
+100,4, 0,0, 240
+100,5, 0,0, 60
+100,4, 0,0, 240
+100,5, 0,0, 60
+100,4, 0,0, 240
+100,5, 0,0, 60
+100,4, 0,0, 6
+100,3, 0,0, 6
+100,2, 0,0, 6
+100,1, 0,0, 6
+

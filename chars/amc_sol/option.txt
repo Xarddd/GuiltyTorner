@@ -1,0 +1,93 @@
+[Statedef 10000]
+anim = 10000
+ID = 10000
+
+;必殺技ヒットエフェクト設定
+;setting of Special Attack HitSpark
+[State var,]
+type = parentvarset
+trigger1 = 1
+var(50) = 0
+;var(50) = 0:フルエフェクト - full
+;var(50) = 1:一部簡略- simplify
+
+;ガンフレイム・フェイントボイス設定
+;setting of GunFlame Feint voice
+[State var,]
+type = parentvarset
+trigger1 = 1
+var(51) = 0
+;var(51) = 0:無し - off
+;var(51) = 1:有り - on
+
+;ボイスボリューム調整
+;voice volume adjustment
+[State var, ]
+type = parentvarset
+trigger1 = 1
+var(22) = 128
+;var(22) = -255 ;最小 - minimum
+;var(22) =  128 ;デフォルト - default value
+;var(22) =  255 ;最大 - maximum
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;これより下は変更しないで下さい
+;Please don't change the under from this. 
+[State var,]
+type = Parentvarset
+trigger1 = 1
+var(59) = 1
+
+[State power,]
+type = powerset
+trigger1 = time = 0
+value = 0
+
+[State var,]
+type = parentvarset
+trigger1 = parent,power != 0
+trigger1 = NumPartner = 0 && NumEnemy = 1
+trigger1 = RoundsExisted = 0 && RoundNo = 1
+trigger1 = RoundState = [0,1]
+var(58) = 1
+
+[State var,]
+type = parentvarset
+trigger1 = NumPartner = 0 && NumEnemy = 1
+var(57) = 1
+
+[State ds, *]
+type = DestroySelf
+trigger1 = RoundState = 2
+

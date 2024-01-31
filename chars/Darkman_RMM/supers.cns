@@ -1,0 +1,1183 @@
+;---------------------------------------------------------------------------
+;Special Moves
+;---------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------------
+;Dark Shot
+[Statedef 1000]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+sprpriority = 2
+poweradd = 50
+
+[State 1000, ChangeAnim]
+type = ChangeAnim
+triggerall = !AiLevel
+trigger1 = anim != [1000, 1002]
+value = 1000 + ifelse(command = "BFz", 2, ifelse(command = "BFy", 1, 0))
+
+[State 1000, ChangeAnim]
+type = ChangeAnim
+triggerall = AiLevel
+trigger1 = anim != [1000, 1002]
+value = 1001 + random%2
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = AiLevel
+trigger1 = NumHelper(1050)=1 && !time
+value = ifelse(random<250,105,ifelse(random>750,100,1100))
+ctrl = 0
+
+[State 1000, Width]
+type = Width
+trigger1 = animelemtime(2) >= 0 && animelemtime(3) < 0
+edge = 60, 10
+player = 40, 10
+
+[State 1000, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 8
+value = 1000,0
+channel = -1
+
+[State 1000, Helper]
+type = Helper
+trigger1 = animelem = 8
+helpertype = normal ;player
+name = "Dark Projectile"
+ID = 1050
+stateno = anim + 50
+pos = Floor(60 * const(size.xscale)), Floor(-57 * const(size.yscale))
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 1
+size.xscale = const(size.xscale) * ifelse(anim = 1002, 0.8, ifelse(anim = 1001, 0.6, 0.4))
+size.yscale = const(size.yscale) * ifelse(anim = 1002, 0.8, ifelse(anim = 1001, 0.6, 0.4))
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 8
+anim = 1025
+ID = 1025
+pos = Floor(55 * const(size.xscale)), Floor(-57 * const(size.yscale))
+postype = P1  ;P2, Front, Back, Left, Right
+facing = -1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = const(size.xscale) * ifelse(anim = 1000, 0.8, 1), const(size.xscale) * ifelse(anim = 1000, 0.8, 1)
+sprpriority = 4
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1000, ChangeState]
+type = ChangeState
+trigger1 = !AnimTime
+value = 0
+ctrl = 1
+
+
+;-----------------------------------------------------------------------------
+; Dark Shot projectile x
+[Statedef 1050]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim =  1050
+sprpriority = 3
+velset = 6,0
+
+[State 195,1]
+type = Explod
+trigger1 = time%6=0;&& time <60
+anim = 500+random%3
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = 5
+removetime = -2
+random = 15,15
+removeongethit = 1
+scale = 1,1
+
+[State 1050, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA, AA, AP, AT
+stateno = 1059
+time = -1
+ignorehitpause = 1
+
+[State 1050, NotHitBy]
+type = HitBy
+trigger1 = 1
+value = SCA, AP; Only hit by All P types: (NP, SP, HP)
+time = -1
+ignorehitpause = 1
+
+[State 1050, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[State 1050, HitDef]
+type = HitDef
+trigger1 = time = 0
+ID = 1050
+attr = A, SP
+damage = ceil(63 * root, fvar(10)), 7
+animtype = Light
+hitflag = MAF
+guardflag = MA
+priority = 4, Hit
+pausetime = 8, 8
+sparkno = S25010 + random % 2;0
+guard.sparkno= S25008
+sparkxy = -10, 0
+hitsound   = s6, 0 + random % 2
+guardsound = s8500, 0
+ground.type = High
+ground.hittime  = 9
+ground.slidetime = 9
+ground.velocity = -7
+guard.hittime  = 4
+guard.velocity = -15
+air.type = High
+air.hittime = 18
+air.velocity = -4, -3.5
+air.fall = 1
+fall.recovertime = 20
+palfx.time = 20
+palfx.add = 100,100,250
+palfx.mul = 200,200,256
+palfx.sinadd = -100,-100,-80,4
+palfx.color = 0
+envshake.time = 15
+envshake.ampl = 7
+fall.envshake.time = 15
+fall.envshake.ampl = -7
+
+[state 1050, SHOCK FX]
+type = explod
+triggerall = NumTarget
+trigger1 = numexplod(427) = 0
+trigger1 = movehit && target, MoveType = H && target, StateType != L
+anim = 427
+id = 427
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = 20
+sprpriority = 10
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+
+[State 1050, ChangeState]
+type = ChangeState
+trigger1 = MoveContact || MoveReversed
+value = 1059
+ignorehitpause = 1
+
+[State 1050, DestroySelf]
+type = destroyself
+trigger1 = FrontEdgeDist < -40
+trigger2 = time = 360
+
+
+;-----------------------------------------------------------------------------
+; Dark Shot projectile y
+[Statedef 1051]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim =  1051
+sprpriority = 3
+velset = 4.5,0
+
+[State 195,1]
+type = Explod
+trigger1 = time%6=0;&& time <60
+anim = 500+random%3
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = 5
+removetime = -2
+random = 15,15
+removeongethit = 1
+scale = 1,1
+
+[State 1051, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA, AA, AP, AT
+stateno = 1059
+time = -1
+ignorehitpause = 1
+
+[State 1051, NotHitBy]
+type = HitBy
+trigger1 = 1
+value = SCA, AP; Only hit by All P types: (NP, SP, HP)
+time = -1
+ignorehitpause = 1
+
+[State 1051, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[State 1051, HitDef]
+type = HitDef
+trigger1 = time = 0
+ID = 1050
+attr = A, SP
+damage = ceil(63 * root, fvar(10)), 7
+animtype = Light
+hitflag = MAF
+guardflag = MA
+priority = 4, Hit
+pausetime = 8, 8
+sparkno = S25010 + random % 2;0
+guard.sparkno= S25008
+sparkxy = -10, 0
+hitsound   = s6, 0 + random % 2
+guardsound = s8500, 0
+ground.type = High
+ground.hittime  = 11
+ground.slidetime = 11
+ground.velocity = -4.3, -3.5
+guard.hittime  = 7
+guard.velocity = -12
+air.type = High
+air.hittime = 18
+air.velocity = -4, -3.5
+fall = 1
+fall.recovertime = 20
+palfx.time = 20
+palfx.add = 100,100,250
+palfx.mul = 200,200,256
+palfx.sinadd = -100,-100,-80,4
+palfx.color = 0
+envshake.time = 15
+envshake.ampl = 7
+fall.envshake.time = 15
+fall.envshake.ampl = -7
+
+[state 1051, SHOCK FX]
+type = explod
+triggerall = NumTarget
+trigger1 = numexplod(427) = 0
+trigger1 = movehit && target, MoveType = H && target, StateType != L
+anim = 427
+id = 427
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = 20
+sprpriority = 10
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+
+[State 1051, ChangeState]
+type = ChangeState
+trigger1 = MoveContact || MoveReversed
+value = 1059
+ignorehitpause = 1
+
+[State 1051, DestroySelf]
+type = destroyself
+trigger1 = FrontEdgeDist < -40
+
+
+;-----------------------------------------------------------------------------
+; Dark Shot projectile z
+[Statedef 1052]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim =  1052
+sprpriority = 3
+velset = 3,0
+
+[State 195,1]
+type = Explod
+trigger1 = time%6=0;&& time <60
+anim = 500+random%3
+postype = p1
+pos = -20,0
+ownpal = 1
+bindtime = 1
+sprpriority = 5
+removetime = -2
+random = 30,30
+removeongethit = 1
+scale = 1,1
+
+[State 1052, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA, AA, AP, AT
+stateno = 1059
+time = -1
+ignorehitpause = 1
+
+[State 1052, NotHitBy]
+type = HitBy
+trigger1 = 1
+value = SCA, AP; Only hit by All P types: (NP, SP, HP)
+time = -1
+ignorehitpause = 1
+
+[State 1052, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[State 1052, HitDef]
+type = HitDef
+trigger1 = time = 0
+ID = 1050
+attr = A, SP
+damage = ceil(72 * root, fvar(10)), 7
+animtype = Light
+hitflag = MAF
+guardflag = MA
+priority = 4, Hit
+pausetime = 8, 8
+sparkno = S25010 + random % 2;0
+guard.sparkno= S25008
+sparkxy = -10, 0
+hitsound   = s6, 0 + random % 2
+guardsound = s8500, 0
+ground.type = High
+ground.hittime  = 18
+ground.slidetime = 18
+ground.velocity = 4.6, -4
+guard.hittime = 2
+guard.velocity = -25
+air.type = High
+air.hittime = 18
+air.velocity = 4, -3.5
+fall = 1
+fall.recovertime = 20
+palfx.time = 20
+palfx.add = 100,100,250
+palfx.mul = 200,200,256
+palfx.sinadd = -100,-100,-80,4
+palfx.color = 0
+envshake.time = 15
+envshake.ampl = 7
+fall.envshake.time = 15
+fall.envshake.ampl = -7
+
+[State 450, End]
+type = targetstate
+TriggerAll = NumTarget
+trigger1 = movehit && !(Target, IsHelper)
+ID = 1050
+value = 1055
+persistent = 0
+ignorehitpause = 1
+
+[state 1052, SHOCK FX]
+type = explod
+triggerall = NumTarget
+trigger1 = numexplod(427) = 0
+trigger1 = movehit && target, MoveType = H && target, StateType != L
+anim = 427
+id = 427
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = 20
+sprpriority = 10
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+
+[State 1052, ChangeState]
+type = ChangeState
+trigger1 = MoveContact || MoveReversed
+value = 1059
+ignorehitpause = 1
+
+[State 1052, DestroySelf]
+type = destroyself
+trigger1 = FrontEdgeDist < -40
+
+;---------------------------------------------------------------------------
+;Dark Shot Custom
+[statedef 1055]
+type = A
+movetype = H
+physics = N
+ctrl = 0
+poweradd = 20
+velset = 4,-8
+
+[State 0, ChangeAnim2]
+type = ChangeAnim2
+trigger1 = !time
+value = 1055
+
+[State 0, Gravity]
+type = Gravity
+trigger1 = Pos Y < 0
+
+[State 87, 4] ;Hit ground
+type = SelfState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 5100 ;Hit ground
+
+
+;-----------------------------------------------------------------------------
+; This state here exists for one reason and one reason only, if you start a combo from a projectile helper
+; into any other attack, mugen won't register it as combo even though it should if the projectile was destroyed
+; before the follow up attack connected. Since this projectile has no "hit"/fade animation, i'm instead keeping
+; the helper for some time with an invisible animation without colision boxes before actually destroying it to
+; fix this problem. This solution is especially great if one character has some or many different projectiles
+; that work this way when hit the enemy or are being hit by another projectile from an opponent. Because
+; this state can be shared between such helpers.
+; Generic projectile helper remover
+[Statedef 1059]
+type    = U
+movetype= I
+physics = N
+ctrl = 0
+anim =  1;	Insert blank animation here
+velset = 0,0;	Optional
+
+[State 1059, DestroySelf]
+type = destroyself
+trigger1 = time >= 25
+trigger2 = !numtarget
+
+;---------------------------------------------------------------------------------------------
+;Dark Thunder
+[Statedef 1100]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = 1100
+sprpriority = 2
+poweradd = 50
+velset = 0,0
+
+[State 1100, VarSet]
+type = VarSet
+trigger1 = !Time && !AiLevel
+v = 13
+value = ifelse(command = "QCFz", 2, ifelse(command = "QCFy", 1, 0))
+
+[State 1100, VarSet]
+type = VarSet
+trigger1 = !Time && AiLevel
+v = 13
+value = ifelse(P2Dist X > 100, 2, ifelse(P2Dist X < 50, 0, 1))
+
+[State 1000, Helper]
+type = Helper
+trigger1 = animelem = 4
+helpertype = normal ;player
+name = "Dark Projectile"
+ID = 1150
+stateno = 1150
+pos = Floor(60 * (var(13) + 1) * const(size.xscale)), 0
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 1
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 6015
+ID = 6015
+pos = 30,-72
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,-0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1100, ChangeState]
+type = ChangeState
+trigger1 = !AnimTime
+value = 0
+ctrl = 1
+
+
+;-----------------------------------------------------------------------------
+; Dark Thunder helper
+[Statedef 1150]
+type    = S
+movetype= A
+physics = N
+ctrl = 0
+anim =  1150
+sprpriority = 3
+velset = 0, 0
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = !time
+time = 10
+ampl = 7
+
+[State 40, NEW DUST JUMP LAND]
+type = Explod
+trigger1 = AnimElem = 1
+anim = 25016
+sprpriority = -1
+Ownpal = 1
+
+[State 1150, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA, AA, AP, AT
+stateno = 1159
+time = -1
+ignorehitpause = 1
+
+[State 1150, NotHitBy]
+type = HitBy
+trigger1 = 1
+value = SCA, AP; Only hit by All P types: (NP, SP, HP)
+time = -1
+ignorehitpause = 1
+
+[State 1150, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[State 1000, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = 1100,0
+channel = -1
+
+[State 0, VarSet]	; It's fine, parents and helpers don't share variables, right? at least i think 13's fine...
+type = VarSet
+trigger1 = !time
+v = 13
+value = 0
+
+[State 0, VelAdd]
+type = VarAdd
+trigger1 = Animelem = 5 || Animelem = 6
+v = 13
+value = 1
+
+[State 1150, HitDef]
+type = HitDef
+triggerall = Animelemtime(7) < 0
+trigger1 = time = 0
+ID = 1150
+attr = S, SP
+damage = ceil(68 * root, fvar(10)), 7
+animtype = Light
+hitflag = MAF
+guardflag = MA
+priority = 4, Hit
+pausetime = 8, 8
+sparkno = S25010 + random % 2;0
+guard.sparkno= S25008
+sparkxy = -10, -50
+hitsound   = s6, 0 + random % 2
+guardsound = s8500, 0
+ground.type = High
+ground.hittime  = 15
+ground.slidetime = 12
+ground.velocity = -0.4, -4.3
+guard.velocity = 0
+air.type = High
+air.hittime = 18
+air.velocity = -1, -2.5
+fall = 1
+fall.recovertime = 20
+palfx.time = 20
+palfx.add = 100,100,250
+palfx.mul = 200,200,256
+palfx.sinadd = -100,-100,-80,4
+palfx.color = 0
+envshake.time = 15
+envshake.ampl = 7
+fall.envshake.time = 15
+fall.envshake.ampl = -7
+
+[state 1150, SHOCK FX]
+type = explod
+triggerall = NumTarget
+trigger1 = numexplod(427) = 0
+trigger1 = movehit && target, MoveType = H && target, StateType != L
+anim = 427
+id = 427
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = 20
+sprpriority = 10
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+
+[State 1150, ChangeState]
+type = ChangeState
+trigger1 = MoveContact || MoveReversed
+value = 1159
+ignorehitpause = 1
+
+[State 1012, PosAdd]
+type = PosAdd
+trigger1 = FrontEdgeDist <= -10
+x = FrontEdgeDist - 25
+
+
+[State 1150, DestroySelf]
+type = destroyself
+trigger1 = AnimTime = 0
+
+
+;-----------------------------------------------------------------------------
+; Dark Thunder helper
+[Statedef 1159]
+type    = S
+movetype= A
+physics = N
+ctrl = 0
+anim =  1151
+sprpriority = 3
+velset = 0, 0
+
+[State 1150, ChangeAnim]
+type = ChangeAnim
+trigger1 = !time && var(13)
+value = 1151
+elem = 1 + var(13)
+ignorehitpause = 1
+
+[State 1150, DestroySelf]
+type = destroyself
+trigger1 = AnimTime = 0
+
+;-----------------------------------------------------------------------------
+; Dark "semple" tank drop
+[Statedef 1300]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim =  1300
+juggle  = 4
+poweradd = 50
+velset = 0,0
+
+[State 1300, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = Unguardable
+
+[State 1300, Width]
+type = Width
+trigger1 = animelemtime(2) >= 0 && animelemtime(3) < 0
+edge = 17, 10
+player = 20, 10
+
+[State 1300, Width]
+type = Width
+trigger1 = animelemtime(3) >= 0 && animelemtime(5) < 0
+edge = 25, 10
+player = 30, 10
+
+[State 1300, PlayerPush]
+type = PlayerPush
+trigger1 = animelemtime(5) > 0
+value = 0
+
+[State 1300, VelSet]
+type = VelSet
+trigger1 = animelemtime(5) > 0 && animelemtime(5) <= 2
+y = 9
+
+[State 1300, VelSet]
+type = VelAdd
+trigger1 = animelemtime(5) > 2
+y = .9
+
+[State 1300, HitDef]
+type = HitDef
+trigger1 = time = 0
+ID = 1300
+attr = A, SA
+damage = 25, 7
+animtype = Hard
+hitflag = MAFD
+priority = 4, Hit
+pausetime = 12, 12
+sparkno = S25010 + random % 2;0
+guard.sparkno= S25008
+sparkxy = -10, -0
+hitsound = s8000, 5
+guardsound = s8500, 0
+; The rest of the hitdef doesn't even remotely matter, i'm going to a target state
+ground.type = High
+ground.slidetime = 18
+ground.hittime = 18
+ground.velocity = 0, 0
+air.type = High
+air.hittime = 18
+air.velocity = 0, -3
+airguard.velocity = -0, -3
+fall = 1
+fall.recover = 0
+envshake.time = 4
+envshake.ampl = 3
+
+[State 1300, End]
+type = targetstate
+Triggerall = NumTarget
+trigger1 = movehit && !(Target, IsHelper)
+ID = 1300
+value = 1330
+
+[State 1300, ChangeState] ; This move hit and this baffles me, either way enjoy the rest of this move
+type = ChangeState
+trigger1 = Movehit  && !(NumTarget(1300) <= 0)
+value = 1310
+
+[State 1300, ChangeState] ; This move missed... oh wow, who would've thought it would? xD
+type = ChangeState
+trigger1 = animelemtime(5) > 2 && pos y > -9
+value = stateno + 5
+
+
+;-----------------------------------------------------------------------------
+; Dark "semple" tank drop: land part (Missed)
+[Statedef 1305]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim =  1305
+velset = 0,0
+
+[State 1305, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S1300,0
+
+[State 1305, EnvShake]
+type = EnvShake
+trigger1 = !time
+time = 20
+freq = 60
+ampl = -5
+
+[State 1305, VelSet]
+type = PosSet
+trigger1 = !time
+y = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = !time
+helpertype = normal ;player
+name = "boulder"
+ID = 1621
+stateno = 1622
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 1350
+ID = 1350
+pos = 0,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = -5
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 0
+
+[State 1305, ChangeState]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+
+;-----------------------------------------------------------------------------
+; Dark "semple" tank drop: falling down (Move Hit)
+[Statedef 1310]
+type    = A
+movetype= A
+physics = N
+anim = 1310
+ctrl = 0
+
+[State 0, TargetFacing]
+type = TargetFacing
+trigger1 = facing = enemynear, facing
+value = facing * -1
+ID = 1300
+
+[State 1310, TargetBind]
+type = TargetBind
+trigger1 = 1
+pos = 0, -17
+
+[State 1310, VelSet]
+type = VelAdd
+trigger1 = 1
+y = .9
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = pos y > -9
+value = 1315
+
+
+;-----------------------------------------------------------------------------
+; Dark "semple" tank drop: land part (Hit)
+[Statedef 1315]
+type    = S
+movetype= A
+physics = N
+ctrl = 0
+anim =  1315
+velset = 0,0
+
+[State 1315, Throw]
+type = TargetState
+trigger1 = !time
+value = 1335
+
+[State 1315, TargetLifeAdd]
+type = TargetLifeAdd
+trigger1 = !time
+value = ceil(-75 * fvar(10))
+
+[State 1315, HitAdd]
+type = HitAdd
+trigger1 = !time
+value = 1
+
+[State 1315, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S1300,0
+
+[State 1315, EnvShake]
+type = EnvShake
+trigger1 = !time
+time = 20
+freq = 60
+ampl = -5
+
+[State 1315, VelSet]
+type = PosSet
+trigger1 = !time
+y = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = !time
+helpertype = normal ;player
+name = "boulder"
+ID = 1621
+stateno = 1622
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+
+[State 40]
+type = Explod
+trigger1 = !time
+ID = 25020
+anim = 25010+random%2
+sprpriority = 2
+Ownpal = 1
+Pos = -10, 0
+postype = P2  ;P2, Front, Back, Left, Right
+removetime = -2
+ignorehitpause = 1
+
+[State 1350, Explod]
+type = Explod
+trigger1 = !time
+anim = 1350
+ID = 1350
+pos = 0,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+scale = 1,1
+sprpriority = -5
+ontop = 0
+ownpal = 1
+removeongethit = 0
+
+[State 1315, TargetBind]
+type = TargetBind
+trigger1 = anim = 1315
+trigger1 = AnimElemtime(1) >= 0 && AnimElemtime(2) < 0
+pos = 0, 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = anim = 1315
+trigger1 = p2bodydist x > 60 || p2bodydist x < -60
+value = 1320
+
+[State 200, PlaySnd]
+type = PlaySnd
+trigger1 = anim = 1315
+trigger1 = AnimElem = 2
+value = s1300, 1
+channel = -1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = anim = 1315
+trigger1 = animelem = 2
+trigger2 = anim = 1320
+trigger2 = animelem = 1
+x = ifelse(anim = 1315, 3 * ifelse(frontedgedist < 60, -1, 1), 0)
+
+[State 1315, ChangeState]
+type = ChangeState
+trigger1 = animtime = 0
+trigger1 = anim = 1320
+value = 0
+ctrl = 1
+
+
+;-----------------------------------------------------------------------------
+; Dark "semple" tank drop: falling (Custom hit state)
+[Statedef 1330]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = !time
+value = 1330
+
+[State 820, 2]
+type = SelfState
+trigger1 = !gethitvar(isbound)
+value = 5050
+
+;-----------------------------------------------------------------------------
+; Dark "semple" tank drop: Lie down (Custom hit state)
+[Statedef 1335]
+type    = L
+movetype= H
+physics = N
+ctrl = 0
+
+[State 0, VelSet]
+type = PosSet
+trigger1 = !time
+y = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = !time
+value = 1335
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = time > 70
+value = 5110
+
+
+;-----------------------------------------------------------------------------
+;Power Slam
+[Statedef 1410]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim =  1410
+juggle  = 1
+poweradd = 50
+velset = 0,0
+
+[State 1000, Variável de força]
+type = VarSet
+trigger1 =!time
+v = 4
+value = ifelse(command = "UCx",1,ifelse(command = "UCy",2,3))
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6011
+ID = 6011
+pos = 30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = Pos Y < 0
+statetype = A
+ignorehitpause = 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = AnimElem=2
+x = Var(4)*1.5
+y = -4-var(4)*2.5
+
+[State 0, Gravity]
+type = Gravity
+trigger1 = time >6
+
+[State 100, 3]
+type = PlaySnd
+trigger1 = time = 4
+value = s0,3
+
+[State 250, HitDef]
+type = HitDef
+trigger1 = !time
+attr = A, ST
+damage = 0, 0
+animtype = Hard
+guardflag = A
+hitflag = AF
+priority = 7, Hit
+sparkno = s25081         ;No spark
+sparkxy = 0,-50
+p1sprpriority = 1     ;Draw p1's sprite in front of p2                      ;p2's sprite priority is set to 0 by default
+hitsound = S8600,0
+p1facing = ifelse (command = "holdfwd", 1, -1)
+p2facing = 1
+p1stateno = 750
+p2stateno = 755
+fall = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time=25
+value = 50
+ctrl = 0

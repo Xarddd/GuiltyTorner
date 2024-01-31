@@ -1,0 +1,242 @@
+;Burstman stage by me, Magma MK II
+;Credits goes to:
+;Capcom and Keiji Inafune
+;ZSNES team
+;Winkawaks team
+[Info]
+name = "Chemical Lab - Burst Man"
+author = "Magma MK II"
+
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty = 0
+boundleft = -175
+boundright = 175
+boundhigh = -247
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 50
+overdrawhigh = 0
+overdrawlow = 0
+cuthigh = 35
+cutlow = 25
+zoomin = 1
+zoomout =.85
+
+;--------------------------------------------------------
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1facing = 1
+p2startx = 70
+p2starty = 0
+p2facing = -1
+leftbound  = -1000
+rightbound =  1000
+
+;--------------------------------------------------------
+[Bound]
+screenleft = 15
+screenright = 15
+
+;--------------------------------------------------------
+[StageInfo]
+zoffset = 212
+autoturn = 1
+resetBG = 1
+localcoord = 320, 240
+xscale = 1
+yscale = 1
+
+;--------------------------------------------------------
+[Shadow]
+intensity = 96
+color = 0,0,0
+yscale = .1
+fade.range = 0,0
+
+;--------------------------------------------------------
+[Reflection]
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+bgmusic = sound/Burst Man (Mega Man 7) Metal Version.mp3
+bgmvolume = 190
+
+;-------------------------------------
+[BGdef]
+spr = Burstman.sff
+debugbg = 0
+
+[BG back]
+type  = normal
+spriteno = 0, 0
+start = 0, -247
+delta = 1, 1
+mask  = 0
+velocity = 0, 0
+tile  = 1, 0
+tilespacing = 0,0
+
+[BG kitassato]
+type = anim
+actionno = 1
+start = 0, 118
+delta = 1, 1
+mask = 0
+velocity = 0, 0
+tile  = 1, 0
+tilespacing = 256,0
+
+[Begin Action 1]
+1,0,0,0,14
+1,1,0,0,7
+1,2,0,0,7
+1,3,0,0,7
+1,4,0,0,14
+1,3,0,0,7
+1,2,0,0,7
+1,1,0,0,7
+
+[BG elem]
+type  = normal
+spriteno = 0, 2
+start = -200, 18
+delta = .8, 1
+mask  = 1
+
+[BG elem]
+type  = normal
+spriteno = 0, 2
+start = 100, 18
+delta = .8, 1
+mask  = 1
+
+[BG tube]
+type = anim
+actionno = 2
+start = -413, 135
+delta = .9, 1
+mask = 1
+
+[BG elem]
+type  = normal
+spriteno = 0, 3
+start = -221, 95
+delta = .9, 1
+mask  = 1
+
+[BG tube]
+type = anim
+actionno = 2
+start = -29, 135
+delta = .9, 1
+mask = 1
+
+[BG elem]
+type = anim
+actionno = 3
+start = 163, 111
+delta = .9, 1
+mask = 1
+
+[BG tube]
+type = anim
+actionno = 2
+start = 355, 135
+delta = .9, 1
+mask = 1
+
+[Begin Action 2]
+4,0,0,0,16
+4,1,0,0,8
+4,2,0,0,8
+4,3,0,0,16
+4,2,0,0,8
+4,1,0,0,8
+
+[Begin Action 3]
+3,0,0,0,14
+3,1,0,0,7
+3,2,0,0,7
+3,3,0,0,7
+3,4,0,0,14
+3,3,0,0,7
+3,2,0,0,7
+3,1,0,0,7
+
+[BG water]
+type = anim
+actionno = 4
+start = 0, 196
+delta = 1, 1
+mask = 1
+velocity = 0, 0
+tile = 1, 0
+tilespacing = 32, 0
+sin.y = 10,500,0
+
+[Begin Action 4]
+5,3,0,0,10,,A1
+5,4,0,0,10,,A1
+5,5,0,0,10,,A1
+
+[BG bomber]
+type = anim
+actionno = 5
+start = -100, 50
+delta = 1, 1
+mask = 1
+sin.y = 50,300,0
+
+[Begin Action 5]
+2,0,0,0,4,H
+2,1,0,0,4,H
+2,2,0,0,4,H
+2,3,0,0,4,H
+2,4,0,0,4,H
+
+[BG bomber]
+type = anim
+actionno = 6
+start = 200, 25
+delta = 1, 1
+mask = 1
+sin.y = 50,300,0
+
+[Begin Action 6]
+2,0,0,0,4
+2,1,0,0,4
+2,2,0,0,4
+2,3,0,0,4
+2,4,0,0,4
+
+[BG floor]
+type  = normal
+spriteno = 0, 1
+start = 0, 207
+delta = 1, 1
+mask = 0
+velocity = 0, 0
+tile = 1, 0
+tilespacing = 0, 0
+
+[BG water]
+type = anim
+actionno = 7
+start = 0, 236
+delta = 1, 1
+mask = 1
+layerno = 1
+velocity = 0, 0
+tile = 1, 0
+tilespacing = 32, 0
+sin.y = -10,500,0
+
+[Begin Action 7]
+5,0,0,0,10,,A1
+5,1,0,0,10,,A1
+5,2,0,0,10,,A1

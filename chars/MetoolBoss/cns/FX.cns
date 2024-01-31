@@ -1,0 +1,524 @@
+;=========================================================================================
+;=========================================================================================
+;---------------------------------------------------------------------------
+; Zoom Effect - Helper Effect
+
+[Statedef 7000]
+type = S
+velset = 0,0
+anim = 9999
+ctrl = 0
+sprpriority = 7
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause =  1
+flag = nobardisplay
+
+[state 1051, Ninjitsu]
+type = helper
+trigger1 = Time = 0
+name = "Hyper Clone FX"
+id = 6501
+stateno = 6501
+postype = p1
+pos = 0, 0
+sprpriority = 100
+bindtime = 1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[state 1051, Ninjitsu]
+type = helper
+trigger1 = Time = 8
+name = "Hyper Clone FX"
+id = 6501
+stateno = 6501
+postype = p1
+pos = 0, 0
+sprpriority = 100
+bindtime = 1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[state 1051, Ninjitsu]
+type = helper
+trigger1 = Time = 16
+name = "Hyper Clone FX"
+id = 6501
+stateno = 6501
+postype = p1
+pos = 0, 0
+sprpriority = 100
+bindtime = 1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[state 1051, Ninjitsu]
+type = helper
+trigger1 = Time = 24
+name = "Hyper Clone FX"
+id = 6501
+stateno = 6501
+postype = p1
+pos = 0, 0
+sprpriority = 100
+bindtime = 1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[State 0, ]
+type = PalFx
+trigger1 = Time = [0,12]
+Time = 1
+add = 256 - Time * 24, 256 - Time * 24, 256 - Time * 24
+mul = 256, 256, 256
+
+;==============================  codigo do Kurai chaito :)
+
+[State 951, Carregamento - EnvShake]
+type = envshake
+trigger1 = !Time
+time = 46
+freq = 60
+ampl = IfElse(Random<=500,-3,3)
+
+[State 1150, Carregamento - Asas]
+type = Explod
+trigger1 = Var(0) < 3 && !Time
+sprpriority = 2
+anim = f5319
+ID = 5319
+pos = -1,-34
+ownpal = 1
+ignorehitpause = 1
+supermove = 1
+pausemovetime = 46
+supermovetime = 46
+removetime = 46
+bindtime = -1
+
+[State 1150, Carregamento - Asas]
+type = null;Explod
+trigger1 = Var(0) < 3 && !Time
+sprpriority = 2
+anim = f5999
+ID = 5999
+pos = -1,-34
+ownpal = 1
+ignorehitpause = 1
+supermove = 1
+pausemovetime = 46
+supermovetime = 46
+removetime = 46
+bindtime = -1
+ontop = 1
+
+;======================================================
+
+
+
+
+[State 0, FireBG]
+type = Explod
+trigger1 = AnimElem = 1;,=20
+anim = 6041
+ID = 6041
+pos = 160,120
+postype = back
+ownpal = 1
+facing=-1
+ignorehitpause = 1
+supermove = 1
+supermovetime = 99999999
+pausemovetime = 99999999
+removetime = -2
+bindtime = -1
+scale= 8,8
+
+[state 8010]
+type = modifyexplod
+trigger1 = 1
+id = 6041
+scale = 0.06*(time-130/2),0.06*(time-130/2)
+
+[state 8010, LVL 3 FX]
+type = explod
+trigger1 = AnimElem = 1,=10 && root,StateNo >3999
+supermovetime = 99999999
+pausemovetime = 99999999
+removetime = -2
+bindtime = -1
+anim = f8555
+pos = 0, -35
+sprpriority = 300
+id = 8555
+removeongethit = 1
+ownpal = 0
+
+[state 1051, HyperBG]
+type = helper
+trigger1 = time = 55
+name = "HyperBG FX"
+id = 8600
+stateno = 8600
+postype = back
+pos = 0, 0
+sprpriority = -100
+bindtime = 1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[State 7000, 7]
+type = DestroySelf
+trigger1 = time = 55
+supermove = 1
+
+;---------------------------------------------------------------------------
+; Ninjitsu Effects
+[Statedef 6501]
+type = S
+velset = 0,0
+anim = 9999
+ctrl = 0
+sprpriority = 10
+
+[State 7000, 1]
+type = Explod
+trigger1 = !time
+anim = (root, anim+20000)
+ID = 6501
+pos = 0,0
+removetime = 18
+scale = .01*(var(3)),.01*(var(3))
+sprpriority = 7
+removeongethit = 1
+ownpal = 0
+supermove = 1
+
+[state 8010,1]
+type = palfx
+trigger1 = 1
+time = 1
+add = -time*4,-time*4,-time*4
+
+
+[State 7000, 2]
+type = ModifyExplod
+trigger1 = time > 0
+ID = 6501
+scale = .01*(var(3)),.01*(var(3))
+supermove = 1
+
+[State 7000, 3]
+type = Varset
+trigger1 = !time
+v =  3
+value = 400
+supermove = 1
+
+[State 7000, 4]
+type = VarAdd
+triggerall = Var(3) > 0
+trigger1 = timemod = 1,0
+v =  3
+value = -16
+supermove = 1
+
+[State 7000, 5]
+type = Varset
+trigger1 = Var(3)<= 16
+v =  3
+value = 16
+supermove = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = Time = 18
+
+;-----------------------------------------------------------------------
+;-----------------------------------------------------------------------
+;Hyper BG
+
+[Statedef 8600]
+type = S
+movetype = I
+physics = N
+anim = 9999 ;Invisible anim.
+
+[State 0, Listras2]
+type = Explod
+trigger1 = 1
+anim = 8603+random%2
+ID = 8603
+pos = -20,120
+postype = back
+vel = 12,0
+accel = 2,0
+random = 0,200
+removetime = -2
+scale = 0.5,0.25
+supermovetime = 9999999
+pausemovetime = 9999999
+ontop = 1
+ownpal = 1
+removeongethit = 1
+supermove = 1
+sprpriority = -3
+
+[State 0, Listras3]
+type = Explod
+trigger1 = time%3=0
+anim = 8603+random%2
+ID = 8603
+pos = 0,120
+postype = back
+vel = 12,0
+accel = 8,0
+random = 0,200
+removetime = -2
+scale = 1,0.5
+supermovetime = 9999999
+pausemovetime = 9999999
+ontop = 1
+ownpal = 1
+removeongethit = 1
+supermove = 1
+sprpriority = -200
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause =  1
+flag = nobardisplay
+flag = noBG
+flag = noFG
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = root, MoveType = H
+trigger2 = root, StateNo = [0,2999]
+ignorehitpause = 1
+trigger3 = (WinKO)
+id = 8600
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = root, MoveType = H
+trigger2 = root, StateNo = [0,2999]
+trigger3 = (WinKO)
+ignorehitpause = 1
+id = 8603
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = root, MoveType = H
+trigger2 = root, StateNo = [0,2999]
+trigger3 = (WinKO); && (root,NumHelper(8400) = 0) && (root,hitdefattr = SCA, HA)
+ignorehitpause = 1
+
+;-----------------------------------------------------------------------
+;Hyper FX
+[Statedef 9600]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoBG
+flag2= NoFg
+flag3= NoBarDisplay
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 7710
+ID = 7005
+pos = 160,120
+postype = left  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+sprpriority = -30
+ownpal = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = root,NumHelper(8400)=1
+id = 7005
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = root,NumHelper(8400)=1
+
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root, MoveType = H || root,Stateno <3000
+value =  9601
+ctrl = 0
+
+
+;-----------------------------------------------------------------------
+;Hyper FX end
+[Statedef 9601]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 0, PalFXWiz]
+type = AllPalFX
+triggerAll = root,NumHelper(8400)=0
+trigger1 = !time
+time = 20
+add = 255,255,255
+mul = 256,256,256
+sinadd = -255,-255,-255,80
+invertall = 0
+color = 256
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 =!time
+value = S9600,0
+
+[state 8010]
+type = modifyexplod
+trigger1 = 1
+id = 7005
+scale = 1.0,1.0+time/-15.0
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 15
+
+;-----------------------------------------------------------------------
+;Hyper combo Finish
+[Statedef 8400]
+type = S
+movetype = I
+physics = N
+anim = 9999 ;Invisible anim.
+
+[State 8400: EnvColor]
+type = EnvColor
+trigger1 = time < 60
+value = 0,0,0
+time = 1
+under = 1
+
+[State 8400: EnvShake]
+type = EnvShake
+trigger1 = (!Time)
+time = 12
+freq = 120
+ampl = -3
+phase = 90
+
+[State 3315, 15]
+type = Explod
+trigger1 = !Time
+ID = 8400
+anim = 8400
+postype = Back
+pos = 0,0
+sprpriority = -10
+ownpal = 1
+ignorehitpause = 1
+bindtime = -1
+removetime = -2
+
+[State 3315, 16]
+type = PlaySnd
+trigger1 = (NumExplod(8400) != 0)
+value = 8400,0
+persistent = 0
+ignorehitpause = 1
+
+;----------------------------------------
+; Land FX - Thanx Loganir
+[Statedef 8706]
+type = S
+movetype = I
+physics = N
+anim = 9999
+sprpriority = -7
+
+[State 8706, A0]
+type = screenbound
+trigger1 = 1
+value = 0
+
+[state 8706, a1]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+
+;[State 805, 6.2]
+;type = Explod
+;trigger1 = !time
+;Anim = 8109
+;id = 8109
+;postype = P1
+;pos = 0,0
+;ownpal = 1
+;sprpriority = 200
+;
+;[State 805, 6.3]
+;type = Explod
+;trigger1 = !time
+;Anim = 8110
+;id = 8110
+;postype = P1
+;pos = 0,0
+;ownpal = 1
+;sprpriority = -2
+
+[State 8706 Explod]
+type = Explod
+trigger1 = time <= 9
+anim = IfElse(Random <= 499,8670,8671)
+id = 8706
+pos = 0,0
+postype = p1
+bindtime = 1
+vel = (IfElse(Random <= 499,Random/120,Random/(-120))),Random/(-120)
+accel = 0,.5
+supermovetime = 999
+pausemovetime = 999
+scale = IfElse(Random <= 499,.4,.2),IfElse(Random <= 499,.4,.2)
+sprpriority = 8
+
+[State 8706, a6]
+type = destroyself
+trigger1 = (time>=9)

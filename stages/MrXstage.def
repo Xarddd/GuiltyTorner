@@ -1,0 +1,262 @@
+;--------------------------------------------------------
+[Info]
+Name = "Mr. X Building - Mr. X"
+Author = "Fou"
+
+[camera]
+startx = 0
+starty = 0
+boundleft = -198
+boundright = 198
+boundhigh = -227
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 80
+zoomin = 1
+zoomout =.85
+
+[playerinfo]
+p1startx = -70        ;starting x coordinates
+p1starty = 0            ;starting y coordinates
+p1startz = 0            ;starting z coordinates
+p1facing = 1            ;direction player faces: 1=right, -1=left
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+leftbound  = -1500 ;left bound (x-movement)
+rightbound =  1500 ;right bound
+topbound  =  0     ;top bound (z-movement)
+botbound  =  0     ;bottom bound
+
+[scaling]
+topz     = 0       ;top z-coordinate for scaling
+botz     = 50      ;bottom z-coordinate for scaling
+topscale = 1       ;scale to use at top
+botscale = 1.2     ;scale to use at bottom
+
+[bound]
+screenleft = 15    ;dist from left of screen that player can move to
+screenright = 15   ;right edge
+
+[stageinfo]
+zoffset = 220
+autoturn = 1
+resetbg = 0
+
+[Shadow]
+color = 32,32,32
+yscale = .2
+fade.range = -400,-100
+
+[Reflection]
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+bgmusic = sound/ym_thr004_r6_wily.mp3
+bgvolume = 60
+
+;--------------------------------------------------------Main background definition
+[BGdef]
+spr = MrXstage.sff
+debugbg = 0
+
+[bg Back]
+type=normal
+spriteno= 5,0
+start=-0,180
+delta=0,0
+mask=1
+
+[bg Building]
+type=normal
+spriteno= 4,0
+start=-0,180
+delta=0.65,0.85
+mask=1
+tile= 0,1
+velocity = 0, 0.7
+
+[bg Etage]
+type=normal
+spriteno= 6,0
+start=-0,180
+delta=0.70,0.90
+mask=1
+tile= 0,1
+velocity = 0, 0.7
+
+[bg Spine]
+type= anim
+actionno= 1
+start=-0,180
+delta=0.70,0.90
+mask=1
+tile= 0,1
+tilespacing=0,510
+velocity = 0, 0.7
+
+[Begin Action 1]
+7,0, 0,0, 1
+7,0, 4,0, 1
+7,0, 8,0, 1
+7,0, 12,0, 1
+7,0, 16,0, 1
+7,0, 20,0, 1
+7,0, 24,0, 1
+7,0, 28,0, 1
+7,0, 32,0, 1
+7,0, 36,0, 1
+7,0, 40,0, 1
+7,0, 44,0, 1
+7,0, 48,0, 1
+7,0, 52,0, 1
+7,0, 56,0, 1
+7,0, 60,0, 1
+7,0, 64,0, 1
+7,0, 68,0, 1
+7,0, 72,0, 1
+7,0, 76,0, 1
+7,0, 80,0, 1
+7,0, 84,0, 1
+7,0, 88,0, 1
+7,0, 92,0, 1
+7,0, 96,0, 1
+7,0, 100,0, 1
+7,0, 104,0, 1
+7,0, 108,0, 1
+7,0, 112,0, 1
+7,0, 116,0, 1
+7,0, 120,0, 1
+7,0, 124,0, 1
+7,0, 128,0, 1
+7,0, 132,0, 1
+7,0, 136,0, 1
+7,0, 140,0, 1
+7,0, 144,0, 1
+7,0, 148,0, 1
+7,0, 152,0, 1
+7,0, 156,0, 1
+7,0, 160,0, 1
+7,0, 164,0, 1
+7,0, 168,0, 1
+7,0, 172,0, 1
+7,0, 176,0, 1
+7,0, 180,0, 1
+7,0, 184,0, 1
+7,0, 188,0, 1
+7,0, 192,0, 1
+7,0, 196,0, 1
+7,0, 200,0, 1
+7,0, 196,0, 1
+7,0, 192,0, 1
+7,0, 188,0, 1
+7,0, 184,0, 1
+7,0, 180,0, 1
+7,0, 176,0, 1
+7,0, 172,0, 1
+7,0, 168,0, 1
+7,0, 164,0, 1
+7,0, 160,0, 1
+7,0, 156,0, 1
+7,0, 152,0, 1
+7,0, 148,0, 1
+7,0, 144,0, 1
+7,0, 140,0, 1
+7,0, 136,0, 1
+7,0, 132,0, 1
+7,0, 128,0, 1
+7,0, 124,0, 1
+7,0, 120,0, 1
+7,0, 116,0, 1
+7,0, 112,0, 1
+7,0, 108,0, 1
+7,0, 104,0, 1
+7,0, 100,0, 1
+7,0, 96,0, 1
+7,0, 92,0, 1
+7,0, 88,0, 1
+7,0, 84,0, 1
+7,0, 80,0, 1
+7,0, 76,0, 1
+7,0, 72,0, 1
+7,0, 68,0, 1
+7,0, 64,0, 1
+7,0, 60,0, 1
+7,0, 56,0, 1
+7,0, 52,0, 1
+7,0, 48,0, 1
+7,0, 44,0, 1
+7,0, 40,0, 1
+7,0, 36,0, 1
+7,0, 32,0, 1
+7,0, 28,0, 1
+7,0, 24,0, 1
+7,0, 20,0, 1
+7,0, 16,0, 1
+7,0, 12,0, 1
+7,0, 8,0, 1
+7,0, 4,0, 1
+
+[bg canon1]
+type= anim
+actionno= 2
+start= -120, 140
+delta=0.5,0.95
+mask=1
+
+[bg elevator]
+type=normal
+spriteno= 3,0
+start=-285,-275
+delta=0.75,1
+mask=1
+tile=1,2
+tilespacing=0,0
+
+[bg floor]
+type=parallax
+spriteno=2,0
+start=0, 180
+delta=0.72,1
+xscale = .95,1.43
+mask=1
+tile=0,0
+tilespacing=0,0
+
+[bg elevator 2]
+type=normal
+spriteno=1,0
+start= -285, 180
+delta=0.75,1
+mask=1
+tile=1,0
+tilespacing=1,1
+
+[Begin Action 2]
+10,0, 0,0, 2
+10,1, 0,-1, 2
+10,2, 0,-2, 2
+10,3, 0,-3, 2
+10,0, 0,-4, 2
+10,1, 0,-4, 2
+10,2, 0,-5, 2
+10,3, 0,-5, 2
+10,0, 0,-5, 2
+10,1, 0,-5, 2
+10,2, 0,-4, 2
+10,3, 0,-4, 2
+10,0, 0,-3, 2
+10,1, 0,-2, 2
+10,2, 0,-1, 2
+10,3, 0,0, 2
+10,0, 0,1, 2
+10,1, 0,1, 2
+10,2, 0,2, 2
+10,3, 0,2, 2
+10,0, 0,2, 2
+10,1, 0,2, 2
+10,2, 0,1, 2
+10,3, 0,1, 2

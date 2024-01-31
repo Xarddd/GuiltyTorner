@@ -1,0 +1,45 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.1
+;Template by Acey
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name="Ice Man RMM"
+displayname="Ice Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="Excursion (Original Creator), Rage (Sprites), AJrenaln (RMM firstCoding) & O Ilusionista (RMM update)"
+;Updated by O Ilusionista
+pal.defaults=1,3,4,5,6,2,7,8,9,10,11,12
+
+[Files]
+cmd 	 =IcemanRMM.cmd
+cns 	 =IcemanRMM.cns
+stcommon =common1.cns
+st	 =IcemanRMM.cns
+sprite	 =IcemanRMM.sff
+anim	 =IcemanRMM.air
+sound 	 =IcemanRMM.snd
+pal1=ACT/IcemanRMM.act
+pal2=ACT/Iceman2.act
+pal3=ACT/Iceman3.act
+pal4=ACT/Iceman4.act
+pal5=ACT/Iceman5.act
+pal6=ACT/Iceman6.act
+pal7=ACT/Iceman7.act
+pal8=ACT/Iceman8.act
+pal9=ACT/Iceman9.act
+pal10=ACT/Iceman10.act
+pal11=ACT/Iceman11.act
+pal12=ACT/Iceman12.act
+
+st1=-2.cns
+st2=-3.cns
+st3 = Powersets.cns
+st4 = specials.cns
+st5 = hypers.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_iceman.def

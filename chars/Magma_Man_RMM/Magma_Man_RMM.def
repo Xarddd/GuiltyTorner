@@ -1,0 +1,34 @@
+[Info]
+name="Magma Man RMM"
+displayname="Magma Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="Riot && O Ilusionista"
+pal.defaults= 1,6,2,3,4,5
+
+[Files]
+cmd 	 =Magmaman.cmd
+cns 	 =Magmaman.cns
+stcommon =common1.cns
+st	 =Magmaman.cns
+sprite	 =Magmaman.sff
+anim	 =Magmaman.air
+sound 	 =Magmaman.snd
+st1=-2.cns
+st2=-3.cns
+st3=Powersets.cns
+st4=specials.cns
+st5=hypers.cns
+
+pal1=act/MagmaMan1.act
+pal2=act/MagmaMan2.act
+pal3=act/MagmaMan3.act
+pal4=act/MagmaMan4.act
+pal5=act/MagmaMan5.act
+pal6=act/MagmaMan6.act ; Dark
+pal7=act/MagmaMan7.act
+
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_magmaman.def

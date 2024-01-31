@@ -1,0 +1,353 @@
+[Info]
+name ="Tenguman"
+author="Fou"
+displayname="Shrine City - Tengu Man"
+
+[BGdef]
+spr = Tenguman.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/MM8 Tenguman Super Remix.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -300
+boundright = 300
+boundhigh = -150
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 190
+autoturn = 1
+resetBG = 0
+zoffsetlink = 1
+
+[shadow]
+Intensity = 90
+color = 0,0,0
+yscale = -.15
+fade.range = -400,-100
+
+[Reflection]
+intensity = 0
+
+;----------------------------------------[PCX IMAGE]
+[BG Background 1]
+type  = normal
+spriteno = 0, 0
+layerno = 0
+start = -160, 0
+tile = 1
+delta = .4,0
+trans = none
+velocity = -.05,0
+tilespacing = 0, -5
+windowdelta = 7, 0
+
+;---------------------------------------
+[BG Cloud 1]
+type  = normal
+spriteno = 3,0
+start = 0,100
+mask = 1
+tile = 1
+delta = .8, .6
+velocity = -.5,0
+
+;---------------------------------------
+[BG Hogale]
+type = anim
+actionno = 1
+start = 200,0
+delta = 1, 1
+mask = 1
+velocity = -0.25, 0
+tile = 1, 0
+tilespacing = 1000, 0
+
+[Begin action 1]
+5,0,0,0,7
+5,1,0,0,7
+5,2,0,0,7
+5,3,0,0,7
+5,4,0,0,7
+
+;---------------------------------------
+[BG City]
+type  = normal
+spriteno = 90,0
+start = -700,0  
+mask = 1
+sin.y = 5,200,0
+tile = 1
+tilespacing = 1600,0
+delta = .5,0
+trans = none
+velocity = -.35,0
+
+;---------------------------------------
+[BG Tencrow]
+type = anim
+actionno = 2
+start = 200,100
+delta = 1, 1
+mask = 1
+velocity = -1, 0
+tile = 1, 0
+tilespacing = 1000, 0
+sin.y = 35,200,0
+
+[BG Tencrow]
+type = anim
+actionno = 2
+start = 235,100
+delta = 1, 1
+mask = 1
+velocity = -1, 0
+tile = 1, 0
+tilespacing = 1000, 0
+sin.y = -35,200,0
+
+[BG Tencrow]
+type = anim
+actionno = 2
+start = 270,100
+delta = 1, 1
+mask = 1
+velocity = -1, 0
+tile = 1, 0
+tilespacing = 1000, 0
+sin.y = 35,200,0
+
+[BG Tencrow]
+type = anim
+actionno = 2
+start = 305,100
+delta = 1, 1
+mask = 1
+velocity = -1, 0
+tile = 1, 0
+tilespacing = 1000, 0
+sin.y = -35,200,0
+
+[BG Tencrow]
+type = anim
+actionno = 2
+start = 340,100
+delta = 1, 1
+mask = 1
+velocity = -1, 0
+tile = 1, 0
+tilespacing = 1000, 0
+sin.y = 35,200,0
+
+[BG Tencrow]
+type = anim
+actionno = 2
+start = 375,100
+delta = 1, 1
+mask = 1
+velocity = -1, 0
+tile = 1, 0
+tilespacing = 1000, 0
+sin.y = -35,200,0
+
+[Begin action 2]
+4,0,0,-2,7
+4,1,0,0,7
+4,2,0,0,7
+4,3,0,0,7
+4,4,0,0,7
+4,5,0,-1,7
+
+
+
+;---------------------------------------
+[BG Floor]
+type  = normal
+spriteno = 1,0
+start = -150,0  
+mask = 1
+sin.y = 5,200,0
+id = 1
+
+;---------------------------------------[/PCX IMAGE]
+
+[BG propeller]
+type = anim
+actionno = 3
+start = -372,227
+mask = 1
+sin.y = 5,200,0
+
+[BG propeller]
+type = anim
+actionno = 3
+start = -200,228
+mask = 1
+sin.y = 5,200,0
+
+[BG propeller]
+type = anim
+actionno = 3
+start = -35,228
+mask = 1
+sin.y = 5,200,0
+
+[BG propeller]
+type = anim
+actionno = 3
+start = 125,228
+mask = 1
+sin.y = 5,200,0
+
+[BG propeller]
+type = anim
+actionno = 3
+start = 288,227
+mask = 1
+sin.y = 5,200,0
+
+[BG propeller]
+type = anim
+actionno = 3
+start = 445,227
+mask = 1
+sin.y = 5,200,0
+
+;---------------------------------------
+[BG leaf 1]
+type  = anim
+actionno = 18300
+start = 0, 105
+mask = 1
+layerno = 0
+tile = 1,0
+tilespacing = 600,0
+velocity = -1,0
+sin.y = -35,200,0
+
+;---------------------------------------
+[BG leaf 2]
+type  = anim
+actionno = 18301
+start = 400, 105
+mask = 1
+layerno = 1
+tile = 1,0
+tilespacing = 1000,0
+velocity = -2,0
+sin.y = -35,200,0
+
+;---------------------------------------
+[BG leaf 3]
+type  = anim
+actionno = 18302
+start = 900, 105
+mask = 1
+layerno = 1
+tile = 1,0
+tilespacing = 3000,0
+velocity = -3,0
+sin.y = -75,200,0
+
+;---------------------------------------
+[BG leaf 4]
+type  = anim
+actionno = 18303
+start = 900, 105
+mask = 1
+layerno = 1
+tile = 1,0
+tilespacing = 400,0
+velocity = -3.5,0
+sin.y = -95,400,0
+
+
+[Begin action 3]
+2,0,0,0,4
+2,1,0,0,4
+2,2,0,0,4
+2,3,0,0,4
+
+; leaf 1
+[Begin Action 18300]
+18300,0, 0,0, 4
+18300,1, 0,0, 4
+18300,2, 0,0, 4
+18300,17, 0,0, 4
+
+; leaf 2
+[Begin Action 18301]
+18300,3, 0,0, 6
+18300,4, 0,0, 6
+18300,5, 0,0, 6
+18300,6, 0,0, 6
+18300,7, 0,0, 6
+18300,8, 0,0, 6
+18300,9, 0,0, 6
+
+; leaf 3
+[Begin Action 18302]
+18300,10, 0,0, 5
+18300,11, 0,0, 5
+18300,12, 0,0, 5
+18300,13, 0,0, 5
+18300,14, 0,0, 5
+18300,15, 0,0, 5
+18300,16, 0,0, 5
+
+; leaf 4
+[Begin Action 18303]
+18300,18, 0,0, 6
+18300,19, 0,0, 6
+18300,20, 0,0, 6
+18300,21, 0,0, 6
+18300,22, 0,0, 6
+18300,23, 0,0, 6
+18300,24, 0,0, 6
+
+; leaf 5
+[Begin Action 18304]
+18300,25, 0,0, 4
+18300,26, 0,0, 4
+18300,27, 0,0, 4
+18300,28, 0,0, 4
+18300,29, 0,0, 4
+18300,30, 0,0, 4
+

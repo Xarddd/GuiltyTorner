@@ -1,0 +1,45 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.1
+;Template Sprites by Laspacho
+;Template & Programming by Acey
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name = "Needle Man RMM"
+displayname = "Needle Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion= 1.0
+author = "Mistah Jorge, laspacho & O'Ilusionista"
+pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+cmd 	 =Needleman.cmd
+cns 	 =Needleman.cns
+stcommon= common1.cns
+st	 =Needleman.cns
+sprite	 =Needleman.sff
+anim	 =Needleman.air
+sound 	 =Needleman.snd
+pal1=RMM01.act
+pal2=RMM02.act
+pal3=RMM03.act
+pal4=RMM04.act
+pal5=RMM05.act
+pal6=RMM06.act
+pal7=RMM07.act
+pal8=RMM08.act
+pal9=RMM00.act
+pal10=RMM10.act
+pal11=RMM11.act
+pal12=RMM12.act
+st1=-2.cns
+st2=-3.cns
+st3=Powersets.cns
+st4=supers.cns
+st5=hypers.cns
+
+
+[Arcade]
+intro.storyboard =mmintro.DEF
+ending.storyboard =mmend.DEF

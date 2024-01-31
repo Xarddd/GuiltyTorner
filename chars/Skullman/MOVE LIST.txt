@@ -1,0 +1,54 @@
+SKULL MAN's MOVE LIST
+
+
+SPECIALS
+1.Blaster Shot -    (QCFx,QCFy,QCFz) Shoots cannon low, medium and upwards position. (Works in AIR)
+
+2.Skullbarrier -    (QCBx,QCBy,QCBz)Causes damage to enemy in radius and has a short duration. Can also block one attack or projectile without taking damage and can not be thrown into a projectile.
+
+3.Teleport -        (QCBa,QCBb,QCBc) Teleports the player. (Back,Close,Far)
+
+4.Invisibility -    (FBFx,FBFy,FBFz) Makes the player invisible, hit the CMD again while invisible to become visible.
+   		    NOTE:  While Invisible is active, Skullbarrier and Teleport will not be active. (Did not want players "Cheezing")
+		    NOTE2: Also if Skullbarrier is active Invisibility will drop Skullbarrier
+		    NOTE3: All Hypers will cause the player to become visible again (You can cast hypers while invisible)
+
+
+
+POWERSETS 	    ((CMD FOR POWERSETS (QCFa,QCFb,QCFc))
+
+1.Haunt -            Throws out a Spirit at the cost of 10 health, if the move hits it cause damage to P2 and P1 gains 25 health.
+	             If you miss you get no health back and lose the 10 health from casting.
+		     NOTE: If your health is 10 or below this move will not kill you, you will be reduce to 1hp while casting. 
+	             A= Low, B= Medium, C= High (Works in AIR).
+
+2.Spikes -           Impale the target with spikes coming from the players back.
+         	     A= Weak,B =Medium,C =Strong (Works in AIR).
+
+3.Missiles -         Shoots a missile out of his chest causing explosiove damage.
+	             A=Slow, B=Normal,C=Fast (Works in AIR)
+
+4.Homing Missile -   A Missile targeted for the enemy. The enemy has so much time to escape before the missile explodes.
+		     A,B,C are all the same, may change in next update.
+
+5.Bone Joe -         Bone joe rises to throw some bones.
+	             A= 1 Bone,B= 2 Bones,3= Bones
+
+6.Machine gun -      A machine gun comes out of his chest and fires fast projectiles. 
+		     A=3bullets,B=4Bullets,C=5Bullets.
+
+
+
+HYPERS
+
+1.Machine gunner -   (QCFx+y, QCFx+z, QCFy+z) His hands turn into machine guns firing bullets in both directions.
+
+2.Laughing Skulls -  (QCFa+b, QCFa+c, QCFb+c) Summons laughing skulls to do his bidding.
+
+
+
+ULTIMATES
+
+1.Skullbot -         (QCBx+y, QCBx+z, QCBy+z) Summons the Ultimate Hyper, Skullbot. Skullman goes rouge and you only get out of this hyper 2 ways block his knife attack, or stay off the ground long enough for him to be visable again.
+					      If caught by the knife attack, The hyper begins and the Skullbot comes in to Shoot a lazer so powerful the enemy is almost dead by the time its over (and thats at full health). 
+					      The Powercost is 3000, and if you miss the inital attack you lose the 3000 power, so play wisely.

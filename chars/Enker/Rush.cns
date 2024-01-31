@@ -1,0 +1,630 @@
+;===========================================================================
+;Robot Master Mayhem - Constants Template (Partner) V.1
+;Template by Acey
+;Based on Megaman by Chaotic
+;www.infinitymugenteam.com
+;===========================================================================
+
+;---------------------------------------------------------------------
+;Rush States (1001, 3900 - 4010)
+;---------------------------------------------------------------------
+
+;-----------------------
+;Powerset 01 - Rush Attack
+[Statedef 1001]
+type = S
+movetype = A
+physics = N
+ctrl = 0
+anim = 6003
+sprpriority = -3
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 1
+x = 6
+y = 0
+persistent = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 4
+value = S1200,2
+volume = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 0, HitDef]
+type = HitDef
+triggerall = parent,stateno !=3100
+trigger1 = time = 0
+attr = S,S        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+guardflag = MA         ;HLA
+getpower = 0,0
+givepower = 0,0
+animtype = hard          ;light,medium,hard,back,up,diagup
+air.animtype = light
+fall.animtype = hard
+priority = 4,Hit   ;Hit,Miss,Dodge
+damage = 20,0
+pausetime = 0,5
+sparkno = s7001
+sparkxy = -10, -40
+guard.sparkno = 0
+sparkxy = 0,0
+hitsound = s8000,2
+guardsound = 0,0
+ground.type = trip      ;Low,Trip,None
+ground.slide = 10
+ground.hit = 15
+air.hittime = 20
+ground.velocity = 2,-3
+air.velocity = 0,0
+sprpriority = 1
+p1getp2facing = 0
+fall = 1
+fall.yvelocity = -4.5
+fall.recover = 1
+fall.recovertime = 4
+
+[State 0, HitDef]
+type = HitDef
+triggerall = parent,stateno =3100
+trigger1 = time = 0
+attr = S,S        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+guardflag = MA         ;HLA
+getpower = 0,0
+givepower = 0,0
+animtype = hard          ;light,medium,hard,back,up,diagup
+air.animtype = light
+fall.animtype = hard
+priority = 4,Hit   ;Hit,Miss,Dodge
+damage = 20,0
+pausetime = 0,5
+p2stateno = 3102
+guard.sparkno = 0
+sparkno = s7001
+sparkxy = -10, -40
+hitsound = s8000,2
+guardsound = 0,0
+ground.type = trip      ;Low,Trip,None
+ground.slide = 10
+ground.hit = 15
+air.hittime = 20
+ground.velocity = -7,-3
+air.velocity = 0,0
+sprpriority = 1
+p1getp2facing = 0
+fall = 1
+fall.yvelocity = -4.5
+fall.recover = 1
+fall.recovertime = 4
+
+[State 0, changestate]
+type = changestate
+trigger1 = time = 85
+value = 4000
+ctrl = 0
+ignorehitpause =  1
+persistent = 0
+
+;-----------------------
+;Rush Teleport
+[Statedef 3900]
+type = S
+ctrl = 0
+anim = 4000
+velset = 0,0
+physics = S
+sprpriority = -4
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = -2
+;ignorehitpause =
+;persistent =
+
+[State 3100, Sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,1
+persistent = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 4010
+ID =  4010
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermove
+pausemove
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+;ignorehitpause =
+;persistent =
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 4011
+ID =  4011
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermove
+pausemove
+scale = .7,.7
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time = 0
+time = 86
+add = 100,100,100
+mul = 256,256,256
+sinadd = 150,150,150,50
+invertall = 0
+color = 256
+;ignorehitpause =
+;persistent =
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time<=15
+flag = invisible
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 100
+value = 4000
+ctrl = 0
+
+;-----------------------
+; Rush Standing
+[Statedef 4000]
+type = S
+ctrl = 0
+anim = 4000
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[state 1102,1]
+type = posset
+trigger1 = 1
+y = -2
+
+[state 1102,2]
+type = turn
+trigger1 = facing != root, facing
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 0
+
+[state 1102,4]
+type = palfx
+trigger1 = 1
+add = 0,0,0
+time = 1
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [101, 200]
+value = 4001
+
+[State 1102,6] ;Walk Backward
+type = ChangeState
+trigger1 = rootdist x = [-200, -101]
+value = 4002
+
+[State 1102,7] ;Run Forward
+type = ChangeState
+trigger1 = rootdist x = [201, 4000]
+value = 4003
+
+[State 1102,8] ;Run Backward
+type = ChangeState
+trigger1 = rootdist x = [-4000, -201]
+value = 4004
+
+[State 1102,9] ;Angry
+type = ChangeState
+triggerall = root, movetype = H
+trigger1 = random <=149
+value = 4005
+persistent = 0
+
+[State 1102,9] ;Rush Pow Adapt
+type = ChangeState
+trigger1 = root, stateno = 3100
+trigger2 = root, stateno = 3400
+value = 4006
+persistent = 0
+
+[State 1102,9] ;Rush Trip
+type = ChangeState
+trigger1 = root, stateno = 1000 && root,var(25) = 1
+value = 1001
+persistent = 0
+
+[State 1102,9] ;Rush Teleport
+type = null
+trigger1 = root,alive = 0
+trigger2 = root,stateno = 170
+trigger3 = root,stateno = 183
+value = 4007
+persistent = 0
+
+;--------------------------------------
+;Rush Walk Fwd
+[Statedef 4001]
+type = S
+ctrl = 0
+anim = 4001
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 3
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = rootdist x = [-50, 50]
+value = 4000
+
+[State 1102,6] ;Walk Backward
+type = ChangeState
+trigger1 = rootdist x = [-200, -101]
+trigger1 = root, animelem = 5, = 0
+value = 4002
+
+[State 1102,7] ;Run Forward
+type = ChangeState
+trigger1 = rootdist x = [201, 4000]
+trigger1 = root, animelem = 5, = 0
+value = 4003
+
+[State 1102,8] ;Run Backward
+type = ChangeState
+trigger1 = rootdist x = [-4000, -201]
+trigger1 = root, animelem = 5, = 0
+value = 4004
+
+[State 1102,9] ;Rush Pow Adapt
+type = ChangeState
+trigger1 = root, stateno = 3100
+trigger2 = root, stateno = 3400
+value = 4006
+persistent = 0
+
+;----------------------------------------------------------
+;Rush Walk Back
+[Statedef 4002]
+type = S
+ctrl = 0
+anim = 4001
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 3
+
+[state 1102,2]
+type = turn
+trigger1 = time= 0
+persistent =  0
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = rootdist x = [-50, 50]
+value = 4000
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [101, 200]
+trigger1 = root, animelem = 5, = 0
+value = 4001
+
+[State 1102,7] ;Run Forward
+type = ChangeState
+trigger1 = rootdist x = [201, 4000]
+trigger1 = root, animelem = 5, = 0
+value = 4003
+
+[State 1102,8] ;Run Backward
+type = ChangeState
+trigger1 = rootdist x = [-4000, -201]
+trigger1 = root, animelem = 5, = 0
+value = 4004
+
+[State 1102,9] ;Rush Pow Adapt
+type = ChangeState
+trigger1 = root, stateno = 3100
+trigger2 = root, stateno = 3400
+value = 4006
+persistent = 0
+
+;------------------------------------------------------
+;Rush Run Fwd
+[Statedef 4003]
+type = S
+ctrl = 0
+anim = 4002
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = rootdist x = [-50, 50]
+value = 4000
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [101, 200]
+trigger1 = root, animelem = 5, = 0
+value = 4001
+
+[State 1102,6] ;Walk Backward
+type = ChangeState
+trigger1 = rootdist x = [-200, -101]
+trigger1 = root, animelem = 5, = 0
+value = 4002
+
+[State 1102,8] ;Run Backward
+type = ChangeState
+trigger1 = rootdist x = [-4000, -201]
+trigger1 = root, animelem = 5, = 0
+value = 4004
+
+[State 1102,9] ;Rush Pow Adapt
+type = ChangeState
+trigger1 = root, stateno = 3100
+trigger2 = root, stateno = 3400
+value = 4006
+persistent = 0
+
+;----------------------------------------------------------
+;Rush Run Back
+[Statedef 4004]
+type = S
+ctrl = 0
+anim = 4002
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[state 1102,2]
+type = turn
+trigger1 = time= 0
+persistent =  0
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = rootdist x = [-50, 50]
+value = 4000
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [101, 200]
+trigger1 = root, animelem = 5, = 0
+value = 4001
+
+[State 1102,6] ;Walk Backward
+type = ChangeState
+trigger1 = rootdist x = [-200, -101]
+trigger1 = root, animelem = 5, = 0
+value = 4002
+
+[State 1102,7] ;Run Forward
+type = ChangeState
+trigger1 = rootdist x = [201, 4000]
+trigger1 = root, animelem = 5, = 0
+value = 4003
+
+[State 1102,9] ;Rush Pow Adapt
+type = ChangeState
+trigger1 = root, stateno = 3100
+trigger2 = root, stateno = 3400
+value = 4006
+persistent = 0
+
+
+;---------------------------------------------------------
+; Rush Angry
+[Statedef 4005]
+type = S
+ctrl = 0
+anim = 4005
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[state 1107,1]
+type = velset
+trigger1 = 1
+x = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = time >=40
+value = 4000
+
+[State 1102,9] ;Rush Pow Adapt
+type = ChangeState
+trigger1 = root, stateno = 3100
+trigger2 = root, stateno = 3400
+value = 4006
+persistent = 0
+
+;------------------------------------------\
+;Rush Atapt
+[Statedef 4006]
+type = S
+ctrl = 0
+anim = 4001
+velset = 3,0
+sprpriority = -1
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = time = 40
+value = 5
+;ignorehitpause =
+;persistent =
+
+[State 3100, Sound]
+type = PlaySnd
+trigger1 = time = 55
+value = s1200,2
+persistent =0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 40
+value = 4006
+;elem = 1
+;ignorehitpause =
+;persistent =
+
+[State 0, Turn]
+type = Turn
+trigger1 = time = 40
+;ignorehitpause =
+persistent = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 =time = 42
+y = -5
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = anim = 4006 && time = 5
+time = 30
+add = 255,255,255
+mul = 255,255,255
+sinadd = 255,255,255,255
+invertall = 0
+color = 255
+;ignorehitpause = 0
+;persistent = 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time =40
+x = 0
+;ignorehitpause =
+;persistent =
+
+[State 500, Angle]
+type = AngleSet
+trigger1 = time >45
+value = ((atan((-1*Vel Y)/Vel X))*(360/(2*pi))) + 2
+
+[State 500, Draw]
+type = AngleDraw
+trigger1 = 1
+
+[State ****: VelAdd]
+type = VelAdd
+triggerall = time >45
+trigger1 = (RootDist X < 0) && (Vel X > -8)
+x = -0.7
+persistent = 1
+
+[State ****: VelAdd]
+type = VelAdd
+triggerall = time >45
+trigger1 = (RootDist X > 0) && (Vel X < 8)
+x = 0.7
+persistent = 1
+
+[State ****: VelAdd]
+type = VelAdd
+triggerall = time >45
+trigger1 = (Root, Pos Y-50 < Pos Y)&& (Vel Y > -6)
+y = -0.1
+persistent = 1
+
+[State ****: VelAdd]
+type = VelAdd
+triggerall = time >45
+trigger1 = (Root, Pos Y-50 > Pos Y) && (Vel Y < 6)
+y = 0.1
+persistent = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = anim = 4006 && animelemtime(4)>= 20
+movetype = I        ;I,A,H
+physics = N         ;A,C,S,N
+;ignorehitpause =
+;persistent =
+
+[State 0, BindToRoot]
+type = BindToRoot
+trigger1 = anim = 4006 && animelemtime(4)>= 20 && root,stateno = 3100
+trigger2 = anim = 4006 && animelemtime(4)>= 20 && root,stateno = 3400
+time = 1
+;facing = 0
+pos = 0,-10
+ignorehitpause = 1
+persistent = 1
+
+[State 1107,2] ;Standing
+type = assertspecial
+trigger1 = anim = 4006 && (rootdist x =[-5,5])
+flag = invisible
+persistent = 1
+
+[State 1107,2] ;Standing
+type = destroyself
+trigger1 = root,stateno!= 3100
+trigger1 = root,stateno!= 3400

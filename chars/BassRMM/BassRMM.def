@@ -1,0 +1,43 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.3.0
+;Template by Acey - New effects and Updates by O Ilusionista
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name="Bass RMM"
+displayname="Bass"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="Chaotic, Zero & O Ilusionista "
+;Contain codes by Luigi-Master
+;Voices by Psykai
+pal.defaults=1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+cmd=BassRMM.cmd
+cns=BassRMM.cns
+stcommon=common1.cns
+st=BassRMM.cns
+st2=Specials.cns
+st3=Hypers.cns
+st4=weapons.cns
+sprite=BassRMM.sff
+anim=BassRMM.air
+sound=BassRMM.snd
+pal1=act/TrueBASS.act
+pal2=act/Ice.act
+pal3=act/Red.act
+pal4=act/SilentStorm.act
+pal5=act/SlashMan.act ;Wood.act
+pal6=act/Gospel.act
+pal7=act/Original.act
+pal8=act/Wood.act ;Plat.act
+pal9=act/Aquan.act
+pal10=act/Bloody.act ;SlashMan.act
+pal11=act/Urien.act
+pal12=act/Golden.act
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_bass.def

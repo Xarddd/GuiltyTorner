@@ -1,0 +1,44 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.1
+;Template by Acey
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name="Skull Man RMM"
+displayname="Skull Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="AJrenaln && Manic" ; Coding by AJrenalin && Sprites by Manic
+;Somewhat fixed by O Ilusionista
+;Somewhat even more fixed by Mistah Jorge
+pal.defaults=1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+cmd 	 =SkullmanRMM.cmd
+cns 	 =SkullmanRMM.cns
+stcommon =common1.cns
+st	 =SkullmanRMM.cns
+sprite	 =SkullmanRMM.sff
+anim	 =SkullmanRMM.air
+sound 	 =SkullmanRMM.snd
+pal1=ACT/RMM01.act
+pal2=ACT/RMM02.act
+pal3=ACT/RMM03.act
+pal4=ACT/RMM04.act
+pal5=ACT/RMM06.act
+pal6=ACT/RMM07.act
+pal7=ACT/RMM08.act
+pal8=ACT/RMM09.act
+pal9=ACT/RMM10.act
+pal10=ACT/Evil.act
+pal11=ACT/Skeletor.act
+st1=-2.cns
+st2=-3.cns
+st3 = Powersets.cns
+st4 = specials.cns
+st5 = hypers.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_skullman.def

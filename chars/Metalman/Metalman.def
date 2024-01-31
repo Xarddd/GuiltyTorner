@@ -1,0 +1,48 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.3.0
+;Template by Acey - Update by O Ilusionista
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name="Metal Man RMM"
+displayname="Metal Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="Laspacho & O Ilusionista"
+; Coding by O Ilusionista(may use some code by AJrenalin, Excursion and Jenngra505)
+; Sprites by Laspacho. Quick Man sprites by Manic and Rage
+; Quick Man voice by The Majin V
+pal.defaults =1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+cmd 	 =MetalmanRMM.cmd
+cns 	 =MetalmanRMM.cns
+stcommon =common1.cns
+st	 =MetalmanRMM.cns
+sprite	 =MetalmanRMM.sff
+anim	 =MetalmanRMM.air
+sound 	 =MetalmanRMM.snd
+pal1=act/Metalman1.act
+pal2=act/Metalman10.act
+pal3=act/Metalman3.act
+pal4=act/Metalman4.act
+pal5=act/Metalman5.act
+pal6=act/Metalman6.act
+pal7=act/Metalman7.act
+pal8=act/Metalman8.act
+pal9=act/Metalman9.act
+pal10=act/Metalman2.act
+pal11=act/Metalman11.act
+pal12=act/Metalman12.act
+
+st1=-2.cns
+st2=-3.cns
+st3 = Powersets.cns
+st4 = specials.cns
+st5 = hypers.cns
+st6 = dragon.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_metalman.def

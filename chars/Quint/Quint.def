@@ -1,0 +1,47 @@
+;===========================================================================
+;Marvel vs. Capcom - Eternity of Heroes - Constants Template V.5
+;by REDHOT, Acey & eSkRo
+;===========================================================================
+
+[Info]
+name="Quint RMM"
+displayname="Quint"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion= 1.0
+author="-Whiplash-, Sprites By Rage"; Edited by O Ilusionista
+pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
+localcoord  = 320,240
+
+[Files]
+cmd=Quint.cmd
+cns=Quint.cns
+stcommon=common1.cns
+st=Quint.cns
+st1=-2.cns
+st2=-3.cns
+st3=Servbot.cns
+st4=Sakugarne.cns
+st5=Powersets.cns
+st6=Hypers.cns
+sprite=Quint.sff
+anim=Quint.air
+sound=Quint.snd
+
+[Palette Keymap]
+a  = 1
+b  = 2 
+c  = 3 
+x  = 4 
+y  = 5
+z  = 6 
+a2 = 7
+b2 = 8
+c2 = 9 
+x2 = 10
+y2 = 11
+z2 = 12
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_quint.def
+

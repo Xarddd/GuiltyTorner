@@ -1,0 +1,47 @@
+;Ending by Laspacho and Nick
+;------------------------------------
+
+[Info]
+localcoord = 384,224
+
+[SceneDef]; 
+spr = mmend.sff
+
+startscene = 0
+
+;------------------------------------
+[Scene 0]
+bgm = mmend.mid
+bgm.loop = 1 
+fadein.time = 30
+fadout.time = 30 
+fadein.col = 0,0,0 
+
+fadeout.col = 0,0,0 
+
+clearcolor = 0,0,0
+layerall.pos = 0,0
+layer0.anim = 0 
+layer0.starttime = 0
+end.time = 4000
+
+[Begin Action 0]
+0,0, 0, 0, 250
+0,1, 0, 0, 250
+0,2, 0, 0, 250
+0,3, 0, 0, 250
+0,4, 0, 0, 250
+0,5, 0, 0, 250
+0,6, 0, 0, 250
+0,7, 0, 0, 250
+0,8, 0, 0, 250
+0,9, 0, 0, 250
+0,10, 0, 0,250 
+0,11, 0, 0,250
+0,12, 0, 0,250
+0,13, 0, 0,250
+0,14, 0, 0,250
+0,15, 0, 0,250
+
+0,17, 0, 0,350
+

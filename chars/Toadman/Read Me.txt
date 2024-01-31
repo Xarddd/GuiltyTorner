@@ -1,0 +1,107 @@
+;==================================================================;
+;Robot Master Mayhem - Character Template V.1                      ;                           
+;www.infinitymugenteam.com                                         ;
+;==================================================================;
+
+                                                                                                   
+                                                                                ;;ii;;                
+                                                                          ::iiiiiiii                  
+                                                                    ..iiii;;..  ii..                  
+                                                                ..ttii..      ii::                    
+      ..;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iiiiii..    ::;;                      
+    ..::                                                    ..;;ii;;..      ii..                      
+  ..::                                                ::;;ii;;..            ;;;;..................    
+..::                                            ..;;ii::..                    ..iiiiffffffffffffjjii  
+::..        http://infinitymugenteam.com/     ..,,ii....                        ..iifffffffffffffftt..
+  ::..                                              ..;;;;....              ..;;;;;;;;;;;;;;;;;;;;    
+    ::..         Share & Create                           ,,;;;;....        ii..                      
+      ::......................................................;;iiii;;..    ;;,,                      
+        ........................................................,,iiii        ii..                    
+                                                                  ,,;;ii;;..  ..ii                    
+                                                                        ;;iiii,,;;;;                  
+                                                                              ;;iitt..                
+                                                                                  ;;;; 
+
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+-------------------------------- Toadman -----------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+
+ _______
+|TOADMAN| Release 4 - 1/30/2020 - Update 5/30/2021
+---------
+Sprites by Laspacho
+Programming by Acey
+Coding and RMM Updates By: O Ilusionista
+
+Model Number: DWN-026
+Apperance: Megaman 4
+Strength: Brightman
+Weakness: Drillman
+
+History:
+A brain-working robot. His weapon, the Rain Flush, causes strong acid rainfalls.
+"After rain comes, destruction!"
+"We could use some rain...ACID rain."
+
+Character Game play:
+
+	General Gamplay:
+	* Dash Forward: F,F
+	* Dash Back: B,B
+	* Super Jump: D,U
+	* Dodge in place: LP+LK
+	* Dodge Forward: F+LP+LK
+	* Dodge Back: B+LP+LK
+	* Recovery Roll: Hold Forward or Back while recovering from lie down
+	* Throw: Hold Forward or Back and Press HP or HK
+	* Launcher: Crouch HK
+
+	Grabs:
+	* F+hp (close, standing): Power Bomb
+	* F+hk (close, standing): Hurricanrana
+	* F+hk (close, air): frog splash
+	
+	Special Attacks:
+	* D,DF,F, P = Missle Attack (Projectile)
+	* D,DF,F, K = Power Set
+	* D,DB,B, P = Air Mine
+	* D,DB,B, K = Ground Stomp
+	
+	Hyper Attacks:
+	* D,DF,F, 2 Punch = Rain Flush
+	* D,DB,B, 2 Punch = Toad Tongue
+	* D,DF,F, 2 Kick = Thunder storm
+	
+	* D,DB,B, 2 Kick = Leaping Frog Driver
+
+
+	Power Sets:
+	* D,D, any attack button = Switch Power to power sets 1 through 6
+		01 (lk) = Lillypad
+		02 (mk) = Lightning
+		03 (hk) = Bubble Trap
+		04 (lp) = Ratton
+		05 (mp) = Leaf Shield
+		06 (hp) = Leaf Boomerang
+	* D,F, K = use Power Set
+
+ _________
+|About RMM|
+-----------
+Robot Master Mayhem is the 3rd Mugen game project by the Infinity Mugen Team.
+This character was created using the template developed specifically for this 
+game. Despite this, "Toadman" will work in most any M.U.G.E.N environment.
+
+ _____________
+|Special Tanks|
+---------------
+* Chaotic for creating the "Power Sets Switching" and "Dodge Code"
+* Calamix for the code used in "Missle Attack" and "Power Mine"
+* Spidermew for helping me with that darn hop sprite that had me stuck
+* Capcom for creating the games we play
+* The original Elecbyte team for M.U.G.E.N
+* The Infinity Mugen Team forum members for supporting us in the project

@@ -1,0 +1,182 @@
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+
+[Statedef -2]
+
+
+[State 0, AfterImageTime]
+type = AfterImageTime
+trigger1 = Movetype =H
+trigger2 = stateno < 700 && var(35) !=6 
+trigger3 = stateno < 1000 && var(35) =6 && !var(37)
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Button (25) = %d Invisible = %d  Counter (37)= %d, Power Set (35) = %d"
+params = var(25),var(20),var(37),var(35)
+ignorehitpause = 1
+
+[State -2, Debug]
+type=AppendToClipboard
+trigger1=1
+text="\npos x=%.0f pos y=%.0f - SLASH: %d - FrontDist: %d"
+params=pos x, pos y, var(30), FrontEdgeDist
+ignorehitpause=1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "a"
+v = 25
+value = 1
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "b"
+v = 25
+value = 2
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "c"
+v = 25
+value = 3
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "x"
+v = 25
+value = 4
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "y"
+v = 25
+value = 5
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "z"
+v = 25
+value = 6
+;ignorehitpause =
+;persistent =
+
+;#######################################################################################
+
+[State -2, Hyper Combo Finish FX]
+type = null;Helper
+triggerall = (WinKO) && (NumHelper(9600) = 0)
+trigger1 =  (hitdefattr = SCA, HA,HP)
+trigger2 = Stateno = 3000 && ProjHitTime(1005) = 0
+trigger3 = Stateno = [3002,4999]; && ProjHitTime(425) = 0
+helpertype = Normal
+name = "Hyper Combo Finish FX"
+ID = 9600
+stateno = 9600
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+ownpal = 0
+
+
+
+; ------------------------------------------
+; Damage Dampener  - by Vin
+; ------------------------------------------
+
+[State -2, Damage based on hits]
+type=varset
+trigger1= numenemy
+fvar(12)= enemynear,gethitvar(hitcount)
+ignorehitpause=1
+
+[State -2, Reset var when the opponent recovers]
+type=varset
+trigger1= numenemy
+trigger1= (enemynear,movetype!=H)
+trigger2= !numenemy
+fvar(12)=1
+
+[State -2, Dampener]
+type=varset
+trigger1=1
+fvar(10)= ifelse(fvar(12)=0, 1, ifelse(fvar(12)=1, .96, .86**fvar(12)))
+ignorehitpause=1
+
+[State -2, Dampener itself]
+type=attackmulset
+triggerall = !var(37) && stateno != 3000 && stateno != 3700
+trigger1 = var(35) !=6
+value=fvar(10);ifelse(var(36)=4,fvar(10)+0.25,fvar(10))
+ignorehitpause=1
+
+[State -2, Dampener itself - SPD BOOST]
+type = attackmulset
+triggerall = var(37)
+trigger1 = var(35) = 6
+value = fvar(10)/3.0
+ignorehitpause = 1
+
+
+; ------------------------------------------
+; Flying Screen Effect (Vs series feature)  - TUTORIAL By FerchogtX
+; ------------------------------------------
+[State -2, Flying Screen Var Reset]
+type = VarSet
+trigger1 = P2MoveType != H
+trigger2 = (enemy, alive = 0) && roundstate > 2
+var(5) := var(6) := 0
+
+[State -2, Flying Screen ScreenBound]
+type = ScreenBound
+trigger1 = (stateno = [620, 625]) && (var(6))
+trigger2 = (stateno = [650, 655]) && (var(6))
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State -2, Don't exchange Positions with foe if AR in corner]
+type = PosAdd
+triggerall = stateno != [3000, 4999]
+trigger1 = (PrevStateNo = [620, 625]) && (FrontEdgeDist < 35)
+trigger2 = (PrevStateNo = [650, 655]) && (FrontEdgeDist < 35)
+x = -5
+ignorehitpause = 1
+
+[State -2, Dash On Screen after Flying Screen]
+type = ChangeState
+triggerall = (BackEdgeDist < 5) && (Pos Y < -50)
+trigger1 = (stateno = [620, 625]) && (var(6))
+trigger2 = (stateno = [650, 655]) && (var(6))
+value = 7600
+ctrl = 0
+
+[State -2, Flying Screen (Aerial Rave)]
+type = Helper
+triggerall = !NumHelper(7500)
+triggerall = P2Stateno != [150, 155]
+trigger1 = (stateno = [620, 625]) && (var(6))
+trigger2 = (stateno = [650, 655]) && (var(6))
+name = "FS Effect (Aerial Rave)"
+ID = 7500
+stateno = 7500
+pos = 0,0
+postype = p2
+ownpal = 1
+size.air.back = 20
+size.air.front = 20
+ignorehitpause = 1
+persistent = 0
+

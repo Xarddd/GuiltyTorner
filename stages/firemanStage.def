@@ -1,0 +1,268 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+;stage by Manic
+
+[Info]
+name = "Steel Mill - Fire Man"
+
+[BGdef]
+spr = FiremanStage.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/firemanheatman.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -300
+boundright = 300
+boundhigh = -250
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  -250     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 222
+autoturn = 1
+resetBG = 1
+
+[shadow]
+Intensity = 90
+color = 0,0,0
+yscale = .1
+fade.range = -400,-100
+
+[Reflection]
+intensity = 
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = normal
+spriteno = 0, 0
+layerno = 0                
+start = -190, -30
+delta = 0.1,0.1
+trans = none
+;---------------------------------------
+[BG FireEnemyTiny1]
+type  = anim
+spriteno = 4,0
+delta = 0.3,0.3
+start = 130,80
+mask = 1
+trans = addalpha
+alpha = 224,32
+actionno = 7
+sin.y = 60,500
+;-------
+[Begin Action 7]
+4,0, 0,0, 5,,AS224D224
+4,1, 0,0, 5,,AS224D224
+;--------------------------------------
+[BG BGPlatform]
+type  = normal
+spriteno = 0,11
+start = -250,160
+mask = 1
+delta = 0.3, 0.3
+;---------------------------------------
+[BG FireEnemyTinyMove]
+type  = anim
+spriteno = 4,0
+delta = 0.3,0.3
+start = 130,80
+mask = 1
+trans = addalpha
+alpha = 224,32
+actionno = 7
+sin.y = 30,500
+tile = 1,0
+tilespacing = 600
+velocity = -0.5
+;---------------------------------------
+[BG LavaFlow]
+type  = normal
+spriteno = 5,0
+start = 0,150
+delta = 0.4, 0.4
+alpha = 224,32
+trans = addalpha
+mask = 1
+tile = 1,0
+;tilespacing = 128,0
+sin.y = 5,-130
+actionno = 10
+velocity = -0.2
+;----------------------------------------
+[Begin Action 10]
+5,0, 0,0, 350,,AS224D224
+;5,1, 0,0, 5,,AS224D224
+;5,2, 0,0, 50,,AS224D224
+;5,1, 0,0, 5,,AS224D224
+;---------------------------------------
+;[BG Wire]
+;type  = normal
+;spriteno = 0,2
+;start = 20,180
+;mask = 1
+;delta = 1, 0.5
+;--------------------------------------
+[BG Oil1]
+type  = normal
+spriteno = 0,10
+start = 310,120
+mask = 1
+delta = 1, 0.5
+;---------------------------------------
+[BG FireEnemySmall]
+type  = anim
+spriteno = 3,0
+delta = 1,0.8
+start = -60,100
+mask = 1
+trans = addalpha
+alpha = 224,32
+actionno = 6
+sin.y = 100,350
+sin.x = 40,-80
+;---------------------------------------
+[BG FireEnemySmall2]
+type  = anim
+spriteno = 3,0
+delta = 1,0.8
+start = 30,80
+mask = 1
+trans = addalpha
+alpha = 224,32
+actionno = 6
+sin.y = 60,700
+sin.x = 30,-80
+;---------------------------------------
+[BG FireEnemySmall3]
+type  = anim
+spriteno = 3,0
+delta = 1,0.8
+start = 430,80
+mask = 1
+trans = addalpha
+alpha = 224,32
+actionno = 6
+sin.y = 20,900
+sin.x = 30,-80
+;-------
+[Begin Action 6]
+3,0, 0,0, 3,,AS224D224
+3,1, 0,0, 3,,AS224D224
+3,2, 0,0, 3,,AS224D224
+3,3, 0,0, 3,,AS224D224
+;---------------------------------------
+[BG Lava]
+type  = anim
+start = 0,80
+mask = 1
+delta = 1, .8
+actionno = 4
+sin.y = 2,90
+;---------------------------------------
+[BG Lava2]
+type  = anim
+start = -460,80
+mask = 1
+delta = 1, .8
+actionno = 4
+sin.y = 4,120
+;-------
+[Begin Action 4]
+1,1, 0,0, 5
+1,2, 0,0, 5
+1,3, 0,0, 5
+1,4, 0,0, 5
+1,5, 0,0, 5
+1,6, 0,0, 5
+1,7, 0,0, 5
+;---------------------------------------
+[BG MetalDebris]
+type  = normal
+spriteno = 0,8
+start = 290,190
+mask = 1
+sin.y = 2,90
+;---------------------------------------
+[BG Column]
+type  = normal
+spriteno = 0,7
+start = -50,177
+mask = 1
+delta = 1, 1
+;--------------------------------------
+[BG Oil2]
+type  = normal
+spriteno = 0,9
+start = -460,120
+mask = 1
+;---------------------------------------
+[BG Rocks]
+type  = normal
+spriteno = 0,6
+start = -310,53 
+mask = 1
+delta = 1, .9
+;---------------------------------------
+[BG FireEnemy]
+type  = anim
+spriteno = 2,0
+delta = -.1,0
+start = -50,100
+mask = 1
+trans = addalpha
+alpha = 224,32
+actionno = 5
+sin.y = 5,120
+sin.x = 5,120
+;-------
+[Begin Action 5]
+2,0, 0,0, 3,,AS224D224
+2,1, 0,0, 3,,AS224D224
+2,2, 0,0, 3,,AS224D224
+2,3, 0,0, 3,,AS224D224
+2,4, 0,0, 3,,AS224D224
+;---------------------------------------
+[BG Fighting Ground]
+type  = normal
+spriteno = 0,1
+start = -460,240  
+mask = 1
+;---------------------------------------[/PCX IMAGE]
+
+

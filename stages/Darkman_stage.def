@@ -1,0 +1,349 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+
+[Info]
+name ="Proto Man Fortress - Dark Man"
+displayname="Proto Man Fortress - Dark Man"
+;author = Fou
+
+[BGdef]
+spr = Darkman_stage.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/rk_thr04_r5_dark.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -230
+boundright = 230
+boundhigh = -300
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70        
+p1starty = 0            
+p1startz = 0          
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 220
+autoturn = 1
+resetBG = 1
+
+[shadow]
+Intensity = 0
+color = 0,0,0
+yscale = -0.5
+fade.range = 400,50
+
+[Reflection]
+intensity = 50
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = normal
+spriteno = 0, 0
+layerno = 0                
+start = -160, 0
+delta = 0.2,0.2
+trans = none
+
+[BG wily castle]
+type  = normal
+spriteno = 0, 7
+layerno = 0
+start = 30, 200
+delta = 0.45,0.3
+mask = 1
+;---------------------------------------
+[BG ennemi]
+type = anim
+actionno = 3
+ID = 1
+start = -400,100
+delta = 0.9,0.5
+
+[BGCtrlDef ennemi]
+CtrlID = 1
+
+[BGCtrl 1.1]
+type = VelSet
+time = 0
+x = 1
+y = 0
+
+[Begin action 3]
+2,2,0,0,2,H
+2,3,0,0,2,H
+
+;---------------------------------------
+[BG ennemi]
+type = anim
+actionno = 5
+ID = 3
+start = 310,70
+delta = 0.9,0.5
+
+[BGCtrlDef ennemi]
+CtrlID = 3
+
+[BGCtrl 3.1]
+type = VelSet
+time = 500
+x = -1
+y = 0
+
+[Begin action 5]
+2,2,0,0,2
+2,3,0,0,2
+
+;---------------------------------------
+[BG ennemi]
+type = anim
+actionno = 7
+ID = 7
+start = -400,100
+delta = 0.9,0.5
+
+[BGCtrlDef ennemi]
+CtrlID = 7
+
+[BGCtrl 7.1]
+type = VelSet
+time = 1500
+x = 1
+y = 0
+
+[Begin action 7]
+2,2,0,0,2,H
+2,3,0,0,2,H
+
+;---------------------------------------
+[BG ennemi]
+type = anim
+actionno = 8
+ID = 8
+start = 310,70
+delta = 0.9,0.5
+
+[BGCtrlDef ennemi]
+CtrlID = 8
+
+[BGCtrl 8.1]
+type = VelSet
+time = 2250
+x = -1
+y = 0
+
+[Begin action 8]
+2,2,0,0,2
+2,3,0,0,2
+
+;---------------------------------------
+[BG tower2]
+type = anim
+spriteno = 0,6
+start = -200,200
+delta = 0.5, 0.45
+mask = 1
+actionno = 1
+
+[Begin Action 1]
+0,6,0,0,1,H
+
+;----------------------------------------
+[BG antenna]
+type = normal
+spriteno = 0,4
+start = -250,240
+delta = 0.57, 0.5
+mask = 1
+
+[BG antenna]
+type = normal
+spriteno = 0,3
+start = -250,240
+delta = 0.58, 0.5
+mask = 1
+
+[BG antenna]
+type = normal
+spriteno = 0,5
+start = -200,240
+delta = 0.45, 0.35
+mask = 1
+
+[BG antenna]
+type = anim
+spriteno = 0,5
+start = -200,240
+delta = 0.45, 0.35
+mask = 1
+actionno = 0
+
+[Begin Action 0]
+0,5,471,0,1,H
+;---------------------------------------
+[BG tower]
+type = normal
+spriteno = 0,6
+start = 130,230
+delta = 0.52, 0.4
+mask = 1
+
+;----------------------------------------
+[BG ennemi]
+type = anim
+actionno = 4
+ID = 2
+start = -400,50
+delta = 0.9,0.6
+
+[BGCtrlDef ennemi]
+CtrlID = 2
+
+[BGCtrl 2.1]
+type = VelSet
+time = 0
+x = 1.3
+y = 0
+
+
+[Begin action 4]
+2,0,0,0,2,H
+2,1,0,0,2,H
+
+;--------------------------------------
+[BG ennemi]
+type = anim
+actionno = 6
+ID = 6
+start = 400,120
+delta = 0.9,0.6
+
+[BGCtrlDef ennemi]
+CtrlID = 6
+
+[BGCtrl 6.1]
+type = VelSet
+time = 600
+x = -1.3
+y = 0
+
+
+[Begin action 6]
+2,0,0,0,2
+2,1,0,0,2
+
+;----------------------------------------
+[BG ennemi]
+type = anim
+actionno = 9
+ID = 9
+start = -400,50
+delta = 0.9,0.6
+
+[BGCtrlDef ennemi]
+CtrlID = 9
+
+[BGCtrl 9.1]
+type = VelSet
+time = 1550
+x = 1.3
+y = 0
+
+
+[Begin action 9]
+2,0,0,0,2,H
+2,1,0,0,2,H
+
+;--------------------------------------
+[BG ennemi]
+type = anim
+actionno = 10
+ID = 10
+start = 400,120
+delta = 0.9,0.6
+
+[BGCtrlDef ennemi]
+CtrlID = 10
+
+[BGCtrl 10.1]
+type = VelSet
+time = 2200
+x = -1.3
+y = 0
+
+
+[Begin action 10]
+2,0,0,0,2
+2,1,0,0,2
+;---------------------------------------
+[BG Fighting Ground]
+type  = parallax
+spriteno = 0,1
+start = -310,240
+delta = 0.652, 1
+tile = 1, 0
+width = 1200, 2300
+mask = 1
+
+;------------------------
+[BG wall]
+type = normal
+spriteno = 0,2
+start = -310,240
+delta = 0.66, 1
+mask = 1
+tile = 1,0
+
+;-------------------------
+[BG power massler]
+type = anim
+spriteno = 1,0
+start = -100,190
+delta = 0.76, 1
+mask = 1
+actionno = 2
+
+[Begin Action 2]
+1,0,0,0,100
+1,1,0,0,10
+1,0,0,0,70
+1,1,0,0,10
+1,0,0,0,10
+1,1,0,0,10
+1,0,0,0,30
+1,1,0,0,3
+1,2,0,0,3
+1,3,0,0,30
+1,2,0,0,3
+1,1,0,0,3

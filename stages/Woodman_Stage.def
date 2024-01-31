@@ -1,0 +1,366 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+;stage by Manic , some sprites thanks to Sprites Inc.
+
+[Info]
+name="The Forest - Wood Man"
+
+[BGdef]
+spr = Woodman_stage.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/Woodman.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -300
+boundright = 300
+boundhigh = -250
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70         
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  -250     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 225
+autoturn = 1
+resetBG = 1
+
+[shadow]
+Intensity = 90
+color = 0,0,0
+layerno = 0 
+yscale = .3
+delta = .12,.0
+fade.range = 0,0
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = anim
+start = 50, -50
+spriteno = 1, 0
+layerno = 0                
+delta = 0.1,0.1
+trans = none
+actionno = 10
+;-------
+[Begin Action 10]
+1,0, 0,0, 1000
+1,1, 0,0, 8
+1,2, 0,0, 8
+1,3, 0,0, 8
+1,4, 0,0, 8
+1,5, 0,0, 8
+1,6, 0,0, 8
+1,7, 0,0, 1000
+1,6, 0,0, 8
+1,5, 0,0, 8
+1,4, 0,0, 8
+1,3, 0,0, 8
+1,2, 0,0, 8
+1,1, 0,0, 8
+
+;---------------------------------------
+[BG 1]
+type  = normal
+start = -240,-60
+spriteno = 0, 42
+mask = 1              
+delta = 0.25,0.25
+;---------------------------------------
+[BG Monking]
+type  = anim
+start = 49,50
+spriteno = 0, 36
+mask = 1              
+delta = 0.38,0.3
+actionno = 8
+;-------
+[Begin Action 8]
+0,36, 0,0, 20
+0,37, 0,0, 5
+0,38, 0,0, 5
+0,39, 0,0, 5
+0,40, 0,0, 20
+0,39, 0,0, 5
+0,38, 0,0, 5
+0,37, 0,0, 5
+;---------------------------------------
+[BG 2]
+type  = normal
+start = -280,-100
+spriteno = 0, 30
+mask = 1              
+delta = 0.38,0.3
+;---------------------------------------
+[BG AtomicChicken]
+type  = anim
+start = 180,13
+spriteno = 0, 31
+mask = 1              
+delta = 0.38,0.3
+actionno = 5
+;-------
+[Begin Action 5]
+0,31, 0,0, 10
+0,32, 0,0, 5
+0,33, 0,0, 5
+0,32, 0,0, 10
+0,34, 0,0, 5
+0,31, 0,0, 2
+0,35, 0,0, 2
+0,31, 0,0, 2
+0,34, 0,0, 2
+;------------------------
+[BG BattonBG1]
+type  = anim
+start = 300, 140
+actionno = 7
+delta = 1,1
+tile = 1,0
+tilespacing = 8000
+velocity = -1
+;-------
+[Begin Action 7]
+0,20, 0,0, 5
+0,21, 0,0, 5
+0,22, 0,0, 5
+0,23, 0,0, 5
+0,22, 0,0, 5
+0,21, 0,0, 5
+;------------------------
+[BG BattonBG2]
+type  = anim
+start = 120, 13
+actionno = 7
+delta = 1,1
+tile = 1,0
+tilespacing = 400
+velocity = -1,1
+;-------
+[Begin Action 7]
+0,20, 0,0, 5
+0,21, 0,0, 5
+0,22, 0,0, 5
+0,23, 0,0, 5
+0,22, 0,0, 5
+0,21, 0,0, 5
+;------------------------
+[BG BattonBG3]
+type  = anim
+start = 640, -56
+actionno = 7
+delta = 1,1
+tile = 1,0
+tilespacing = 800
+velocity = -1
+;------------------------
+[BG BattonBG4]
+type  = anim
+start = -300, 150
+actionno = 7
+delta = 1,1
+tile = 1,0
+tilespacing = 800
+velocity = 1
+;---------------------------------------
+[BG DustGround]
+type  = normal
+spriteno = 0,5
+start = -310,210
+mask = 1
+delta = 1, .8
+velocity = 0, 0
+tile = 1, 0
+tilespacing = 0, 0
+;---------------------------------------
+[BG Batton]
+type  = anim
+start = 290,100
+mask = 1
+sin.y = 2,90
+actionno = 4
+;-------
+[Begin Action 4]
+0,7, 0,0, 20
+0,8, 0,0, 4
+0,9, 0,0, 20
+0,8, 0,0, 4
+;---------------------------------------
+[BG Batton2]
+type  = anim
+start = -180,-100
+mask = 1
+sin.y = 2,90
+actionno = 4
+;-------
+[Begin Action 4]
+0,7, 0,0, 20
+0,8, 0,0, 4
+0,9, 0,0, 20
+0,8, 0,0, 4
+;---------------------------------------
+[BG Batton3]
+type  = anim
+start = 480,-120
+mask = 1
+sin.y = 2,90
+actionno = 4
+;-------
+[Begin Action 4]
+0,7, 0,0, 20
+0,8, 0,0, 4
+0,9, 0,0, 20
+0,8, 0,0, 4
+;---------------------------------------
+[BG Batton4]
+type  = anim
+start = 220,-70
+mask = 1
+sin.y = 2,90
+actionno = 4
+;-------
+[Begin Action 4]
+0,7, 0,0, 20
+0,8, 0,0, 4
+0,9, 0,0, 20
+0,8, 0,0, 4
+;---------------------------------------
+[BG Plants]
+type  = normal
+spriteno = 0,15
+start = -250,220 
+mask = 1
+delta = 1, .9
+;---------------------------------------
+[BG Plants2]
+type  = normal
+spriteno = 0,15
+start = 350,220 
+mask = 1
+delta = 1, .9
+;---------------------------------------
+[BG Bush]
+type  = normal
+spriteno = 0,6
+start = 340,240 
+mask = 1
+;---------------------------------------
+[BG Bush2]
+type  = normal
+spriteno = 0,6
+start = 540,240 
+mask = 1
+;---------------------------------------
+[BG Fighting Ground]
+type  = normal
+spriteno = 0,1
+start = 0,240  
+mask = 1
+velocity = 0, 0
+tile = 1, 0
+tilespacing = 0, 0
+;---------------------------------------
+[BG Dog]
+type  = anim
+spriteno = 0,10
+start = 0,220  
+mask = 1
+actionno = 1
+;-------
+[Begin Action 1]
+0,10, 0,0, 120
+0,11, 0,0, 10
+0,13, 0,0, 50
+0,11, 0,0, 5
+;---------------------------------------
+[BG Metool]
+type  = normal
+spriteno = 0,14
+start = 120,214  
+mask = 1
+actionno = 1
+;---------------------------------------
+[BG Metool]
+type  = normal
+spriteno = 0,14
+start = 530,219  
+mask = 1
+actionno = 1
+;---------------------------------------
+[BG Rabbot]
+type  = anim
+spriteno = 0,14
+start = 430,210  
+mask = 1
+actionno = 2
+;-------
+[Begin Action 2]
+0,17, 0,0, 220
+0,18, 0,0, 5
+0,19, 0,0, 100
+0,18, 0,0, 5
+;---------------------------------------
+[BG Foreground]
+type  = normal
+spriteno = 0,2
+start = -410,240  
+mask = 1
+
+;---------------------------------------
+[BG Foreground2]
+type  = normal
+spriteno = 0,2
+start = 500,240  
+mask = 1
+
+;---------------------------------------
+[BG Foreground]
+type  = normal
+spriteno = 0,2
+start = -410,240  
+mask = 1
+layerno = 1
+trans = addalpha
+alpha = 128, 128
+
+;---------------------------------------
+[BG Foreground2]
+type  = normal
+spriteno = 0,2
+start = 500,240  
+mask = 1
+layerno = 1
+trans = addalpha
+alpha = 128, 128

@@ -1,0 +1,1482 @@
+;===========================================================================
+;Robot Master Mayhem - Constants Template (Partner) V.1
+;Template by Acey
+;Based on Megaman by Chaotic
+;www.infinitymugenteam.com
+;===========================================================================
+
+;---------------------------------------------------------------------
+;Sakugarne States (1001, 3900 - 4010)
+;---------------------------------------------------------------------
+
+;-----------------------
+;Sakugarne Teleport
+[Statedef 3910]
+type = S
+ctrl = 0
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0
+value = 4180+(random%2)
+
+[State 3100, Sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,1
+persistent = 0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = animtime = 0
+trigger2 = roundstate >= 2
+value = 4010
+ctrl = 0
+
+;-----------------------
+; Sakugarne Standing
+[Statedef 4010]
+type = S
+ctrl = 0
+anim = 4010
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[state 1102,1]
+type = posset
+trigger1 = 1
+y = -2
+
+[state 1102,2]
+type = turn
+trigger1 = facing != root, facing
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 0
+
+[state 1102,4]
+type = palfx
+trigger1 = 1
+add = 0,0,0
+time = 1
+
+[State 1107,2] ;Standing
+type = Changeanim
+triggerall = Anim != 4010
+trigger1 = Root, Stateno != [10,12]
+value = 4010
+
+[State 1107,2] ;Standing
+type = Changeanim
+triggerall = Anim != 4016
+trigger1 = Root, Stateno = 10
+value = 4016
+
+[State 1107,2] ;Standing
+type = Changeanim
+triggerall = Anim != 4017
+trigger1 = Root, Stateno = 11
+value = 4017
+
+[State 1107,2] ;Standing
+type = Changeanim
+triggerall = Anim != 4018
+trigger1 = Root, Stateno = 12
+value = 4018
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 1100
+value = 4120
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 1110
+value = 4121
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 1120
+value = 4122
+
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x > 65
+value = 4011
+
+[state 3000,5]; backward
+type = changestate
+trigger1 = parentdist x < 0
+value = 4012
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = stateno = 182
+value = 4015
+persistent = 0
+
+[State 1102,9] ;Sakugarne Trip
+type = ChangeState
+trigger1 = root, stateno = 1000 && root,var(25) = 1
+value = 1001
+persistent = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4191
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 182
+value = 4015
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4175
+
+;--------------------------------------
+;Sakugarne Walk Fwd
+[Statedef 4011]
+type = S
+ctrl = 0
+velset = 0,0
+anim = 4011
+physics = S
+sprpriority = -2
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x > 120
+x = 5
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x < 121
+x = 3
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x < 50
+value = 4010
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x < 0
+value = 4012
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4191
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 182
+value = 4015
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4195
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4175
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = stateno = 182
+value = 4015
+persistent = 0
+
+;----------------------------------------------------------
+;Sakugarne Walk Back
+[Statedef 4012]
+type = S
+ctrl = 0
+anim = 4012
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x < -50
+x = -5
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x >= -50
+x = -3
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x > 47
+value = 4010
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x > 50
+value = 4011
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4191
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 182
+value = 4015
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4195
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4175
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = stateno = 182
+value = 4015
+persistent = 0
+
+;------------------------------------------------------
+;Sakugarne Run Fwd
+[Statedef 4013]
+type = S
+ctrl = 0
+anim = 4012
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = rootdist x = [-50, 50]
+value = 4010
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [101, 200]
+trigger1 = root, animelem = 5, = 0
+value = 4011
+
+[State 1102,6] ;Walk Backward
+type = ChangeState
+trigger1 = rootdist x = [-200, -101]
+trigger1 = root, animelem = 5, = 0
+value = 4012
+
+[State 1102,8] ;Run Backward
+type = ChangeState
+trigger1 = rootdist x = [-4010, -201]
+trigger1 = root, animelem = 5, = 0
+value = 4014
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4191
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 182
+value = 4015
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4175
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = stateno = 182
+value = 4015
+persistent = 0
+
+;----------------------------------------------------------
+;Sakugarne Run Back
+[Statedef 4014]
+type = S
+ctrl = 0
+anim = 4012
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[state 1102,2]
+type = turn
+trigger1 = time= 0
+persistent =  0
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = rootdist x = [-50, 50]
+value = 4010
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [101, 200]
+trigger1 = root, animelem = 5, = 0
+value = 4011
+
+[State 1102,6] ;Walk Backward
+type = ChangeState
+trigger1 = rootdist x = [-200, -101]
+trigger1 = root, animelem = 5, = 0
+value = 4012
+
+[State 1102,7] ;Run Forward
+type = ChangeState
+trigger1 = rootdist x = [201, 4010]
+trigger1 = root, animelem = 5, = 0
+value = 4013
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4191
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 182
+value = 4015
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4175
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = stateno = 182
+value = 4015
+persistent = 0
+
+;---------------------------------------------------------
+; Sakugarne Hurt
+[Statedef 4015]
+type = S
+ctrl = 0
+anim = 4015
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[state 1107,1]
+type = velset
+trigger1 = 1
+x = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+Triggerall = Root, Stateno != 182
+trigger1 = time >=40
+value = 4010
+
+[State 1107,2] ;Standing
+type = ChangeState
+Triggerall = Root, Stateno != 182
+trigger1 = Root, Stateno = 181
+value = 4191
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+Triggerall = Root, Stateno != 182
+trigger1 = Root, Stateno = 195
+value = 4195
+
+[State 1107,2] ;Standing
+type = ChangeState
+Triggerall = Root, Stateno != 182
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4175
+
+;----------------------------------------------------------
+;Sakugarne Low Start
+[Statedef 4120]
+type = S
+ctrl = 0
+anim = 4011
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 0, Turn]
+type = Turn
+trigger1 = time = 0
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = Pos X >= 100
+trigger1 = facing = 1
+trigger2 = Pos X <= -100
+trigger2 = facing = -1
+value = 4124
+
+;----------------------------------------------------------
+;Sakugarne Medium Start
+[Statedef 4121]
+type = S
+ctrl = 0
+anim = 4011
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[state 1102,2]
+type = turn
+trigger1 = time= 0
+trigger1 = Pos X >= 0
+trigger1 = facing = 1
+persistent =  0
+
+[state 1102,2]
+type = turn
+trigger1 = time= 0
+trigger1 = Pos X <= 0
+trigger1 = facing = -1
+persistent =  0
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = Pos X = [-5,5]
+value = 4124
+
+;----------------------------------------------------------
+;Sakugarne Heavy Start
+[Statedef 4122]
+type = S
+ctrl = 0
+anim = 4011
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = Pos X >= 100
+trigger1 = facing = 1
+trigger2 = Pos X <= -100
+trigger2 = facing = -1
+value = 4124
+
+;---------------------------------------------------------
+; Sakugarne Attack
+[Statedef 4124]
+type = S
+movetype = A
+Physics = N
+ctrl = 0
+anim = 4120
+velset = 0,0
+sprpriority = 2
+
+[State 0, Explod]
+type = Explod
+trigger1 = Time = 24
+anim = 10008
+ID = 10008
+pos = 5,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 90
+supermovetime = 0
+pausemovetime = 0
+scale = 0.85,0.65
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = Time = 24
+anim = 10009
+ID = 10008
+pos = 5,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 90
+supermovetime = 0
+pausemovetime = 0
+scale = 0.85,0.65
+sprpriority = -5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+
+[State 0, PalFX]
+type = Playsnd
+trigger1 = time > 18
+trigger1 = time%14
+value = 1200,5
+channel = 19
+
+[State 0, VarSet]
+type = Varset
+trigger1 = time = 0
+v = 20
+value = 0
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = Varadd
+trigger1 = movecontact
+v = 20
+value = 1
+ignorehitpause = 1
+
+[State 0, Projectile]
+type = Hitdef
+trigger1 = var(20) < 9
+trigger1 = time < 60
+attr = S,SA 
+hitflag = MAF  
+guardflag = MA
+getpower = 56,28
+givepower = 56,28
+animtype = Medium
+ground.type = High
+air.type = Low
+priority = 7
+damage = 8,3
+pausetime = 0,5
+sparkno = S25010+random%2
+guard.sparkno = S25008
+sparkxy = -10, -65
+guardsound = s8500,0
+hitsound = s8000,1
+guardsound = 0,0
+ground.slidetime = 10
+ground.hittime = 12
+ground.velocity = -7,0
+air.velocity = -1.5, -3
+down.velocity = -2, -4
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+down.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+envshake.time = 7
+envshake.ampl = 4
+
+
+[State 0, Projectile]
+type = Hitdef
+trigger1 = var(20) = 10
+trigger2 = time = 60
+attr = S,SA   
+hitflag = MAF  
+guardflag = MA
+getpower = 56,28
+givepower = 56,28
+animtype = Medium
+ground.type = High
+air.type = Low
+priority = 7
+damage = 8,3
+pausetime = 5,5
+sparkno = S25010+random%2
+guard.sparkno = S25008
+sparkxy = -10, -65
+guardsound = s8500,0
+hitsound = s8000,1
+guardsound = 0,0
+ground.slidetime = 10
+ground.hittime = 12
+ground.velocity = -7,0
+air.velocity = -1.5, -3
+down.velocity = -2, -4
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+down.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+fall = 1
+fall.yvelocity = -4.5
+fall.recover = 1
+fall.recovertime = 4
+
+[State 2051, ]
+type = NotHitBy
+trigger1 = 1
+time = 99
+value = SCA, NT, ST, HT
+ignorehitpause = 1
+
+[State 2051, ]
+type = HitBy
+trigger1 = 1
+time = 99
+value = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 2051]
+type = HitOverride
+trigger1 = 1
+time = 99
+slot = 1
+stateno = 4015
+attr = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[State 21481]
+type = ChangeState
+trigger1 = MoveReversed
+value = 4015
+ignorehitpause = 1
+
+[State 40, NEW DUST JUMP LAND]
+type = Explod
+trigger1 = time%8=0 && time > 24
+anim = 25016
+sprpriority = -1
+Ownpal = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = time = 90
+id = 10008
+
+[State 0, Explod]
+type = Explod
+trigger1 = Time = 90
+anim = 10010
+ID = 10010
+pos = 0,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 0.85,0.65
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = time = 90
+value = 4125
+
+;---------------------------------------------------------
+; Sakugarne Attack end
+[Statedef 4125]
+type = S
+movetype = I
+Physics = S
+ctrl = 0
+anim = 4121
+velset = 0,0
+sprpriority = -2
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3000
+value = 4130
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 3100
+trigger1 = Root, animelem = 6
+value = 4135
+
+[State 21481]
+type = ChangeState
+trigger1 = Animtime = 0
+value = 4010
+ignorehitpause = 1
+
+;-----------------------
+; Sakugarne wait for Hyper
+[Statedef 4130]
+type = S
+ctrl = 0
+anim = 4010
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[state 1102,1]
+type = posset
+trigger1 = 1
+y = -2
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 0
+
+[state 1102,4]
+type = palfx
+trigger1 = 1
+add = 0,0,0
+time = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = root, stateno = 3001
+value = 4131
+ignorehitpause = 1
+
+;-----------------------
+; Sakugarne Hyper 1
+[Statedef 4131]
+type = S
+ctrl = 0
+anim = 3001
+velset = 0,0
+physics = S
+sprpriority = 4
+
+[state 1102,2]
+type = turn
+trigger1 = facing != root, facing
+
+[State 0, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+time = 1
+pos = 0 ,0
+ignorehitpause = 1
+
+[State 211, 1]
+type = ChangeAnim
+trigger1 = 1
+value = Parent, Anim + 10
+elem = Parent, AnimElemNo(0)
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 0
+
+[state 1102,4]
+type = palfx
+trigger1 = 1
+add = 0,0,0
+time = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = root, stateno != [3001, 3004] 
+value = 4132
+ignorehitpause = 1
+
+;-----------------------
+; Sakugarne fall after hyper
+[Statedef 4132]
+type = S
+ctrl = 0
+anim = 3015
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[state hm]
+type = statetypeset
+trigger1 = vel y >= 0
+movetype = I
+persistent = 0
+
+[State 722, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .5
+
+[State 4520, 9]
+type = posSet
+trigger1 = Vel Y >= -2
+trigger1 = pos y >= -2
+y = 0
+
+[state 810, grab sound]
+type = changestate
+trigger1 = Pos Y >= -2 && Vel Y > -2
+value = 4010
+
+;-----------------------
+; Sakugarne Hyper 2
+[Statedef 4135]
+type = S
+ctrl = 0
+anim = 3011
+velset = 0,0
+physics = S
+sprpriority = 4
+
+[State 0, BindToRoot]
+type = BindToRoot
+trigger1 = root, stateno = [3101,3104] 
+trigger2 = root, stateno = [3106,3199] 
+trigger3 = root, stateno = 4150
+time = 1
+pos = 0 ,0
+ignorehitpause = 1
+
+[State 0, ]
+type = VelSet
+trigger1 = root, stateno = 3100
+x = (1*Facing)*floor(root, pos X-pos X)*.1
+y = (1*Facing)*floor(root, pos Y-pos Y)*.1
+
+[state 1102,3]
+type = velset
+trigger1 = root, stateno = [3101,3104] 
+trigger2 = root, stateno = [3106,3199] 
+trigger3 = root, stateno = 4150
+x = 0
+
+[state 1102,3]
+type = assertspecial
+trigger1 = root, stateno = [3101,3104] 
+trigger2 = root, stateno = [3106,3199] 
+trigger3 = root, stateno = 3004
+trigger4 = root, stateno = 4150
+flag = invisible
+
+[state 1102,4]
+type = palfx
+trigger1 = 1
+add = 30*time,30*time,30*time
+time = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = root, stateno != 3004
+trigger1 = root, stateno != [3100,3199] 
+trigger1 = root, stateno != 4150
+trigger2 = root, stateno = 3105
+value = 4132
+ignorehitpause = 1
+
+;---------------------------------------------------------
+;Sakugarne Winpose 
+[Statedef 4191]
+type = S
+ctrl = 0
+anim = 4190
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 7
+anim = 4191
+removetime = -1
+bindtime = -1
+sprpriority = -2
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 7
+anim = 4192
+removetime = -2
+sprpriority = -2
+
+[state 1107,1]
+type = velset
+trigger1 = animelem = 7
+trigger2 = anim = 4193 && animelem = 4
+y = -8
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = pos Y = -250
+x = root, pos X
+
+[state 1107,1]
+type = velset
+trigger1 = anim = 4190 &&pos Y = -250
+y = 8
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 63
+y = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 63
+value = 4193
+
+;---------------------------------------------------------------
+;Sakugarne Taunt
+[Statedef 4195]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+anim = 4195
+velset = 0,0
+sprpriority = -2
+
+[State 195, 2]
+type = ChangeState
+trigger1 = animtime = 0 && Root, Stateno !=183
+value = 4010
+
+;---------------------------------------------------------------
+;Sakugarne Lose
+[Statedef 4175]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+velset = 0,0
+sprpriority = -2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0
+value = 4175+(random%2)
+
+[State 0, PalFX]
+type = Playsnd
+trigger1 = animelem = 13
+trigger1 = anim = 4176
+value = 1200,4
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = animelem = 5
+trigger1 = anim = 4175
+time = 5
+add = 50*time,50*time,50*time
+
+[State 5150, 8]
+type = Helper
+ownpal = 1
+trigger1 = animelem = 6
+trigger1 = anim = 4175
+stateno = 4176
+ID = 4176
+persistent = 0
+
+;---------------------
+;Explode when Dead
+[statedef 4176]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+anim = 9999
+velset = 0,0
+sprpriority = -1
+
+[state 171, 1]
+type = playsnd
+trigger1 = time = 0
+value = 11, 1
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = 0, -2
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = -1.5, -1.5
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = -2, 0
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = -1.5, 1.5
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = 0, 2
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = 1.5, 1.5
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = 2, 0
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = 1.5, -1.5
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = -0.5, -1
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = -1, -0.5
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = -0.5, 1
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = -1, 0.5
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = 0.5, 1
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = 1, 0.5
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = 0.5, -1
+removetime = 210
+removeongethit = 1
+pausemovetime = -1
+scale = 0.5,0.5
+
+[State 5150,kofx]
+type = Explod
+trigger1 = time = 0
+anim = 174
+id = 174
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+velocity = 1, -0.5
+removetime = 210
+pausemovetime = -1
+scale = 0.5,0.5
+
+[state -2, increment var]
+type = destroyself
+trigger1 = anim = 210
+trigger1 = animtime = 0

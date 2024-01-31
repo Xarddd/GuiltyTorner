@@ -1,0 +1,212 @@
+;===========================================================================
+;Robot Master Mayhem - Constants Template (statedef -3) V.1
+;Template by Acey
+;Based on Megaman by Chaotic
+;www.infinitymugenteam.com
+;===========================================================================
+
+;---------------------------------------------------------------------------
+; States that are executed while in self state (use statedef -3)
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+
+[State -3, Fffffinish!!]
+type = Helper
+triggerall = NumHelper(30000)=0
+trigger1 = Winko
+helpertype = normal
+name = "Finish"
+ID = 30000
+stateno = 30000
+ownpal = 1
+ignorehitpause = 1
+supermovetime = 9999
+pausemovetime = 9999
+
+[State 8510, P�]
+type = Explod
+trigger1 = Stateno = 52 && time = 1
+;trigger2 = Stateno = 240 && animelem = 8
+trigger2 = Stateno = 1102 && time = 1
+trigger3 = Stateno = 1112 && time = 1
+trigger4 = Stateno = 1122 && time = 1
+trigger5 = Stateno = 106 && time = 1
+trigger6 = Stateno = 352 && AnimElemTime(2) = 1
+anim = 8510
+ID = 8510
+postype = P1
+pos = 0,4
+sprpriority = -1
+ownpal = 1
+scale = 1.4, 1.2
+
+[State -3, Land]
+type = PlaySnd
+trigger1 = StateNo = 52 && Time = 1
+value = 8100,0
+
+;--------------------------
+;Remove Hyper FX
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = StateNo != [3000,4999]
+ID = 8900
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Roundstate = 4
+ID = 8901
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Var(20) > 0
+ID = 8900
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = StateNo != [3000,4999]
+ID = 8998
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Roundstate = 4
+ID = 8998
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Var(20) > 0
+ID = 8998
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = StateNo != [3000,4999]
+ID = 8997
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Roundstate = 4
+ID = 8997
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Var(20) > 0
+ID = 8997
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = StateNo != [3000,4999]
+ID = 8999
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Roundstate = 4
+ID = 8999
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Var(20) > 0
+ID = 8999
+
+;--------------------------
+;Reset Vars
+
+[State -3, MSSM]
+type = VarRandom
+trigger1 = 1
+v = 23
+range = 0,8
+
+[State -3, Super Jump]
+type = VarSet
+trigger1 = Stateno = 0
+v = 12
+value = 0
+
+[State -3, Afterimagetime]
+type = Afterimagetime
+trigger1 = !IsHelper(120196) && stateno != [3000,4999]
+time = 0
+
+[State -3, ctrl set]
+type = ctrlset
+trigger1 = roundstate = 4
+value = 0
+
+;----------------------------------------------------------------------------------------------
+;TODO: Work in progress! Looks like it will be a heavier check, but at least so far it doens't give debugging error
+;	Will work on compressing the number of states for the skull itself 
+[State -2, LifeAdd]
+type = LifeAdd
+triggerAll = NumHelper(2150)
+trigger1 = Helper(2150), stateno = 2155 && Helper(2150), time < 6
+trigger2 = Helper(2150), stateno = 2165 && Helper(2150), time < 6
+trigger3 = Helper(2150), stateno = 2180 && Helper(2150), time < 6
+value = ceil(fvar(11) * 5)
+
+;-----------------------------------------------Invisibility-------------------------------------------------------
+
+[State -3, Cancel] ;Gets Hit or Loses
+type = VarSet
+trigger1 = (MoveType = H)
+trigger2 = stateno = 1100
+trigger3 = stateno = [3000,3300]
+v = 22
+value = 0
+
+[State -3, Cancel] ;Round over
+type = Changestate
+trigger1 = Roundstate = 3
+trigger1 = var(22)
+trigger1 = stateno = 0
+value = 1300
+
+[State -3]
+type = AssertSpecial
+triggerall = Var(22)
+trigger1 = 1
+flag = invisible
+ignorehitpause = 1
+
+
+;SkullBarrier Immuned to damage
+
+[State 1210, HitBy]
+type = HitBy
+trigger1 = numhelper(1498) = 1
+value = SCA,SA,SP,HA,HP
+time = 1
+
+
+
+;No music for intro
+[State -3, AssertSpecial]
+type = AssertSpecial
+trigger1 = roundno=1
+trigger1 = roundstate<2
+flag = nomusic
+ignorehitpause = 1
+
+;-----Combo System
+[State -3, VarSet]
+type=VarSet
+trigger1=NumTarget
+trigger1=movehit=1&&target,movetype=H
+trigger1=target,statetype=L&&target,pos Y>=0
+trigger2=numhelper(220)
+trigger2=Helper(220),movehit=1
+trigger2=enemynear,statetype=L&&enemynear,pos Y>=0
+trigger3=numhelper(620)
+trigger3=Helper(620),movehit=1
+trigger3=enemynear,statetype=L&&enemynear,pos Y>=0
+var(13)=1
+ignorehitpause=1
+
+[State -3, VarSet]
+type=VarSet
+trigger1= numenemy
+trigger1= (enemynear,movetype!=H)||(enemynear,stateno=[120,159])
+trigger2= !numenemy
+var(13)=0
+ignorehitpause=1

@@ -1,0 +1,1152 @@
+;---------------------------------------------------------------------------
+;Dragon Falling
+[Statedef 1100]
+type = A
+ctrl = 0
+anim = 1100
+velset = 0,8
+physics = N
+sprpriority = -4
+
+[state 1100,1]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[State 1100,2]
+type = ChangeState
+trigger1 = Time = 30
+value = 1101
+
+;---------------------------------------------------------------------------
+;Dragon Landing
+[Statedef 1101]
+type = S
+ctrl = 0
+anim = 1101
+velset = 0,0
+physics = S
+sprpriority = -4
+
+[state 1101,1]
+type = posset
+trigger1 = 1
+y = -5
+
+[state 1101,2]
+type = palfx
+trigger1 = time = [0,3]
+add = 160,160,160
+time = 1
+
+[state 1101,3]
+type = palfx
+trigger1 = time = [4,7]
+add = 120,120,120
+time = 1
+
+[state 1101,4]
+type = palfx
+trigger1 = time = [8,11]
+add = 80,80,80
+time = 1
+
+[state 1101,5]
+type = palfx
+trigger1 = time = [12,15]
+add = 40,40,40
+time = 1
+
+[State 1101,6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1102
+;---------------------------------------------------------------------------
+;Dragon Floating
+[Statedef 1102]
+type = S
+ctrl = 0
+anim = 1102
+velset = 0,0
+physics = S
+sprpriority = -4
+
+[state 1102,1]
+type = posset
+trigger1 = 1
+y = -5
+
+[state 1102,2]
+type = turn
+trigger1 = facing != root, facing
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 0
+
+[state 1102,4]
+type = palfx
+trigger1 = 1
+add = 0,0,0
+time = 1
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [101, 200]
+value = 1103
+
+[State 1102,6] ;Walk Backward
+type = ChangeState
+trigger1 = rootdist x = [-200, -101]
+value = 1104
+
+[State 1102,7] ;Run Forward
+type = ChangeState
+trigger1 = rootdist x = [201, 4000]
+value = 1105
+
+[State 1102,8] ;Run Backward
+type = ChangeState
+trigger1 = rootdist x = [-4000, -201]
+value = 1106
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, var(1) > 10
+value = 1107
+
+[State 1102,10] ;Sad
+type = ChangeState
+trigger1 = root, stateno= 1205
+value = 1128
+
+[State 1102,10] ;Sad
+type = ChangeState
+trigger1 = root, life = 0
+value = 1108
+
+[state 1102,11]
+type = ChangeState
+trigger1 = root, stateno = 1000
+trigger1 = root, animelem = 5, = 0
+value = 1120
+
+[state 1102,12]
+type = ChangeState
+trigger1 = root, stateno = 3300
+trigger1 = root, animelem = 5, = 0
+value = 1125
+
+[state 1102,13]
+type = ChangeState
+trigger1 = root, stateno = 1040
+trigger1 = root, animelem = 5, = 0
+value = 1120
+
+[state 1102,14]
+type = changestate
+trigger1 = root, stateno = 182 || root, stateno = 183
+value = 1124
+
+[state 1102,15]
+type = changestate
+trigger1 = root, stateno = 18100
+value = 1126
+;---------------------------------------------------------------------------
+;Dragon Floating Forward
+[Statedef 1103]
+type = S
+ctrl = 0
+anim = 1103
+velset = 3.5,0
+physics = N
+sprpriority = -4
+
+[State 1102,10] ;Attack
+type = ChangeState
+trigger1 = root, stateno= 1205
+value = 1128
+
+[State 1103,1] ;Standing
+type = ChangeState
+trigger1 = rootdist x = [-50, 50]
+value = 1102
+
+[State 1103,2] ;Angry
+type = ChangeState
+trigger1 = root, var(1) > 10
+value = 1107
+
+[state 1103,3]
+type = ChangeState
+trigger1 = root, stateno = 1000
+trigger1 = root, animelem = 5, = 0
+value = 1120
+
+[state 1103,4]
+type = ChangeState
+trigger1 = root, stateno = 3300
+trigger1 = root, animelem = 5, = 0
+value = 1125
+
+[state 1103,5]
+type = ChangeState
+trigger1 = root, stateno = 1040
+trigger1 = root, animelem = 5, = 0
+value = 1120
+;---------------------------------------------------------------------------
+;Dragon Floating Backward
+[Statedef 1104]
+type = S
+ctrl = 0
+anim = 1104
+velset = -3,0
+physics = N
+sprpriority = -4
+
+[State 1102,10] ;Attack
+type = ChangeState
+trigger1 = root, stateno= 1205
+value = 1128
+
+
+[State 1104,1] ;Standing
+type = ChangeState
+trigger1 = rootdist x = [-50, 50]
+value = 1102
+
+[State 1104,2] ;Angry
+type = ChangeState
+trigger1 = root, var(1) > 10
+value = 1107
+
+[state 1104,3]
+type = ChangeState
+trigger1 = root, stateno = 1000
+trigger1 = root, animelem = 5, = 0
+value = 1120
+
+[state 1104,4]
+type = ChangeState
+trigger1 = root, stateno = 3300
+trigger1 = root, animelem = 5, = 0
+value = 1125
+
+[state 1104,5]
+type = ChangeState
+trigger1 = root, stateno = 1040
+trigger1 = root, animelem = 5, = 0
+value = 1120
+;---------------------------------------------------------------------------
+;Dragon Floating Forward Faster
+[Statedef 1105]
+type = S
+ctrl = 0
+anim = 1105
+velset = 5,0
+physics = N
+sprpriority = -4
+
+[State 1102,10] ;Attack
+type = ChangeState
+trigger1 = root, stateno= 1205
+value = 1128
+
+
+[State 1105,1] ;Standing
+type = ChangeState
+trigger1 = rootdist x = [-50, 100]
+value = 1102
+
+[State 1105,2] ;Angry
+type = ChangeState
+trigger1 = root, var(1) > 10
+value = 1107
+
+[state 1105,3]
+type = ChangeState
+trigger1 = root, stateno = 1000
+trigger1 = root, animelem = 5, = 0
+value = 1120
+
+[state 1105,4]
+type = ChangeState
+trigger1 = root, stateno = 3300
+trigger1 = root, animelem = 5, = 0
+value = 1125
+
+[state 1105,5]
+type = ChangeState
+trigger1 = root, stateno = 1040
+trigger1 = root, animelem = 5, = 0
+value = 1120
+;---------------------------------------------------------------------------
+;Dragon Floating Backward Faster
+[Statedef 1106]
+type = S
+ctrl = 0
+anim = 1106
+velset = -4,0
+physics = N
+sprpriority = -4
+
+[State 1102,10] ;Attack
+type = ChangeState
+trigger1 = root, stateno= 1205
+value = 1128
+
+
+[State 1106,1] ;Standing
+type = ChangeState
+trigger1 = rootdist x = [-50, 100]
+value = 1102
+
+[State 1106,2] ;Angry
+type = ChangeState
+trigger1 = root, var(1) > 10
+value = 1107
+
+[state 1106,3]
+type = ChangeState
+trigger1 = root, stateno = 1000
+trigger1 = root, animelem = 5, = 0
+value = 1120
+
+[state 1106,4]
+type = ChangeState
+trigger1 = root, stateno = 3300
+trigger1 = root, animelem = 5, = 0
+value = 1125
+
+[state 1106,5]
+type = ChangeState
+trigger1 = root, stateno = 1040
+trigger1 = root, animelem = 5, = 0
+value = 1120
+;---------------------------------------------------------------------------
+;Dragon Angry
+[Statedef 1107]
+type = S
+ctrl = 0
+anim = 1107
+velset = 0,0
+physics = S
+sprpriority = -4
+
+[state 1107,1]
+type = velset
+trigger1 = 1
+x = 0
+
+[State 1102,10] ;Attack
+type = ChangeState
+trigger1 = root, stateno= 1205
+value = 1128
+
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = root, var(1) = 0
+value = 1102
+
+[state 1107,3]
+type = ChangeState
+trigger1 = root, stateno = 1000
+trigger1 = root, animelem = 5, = 0
+value = 1120
+
+[state 1107,4]
+type = ChangeState
+trigger1 = root, stateno = 3300
+trigger1 = root, animelem = 5, = 0
+value = 1125
+
+[state 1107,5]
+type = ChangeState
+trigger1 = root, stateno = 1040
+trigger1 = root, animelem = 5, = 0
+value = 1120
+;---------------------------------------------------------------------------
+;Dragon Lose Anim
+[Statedef 1108]
+type = S
+ctrl = 0
+anim = 1108
+velset = 0,0
+physics = S
+sprpriority = -4
+
+[state 1040,6]
+type = palfx
+trigger1 = time = [0,8]
+add = 25,25,25
+time = 1
+
+[state 1040,6]
+type = palfx
+trigger1 = time = [9,16]
+add = 50,50,50
+time = 1
+
+[state 1040,6]
+type = palfx
+trigger1 = time = [17,24]
+add = 75,75,75
+time = 1
+
+[state 1040,7]
+type = palfx
+trigger1 = time = [24,31]
+add = 100,100,100
+time = 1
+
+[state 1040,6]
+type = palfx
+trigger1 = time = [32,39]
+add = 125,125,125
+time = 1
+
+[state 1040,8]
+type = palfx
+trigger1 = time = [40,48]
+add = 150,150,150
+time = 1
+
+[state 1040,6]
+type = palfx
+trigger1 = time = [49,57]
+add = 175,175,175
+time = 1
+
+[state 1040,9]
+type = palfx
+trigger1 = time = [58,60]
+add = 200,200,200
+time = 1
+
+[state 1108,1]
+type = velset
+trigger1 = 1
+x = 0
+
+[State 90,5]
+type = Explod
+trigger1 = Time = 54
+anim = 9116
+id = 9116
+postype = p1
+pos = 20,-25
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+removeongethit = 1
+
+[State 90,5]
+type = Explod
+trigger1 = Time = 57
+anim = 9116
+id = 9116
+postype = p1
+pos = 10,-30
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+removeongethit = 1
+
+[State 90,5]
+type = Explod
+trigger1 = Time = 60
+anim = 9116
+id = 9116
+postype = p1
+pos = -20,-30
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+removeongethit = 1
+
+[State 90,5]
+type = Explod
+trigger1 = Time = 63
+anim = 9116
+id = 9116
+postype = p1
+pos = 7,-35
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+removeongethit = 1
+
+[State 90,5]
+type = Explod
+trigger1 = Time = 66
+anim = 9116
+id = 9116
+postype = p1
+pos = 0,-20
+ownpal = 1
+bindtime = 1
+sprpriority = -3
+persistent = 0
+removeongethit = 1
+
+[state 1030,5]
+type = playsnd
+trigger1 = Time = 54
+trigger2 = Time = 57
+trigger3 = Time = 60
+trigger4 = Time = 63
+trigger51 = Time = 66
+value = 0,4
+channel = 0
+
+[State 1108,2] ;Standing
+type = ChangeState
+trigger1 = root, life != 0
+value = 1102
+;---------------------------------------------------------------------------
+;Dragon Warp (Super Move 1)
+[Statedef 1120]
+type = A
+ctrl = 0
+anim = 1102
+physics = N
+sprpriority = -4
+
+[state 1120,1]
+type = velset
+trigger1 = 1
+x = rootdist x / 15
+y = rootdist y / 7
+
+[state 1120,2]
+type = palfx
+trigger1 = time = [0,3]
+add = 100,100,100
+time = 1
+
+[state 1120,3]
+type = palfx
+trigger1 = time = [4,7]
+add = 150,150,150
+time = 1
+
+[state 1120,4]
+type = palfx
+trigger1 = time = [8,11]
+add = 200,200,200
+time = 1
+
+[state 1120,5]
+type = palfx
+trigger1 = time = [12,15]
+add = 255,255,255
+time = 1
+
+[state 1120,6]
+type = changestate
+trigger1 = root, stateno != [1000, 1099]
+value = 1122
+
+[state 1120,7]
+type = changestate
+trigger1 = time = 15
+value = 1121
+;---------------------------------------------------------------------------
+;Dragon Warp (Super Move 2)
+[Statedef 1121]
+type = A
+ctrl = 0
+anim = 1102
+physics = N
+sprpriority = -4
+
+[state 1121,1]
+type = assertspecial
+trigger1 = 1
+flag = invisible
+
+[state 1121,2]
+type = bindtoroot
+trigger1 = 1
+time = 1
+
+[state 1121,3]
+type = changestate
+trigger1 = root, stateno != [1000, 1099]
+trigger2 = root, stateno = 1000 && root, time = 180
+trigger3 = root, stateno = 1045 && root, time = 15
+trigger4 = root, stateno = 1032 && root, time = 3
+value = 1122
+;---------------------------------------------------------------------------
+;Dragon Warp (Super Move 3)
+[Statedef 1122]
+type = A
+ctrl = 0
+anim = 1102
+physics = N
+sprpriority = -4
+
+[state 1122,1]
+type = velset
+trigger1 = time = 0
+x = -5
+y = - (pos y) / 13
+
+[state 1122,2]
+type = velmul
+trigger1 = pos y >= -5
+y = 0
+
+[state 1122,3]
+type = palfx
+trigger1 = time = [0,3]
+add = 255,255,255
+time = 1
+
+[state 1122,4]
+type = palfx
+trigger1 = time = [4,7]
+add = 200,200,200
+time = 1
+
+[state 1122,5]
+type = palfx
+trigger1 = time = [8,11]
+add = 150,150,150
+time = 1
+
+[state 1122,6]
+type = palfx
+trigger1 = time = [12,15]
+add = 100,100,100
+time = 1
+
+[state 1122,7]
+type = changestate
+trigger1 = time = 15
+value = 1102
+;---------------------------------------------------------------------------
+;Dragon Warp Up
+[Statedef 1125]
+type = A
+ctrl = 0
+anim = 1112
+velset = 0,-8
+physics = N
+sprpriority = -4
+
+[state 1125,1]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[state 1125,2]
+type = AssertSpecial
+trigger1 = time > 30
+flag = invisible
+
+[state 1125,3]
+type = velset
+trigger1 = time = 30
+y = 0
+
+[State 1125,4]
+type = ChangeState
+trigger1 = root, stateno != [3300,3339]
+value = 1100
+;---------------------------------------------------------------------------
+;Dragon Win Pose (Wily Projection)
+[Statedef 1124]
+type = S
+ctrl = 0
+anim = 189
+velset = 0,0
+physics = S
+sprpriority = -4
+
+[state 1124, Snd]
+type = playsnd
+trigger1 = Time = 3
+value = 0,3
+channel = 5
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 12 && !NumExplod(188)
+anim = 188
+ID = 188
+pos = -17,-50
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+pausemovetime = 0
+scale = 0.15,0.15
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = Time = 42
+ID =188
+scale = 0.25,0.25
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = Time = 45
+ID =188
+scale = 0.5,0.5
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = Time = 48
+ID =188
+scale = 0.75,0.75
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = Time = 51
+ID =188
+scale = 1,1
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = Time >52 && Time%4=0
+ID =188
+scale = 1.025,1.025
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = Time >52 && Time%4=2
+ID =188
+scale = 1,1
+
+
+[state 1124,1]
+type = posset
+trigger1 = 1
+y = -5
+
+[state 1124,2]
+type = velset
+trigger1 = 1
+x = 0
+;---------------------------------------------------------------------------
+;Dragon Win Pose (Besides Metalman)
+[Statedef 1126]
+type = S
+ctrl = 0
+anim = 1103
+velset = 0,0
+physics = N
+sprpriority = -4
+
+[state 1126, Snd]
+type = playsnd
+trigger1 = Time = 3
+value = 0,3
+channel = 5
+
+[state 1126,1]
+type = velset
+trigger1 = time = 0 && rootdist x = [60, 4000]
+x = 3.5
+
+[state 1126,2]
+type = velset
+trigger1 = time = 0 && rootdist x = [-4000, 50]
+x = -3.5
+
+[state 1126,3]
+type = changeanim
+trigger1 = anim != 1104 && vel x < 0
+value = 1104
+
+[state 1126,4]
+type = velmul
+trigger1 = rootdist x = [40,50]
+x = 0
+
+[state 1126,5]
+type = ChangeAnim
+trigger1 = anim != 1126 && rootdist x = [40,50]
+value = 1126
+
+[state 1126,6]
+type = sprpriority
+trigger1 = anim = 1126
+value = 5
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root, stateno = 18100
+value = 1124
+ctrl = 0
+;anim =
+;ignorehitpause = 
+;persistent = 
+
+;---------------------------------------------------------------------------
+;Dragon Shoot
+[Statedef 1128]
+type = S
+ctrl = 0
+anim = 1128
+velset = 0,0
+physics = N
+sprpriority = -4
+
+[State 0, Strenght Variable]
+type = VarSet
+trigger1 = !time 
+v = 13
+value = root, var(13)
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 3 || AnimElem = 5
+value = S1000,0
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 3
+anim = 1645
+ID = 1645
+pos = 15,-42
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = -3
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = AnimElem = 3 && var(13)=2
+ProjID = 1005
+projanim =1005
+projhitanim =1006
+projscale = 0.75,0.75
+projremove = 1
+projremovetime = -1
+projpriority = 5
+projsprpriority = -3
+offset = 9,-42
+velocity = 3,1
+postype = p1
+priority = 3
+attr = A,SP
+damage = 40,2
+animtype = hard
+guardflag = MA
+hitflag = MAFD
+priority = 4, Hit
+pausetime = 3,15
+sparkno = S25010+random%2
+sparkxy = 0,0
+;guard.sparkno = S25008
+hitsound = s1005,0;s8000,5
+guard.sparkno = S25008
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -10
+air.type = High
+air.hittime = 18
+air.velocity = -6,-3
+air.animtype = Heavy
+palfx.time = 45
+palfx.color = 0
+palfx.add = 240,128,0
+palfx.sinadd = 48,50,32,16
+palfx.invertall = 0
+envshake.time = 10
+envshake.ampl = 7
+fall = 1
+fall.recover = 0
+ID= 1005
+NoChainID = 1005
+air.juggle = 5
+
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = AnimElem = 3 && var(13)=4
+ProjID = 1005
+projanim =1005
+projhitanim =1006
+projscale = 0.75,0.75
+projremove = 1
+projremovetime = -1
+projpriority = 5
+projsprpriority = -3
+offset = 9,-42
+velocity = 3,0.25
+postype = p1
+priority = 3
+attr = A,SP
+damage = 40,2
+animtype = hard
+guardflag = MA
+hitflag = MAFD
+priority = 4, Hit
+pausetime = 3,15
+sparkno = S25010+random%2
+sparkxy = 0,0
+;guard.sparkno = S25008
+hitsound = s1005,0;s8000,5
+guard.sparkno = S25008
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -10
+air.type = High
+air.hittime = 18
+air.velocity = -6,-3
+air.animtype = Heavy
+palfx.time = 45
+palfx.color = 0
+palfx.add = 240,128,0
+palfx.sinadd = 48,50,32,16
+palfx.invertall = 0
+envshake.time = 10
+envshake.ampl = 7
+fall = 1
+fall.recover = 0
+ID= 1005
+NoChainID = 1005
+air.juggle = 5
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = AnimElem = 3 && var(13)=6
+ProjID = 1005
+projanim =1005
+projhitanim =1006
+projscale = 0.75,0.75
+projremove = 1
+projremovetime = -1
+projpriority = 5
+projsprpriority = -3
+offset = 9,-42
+velocity = 3,-0.15
+postype = p1
+priority = 3
+attr = A,SP
+damage = 40,2
+animtype = hard
+guardflag = MA
+hitflag = MAFD
+priority = 4, Hit
+pausetime = 3,15
+sparkno = S25010+random%2
+sparkxy = 0,0
+;guard.sparkno = S25008
+hitsound = s1005,0;s8000,5
+guard.sparkno = S25008
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -10
+air.type = High
+air.hittime = 18
+air.velocity = -6,-3
+air.animtype = Heavy
+palfx.time = 45
+palfx.color = 0
+palfx.add = 240,128,0
+palfx.sinadd = 48,50,32,16
+palfx.invertall = 0
+envshake.time = 10
+envshake.ampl = 7
+fall = 1
+fall.recover = 0
+ID= 1005
+NoChainID = 1005
+air.juggle = 5
+
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = AnimElem = 5 && var(13)=2
+ProjID = 1005
+projanim =1005
+projhitanim =1006
+projscale = 0.75,0.75
+projremove = 1
+projremovetime = -1
+projpriority = 5
+projsprpriority = -3
+offset = 9,-42
+velocity = 5,1
+postype = p1
+priority = 3
+attr = A,SP
+damage = 40,2
+animtype = hard
+guardflag = MA
+hitflag = MAFD
+priority = 4, Hit
+pausetime = 3,15
+sparkno = S25010+random%2
+sparkxy = 0,0
+;guard.sparkno = S25008
+hitsound = s1005,0;s8000,5
+guard.sparkno = S25008
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -10
+air.type = High
+air.hittime = 18
+air.velocity = -6,-3
+air.animtype = Heavy
+palfx.time = 45
+palfx.color = 0
+palfx.add = 240,128,0
+palfx.sinadd = 48,50,32,16
+palfx.invertall = 0
+envshake.time = 10
+envshake.ampl = 7
+fall = 1
+fall.recover = 0
+ID= 1006
+NoChainID = 1006
+air.juggle = 5
+
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = AnimElem = 5 && var(13)=4
+ProjID = 1005
+projanim =1005
+projhitanim =1006
+projscale = 0.75,0.75
+projremove = 1
+projremovetime = -1
+projpriority = 5
+projsprpriority = -3
+offset = 9,-42
+velocity = 5,-0.25
+postype = p1
+priority = 3
+attr = A,SP
+damage = 40,2
+animtype = hard
+guardflag = MA
+hitflag = MAFD
+priority = 4, Hit
+pausetime = 3,15
+sparkno = S25010+random%2
+sparkxy = 0,0
+;guard.sparkno = S25008
+hitsound = s1005,0;s8000,5
+guard.sparkno = S25008
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -10
+air.type = High
+air.hittime = 18
+air.velocity = -6,-3
+air.animtype = Heavy
+palfx.time = 45
+palfx.color = 0
+palfx.add = 240,128,0
+palfx.sinadd = 48,50,32,16
+palfx.invertall = 0
+envshake.time = 10
+envshake.ampl = 7
+fall = 1
+fall.recover = 0
+ID= 1006
+NoChainID = 1006
+air.juggle = 5
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = AnimElem = 5 && var(13)=6
+ProjID = 1005
+projanim =1005
+projhitanim =1006
+projscale = 0.75,0.75
+projremove = 1
+projremovetime = -1
+projpriority = 5
+projsprpriority = -3
+offset = 9,-42
+velocity = 5,-0.55
+postype = p1
+priority = 3
+attr = A,SP
+damage = 40,2
+animtype = hard
+guardflag = MA
+hitflag = MAFD
+priority = 4, Hit
+pausetime = 3,15
+sparkno = S25010+random%2
+sparkxy = 0,0
+;guard.sparkno = S25008
+hitsound = s1005,0;s8000,5
+guard.sparkno = S25008
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -10
+air.type = High
+air.hittime = 18
+air.velocity = -6,-3
+air.animtype = Heavy
+palfx.time = 45
+palfx.color = 0
+palfx.add = 240,128,0
+palfx.sinadd = 48,50,32,16
+palfx.invertall = 0
+envshake.time = 10
+envshake.ampl = 7
+fall = 1
+fall.recover = 0
+ID= 1006
+NoChainID = 1006
+air.juggle = 5
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = !AnimTime
+value = 1102
+ctrl = 0
+
+
+

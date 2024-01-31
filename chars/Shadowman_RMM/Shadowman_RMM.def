@@ -1,0 +1,44 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Shadow Man RMM"
+displayname = "Shadow Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion = 1.0
+author = "Gate & O Ilusionista"
+pal.defaults = 1,9,4,2,4,5,6,7
+
+[Files]
+sprite = Shadowman_RMM.sff
+anim = Shadowman_RMM.air
+sound = Shadowman_RMM.snd
+cmd = Shadowman_RMM.cmd
+
+cns = Shadowman_RMM.cns
+stcommon = common1.cns
+st = Shadowman_RMM.cns
+st2 = supers.cns
+st3 = hypers.cns
+st4 = weapons.cns
+st5 = -2.cns
+st6 = -3.cns
+
+pal1 = ACT\Shadowman_RMM1.act
+pal2 = ACT\Shadowman_RMM2.act
+pal3 = ACT\Shadowman_RMM4.act
+pal4 = ACT\Shadowman_RMM5.act
+pal5 = ACT\Shadowman_RMM6.act
+pal6 = ACT\Cutsman.act
+pal7 = ACT\Dank.act
+pal8 = ACT\Desert.act
+pal9 = ACT\Shadowman_RMM3.act
+pal10 = ACT\Hierophant.act
+pal11 = ACT\Leafy.act
+pal12 = ACT\ProtoGuy.act
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_shadowman.def

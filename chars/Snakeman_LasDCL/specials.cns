@@ -1,0 +1,1984 @@
+;---------------------------------------------------------------------------
+; Acid Spit
+[Statedef 1000]
+type=U				;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype=A				;Move-type: A-attack, I-idle, H-gethit
+physics=N				;Physics: S-stand, C-crouch, A-air
+juggle=4				;Number of air juggle points move takes
+ctrl=0				;Set ctrl (Def: no change)
+anim=(1000 + statetype = A) ;+ (var(50)*2)				;Change animation (Def: no change)
+poweradd=ifelse(var(50), 0, 14)			;Power to add (Def: 0)
+sprpriority=2	;Set layering priority to 2 (in front)
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0 && prevstateno = 250
+value = 1000
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = time = 0 && prevstateno = 250
+statetype = S
+
+[State 0, Strenght Variable]
+type = VarSet
+trigger1 = !time 
+v = 40
+value = ifelse(command = "QCF_z",9,ifelse(command = "QCF_y",6,3))
+
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 650, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 1
+value = S3,2
+channel = 5
+
+[State 1000, VarSet] ;Speed Var
+type = VarSet
+trigger1 = Time = 0 && PrevStateNo != 1000
+var(5)=ifelse(statetype = A, 2, ifelse(statetype = C, 1, 0));ifelse(command="QCF_z", 2, ifelse(command="QCF_y", 1, 0))
+
+[State 1000, VarAdd] ;Limiter Variable
+type = VarAdd
+trigger1 = Statetype = A
+trigger1 = Time = 0 && PrevStateNo != 1000
+var(15) = 1
+
+[State 1000, Explod] ;Snake Buster FX
+type=null;Explod
+trigger1=animelem=5
+anim=223
+ID=220
+pos=ceil(43*const(size.xscale)),ceil(-44*const(size.yscale))
+postype=p1
+bindtime=-1
+removetime=-2
+scale=const(size.xscale),const(size.yscale)
+sprpriority=4
+ownpal=1
+removeongethit=1
+ignorehitpause=1
+
+[State 1000, NotHitBy]
+type=NotHitBy
+trigger1=AnimElemTime(5)=0
+value=SCA,NP,SP
+time=1
+ignorehitpause=1
+
+;-------------------------------------------------------------------------------
+[State 1000, VelSet]
+type = VelSet
+triggerall = statetype = A
+trigger1 = Time = 0
+x = Vel X * .1
+y = ifelse(Vel Y <= 0, -1, Vel Y * .025)
+
+[State 1000, VelAdd]
+type = VelAdd
+triggerall = statetype = A
+trigger1 = Time > 0
+y = .025
+
+[State 1000, PosSet]
+type = PosSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1000
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1000
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype != A
+trigger1 = Time = 0 && PrevStateNo != 1000
+x = 0
+;-------------------------------------------------------------------------------
+
+[State 1000, Helper]
+type=Helper
+triggerall=statetype!=A
+trigger1=animelem=5
+helpertype=normal ;player
+name="Acid Spit"
+ID=1010
+stateno=1010
+pos=ceil(52*const(size.xscale)),ceil(-40*const(size.yscale))
+postype=p1
+ownpal=1
+size.xscale=1.25*const(size.xscale)
+size.yscale=1.25*const(size.yscale)
+
+[State 1000, Helper]
+type=Helper
+triggerall=statetype=A
+trigger1=animelem=5
+helpertype=normal ;player
+name="Acid Spit"
+ID=1010
+stateno=1010
+pos=ceil(39*const(size.xscale)),ceil(-64*const(size.yscale))
+postype=p1
+ownpal=1
+size.xscale=1.25*const(size.xscale)
+size.yscale=1.25*const(size.yscale)
+
+[State 0, Explod]
+type = Explod
+triggerall=statetype!=A
+trigger1=animelem=5
+anim = 1090
+ID = 1090
+pos=ceil(52*const(size.xscale)),ceil(-40*const(size.yscale))
+postype = p1
+bindtime = -1
+removetime = -2
+scale = .25,.25
+sprpriority = 3
+ownpal = 1
+removeongethit = 1
+
+[State 0, Explod]
+type = Explod
+triggerall=statetype=A
+trigger1=animelem=5
+anim = 1090
+ID = 1090
+pos=ceil(39*const(size.xscale)),ceil(-64*const(size.yscale))
+postype = p1
+bindtime = -1
+removetime = -2
+scale = .25,.25
+sprpriority = 3
+ownpal = 1
+removeongethit = 1
+
+[State 1000, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = ifelse(statetype=A, 51, 0)
+ctrl = ifelse(statetype=A, var(16), 1)
+
+;---------------------------------------------------------------------------
+; Acid Ball
+[Statedef 1001]
+type=U				;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype=A				;Move-type: A-attack, I-idle, H-gethit
+physics=N				;Physics: S-stand, C-crouch, A-air
+juggle=4				;Number of air juggle points move takes
+ctrl=0				;Set ctrl (Def: no change)
+anim=(1002 + statetype = A) ;+ (var(50)*2)				;Change animation (Def: no change)
+poweradd=ifelse(var(50), 0, 14)			;Power to add (Def: 0)
+sprpriority=2			;Set layering priority to 2 (in front)
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0 && prevstateno = 250
+value = 1002
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = time = 0 && prevstateno = 250
+statetype = S
+
+[State 650, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 1
+value = S3,2
+channel = 5
+
+[State 1000, VarSet] ;Speed Var
+type = VarSet
+trigger1 = Time = 0 && PrevStateNo != 1000
+var(5)=ifelse(command="QCF_c", 2, ifelse(command="QCF_b", 1, 0))
+
+[State 1000, VarAdd] ;Limiter Variable
+type = VarAdd
+trigger1 = Statetype = A
+trigger1 = Time = 0 && PrevStateNo != 1001
+var(15) = 1
+
+[State 1000, Explod] ;Snake Buster FX
+type=null;Explod
+trigger1=animelem=5
+anim=223
+ID=220
+pos=ceil(43*const(size.xscale)),ceil(-44*const(size.yscale))
+postype=p1
+bindtime=-1
+removetime=-2
+scale=const(size.xscale),const(size.yscale)
+sprpriority=4
+ownpal=1
+removeongethit=1
+ignorehitpause=1
+
+[State 1000, NotHitBy]
+type=NotHitBy
+trigger1=AnimElemTime(5)=0
+value=SCA,NP,SP
+time=1
+ignorehitpause=1
+
+;-------------------------------------------------------------------------------
+[State 1000, VelSet]
+type = VelSet
+triggerall = statetype = A
+trigger1 = Time = 0
+x = Vel X * .1
+y = ifelse(Vel Y <= 0, -1, Vel Y * .025)
+
+[State 1000, VelAdd]
+type = VelAdd
+triggerall = statetype = A
+trigger1 = Time > 0
+y = .025
+
+[State 1000, PosSet]
+type = PosSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1000
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1000
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype != A
+trigger1 = Time = 0 && PrevStateNo != 1000
+x = 0
+;-------------------------------------------------------------------------------
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1000, Helper]
+type=Helper
+triggerall=statetype!=A
+trigger1=animelem=5
+helpertype=normal ;player
+name="Acid Ball"
+ID=1020
+stateno=1020
+pos=ceil(43*const(size.xscale)),ceil(-44*const(size.yscale))
+postype=p1
+ownpal=1
+size.xscale=const(size.xscale)
+size.yscale=const(size.yscale)
+
+[State 1000, Helper]
+type=Helper
+triggerall=statetype=A
+trigger1=animelem=4
+helpertype=normal ;player
+name="Acid Ball"
+ID=1020
+stateno=1020
+pos=ceil(56*const(size.xscale)),ceil(-67*const(size.yscale))
+postype=p1
+ownpal=1
+size.xscale=const(size.xscale)
+size.yscale=const(size.yscale)
+
+[State 0, Explod]
+type = Explod
+triggerall=statetype!=A
+trigger1=animelem=5
+anim = 1090
+ID = 1090
+pos=ceil(52*const(size.xscale)),ceil(-40*const(size.yscale))
+postype = p1
+bindtime = -1
+removetime = -2
+;scale = .25,.25
+sprpriority = 3
+ownpal = 1
+removeongethit = 1
+
+[State 0, Explod]
+type = Explod
+triggerall=statetype=A
+trigger1=animelem=4
+anim = 1090
+ID = 1090
+pos=ceil(39*const(size.xscale)),ceil(-64*const(size.yscale))
+postype = p1
+bindtime = -1
+removetime = -2
+;scale = .25,.25
+sprpriority = 3
+ownpal = 1
+removeongethit = 1
+
+[State 1000, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = ifelse(statetype=A, 51, 0)
+ctrl = ifelse(statetype=A, var(16), 1)
+
+
+;---------------------------------------------------------------------------
+; Snake Burrow
+[Statedef 1100]
+type=S				;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype=A				;Move-type: A-attack, I-idle, H-gethit
+physics=N				;Physics: S-stand, C-crouch, A-air
+ctrl=0				;Set ctrl (Def: no change)
+anim=1100 ;+ statetype = A				;Change animation (Def: no change)
+poweradd=ifelse(var(50), 0, 14)			;Power to add (Def: 0)
+sprpriority=2			;Set layering priority to 2 (in front)
+
+[State 1200, VarSet] ;Speed Var
+type = VarSet
+trigger1 = Time = 0 && PrevStateNo != 1100
+var(5)=ifelse(command="DP_z", 2, ifelse(command="DP_y", 1, 0))
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1200, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 1
+value = S3,3;9 + var(5)
+channel = 5
+
+[State 1000, VarAdd] ;Limiter Variable
+type = null;VarAdd
+trigger1 = Statetype = A
+trigger1 = Time = 0 && PrevStateNo != 1200
+var(15) = 1
+
+[State 1000, Explod] ;Snake Burrow FX
+type=null;Explod
+trigger1=animelemtime(6)>=0
+trigger1=(time%2) = 0
+anim=1190
+ID=1109
+pos=ceil(0*const(size.xscale)),ceil(0*const(size.yscale))
+postype=p1
+bindtime=1
+removetime=-2
+scale=const(size.xscale),const(size.yscale)
+sprpriority=4
+ownpal=1
+removeongethit=1
+ignorehitpause=1
+
+;-------------------------------------------------------------------------------
+[State 1000, VelSet]
+type = null;VelSet
+triggerall = statetype = A
+trigger1 = Time = 0
+x = Vel X * .1
+y = ifelse(Vel Y <= 0, -1, Vel Y * .025)
+
+[State 1000, VelAdd]
+type = null;VelAdd
+triggerall = statetype = A
+trigger1 = Time > 0
+y = .025
+
+[State 1000, PosSet]
+type = PosSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1100
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1100
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype != A
+trigger1 = Time = 0 && PrevStateNo != 1100
+x = 0
+;-------------------------------------------------------------------------------
+[State 0, Turn]
+type = Turn
+triggerall = animelemtime(6)>=0
+trigger1 = P2Dist X < -5
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelemtime(6)=1
+x = (p2dist X)/ifelse(var(5)>=2, 7, ifelse(var(5)=1, 9.5, 12))
+
+;[State 0, VelSet]
+;type = VelSet
+;triggerall = animelemtime(6)>=0
+;trigger1 = command != "holdfwd" && command != "holdback"
+;x = 0
+
+;[State 0, VelSet]
+;type = VelSet
+;triggerall = animelemtime(6)>=0
+;trigger1 = command = "holdfwd"
+;x = 4
+
+;[State 0, VelSet]
+;type = VelSet
+;triggerall = animelemtime(6)>=0
+;trigger1 = command = "holdback"
+;x = -4
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 2 && !numhelper(1190)
+helpertype = normal ;player
+name = "Rubble"
+ID = 1190
+stateno = 1190
+postype = p1
+ownpal = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = time = 0 && !numhelper(1196)
+helpertype = normal ;player
+name = "Hole"
+ID = 1196
+stateno = 1196
+postype = p1
+ownpal = 1
+
+[State 1000, 5]
+type = ChangeState
+trigger1 = p2bodydist X <= 0 && AnimElemTime(6)>=0
+trigger2 = time = ifelse(var(5)>=2, 28, ifelse(var(5)=1, 32, 36))
+value = 1101
+;---------------------------------------------------------------------------
+[StateDef 1101]
+type=S
+movetype=A
+physics=N
+;juggle=4
+velset=0,0
+ctrl=0
+anim=1101
+sprpriority=2
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+var(4) = 1
+ignorehitpause=1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 5 && anim = 1101
+x =.6625
+y = ifelse(var(5) = 2, -12.5, ifelse(var(5)=1, -10, -7.5)) ;+ ((p2bodydist Y)/80)
+
+[State 0, Explod]
+type=Explod
+trigger1 = prevstateno != 1101 && Time = 0
+anim=1299
+ID=1299
+pos=0,ceil(-pos Y)
+postype=p1
+bindtime=1
+removetime=-2
+scale=const(size.xscale),const(size.yscale)
+sprpriority=3
+ownpal=1
+removeongethit=0
+ignorehitpause=0
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = animelemtime(5) > 0 && anim = 1101
+trigger2 = anim = 1102 && animelemtime(1)>0
+y = .45
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = AnimElem = 4 && anim = 1101
+statetype = A
+;----------------------------------------
+
+[State 1100, HitDef]
+type=HitDef
+triggerall=!var(13) ;OTG
+trigger1=!movecontact
+attr=A,SA
+hitflag=MAFD
+guardflag=MA
+animtype=Up
+air.animtype=Up
+fall.animtype=Up
+priority=4,Hit
+damage=ifelse(var(5) >= 2, 138, ifelse(var(5)=1, 117, 97)),13
+pausetime=9,8
+sparkno = S25010+random%2
+guard.sparkno=40
+sparkxy=ceil(-10*const(size.xscale)),ceil(-43*const(size.yscale))
+hitsound=S1,6
+guardsound=S2,0
+ground.type=Low
+air.type=Low
+ground.slidetime=14
+ground.hittime=21
+air.hittime=21
+yaccel=.8 * const(size.yscale)
+ground.velocity=-1.325*const(size.xscale),ifelse(var(5) >= 2, -24.75, ifelse(var(5)=1, -21, -17.25))
+guard.velocity=-1.325*const(size.xscale)
+air.velocity=-1.325*const(size.xscale),ifelse(var(5) >= 2, -24.75, ifelse(var(5)=1, -21, -17.25))
+airguard.velocity=-1.325*const(size.xscale),0
+down.velocity=-5.625*const(size.xscale),-8*const(size.yscale)
+down.hittime=20
+ground.cornerpush.veloff=0
+fall=var(4)
+fall.recover=0
+fall.xvelocity=0
+fall.yvelocity=0
+;fall=0
+;air.fall=0
+;id = 0
+getpower = 0,0; 16,14
+givepower = 12,8
+envshake.time=8
+envshake.ampl=2
+
+[State 1100, HitDef]
+type=HitDef
+triggerall=var(13) ;Can't OTG
+trigger1=!movecontact
+attr=A,SA
+hitflag=MAF
+guardflag=MA
+animtype=Up
+air.animtype=Up
+fall.animtype=Up
+priority=4,Hit
+damage=ifelse(var(5) >= 2, 138, ifelse(var(5)=1, 117, 97)),13
+pausetime=9,8
+sparkno = S25010+random%2
+guard.sparkno=40
+sparkxy=ceil(-10*const(size.xscale)),ceil(-43*const(size.yscale))
+hitsound=S1,6
+guardsound=S2,0
+ground.type=Low
+air.type=Low
+ground.slidetime=14
+ground.hittime=21
+air.hittime=21
+yaccel=.8 * const(size.yscale)
+ground.velocity=-1.325*const(size.xscale),ifelse(var(5) >= 2, -24.75, ifelse(var(5)=1, -21, -17.25))
+guard.velocity=-1.325*const(size.xscale)
+air.velocity=-1.325*const(size.xscale),ifelse(var(5) >= 2, -24.75, ifelse(var(5)=1, -21, -17.25))
+airguard.velocity=-1.325*const(size.xscale),0
+down.velocity=-5.625*const(size.xscale),-8*const(size.yscale)
+down.hittime=20
+ground.cornerpush.veloff=0
+fall=var(4)
+fall.recover=0
+fall.xvelocity=0
+fall.yvelocity=0
+;fall=0
+;air.fall=0
+;id = 0
+getpower = 0,0; 16,14
+givepower = 12,8
+envshake.time=8
+envshake.ampl=2
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = anim = 1102 && movehit
+value = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = anim != 1102 && animelemtime(6)>0
+trigger1 = vel y > ifelse(var(5) = 2, -6.25, ifelse(var(5)=1, -5, -3.75)) ;|| (movecontact && Pos Y < 0)
+value = 1102
+
+[State 620, Helper]
+type=Helper
+triggerall = anim = 1101
+trigger1=Time=0
+helpertype=normal ;player
+name="Burrow Upper FX"
+ID=1105
+stateno=1105
+pos=0,0
+postype=p1
+ownpal=1
+size.xscale=const(size.xscale)
+size.yscale=const(size.yscale)
+
+[State 620, Helper]
+type=Helper
+triggerall = anim = 1101
+trigger1=Time=0
+helpertype=normal ;player
+name="Burrow Ground FX"
+ID=1195
+stateno=1195
+pos=0,0
+postype=p1
+ownpal=1
+size.xscale=const(size.xscale)
+size.yscale=const(size.yscale)
+
+[State 0, EnvColor]
+type = EnvColor
+trigger1 = movehit = 1 && numtarget
+trigger1 = target,time<=0 && target,movetype=H
+value = 255,255,255
+time = 1
+ignorehitpause = 1
+
+[State 1101, end]
+type = ChangeState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= Floor(-Vel Y)
+value = 1110
+;------------------------------------------------
+[Statedef 1105]
+movetype = I
+anim = 1106
+ctrl = 0
+sprpriority = 3
+
+[State 1105, BindToParent]
+type = BindToParent
+trigger1 = 1
+pos = 0,-100
+time = 2
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time%2=1 
+flag = invisible
+flag2 = noshadow
+
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = parent,anim = 1101
+trigger1 = parent,animelemtime(2)>=0&&parent,animelemtime(3)<0
+trigger1 = anim != 1107
+value = 1107
+elem = animelemno(0)
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = parent,anim = 1101
+trigger1 = parent,animelemtime(3)>=0&&parent,animelemtime(4)<0
+trigger1 = anim != 1108
+value = 1108
+elem = animelemno(0)
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = parent,anim = 1101
+trigger1 = parent,animelemtime(4)>=0
+trigger1 = anim != 1105
+value = 1105
+elem = animelemno(0)
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = parent,stateno != 1101 || parent,anim != 1101
+trigger2 = parent,movetype = H
+
+;---------------------------------------------------------------------------
+[StateDef 1109]
+type=A
+movetype=I
+physics=N
+velset=0,0
+ctrl=0
+anim=1109
+sprpriority=2
+
+[State 0, PosSet]
+type=PosSet
+trigger1=Time=0
+y=0
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = AnimElemTime(4)>=0
+statetype = S
+physics = S
+
+[State 1109, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Snake Burrow Landing
+[Statedef 1110]
+type    = S
+physics = S
+ctrl = 0
+anim = 47
+
+[State 1110, 1]
+type = VelSet
+trigger1 = Time = 0
+x = 0
+y = 0
+
+[State 1110, 2]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 1110, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;-------------------------------------------------------------------------------
+[Statedef 1190]
+movetype = I
+ctrl = 0
+anim = 1191
+sprpriority = 3
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = anim = 1191
+time = 1
+pos = 0,0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = parent,anim != 1100
+trigger1 = anim != 1192
+value = 1192
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 5
+value = S5,18
+channel = 7
+loop=1
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = parent,anim != 1100
+trigger1 = anim != 1192
+trigger2 = parent,anim != 1100 && anim != 1192
+trigger3 = parent,movetype = H
+trigger4 = anim = 1192 && animtime = 0
+channel = 7
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = parent,anim != 1100 && anim != 1192
+trigger2 = parent,movetype = H
+trigger3 = anim = 1192 && animtime = 0
+
+;-------------------------------------------------------------------------------
+[Statedef 1195]
+movetype = I
+ctrl = 0
+anim = 1195
+sprpriority = -1
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim != 1196
+trigger1 = parent,anim = 1101 && parent,animelemtime(6) >= 0
+trigger2 = parent,anim != 1101 || (parent,anim = 194 && parent,animelemtime(13)>=0)
+value = 1196
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 1197
+ID = 1197
+postype = p1
+bindtime = -1
+removetime = -2
+scale = 1,1
+sprpriority = 4
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = parent,movetype = H
+id = 1197
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 2
+value = S7300,0
+channel = 7
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = parent,movetype = H
+trigger2 = anim = 1196 && animtime = 0
+
+;-------------------------------------------------------------------------------
+[Statedef 1196]
+movetype = I
+ctrl = 0
+anim = 1198
+sprpriority = -1
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim != 1196
+trigger1 = parent,anim = 1100 && parent,animelemtime(6) >= 0
+trigger2 = parent,anim != 1100
+value = 1196
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = parent,movetype = H
+trigger2 = anim = 1196 && animtime = 0
+
+;---------------------------------------------------------------------------
+; Search Snake
+[Statedef 1300]
+type=U				;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype=A				;Move-type: A-attack, I-idle, H-gethit
+physics=N				;Physics: S-stand, C-crouch, A-air
+juggle=4				;Number of air juggle points move takes
+ctrl=0				;Set ctrl (Def: no change)
+anim=1300 ;+ statetype = A				;Change animation (Def: no change)
+poweradd=ifelse(var(50), 0, 14)			;Power to add (Def: 0)
+sprpriority=2			;Set layering priority to 2 (in front)
+
+[State 650, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 1
+value = S3,ifelse(random < 500, 8, 13)
+channel = 5
+
+[State 1000, VarAdd] ;Limiter Variable
+type = VarAdd
+trigger1 = Statetype = A
+trigger1 = Time = 0 && PrevStateNo != 1000
+var(15) = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1000, Explod] ;Snake Buster FX
+type=null;Explod
+trigger1=animelem=5
+anim=223
+ID=220
+pos=ceil(43*const(size.xscale)),ceil(-44*const(size.yscale))
+postype=p1
+bindtime=-1
+removetime=-2
+scale=const(size.xscale),const(size.yscale)
+sprpriority=4
+ownpal=1
+removeongethit=1
+ignorehitpause=1
+
+;-------------------------------------------------------------------------------
+[State 1000, VelSet]
+type = VelSet
+triggerall = statetype = A
+trigger1 = Time = 0
+x = Vel X * .1
+y = ifelse(Vel Y <= 0, -1, Vel Y * .025)
+
+[State 1000, VelAdd]
+type = VelAdd
+triggerall = statetype = A
+trigger1 = Time > 0
+y = .025
+
+[State 1000, PosSet]
+type = PosSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1300
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1300
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype != A
+trigger1 = Time = 0 && PrevStateNo != 1300
+x = 0
+;-------------------------------------------------------------------------------
+
+[State 1000, Helper]
+type=Helper
+trigger1=animelem=4
+helpertype=normal ;player
+name="Search Snake Low"
+ID=1305
+stateno=1305
+pos=ceil(53*const(size.xscale)),ceil(-38*const(size.yscale))
+postype=p1
+ownpal=1
+size.xscale=const(size.xscale)
+size.yscale=const(size.yscale)
+size.ground.back = 0
+size.ground.front = 0
+size.air.back = 0
+size.air.front = 0
+
+[State 1000, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = ifelse(statetype=A, 51, 0)
+ctrl = ifelse(statetype=A, var(16), 1)
+;---------------------------------------------------------------------------
+; Search Snake (Front Wall)
+[Statedef 1301]
+type=U				;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype=A				;Move-type: A-attack, I-idle, H-gethit
+physics=N				;Physics: S-stand, C-crouch, A-air
+juggle=4				;Number of air juggle points move takes
+ctrl=0				;Set ctrl (Def: no change)
+anim=1301 ;+ statetype = A				;Change animation (Def: no change)
+poweradd=14			;Power to add (Def: 0)
+sprpriority=2			;Set layering priority to 2 (in front)
+
+[State 650, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 1
+value = S3,ifelse(random < 500, 8, 13)
+channel = 5
+
+[State 1000, VarAdd] ;Limiter Variable
+type = VarAdd
+trigger1 = Statetype = A
+trigger1 = Time = 0 && PrevStateNo != 1000
+var(15) = 1
+
+[State 1000, Explod] ;Snake Buster FX
+type=null;Explod
+trigger1=animelem=5
+anim=223
+ID=220
+pos=ceil(43*const(size.xscale)),ceil(-44*const(size.yscale))
+postype=p1
+bindtime=-1
+removetime=-2
+scale=const(size.xscale),const(size.yscale)
+sprpriority=4
+ownpal=1
+removeongethit=1
+ignorehitpause=1
+
+;-------------------------------------------------------------------------------
+[State 1000, VelSet]
+type = VelSet
+triggerall = statetype = A
+trigger1 = Time = 0
+x = Vel X * .1
+y = ifelse(Vel Y <= 0, -1, Vel Y * .025)
+
+[State 1000, VelAdd]
+type = VelAdd
+triggerall = statetype = A
+trigger1 = Time > 0
+y = .025
+
+[State 1000, PosSet]
+type = PosSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1300
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1300
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype != A
+trigger1 = Time = 0 && PrevStateNo != 1300
+x = 0
+;-------------------------------------------------------------------------------
+
+[State 1000, Helper]
+type=Helper
+trigger1=animelem=3
+helpertype=normal ;player
+name="Search Snake Standard Missile"
+ID=1305
+stateno=1305
+pos=ceil(53*const(size.xscale)),ceil(-38*const(size.yscale))
+postype=p1
+ownpal=1
+size.xscale=const(size.xscale)
+size.yscale=const(size.yscale)
+size.ground.back = 0
+size.ground.front = 0
+size.air.back = 0
+size.air.front = 0
+
+[State 1000, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = ifelse(statetype=A, 51, 0)
+ctrl = ifelse(statetype=A, var(16), 1)
+;---------------------------------------------------------------------------
+; Search Snake (Wall)
+[Statedef 1302]
+type=U				;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype=A				;Move-type: A-attack, I-idle, H-gethit
+physics=N				;Physics: S-stand, C-crouch, A-air
+juggle=4				;Number of air juggle points move takes
+ctrl=0				;Set ctrl (Def: no change)
+anim=1302 ;+ statetype = A				;Change animation (Def: no change)
+poweradd=14			;Power to add (Def: 0)
+sprpriority=2			;Set layering priority to 2 (in front)
+
+[State 650, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 1
+value = S3,ifelse(random < 500, 8, 13)
+channel = 5
+
+[State 1000, VarAdd] ;Limiter Variable
+type = VarAdd
+trigger1 = Statetype = A
+trigger1 = Time = 0 && PrevStateNo != 1000
+var(15) = 1
+
+[State 1000, Explod] ;Snake Buster FX
+type=null;Explod
+trigger1=animelem=5
+anim=223
+ID=220
+pos=ceil(43*const(size.xscale)),ceil(-44*const(size.yscale))
+postype=p1
+bindtime=-1
+removetime=-2
+scale=const(size.xscale),const(size.yscale)
+sprpriority=4
+ownpal=1
+removeongethit=1
+ignorehitpause=1
+
+;-------------------------------------------------------------------------------
+[State 1000, VelSet]
+type = VelSet
+triggerall = statetype = A
+trigger1 = Time = 0
+x = Vel X * .1
+y = ifelse(Vel Y <= 0, -1, Vel Y * .025)
+
+[State 1000, VelAdd]
+type = VelAdd
+triggerall = statetype = A
+trigger1 = Time > 0
+y = .025
+
+[State 1000, PosSet]
+type = PosSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1300
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype = A
+trigger1 = Pos Y >= Floor(-Vel Y)
+trigger1 = Vel Y >= 0
+trigger2 = statetype != A
+trigger2 = Time = 0 && PrevStateNo != 1300
+y = 0
+
+[State 1000, VelSet]
+type = VelSet
+trigger1 = statetype != A
+trigger1 = Time = 0 && PrevStateNo != 1300
+x = 0
+;-------------------------------------------------------------------------------
+
+[State 1000, Helper]
+type=Helper
+trigger1=animelem=4
+helpertype=normal ;player
+name="Search Snake Missile"
+ID=1305
+stateno=1306
+pos=ceil(22*const(size.xscale)),ceil(-72*const(size.yscale))
+postype=p1
+ownpal=1
+size.xscale=const(size.xscale)
+size.yscale=const(size.yscale)
+size.ground.back = 0
+size.ground.front = 0
+size.air.back = 0
+size.air.front = 0
+
+[State 1000, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = ifelse(statetype=A, 51, 0)
+ctrl = ifelse(statetype=A, var(16), 1)
+;---------------------------------------------------------------------------
+[StateDef 1305]
+movetype= I
+ctrl = 0
+sprpriority = 3
+anim = 1305
+
+[State 0, VarAdd]
+type = VarSet
+trigger1 = prevstateno != 1305 && time = 0
+var(0) = 0
+
+[State 1305, HitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+ignorehitpause=1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 1
+x = ifelse(parent,anim=1301,6,2)
+y = 1
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time > 1 && anim = 1305
+x = -.055
+y = .35
+
+[State 0, ChangeState] ;Floor
+type = ChangeState
+trigger1 = pos Y >= floor(-vel Y) && Vel Y >= 0
+value = 1310
+
+[State 0, ChangeState] ;Down Wall
+type = ChangeState
+trigger1 = pos Y >= floor(-vel Y) && Vel Y >= 0
+value = 1311
+
+;---------------------------------------------------------------------------
+[StateDef 1306]
+movetype= I
+ctrl = 0
+sprpriority = 3
+anim = 1306
+
+[State 0, VarAdd]
+type = VarSet
+trigger1 = prevstateno != 1306 && time = 0
+var(0) = 0
+
+[State 1305, HitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+ignorehitpause=1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 1
+x = -(facing*Pos X-156)/24
+y = -9
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time > 1 && anim = 1306
+y = .15
+
+[State 0, ChangeState] ;Floor
+type = ChangeState
+trigger1 = pos Y >= floor(-vel Y) && Vel Y >= 0
+value = 1310
+
+[State 0, ChangeState] ;Down Wall
+type = ChangeState
+trigger1 = frontedgedist <= -15
+value = 1314
+
+;---------------------------------------------------------------------------
+[StateDef 1307]
+movetype= I
+ctrl = 0
+sprpriority = 3
+anim = 1307
+
+[State 0, VarAdd]
+type = VarSet
+trigger1 = prevstateno != 1307 && time = 0
+var(0) = 0
+
+[State 1305, HitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+ignorehitpause=1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 1
+x = 0
+y = -9
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = vel y > 0 && anim != 1308
+value = 1308
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time > 1
+y = .15
+
+[State 0, ChangeState] ;Floor
+type = ChangeState
+trigger1 = pos Y >= floor(-vel Y) && Vel Y >= 0
+value = 1310
+
+[State 0, ChangeState] ;Floor
+type = ChangeState
+trigger1 = screenpos y <= 0 && vel Y <= 0
+value = 1312
+
+[State 0, ChangeState] ;Down Wall
+type = ChangeState
+trigger1 = frontedgedist <= -15
+value = 1314
+
+;-------------------------------------------------------------------------------
+[StateDef 1310]
+movetype= A
+ctrl = 0
+sprpriority = 3
+anim = 1310
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = prevstateno != 1310 && time = 0
+var(0) = 1
+
+[State 0, Turn]
+type = Turn
+trigger1 = time = 0 && prevstateno = 1314
+
+[State 1305, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NP,SP,HP
+ignorehitpause=1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AP,AT        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+stateno = 1315
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 1
+x = 3.75
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 0
+x = 0
+y = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 210, HitDef]
+type=HitDef
+trigger1=!movecontact
+attr=S,SP
+hitflag=MAFD
+guardflag=MA
+animtype=Medium
+air.animtype=Back
+fall.animtype=Back
+priority=3,Hit
+damage=20,2
+pausetime=1,8
+sparkno=-1
+guard.sparkno=-1
+sparkxy=ceil(-10*const(size.xscale)),ceil(-1*const(size.yscale))
+hitsound=-1,0
+guardsound=-1,0
+ground.type=Low
+air.type=Low
+ground.slidetime=9
+ground.hittime=21
+air.hittime=21
+guard.hittime=9
+yaccel=.8 * const(size.yscale)
+ground.velocity=-5.625*const(size.xscale),0
+guard.velocity=-5.625*const(size.xscale)
+air.velocity=-5.625*const(size.xscale),-3.2* const(size.yscale)
+airguard.velocity=-5.625*const(size.xscale),0
+down.velocity=-5.625*const(size.xscale),-8*const(size.yscale)
+down.hittime=20
+ground.cornerpush.veloff=0
+fall.xvelocity=0
+fall.yvelocity=0
+sprpriority=3
+;fall=0
+;fall.recover=0
+getpower = 0,0; 32,28
+givepower = 24,16
+
+[State 0, ChangeState] ;Go Up Wall
+type = ChangeState
+trigger1 = frontedgedist <= -15
+trigger1 = pos Y >= 0
+value = 1311
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = movecontact
+trigger2 = screenpos Y < 10
+trigger3 = var(0) > 2
+value = 1315
+
+;-------------------------------------------------------------------------------
+[StateDef 1311]
+movetype= I
+ctrl = 0
+sprpriority = 3
+anim = 1311
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = prevstateno != 1311 && time = 0
+var(0) = 1
+
+[State 1305, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NP,SP,HP
+ignorehitpause=1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AP,AT        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+stateno = 1315
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 1
+y = -3.75
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 0
+x = 0
+y = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 156 * facing
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "%f"
+params = screenpos y
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = screenpos Y < 10
+;trigger1 = var(0) < 3
+value = 1312
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = movecontact
+trigger2 = screenpos Y < 10
+trigger3 = var(0) > 2
+value = 1315
+
+;-------------------------------------------------------------------------------
+[StateDef 1312]
+movetype= I
+ctrl = 0
+sprpriority = 3
+anim = 1312
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "%f"
+params = screenpos y
+
+[State 0, Turn]
+type = Turn
+trigger1 = time = 0 && prevstateno = 1307
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = prevstateno != 1312 && time = 0
+var(0) = 1
+
+[State 1305, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NP,SP,HP
+ignorehitpause=1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AP,AT        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+stateno = 1315
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 1
+x = -3.75
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 0
+x = 0
+y = 0
+
+[State 0, PosSet]
+type = PosAdd
+trigger1 = screenpos Y > 0 || screenpos y < 0
+y = -screenpos y
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = movecontact
+trigger2 = backedgedist <= -15
+value = 1313
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = movecontact
+trigger2 = backedgedist <= -15
+trigger3 = var(0) > 2
+value = 1315
+
+;-------------------------------------------------------------------------------
+[StateDef 1313]
+movetype= I
+ctrl = 0
+sprpriority = 3
+anim = 1313
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "%f"
+params = screenpos y
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = prevstateno != 1313 && time = 0
+var(0) = 1
+
+[State 1305, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NP,SP,HP
+ignorehitpause=1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AP,AT        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+stateno = 1315
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 1
+y = 3.75
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 0
+x = 0
+y = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = -156 * facing
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = movecontact
+trigger2 = pos Y >= floor(-vel y) && vel y >= 0
+trigger3 = var(0) > 2
+value = 1315
+
+;-------------------------------------------------------------------------------
+[StateDef 1314]
+movetype= I
+ctrl = 0
+sprpriority = 3
+anim = 1314
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "%d %f"
+params = var(0), screenpos y
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = prevstateno != 1314 && time = 0
+var(0) = 1
+
+[State 1305, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NP,SP,HP
+ignorehitpause=1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AP,AT        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+stateno = 1315
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 1
+y = 3.75
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 0
+x = 0
+y = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 156 * facing
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = pos Y >= floor(-vel y) && vel y >= 0
+value = 1310
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = movecontact
+trigger2 = var(0) > 2
+value = 1315
+
+;---------------------------------------------------------------------------
+[StateDef 1315]
+movetype=I				;Move-type: A-attack, I-idle, H-gethit
+ctrl=0				;Set ctrl (Def: no change)
+sprpriority=3			;Set layering priority to 2 (in front)
+velset=0,0
+anim=1316
+hitcountpersist=1
+movehitpersist=1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = AnimTime=0
+
+;---------------------------------------------------------------------------
+[StateDef 1405]
+movetype=I				;Move-type: A-attack, I-idle, H-gethit
+ctrl=0				;Set ctrl (Def: no change)
+sprpriority=-1			;Set layering priority to 2 (in front)
+
+[State 1010, VarSet] ;Speed Var
+type=VarSet
+trigger1=Time=0&&PrevStateNo!=1405
+var(5)=root,var(5)
+ignorehitpause=1
+
+[State 1000, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "hitvar = %d"
+params = var(2)
+ignorehitpause = 1
+
+[State 221, ChangeAnim]
+type=ChangeAnim
+trigger1=Time=0&&anim!=1405
+value=1405
+
+[State 221, VelSet]
+type=VelSet
+trigger1=time = 1
+x=4
+y=-4
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time > 0
+y = .4
+
+[State 221, end]
+type = ChangeState
+trigger1 = pos Y >= floor(-vel y) && vel y >=0
+value = 1410
+;------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------
+[StateDef 1410]
+movetype=A				;Move-type: A-attack, I-idle, H-gethit
+ctrl=0				;Set ctrl (Def: no change)
+sprpriority=3			;Set layering priority to 2 (in front)
+hitcountpersist=1
+;----------------------------------------------------------------
+;Damage Multiplier
+;----------------------------------------------------------------
+[State 0, Damage Code]
+type=VarSet
+trigger1=1
+fvar(12)=root,fvar(12)
+ignorehitpause=1
+
+[State 0, Damage Code] ;Specials
+type=VarSet
+trigger1=1
+fvar(10)= ifelse(fvar(10)<=.2&&fvar(12), .2, ifelse(fvar(12)=0,1,.9**(fvar(12))))
+ignorehitpause=1
+
+[State 0, AttackMulSet]
+type=AttackMulSet
+trigger1=1
+value=fvar(10)
+ignorehitpause=1
+;----------------------------------------------------------------
+[State 221, ChangeAnim]
+type=ChangeAnim
+trigger1=Time=0&&anim!=1410
+value=1410
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time=0&&prevstateno!=1010
+value = S5,21
+volume = 10
+
+[State 210, HitDef]
+type=HitDef
+triggerall=time>=20
+trigger1=!movecontact
+trigger2=(time%30)=1
+attr=A,SA
+hitflag=MAF
+guardflag=MA
+animtype=Light
+air.animtype=Back
+fall.animtype=Light
+priority=2,Hit
+damage=41,4
+pausetime=1,8
+sparkno=-1
+guard.sparkno=-1
+sparkxy=ceil(-10*const(size.xscale)),ceil(-1*const(size.yscale))
+hitsound=-1,0
+guardsound=-1,0
+ground.type=High
+air.type=High
+ground.slidetime=9
+ground.hittime=11
+air.hittime=11
+guard.hittime=8
+yaccel=.8 * const(size.yscale)
+ground.velocity=-5.625*const(size.xscale),0
+guard.velocity=-5.625*const(size.xscale)
+air.velocity=-5.625*const(size.xscale),0
+airguard.velocity=-5.625*const(size.xscale),0
+down.velocity=-5.625*const(size.xscale),-8*const(size.yscale)
+down.hittime=20
+ground.cornerpush.veloff=0
+fall.xvelocity=0
+;fall.yvelocity=0
+;fall=0
+;air.fall=0
+;id = 0
+sprpriority=3
+getpower = 0,0; 32,28
+givepower = 24,16
+;envshake.time=9
+;envshake.ampl=3
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause=1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time < 19
+scale = .25+(time*.04),.25+(time*.04)
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+ignorehitpause = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 0
+x = 0
+y = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = (gametime%9)=0
+anim = 1412
+ID = 1412
+pos = 0,0
+postype = p1
+bindtime = -1
+random = 40,20
+scale = 1,1
+sprpriority = -1
+
+[State 0, Explod]
+type = Explod
+trigger1 = (gametime%9)=4
+anim = 1412
+ID = 1412
+pos = 0,0
+postype = p1
+bindtime = -1
+random = 80,10
+scale = 1,1
+sprpriority = -1
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 20
+anim = 1415
+ID = 1415
+pos = -35,-15
+postype = p1
+bindtime = -1
+removetime = -1
+scale = 1,1
+sprpriority = -1
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 20
+anim = 1415
+ID = 1415
+pos = 35,-15
+postype = p1
+bindtime = -1
+removetime = -1
+scale = 1,1
+sprpriority = -1
+
+[State 221, Explod]
+type=Explod
+trigger1=movehit=1&&numtarget
+trigger1=target,movetype=H&&target,time<=0
+anim=F2
+ID=8200
+pos=0,0
+postype=p1
+bindtime=1
+removetime=-2
+sprpriority=10
+ownpal=0
+ignorehitpause=1
+
+[State 221, Explod]
+type=Explod
+trigger1=moveguarded=1&&numtarget
+trigger1=target,movetype=H&&target,time<=0
+anim=F40
+ID=8200
+pos=0,0
+postype=p1
+bindtime=1
+removetime=-2
+sprpriority=10
+ownpal=0
+ignorehitpause=1
+
+[State 221, PlaySnd]
+type=PlaySnd
+trigger1=movehit=1&&numtarget
+trigger1=target,movetype=H&&target,time<=0
+value=S1,6
+channel=1
+ignorehitpause=1
+
+[State 221, PlaySnd]
+type=PlaySnd
+trigger1=moveguarded=1&&numtarget
+trigger1=target,movetype=H&&target,time<=0
+value=S2,0
+channel=2
+ignorehitpause=1
+
+[State 221, EnvShake]
+type=EnvShake
+trigger1=movehit=1&&numtarget
+trigger1=target,movetype=H&&target,time<=0
+time=9
+ampl=3
+ignorehitpause=1
+
+;--------------------------
+[State 1000, Safety] ;No Underground Juggle
+type= targetbind
+trigger1= movehit=1
+trigger1= numtarget=1 && numenemy
+trigger1= (target,time<=0) && (target,ID=enemynear,ID)
+trigger1= !(target,hitshakeover) && (target, pos y>0) ; (target, hitfall) &&
+;trigger2= (target,statetype!=L)
+pos= ceil(p2dist x), ceil(-pos y)
+ignorehitpause=1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = Time > 300

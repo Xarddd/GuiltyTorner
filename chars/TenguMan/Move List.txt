@@ -1,0 +1,22 @@
+----------
+Tengu Man
+----------
+
+QCF+P (air-ok): Tengu Blade
+QCB+P: Crow Bite
+QCB+K (air-ok): Slice Kick
+
+D, D, any button: Change Weapon
+	LP: Blade Kick
+	MP: Tornado Hold
+	HP: Tencrow
+	LK: Katana Blade
+	MK: Tengu Spike
+	HK: Kamaitachi
+QCF+K: Use Weapon
+
+QCF+PP: (air-ok): Nose Dive
+QCB+PP: Katana Showdown
+QCB+PP: (air only): Spike Array 
+QCF+KK: Tornado Prison
+QCB+KK: (air-ok): Tengu Bomber

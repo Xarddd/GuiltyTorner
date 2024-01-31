@@ -1,0 +1,31 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Metonger Z RMM"
+displayname ="Metonger Z"
+versiondate =2020,01,05
+mugenversion =1.0
+author ="Magma Dragoon MKII (sprites) & O Ilusionista (Codes)"
+pal.defaults =1,2;3,2,4,5,6
+
+[Files]
+sprite =	  !ILU-METTONGERZ.sff
+anim =	  !ILU-METTONGERZ.air
+sound =	  !ILU-METTONGERZ.snd
+cmd =	  !ILU-METTONGERZ.cmd
+cns =	  !ILU-METTONGERZ.cns
+stcommon =  common1.cns
+st =	  !ILU-METTONGERZ.cns
+pal1 =	  ACT/RMM00.act
+pal2 =	  ACT/RMM02.act
+st1=	  -2.cns
+st2=	  -3.cns
+st3=	  Armor.cns
+st4=	  Powersets.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/wily_gameover.def

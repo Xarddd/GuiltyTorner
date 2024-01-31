@@ -1,0 +1,2 @@
+X axis: 48
+Y axis: 45

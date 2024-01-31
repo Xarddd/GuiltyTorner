@@ -1,0 +1,46 @@
+; Player information
+[Info]
+name ="Wily RMM"
+displayname ="Dr. Wily"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion =1.0
+author ="NDSilva"
+pal.defaults =1,2,3,4
+localcoord = 320,240
+
+; Files for the player
+[Files]
+cmd     =DrWily.cmd
+cns     =DrWily.cns
+st      =DrWily.cns
+stcommon =Override.cns
+sprite  =DrWily.sff
+anim    =DrWily.air
+sound   =DrWily.snd
+pal1=pals/Default.act
+pal2=pals/MM8.act
+pal3=pals/M.D.act
+pal4=pals/PoweredSpears.act
+pal5=pals/Rockboard.act
+pal6=pals/LordWily.act
+pal7=pals/Light.act
+pal8=pals/TronBonne.act
+pal9=pals/Eggman.act
+pal10=pals/Wacky.act
+pal11=pals/NeoCortex.act
+pal12=pals/CopyWily.act
+st1=Config.txt
+st2=assists.cns
+;ai      = DrWily.ai            ;AI hints data (not used)
+
+
+
+;pal  = pals/Artworks.act
+;pal  = pals/ColorSeparation.act
+;pal  = pals/DarkWily.act
+;pal  = pals/MvC.act
+
+; Arcade mode
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/wily_gameover.def

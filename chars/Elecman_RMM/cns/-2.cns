@@ -1,0 +1,426 @@
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+[Statedef -2]
+
+[State 0, AfterImageTime]
+type = AfterImageTime
+trigger1 = Movetype =H
+trigger2 = stateno < 700 && !var(15)
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Stateno != 1830
+id = 1831
+;ignorehitpause = 
+;persistent = 
+
+;For debugging purposes
+[State -2, Debug Info]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Var(35)= %d - Electricfy = %d AI = %d - Strenght = %d - Spark = %d";, Var(16)= %d, Var(59)= %d"
+params = var(35), var(15), AiLevel, var(5), var(4)
+
+[State 0, AppendToClipboard]
+type = AppendToClipboard
+trigger1 = 1
+text = "\nElec Man by Laspacho, Akito, Rage & O Ilusionista"
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = roundstate < 2
+v = 35
+value = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "start"
+v = 25
+value = 0
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "a"
+v = 25
+value = 1
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "b"
+v = 25
+value = 2
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "c"
+v = 25
+value = 3
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "x"
+v = 25
+value = 4
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "y"
+v = 25
+value = 5
+;ignorehitpause =
+;persistent =
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "z"
+v = 25
+value = 6
+;ignorehitpause =
+;persistent =
+
+; Remove Special BG if ------------------------------------------------
+; State != 3100:
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno < 3000
+trigger2 = MoveType = H
+trigger3 = (WinKO)
+id = 7050
+ignorehitpause = 1
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != [200,250]
+trigger2 = MoveType = H
+id = 700
+ignorehitpause = 1
+
+;---------------------------------------------------------------------------
+; Super/Hyper Combo Finish - Background Effect
+
+[State -3: Helper]
+type = null;Helper
+triggerall = (WinKO) && (NumHelper(8400) = 0)
+trigger1 =  (hitdefattr = SCA, HA,HP)
+trigger2 = Stateno = 3000 && NumHelper(3005)
+trigger3 = Stateno = 3200; && ProjHitTime(425) = 0
+trigger4 = (StateNo = [3100, 3300 ]) && (Time >= 0)
+helpertype = Normal
+name = "Hyper WinKO"
+id = 8400
+pos = 0,0
+postype = p1
+facing = 0
+stateno = 8400
+keyctrl = 0
+ownpal = 1
+supermovetime = 1000
+pausemovetime = 1000
+ignorehitpause = 1
+
+[State -3: Helper]
+type = null;Helper
+triggerall = (WinKO) && (NumHelper(8900) = 0)
+trigger1 = (hitdefattr = SCA, SA,NP,SP)
+trigger2 = (StateNo = [200,1500]) && (Time >= 0) 
+trigger3 = Stateno != 3200 && ProjHit(425) = 1
+trigger4 = Stateno = 1000 && NumHelper(1005)
+trigger6 = ProjHit(1425) = 1
+helpertype = Normal
+name = "Super WinKO"
+id = 8900
+pos = 0,0
+postype = p1
+facing = 0
+stateno = 8900
+keyctrl = 0
+ownpal = 1
+supermovetime = 1000
+pausemovetime = 1000
+ignorehitpause = 1
+
+
+
+; ----------------------------------------------------------------------
+[State -2, PosAdd]
+type = PosAdd
+trigger1 = Stateno = [5030, 5040]
+trigger1 = (anim = 5040) && (AnimElem = 1, < 2)
+y = -20
+persistent = 0
+
+; Reset Super Jump var
+[State -2, Super Jump Reset]
+type = VarSet
+trigger1 = stateno = 52
+trigger2 = stateno = 0
+var(0) = 0
+
+
+[State -2, 20]
+type = Explod
+trigger1 = screenpos y <= 30
+trigger1 = var(9) >= 0
+anim = 912
+id = 9910
+pos = floor(pos x) + 160, 25
+postype = left
+facing = facing
+bindtime = -1
+ontop = 1
+ownpal = 1
+
+
+[State -2, 21]
+type = Explod
+trigger1 = screenpos y <= 30
+trigger1 = var(9) >= 0
+anim = 915+(TeamSide = 1)
+id = 9910
+pos = floor(pos x) + 160 - 16*facing, 8
+postype = left
+bindtime = -1
+ontop = 1
+ownpal = 1
+
+[State -2, 22]
+type = Explod
+trigger1 = screenpos y < 300
+trigger1 = enemy(0), screenpos y >= 320
+anim = 914
+pos = floor(enemy(0),pos x) + 160, 215
+postype = left
+id = 9910
+facing = enemy(0),facing
+bindtime = -1
+ontop = 1
+ownpal = 1
+
+[State -2, 23]
+type = Explod
+trigger1 = screenpos y < 300
+trigger1 = enemy(0), screenpos y >= 320
+anim = 915+(TeamSide = 1)
+id = 9910
+pos = floor(enemy(0),pos x) + 160 - 16*enemy(0),facing, 199
+postype = left
+bindtime = -1
+ontop = 1
+ownpal = 1
+
+[State -2, 24]
+type = Explod
+trigger1 = screenpos y < 300
+trigger1 = numenemy > 1
+trigger1 = enemy(1), screenpos y >= 320
+anim = 914
+id = 9910
+pos = floor(enemy(1),pos x) + 160, 215
+postype = left
+facing = enemy(1),facing
+bindtime = -1
+ontop = 1
+ownpal = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(9910)
+trigger1 = P2Dist Y < 50
+id = 9910
+
+
+;---------------------------------------------------------------
+[State -2, electric spark]
+type = Explod
+triggerall = ProjHitTime(425) = 1 || ProjHitTime(411) = 1 || ProjHitTime(1020) = 1
+trigger1 = (P2MoveType = H) && (NumExplod(427) < 1)
+Anim = 427;ifelse(ProjHitTime(1000) = 1,8603,8602)
+id = 427
+postype = p2
+pos = 0,-45
+ownpal = 1
+sprpriority = 100
+bindtime = -1
+ignorehitpause = 1
+removetime = 25
+
+ ;---------------------------------------------------------------------------
+; States that are executed when in self's state file (use statedef -3)
+;---------------------------------------------------------------------------
+
+[statedef -3]
+
+[State -3, VarAdd]
+type = VarAdd
+trigger1 = (HitPauseTime = 1) && (P2MoveType = H) && (MoveHit = 1) && (StateNo < 3000)
+trigger2 = ProjHitTime(0) = 1
+v = 14
+value = 1
+ignorehitpause = 1
+
+[State -3, VarReset]
+type = VarSet
+trigger1 = P2MoveType != H
+v = 14
+value = 0
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+trigger1 = StateNo >= 3000
+value = 1
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(14) <= 1
+value = 1
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(14) = 2
+value = 0.8
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(14) = 3
+value = 0.6
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(14) = 4
+value = 0.4
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(14) >= 5
+value = .3
+
+;---------------------- Integer variable list ----------------------
+
+; var(0):= -2 - States that are always executed (use statedef -2)
+;          40 - Jump Start
+;          45 - AirJump Start
+;          50 - Jump Up
+;          132 - AIR GUARD (guarding)
+;          155 - AGUARDHIT2 (knocked away)
+;          5080 - HITL_SHAKE
+;          5081 - HITL_SLIDE
+;          5100 - HIT_BOUNCE (hit ground)
+;          5110 - HIT_LIEDOWN
+;          25052 - Hyper FX LVL 3
+;          9103 - Generate 8 explosions within a circle - eletric
+;          8900 - Finish hit explod
+;          9500
+;          30000 - Ffffffinish!!
+; var(1):= 9500
+;          30000 - Ffffffinish!!
+; var(2):= 9500
+; var(3):= 30000 - Ffffffinish!!
+; var(4):= 1800 - Change Power Set (0 through 6)
+;          25052 - Hyper FX LVL 3
+;          30000 - Ffffffinish!!
+; var(5):= 1000 - Thunder Bolt
+;          1100 - ZAP!
+;          1200 - 3 Way Beam
+;          1400 - PS1 - Calling Strikers
+;          1500 - Iron knee
+;          1600 - Spark Tower
+;          1810 - PS2 - Static Trap
+;          1820 - PS3 - Spark Rain
+;          1825 - PS3 - SR HELPER
+;          1830 - PS4 - Electric Torpedo
+;          9500
+;          30000 - Ffffffinish!!
+; var(6):= 25052 - Hyper FX LVL 3
+; var(7):= 25052 - Hyper FX LVL 3
+; var(8):= 25052 - Hyper FX LVL 3
+;          30000 - Ffffffinish!!
+; var(9):= 25052 - Hyper FX LVL 3
+;          30000 - Ffffffinish!!
+;var(10):= 25052 - Hyper FX LVL 3
+;          30000 - Ffffffinish!!
+;var(11):= 25052 - Hyper FX LVL 3
+;          7000 - Beginning of the super jump
+;          9500
+;          30000 - Ffffffinish!!
+;var(12):= -3
+;          25052 - Hyper FX LVL 3
+;          7001 - Super Jump
+;          9500
+;          30000 - Ffffffinish!!
+;var(13):= 25052 - Hyper FX LVL 3
+;var(15):= -3
+;          3100 - Hyper2 - Electrify
+;          9500
+;var(16):= 25052 - Hyper FX LVL 3
+;          30000 - Ffffffinish!!
+;var(17):= -3
+;          25052 - Hyper FX LVL 3
+;          9500
+;          30000 - Ffffffinish!!
+;var(18):= 25052 - Hyper FX LVL 3
+;var(20):= 25052 - Hyper FX LVL 3
+;          30000 - Ffffffinish!!
+;var(21):= -3
+;          25052 - Hyper FX LVL 3
+;          9500
+;          30000 - Ffffffinish!!
+;var(22):= 30000 - Ffffffinish!!
+;var(23):= -3
+;          25052 - Hyper FX LVL 3
+;          9500
+;          30000 - Ffffffinish!!
+;var(25):= -2 - States that are always executed (use statedef -2)
+;          25052 - Hyper FX LVL 3
+;          9500
+;          30000 - Ffffffinish!!
+;var(26):= 25052 - Hyper FX LVL 3
+;var(30):= -1
+;          25052 - Hyper FX LVL 3
+;          860
+;          9500
+;          30000 - Ffffffinish!!
+;var(35):= -2 - States that are always executed (use statedef -2)
+;          1800 - Change Power Set (0 through 6)
+;          25052 - Hyper FX LVL 3
+;          9500
+;          30000 - Ffffffinish!!
+;var(40):= 25052 - Hyper FX LVL 3
+;          30000 - Ffffffinish!!
+;var(46):= 25052 - Hyper FX LVL 3
+;          30000 - Ffffffinish!!
+;var(48):= 4001 - Hyper6 - Final Discharge - Attack
+;          25052 - Hyper FX LVL 3
+;          18100 - Win Pose 1 - Spark
+;          9500
+;var(49):= 25052 - Hyper FX LVL 3
+;var(50):= 25052 - Hyper FX LVL 3
+;          199 - NEW Move around before match
+;          9500
+;          30000 - Ffffffinish!!
+;var(57):= 25052 - Hyper FX LVL 3
+;var(58):= 25052 - Hyper FX LVL 3
+
+;---------------------- Float variable list ----------------------
+
+; fvar(0):= 9103 - Generate 8 explosions within a circle - eletric
+; fvar(1):= 9103 - Generate 8 explosions within a circle - eletric
+; fvar(2):= 9103 - Generate 8 explosions within a circle - eletric
+
+
+

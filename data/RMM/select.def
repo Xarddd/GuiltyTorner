@@ -1,0 +1,232 @@
+;---------------------------------------------------------------------
+[Characters]
+;BEGIN INSERTING MEGAMAN CHARACTERS
+
+;RMM
+empty
+empty
+empty
+empty
+empty
+Quint, stages\XR-Quint.def, includestage=0, order=8
+Megaman, stages\Megaman.def, includestage=0, order=1
+Protoman, stages\XR-Blues.def, includestage=0, order=1
+amc_sol, stages\XR-Quint.def, includestage=0, order=8
+Roll, stages\LightsLab.def, includestage=0, order=1
+BassRMM, stages\XR-Forte.def, includestage=0, order=1
+Enker, stages\ILU-ENKER_STAGE.def, includestage=0, order=6
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+;-----
+Cutman, stages\Cutter_stage.def, includestage=0, order=1
+Elecman_RMM, stages\elecman.def, includestage=0, order=1
+Fireman_RMM, stages\firemanStage.def, includestage=0, order=1
+Gutsman, stages\Gutsman.def, includestage=0, order=1
+Iceman, stages\XR-Iceman.def, includestage=0, order=1
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+Airman, stages\Airman.def, includestage=0, order=1
+Crashman, stages\XR-Crashman.def, includestage=0, order=1
+Heatman, stages\heatman.def, includestage=0, order=1
+Metalman, stages\XR-Metalman.def, includestage=0, order=1
+Woodman, stages\Woodman_Stage.def, includestage=0, order=1
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+Needleman, stages\Needleman.def, includestage=0, order=1
+Shadowman_RMM, stages\ILU_SHADOW_MAN_RMM.def, includestage=0, order=1
+Snakeman_LasDCL, stages\SnakemanStageV2.def, includestage=0, order=1
+Topman, stages\Topman.def, includestage=0, order=1
+PharaohmanRMM, stages\pharoah-man_stage.def, includestage=0, order=1
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+Skullman, stages\SkullmanStage.def, includestage=0, order=1
+toadman, stages\Toadman.def, includestage=0, order=1
+Darkman_RMM, stages\Darkman_stage.def, includestage=0, order=1
+Burstman, stages\Burstman.def, includestage=0, order=1
+Tenguman, stages\Tenguman.def, includestage=0, order=1
+Magma_Man_RMM, stages\Magmaman.def, includestage=0, order=1
+ChillPenguin_RMM, stages\ChillPenguin.def, includestage=0, order=1
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+Axl_MM, stages\Axl.def, includestage=0, order=1
+empty
+empty
+empty
+empty
+empty
+RMM_Wily, stages\drwilylab-XR.def, includestage=0, order=9
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+Rush, stages\XX'SKY'SHIP'XX.def, includestage=0, order=1
+HyperStormH_ILU, stages\HSH.def, includestage=0, order=6
+MetoolBoss, stages\MetoolBoss.def, includestage=0, order=7
+!ILU-METTONGERZ, stages\Quickman.def, includestage=0, order=7
+YellowDevil, stages\YellowDevil.def, includestage=0, order=6
+empty
+empty
+empty
+empty
+empty
+;-----
+
+;-----------------------
+[ExtraStages]
+ ;Put extra stages here. They will be available in VS and Watch modes.
+ ;For example, you can insert "stages/mybg.def".
+
+stages\Airman.def				;Enscripture
+stages\Astroman.def                             ;Magma MKII
+stages\Axl.def                                  ;Magma MKII
+stages\XR-Forte.def				;Enscripture
+stages\MVC-Bubbleman.def			;Enscripture
+stages\Burstman.def                             ;Magma MKII
+stages\XR-Crashman.def				;UltraRoboninja
+stages\ChillPenguin.def				;Magma MKII & O Ilusionista
+stages\Cutter_stage.def				;Etg
+stages\Darkman_stage.def			;Fou
+stages\Diveman.def				;LunaG
+stages\drwilylab-XR.def				;Luxion
+stages\XR-Duo.def				;Enscripture
+stages\Elecman.def                              ;Magma MKII
+stages\ILU-ENKER_STAGE.def                      ;O Ilusionista
+stages\firemanStage.def				;Manic
+stages\heatman.def				;Fou
+stages\XR-Galaxyman.def				;Enscripture
+stages\Gutsman.def                              ;Magma MKII
+stages\HSH.def                                  ;Magma MKII & O Ilusionista
+stages\XR-Iceman.def				;Enscripture
+stages\Junkman.def				;Fou
+stages\launch.def				;Etg
+stages\Magmaman.def				;Lightflare & Magma MKII
+stages\ILU_MAGMA_DRAGOON.def                    ;O Ilusionista
+stages\Megaman.def				;UltraRoboninja
+stages\XR-Metalman.def				;UltraRoboninja
+stages\MrXstage.def                             ;Fou
+stages\Needleman.def                            ;Magma MKII
+stages\pharoah-man_stage.def			;Jedah12
+stages\XR-Blues.def				;Enscripture
+stages\MetoolBoss.def				;Acey
+stages\Quickman.def				;Acey
+stages\XR-Quint.def				;Enscripture
+stages\LightsLab.def				;UltraRoboninja
+stages\XX'SKY'SHIP'XX.def			;EXShadow
+stages\XR-Ringman.def				;Enscripture
+stages\ILU_SHADOW_MAN_RMM.def                   ;O Ilusionista
+stages\SkullmanStage.def                        ;Manic
+stages\SnakemanStageV2.def			;Manic & UltraRoboninja
+stages\Tenguman.def				;Fou
+stages\Toadman.def				;Enscripture
+stages\Topman.def				;Magma MKII
+stages\Woodman_Stage.def			;Manic
+stages\YellowDevil.def                          ;Magma MKII
+stages\FutureHighwayRemix.def			;Etg
+;
+stages\mm7robotmuseum.def                       ;Luxion
+stages\Wily_castle.def				;Span
+stages\Megamanbg.def				;Oboro
+stages\MegaManRealm.def				;Etg
+stages\WilyRuins.def				;Manic
+stages\XR-Zero.def				;Enscripture
+stages\XR-X.def					;Enscripture
+
+;---------------------------------------------------------------------
+[Options]
+ ;Here you set the maximum number of matches to fight before game ends
+ ;in Arcade Mode. The first number is the number of matches against
+ ;characters with order=1, followed by order=2 and order=3 respectively.
+ ;For example, for 4,3,1 you will fight up to 4 randomly-picked
+ ;characters who have order=1, followed by 3 with order=2 and 1 with
+ ;order=3.
+arcade.maxmatches = 8,0,0,0,0,1,1,1,1,0
+                  ; 1 2 3 4 5 6 7 8 9 10
+
+
+ ;Maximum number of matches to fight before game ends in Team Mode.
+ ;Like arcade.maxmatches, but applies to Team Battle.
+team.maxmatches = 10,0,0,0,0,1,1,1,1,0
+
+team.arcade.maxmatches = 10,0,0,0,0,1,1,1,1,0
+team.versus.maxmatches = 10,0,0,0,0,1,1,1,1,0
+                       ; 1 2 3 4 5 6 7 8 9 10

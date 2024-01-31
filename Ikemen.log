@@ -1,0 +1,10 @@
+external/script/main.lua:1294: <game end>
+stack traceback:
+	[G]: in function 'refresh'
+	external/script/main.lua:1294: in function 'f_loadingRefresh'
+	external/script/main.lua:473: in function <external/script/main.lua:446>
+	(tailcall): ?
+	.\external\script\start.lua:1929: in function <.\external\script\start.lua:0>
+	[G]: in function 'require'
+	external/script/main.lua:2284: in main chunk
+	[G]: ?

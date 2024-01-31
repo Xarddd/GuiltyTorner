@@ -1,0 +1,496 @@
+;--------------------------------------------------------
+[Info]
+ ;Name of the stage.
+name = "South Pole - Ice Man"
+author = "Enscripture"
+
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty = 0
+boundleft = -724
+boundright = 724
+boundhigh = -200
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+
+;--------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+ ;Player 1 starting coordinates.
+ ;p1startx is typically -70 and p2startx is 70.
+ ;p1starty and p1startz should be 0.
+p1startx = -70          ;Starting x coordinates
+p1starty = 0           ;Starting y coordinates
+p1startz = 0          ;Starting z coordinates
+p1facing = 1            ;Direction player faces: 1=right, -1=left
+
+;--- Player 2 ---
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+;--- Common ---
+ ;Don't change these values.
+leftbound  = -3000 ;Left bound (x-movement)
+rightbound =  3000 ;Right bound
+topbound  =  0     ;Top bound (z-movement)
+botbound  =  0     ;Bottom bound
+
+;--------------------------------------------------------
+[Scaling]
+ ;No need to change these values
+topz     = 0       ;Top z-coordinate for scaling
+botz     = 50      ;Bottom z-coordinate for scaling
+topscale = 1       ;Scale to use at top
+botscale = 1.2     ;Scale to use at bottom
+
+;--------------------------------------------------------
+[Bound]
+ ;Distance from left/right edge of screen that player can move to
+ ;Typically 15
+screenleft = 15    ;Dist from left of screen that player can move to
+screenright = 15  ;Right edge
+
+;--------------------------------------------------------
+[StageInfo]
+ ;Z offset for drawing
+ ;Adjust this value to move the ground level up/down in the screen.
+ ;It's the position where the players stand at.
+ ;Up - smaller, Down - larger
+ ;***
+zoffset = 212
+
+ ;Leave this at 1. It makes the players face each other
+autoturn = 1
+
+ ;Set the following to 1 to have the background be reset between
+ ;rounds.
+resetBG = 0
+
+;--------------------------------------------------------
+[Shadow]
+color = 45,45,10
+yscale = .2
+reflect = 0
+
+;--------------------------------------------------------
+[Reflection]
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+bgmusic = sound/Iwao - Iceman.mp3
+bgvolume = 255
+
+;========================================================
+;--------------------------------------------------------
+; Background definition
+; ***
+;-------------------------------------
+; [BG x]
+; type = ?       "Normal"/"Parallax"  (def: "normal")
+; spriteno = ?, ? Sprite group and number: groupno, imgno  (req'd)
+; start = ?, ?   Starting location (integer)  (def: 0, 0)
+; delta = ?, ?   Change in location per camera unit moved (float)  (def: 1,1)
+; trans = ?      Transparency settings: "none"/"add"/"add1"/"sub"/"addalpha" (def: "none")
+; alpha = ?, ?   (only for trans=addalpha) Source,dest alpha (def: 256,0)
+; mask = ?       Masking (int): 0 - off, 1 - on  (def: 0)
+; velocity = ?, ? Velocity: x, y (float): speed background moves (def: 0, 0)
+; tile = ?, ?    Tiling: xtile, ytile (int): 0 - off, 1 - infinite,
+;                        >1 - tile that number of times  (def: 0, 0) - only for Normal BG
+; tilespacing = ?, ? Tiling: x, y (int) : space between tiles (def: 0, 0)
+;  Parallax-only:
+; xscale = ?, ?    Top xscale, bottom xscale (float)
+; width = ?, ?     Top width, bottom width (int)  (use either this or above, but not both)
+; yscalestart = ?  Starting y-scale (float, in percent)  (def: 100)
+; yscaledelta = ?  Change in y-scale per unit (float, in percent)  (def: 0)
+;-------------------------------------
+
+;-------------------------------------
+; Main background definition
+[BGdef]
+ ;Filename of sprite data
+spr = stages/XR-Iceman.sff
+;-------------------------------------
+
+
+[BG Aurora BG]
+
+type = anim
+actionno = 0
+start = -270, -80
+tile = 1,0
+tilespacing = 640
+delta = .5, 1
+mask = 1
+
+[Begin Action 0]
+0,0,0,0,6
+0,1,0,0,6
+0,2,0,0,6
+0,3,0,0,6
+0,4,0,0,6
+0,5,0,0,6
+0,6,0,0,6
+0,7,0,0,6
+0,8,0,0,6
+0,9,0,0,6
+0,10,0,0,6
+0,11,0,0,6
+0,12,0,0,6
+0,13,0,0,6
+0,14,0,0,6
+0,15,0,0,6
+
+[BG Aurora]
+
+type = anim
+actionno = 11
+start = -270, -176
+tile = 1,0
+tilespacing = 640
+delta = .5, 1
+mask = 1
+
+[BG Aurora]
+
+type = anim
+actionno = 11
+start = -270, -250
+tile = 1,0
+tilespacing = 640
+delta = .5, 1
+mask = 1
+
+
+[BG Star left]
+
+type = anim
+actionno = 110
+start = -250, -110
+delta = .5, 1
+mask = 1
+
+[BG Star left]
+
+type = anim
+actionno = 110
+start = 400, -160
+delta = .5, 1
+mask = 1
+
+[Begin Action 110]
+10,0,0,0,6
+10,1,0,0,6
+10,2,0,0,6
+10,3,0,0,6
+10,4,0,0,6
+10,5,0,0,6
+10,6,0,0,6
+10,7,0,0,6
+10,8,0,0,6
+10,9,0,0,6
+10,10,0,0,6
+10,11,0,0,6
+10,12,0,0,6
+10,13,0,0,6
+10,14,0,0,6
+10,15,0,0,6
+
+
+[BG Star Right]
+
+type = anim
+actionno = 20
+start = 270, -90
+delta = .5, 1
+mask = 1
+
+[BG Star Right]
+
+type = anim
+actionno = 20
+start = -380, -130
+delta = .5, 1
+mask = 1
+
+[Begin Action 20]
+20,0,0,0,6
+20,1,0,0,6
+20,2,0,0,6
+20,3,0,0,6
+20,4,0,0,6
+20,5,0,0,6
+20,6,0,0,6
+20,7,0,0,6
+20,8,0,0,6
+20,9,0,0,6
+20,10,0,0,6
+20,11,0,0,6
+20,12,0,0,6
+20,13,0,0,6
+20,14,0,0,6
+20,15,0,0,6
+
+[BG Moon]
+
+type = anim
+actionno = 99
+start = -500, -90
+delta = .6, 1
+mask = 1
+velocity = .005,0
+
+[Begin Action 99]
+9,0,0,0,3
+9,1,0,0,3
+;9,2,0,0,3
+;9,1,0,0,3
+
+[BG Cloud]
+type = normal
+spriteno = 3,0  
+start = 0,0
+delta = .6,.8
+mask = 1
+velocity = -.4, 0
+tile = 1, 0
+tilespacing = 512
+trans = add
+
+[BG Cloud2]
+type = normal
+spriteno = 3,1  
+start = 200,-35
+delta = .6,.9
+mask = 1
+velocity = -.3, 0
+tile = 1, 0
+tilespacing = 600
+trans = add
+
+[BG Cloud3]
+type = normal
+spriteno = 3,2  
+start = 444,40
+delta = .6,.9
+mask = 1
+velocity = -.2, 0
+tile = 1, 0
+tilespacing = 700
+trans = add
+
+[BG Cloud4]
+type = normal
+spriteno = 3,3  
+start = -654,-150
+delta = .6,.8
+mask = 1
+velocity = -.1, 0
+tile = 1, 0
+tilespacing = 700
+trans = add
+
+[Begin Action 11]
+0,16,0,0,6
+0,17,0,0,6
+0,18,0,0,6
+0,19,0,0,6
+0,20,0,0,6
+0,21,0,0,6
+0,22,0,0,6
+0,23,0,0,6
+0,24,0,0,6
+0,25,0,0,6
+0,26,0,0,6
+0,27,0,0,6
+0,28,0,0,6
+0,29,0,0,6
+0,30,0,0,6
+0,31,0,0,6
+
+[BG snow small]
+type = normal
+spriteno = 8,2
+start = -240,-340
+delta = 1,1
+mask = 1
+trans = add
+velocity = -1.1,2.6
+tile = 1,1
+tilespacing = 311,314
+sin.x = -2, 140
+
+[BG snow small]
+type = normal
+spriteno = 8,2
+start = 520,-540
+delta = 1,1
+mask = 1
+trans = add
+velocity = -.8,2
+tile = 1,1
+tilespacing = 340,366
+sin.x = -4, 120
+
+[BG Mountains]
+type = normal
+spriteno = 2,1  
+start = 0,200
+delta = .7,1
+tile = 1,0
+mask = 1
+
+[BG SnowBack]
+type = normal
+spriteno = 4,1  
+start = 0,127
+delta = .9,1
+tile = 1,0
+mask = 1
+
+[BG Wily]
+
+type = anim
+actionno = 1
+start = 0, 241
+delta = 1, 1
+mask = 1
+
+[Begin Action 1]
+1,0,0,0,7
+1,1,0,0,7
+1,2,0,0,7
+1,3,0,0,7
+1,4,0,0,7
+1,5,0,0,7
+
+[BG Iceman]
+type = normal
+spriteno = 2,0  
+start = 340,96
+delta = 1,1
+mask = 1
+
+;----------------------------
+;Snow
+;----------------------------
+
+
+[BG Snow]
+type = normal
+spriteno = 8,0  
+layerno = 1
+start = 0,-200
+delta = 1,1
+mask = 1
+velocity = -1.5, 3
+tile = 1, 1
+tilespacing = 333, 470
+sin.x = 2, 120
+trans = add
+
+
+[BG Snow]
+type = normal
+spriteno = 8,0  
+layerno = 1
+start = -10,-160
+delta = 1,1
+mask = 1
+velocity = -2.7, 5.3
+tile = 0, 1
+tilespacing = 333, 470
+sin.x = -3, 120
+trans = add
+
+
+;---------------------------
+;snow
+;---------------------------
+
+
+[BG snow big]
+type = normal
+spriteno = 8,0
+start = 0,-100
+delta = 1,1
+mask = 1
+trans = add
+velocity = -3,5
+tile = 1,1
+tilespacing = 180,180
+layerno = 1
+sin.x = -3, 120
+
+[BG snow big]
+type = normal
+spriteno = 8,0
+start = 50,-200
+delta = 1,1
+mask = 1
+trans = add
+velocity = -3,4.8
+tile = 1,1
+tilespacing = 180,180
+layerno = 1
+sin.x = 2, 110
+
+[BG snow med]
+type = normal
+spriteno = 8,1
+start = 60,-120
+delta = 1,1
+mask = 1
+trans = add
+velocity = -2.2,4.5
+tile = 1,1
+tilespacing = 100,100
+layerno = 1
+sin.x = -2, 120
+
+[BG snow med]
+type = normal
+spriteno = 8,1
+start = -20,-190
+delta = 1,1
+mask = 1
+trans = add
+velocity = -3.3,4.3
+tile = 1,1
+tilespacing = 200,200
+layerno = 1
+sin.x = -1, 130
+
+[BG snow small]
+type = normal
+spriteno = 8,2
+start = -40,-130
+delta = 1,1
+mask = 1
+trans = add
+velocity = -4.1,7.6
+tile = 1,1
+tilespacing = 300,300
+layerno = 1
+sin.x = 4, 140
+
+[BG snow small]
+type = normal
+spriteno = 8,2
+start = 20,-240
+delta = 1,1
+mask = 1
+trans = add
+velocity = -1.9,7.6
+tile = 1,1
+tilespacing = 300,300
+layerno = 1
+sin.x = 4, 120

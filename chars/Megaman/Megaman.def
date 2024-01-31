@@ -1,0 +1,57 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Mega Man RMM"
+displayname ="Mega Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion =1.0
+author ="ChAoTiC & O Ilusionista"
+pal.defaults =1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+sprite =Megaman.sff
+anim =Megaman.air
+sound =Megaman.snd
+cmd =Megaman.cmd
+cns =Megaman.cns
+stcommon =common1.cns
+st =Megaman.cns
+st2 = weapons.cns
+st3 = specials.cns
+st4 = hypers.cns
+
+; Maps character selection buttons to palette numbers.
+[Palette Keymap]
+x = 4 ;Press button X to select palette 1, etc.
+y = 2
+z = 3
+a = 1
+b = 5
+c = 6
+x2 = 7 ;Hold Start and press button X for palette 7, etc.
+y2 = 8
+z2 = 9
+a2 = 10
+b2 = 11
+c2 = 12
+
+;pal1=RMM01.act
+;pal2=RMM02.act
+;pal3=RMM03.act
+;pal4=RMM04.act
+;pal5=RMM05.act
+;pal6=RMM06.act
+;pal7=RMM07.act
+;pal8=RMM08.act
+;pal9=RMM09.act
+;pal10=RMM10.act
+;pal11=RMM11.act
+;pal12=RMM12.act
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_megaman.def
+

@@ -1,0 +1,42 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.1
+;Template by Acey
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name="Axl RMM"
+displayname="Axl"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="Rage & Nestor & O Ilusionista"
+pal.defaults=1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+cmd 	 =RMM.cmd
+cns 	 =RMM.cns
+stcommon =common1.cns
+st	 =RMM.cns
+sprite	 =RMM.sff
+anim	 =RMM.air
+sound 	 =RMM.snd
+pal1=ACT/Axl01.act
+pal2=ACT/Axl02.act
+pal3=ACT/Axl03.act
+pal4=ACT/Axl04.act
+pal5=ACT/Axl05.act
+pal6=ACT/Axl06.act
+pal7=ACT/Axl07.act
+pal8=ACT/Axl08.act
+pal9=ACT/Axl09.act
+pal10=ACT/Axl10.act
+pal11=ACT/Axl11.act
+pal12=ACT/Axl12.act
+st1=-2.cns
+st2=-3.cns
+st3=Powersets.cns
+st4=Hypers.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_axl.def

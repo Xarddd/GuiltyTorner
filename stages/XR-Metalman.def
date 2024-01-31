@@ -1,0 +1,181 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+
+[Info]
+name = "Metalworks - Metal Man"
+
+[BGdef]
+spr = XR-Metalman.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/metalman.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -100
+boundright = 100
+boundhigh = -113
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15 
+
+[StageInfo]
+zoffset = 217
+autoturn = 1
+resetBG = 0
+
+[shadow]
+Intensity = 0
+color = 0
+yscale = .25
+fade.range = 0,0
+
+[Reflection]
+intensity = 0
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = normal
+spriteno = 0, 0
+layerno = 0                
+start = 0, 100
+delta = 0,0
+trans = none
+;----------------------------------------
+[BG Press]
+type  = anim
+actionno = 3
+mask = 1              
+start = 0, 100
+delta = 0.8, 1
+;----------------------------------------
+[BG Walls]
+type  = normal
+spriteno = 1, 0
+mask = 1
+layerno = 0                
+start = 0, 100
+delta = 0.8, 0.8
+trans = none
+;----------------------------------------
+[BG Gears]
+type  = anim
+actionno = 1
+mask = 1              
+start = 0, 100
+delta = 0.8, 1.0
+;----------------------------------------
+[BG Fence]
+type  = normal
+spriteno = 7, 0
+mask = 1
+layerno = 0                
+start = 0, 100
+delta = 0.9, 1.0
+trans = none
+;----------------------------------------
+[BG Pierobot]
+type  = anim
+actionno = 2
+mask = 1              
+start = 0, 100
+delta = 1, 1
+;----------------------------------------
+[BG Floor]
+type  = normal
+spriteno = 3, 0
+layerno = 0                
+start = 0, 100
+mask = 1
+delta = 1, 1
+trans = none
+;----------------------------------------
+[BG Blocky]
+type  = anim
+actionno = 4
+layerno = 1
+mask = 1              
+start = -80, 100
+delta = 2, 2
+
+;----------------------------------------
+
+
+;Animations
+[Begin Action 1]
+2,0,0,0,6
+2,1,0,0,6
+2,2,0,0,6
+2,3,0,0,6
+
+[Begin Action 2]
+4,1,0,0,9
+4,2,0,0,9
+4,0,0,0,4
+4,3,0,0,5
+4,0,0,0,9
+4,2,0,0,9
+
+[Begin Action 3]
+5,0,0,0,20
+5,1,0,0,9
+5,2,0,0,9
+5,3,0,0,9
+5,4,0,0,9
+5,5,0,0,9
+5,6,0,0,9
+5,7,0,0,9
+5,8,0,0,9
+5,9,0,0,20
+5,8,0,0,2
+5,7,0,0,2
+5,6,0,0,2
+5,5,0,0,2
+5,4,0,0,2
+5,3,0,0,2
+5,2,0,0,2
+5,1,0,0,2
+
+[Begin Action 4]
+6,0,0,0,10
+6,1,0,0,10
+6,2,0,0,10
+6,3,0,0,10
+6,4,0,0,10
+6,3,0,0,10
+6,5,0,0,10
+6,1,0,0,10
+
+

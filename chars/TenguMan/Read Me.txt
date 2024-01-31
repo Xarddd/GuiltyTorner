@@ -1,0 +1,169 @@
+                                                                                                    
+                                                                                ;;ii;;                
+                                                                          ::iiiiiiii                  
+                                                                    ..iiii;;..  ii..                  
+                                                                ..ttii..      ii::                    
+      ..;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iiiiii..    ::;;                      
+    ..::                                                    ..;;ii;;..      ii..                      
+  ..::                                                ::;;ii;;..            ;;;;..................    
+..::                                            ..;;ii::..                    ..iiiiffffffffffffjjii  
+::..        http://infinitymugenteam.com/     ..,,ii....                        ..iifffffffffffffftt..
+  ::..                                              ..;;;;....              ..;;;;;;;;;;;;;;;;;;;;    
+    ::..         Share & Create                           ,,;;;;....        ii..                      
+      ::......................................................;;iiii;;..    ;;,,                      
+        ........................................................,,iiii        ii..                    
+                                                                  ,,;;ii;;..  ..ii                    
+                                                                        ;;iiii,,;;;;                  
+                                                                              ;;iitt..                
+                                                                                  ;;;; 
+
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+-------------------------------- Tengu Man - RMM EDITION --------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+Tengu Man release 4 - 2021-08-21
+
+Updated codes and bug fixes by O Ilusionista
+Updated Sprites and some bug fixes by Laspacho
+Originally Sprited and Coded by aPoCaLyPsE
+
+Appearance: Mega Man 8
+
+History:
+Tengu Man is one of the first four bosses, and is stationed within a high mountain range in Japan. Mega Man defeats him and obtains Tornado Hold and one sample of the Evil Energy. His weakness is Ice Wave, which freezes his feet, keeping him in place for a few seconds and allowing the player to follow up with another attack while he is stuck.
+
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+				[ About ]
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+Tengu Man (テングマン Tenguman) is a Robot Master from Mega Man 8 and Mega Man & Bass. Originally built as an experimental robot that can generate artificial typhoons, he was modified into a combat robot by Dr. Wily. He is modeled after the Tengu, a Japanese yōkai.
+
+Tengu Man is equipped with a razor-winged jet engine on his back that grants him high-speed flight, a retractable triple-bladed fan weapon (also known as a Ha-Uchiwa) on his arm, and the ability to summon cutting blades of air and whirlwinds with Tornado Hold to trap and blow his opponents to their doom. He is one of the few Robot Masters to grant two different Special Weapons on separate occasions.
+
+Having and maintaining both an independent spirit and a strong pride, Tengu Man is highly proud of his large nose while being good at reading the atmosphere and likes fly fishing in his spare time. He looks down on others and fights with boldness, having noticeably arrogant and overconfident mannerisms while also scoffing at the concepts of both unity and friendship.
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+				[ Thanx ]
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+I would like to thanks the following people, in no particular order (I know 
+I will forget someone):
+
+
+Original creators: Capcom, Keiji Inafune
+MUGEN engine: Elecbyte
+Emulators: ZSNES, WinKawaks, MAMEUI
+Resources: The Spriters Resource, Sprites-Inc., The Mechanical Maniacs, The Megaman Network, Megaman Knowledge Base
+Palettes: Psykai
+
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+				[ Tools ]
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+I've used the following tools to develop this char:
+
+- Photoshop CC 2017, 
+- Fighter Factory Studio
+- Adobe Audacity
+
+████████████████████████████████████████████████████████████████████████████
+
+				[ NORMAL MOVES ]
+
+████████████████████████████████████████████████████████████████████████████
+
+
+F or B while lying down		Recover roll
+----------------------------------------------------------------------------
+	Rolls and move away from the attacker
+
+
+F or B + Hard Punch		Grab
+----------------------------------------------------------------------------
+	Throws the enemy towards the ground
+
+
+F or B + Hard Kick		Grab
+----------------------------------------------------------------------------
+	Grab and slide with the enemy,
+
+* hold the directional can flip the throw direction
+
+████████████████████████████████████████████████████████████████████████████
+
+				[ SUPER MOVES ]
+
+████████████████████████████████████████████████████████████████████████████
+
+RMM features Power Sets for each char, which can be changed by doing the right command.
+
+
+D,D, any attack button	Power Sets	
+----------------------------------------------------------------------------
+	Switch Power to power sets 1 through 6:
+
+	01 (lk) = Katana Blade
+	02 (mk) = Tengu Spike
+	03 (hk) = Kamaitachi
+	04 (lp) = Blade Kick
+	05 (mp) = Tornado Hold
+	06 (hp) = Tencrow
+
+* can be done on air too
+
+QCF+P (air-ok): Tengu Blade
+QCB+P: Crow Bite
+QCB+K (air-ok): Slice Kick
+QCB+P (air only): Sky Terror
+
+
+████████████████████████████████████████████████████████████████████████████
+
+				[ Hyper MOVES ]
+
+████████████████████████████████████████████████████████████████████████████
+
+
+QCF+PP (air-ok): Nose Dive
+QCB+PP: Katana Showdown 
+QCF+KK: Tornado Prison
+QCB+KK (air-ok): Tengu Bomber
+
+ ____________________
+|Original RMM credits|
+---------------------------------------------------------------------
+
+Special Thanks to:
+Rage for helping with the main black border
+Manic and Magma Dragon MKII for new heads, and suggestions.
+Thanks K3nShiN and RYO2005 for some sprites.
+
+ _________
+|About RMM|
+---------------------------------------------------------------------
+Robot Master Mayhem is the 3rd Mugen game project by the Infinity Mugen Team.
+This character was created using the template developed specifically for this 
+game. Despite this, "Burst Man" will work in mosy any M.U.G.E.N environment.
+
+ _____________
+|Special Tanks|
+---------------------------------------------------------------------
+* Mega Man Wikia for the character info
+* Chaotic for creating the "Power Sets Switching" and "Dodge Code"
+* Calamix for the code used in "Missle Attack" and "Power Mine"
+* Capcom for creating the games we play
+* The original Elecbyte team for M.U.G.E.N
+* The Infinity Mugen Team forum members for supporting us in the project
+
+

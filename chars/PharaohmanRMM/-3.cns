@@ -1,0 +1,258 @@
+;===========================================================================
+;Robot Master Mayhem - Constants Template (statedef -3) V.1
+;Template by Acey
+;Based on Megaman by Chaotic
+;www.infinitymugenteam.com
+;===========================================================================
+
+;---------------------------------------------------------------------------
+; States that are executed while in self state (use statedef -3)
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+
+[State -3, Fffffinish!!]
+type = Helper
+triggerall = NumHelper(30000)=0
+trigger1 = Winko
+helpertype = normal
+name = "Finish"
+ID = 30000
+stateno = 30000
+ownpal = 1
+ignorehitpause = 1
+supermovetime = 9999
+pausemovetime = 9999
+
+[state 1107, flame]
+type = explod
+triggerall = ProjHitTime(1005)=1
+trigger1 = numexplod(8020) = 0
+anim = 8020
+id = 8020
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = -2
+sprpriority = -1
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = Roundstate>3
+flag = NoBarDisplay
+
+[State -3, VarAdd]
+type = VarAdd
+trigger1 = (HitPauseTime = 1) && (P2MoveType = H) && (MoveHit = 1) && (StateNo < 3000)
+trigger2 = ProjHitTime(0) = 1
+v = 21
+value = 1
+ignorehitpause = 1
+
+[State -3, VarReset]
+type = VarSet
+trigger1 = P2MoveType != H
+v = 21
+value = 0
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+trigger1 = StateNo >= 3000
+value = 1
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) <= 1
+value = 1
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) = 2
+value = 0.8
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) = 3
+value = 0.6
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) = 4
+value = 0.4
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) >= 5
+value = .2
+
+[State 8510, P�]
+type = Explod
+triggerall = !NumExplod(8510)
+trigger1 = Stateno = 52 && time = 1
+trigger2 = Stateno = 240 && animelem = 8
+trigger3 = Stateno = 1102 && time = 1
+trigger4 = Stateno = 1112 && time = 1
+trigger5 = Stateno = 1122 && time = 1
+trigger6 = Stateno = 106 && time = 1
+trigger7 = Stateno = 352 && AnimElemTime(2) = 1
+trigger8 = stateno = 1430 && time = 1 
+anim = 25016;8510;6020;8510
+ID = 25016;8510;6020;8510
+postype = P1
+pos = 0,4
+sprpriority = -1
+ownpal = 1
+;scale = 1.4, 1.2
+
+
+
+;--------------------------
+;Remove Hyper FX
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = StateNo != [3000,4999]
+ID = 8900
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Roundstate = 4
+ID = 8901
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Var(20) > 0
+ID = 8900
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = StateNo != [3000,4999]
+ID = 8998
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Roundstate = 4
+ID = 8998
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Var(20) > 0
+ID = 8998
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = StateNo != [3000,4999]
+ID = 8997
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Roundstate = 4
+ID = 8997
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Var(20) > 0
+ID = 8997
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = StateNo != [3000,4999]
+ID = 8999
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Roundstate = 4
+ID = 8999
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Var(20) > 0
+ID = 8999
+
+;--------------------------
+;Reset Vars
+
+[State -3, MSSM]
+type = VarRandom
+trigger1 = 1
+v = 23
+range = 0,8
+
+[State -3, Super Jump]
+type = VarSet
+trigger1 = Stateno = 0
+v = 12
+value = 0
+
+[State -3, Afterimagetime]
+type = Afterimagetime
+trigger1 = stateno != [3000,4999]
+time = 0
+
+[State -3, ctrl set]
+type = ctrlset
+trigger1 = roundstate = 4
+value = 0
+
+
+;----------------------------------------------------------------------------------------------
+;No music for intro
+[State -3, AssertSpecial]
+type = AssertSpecial
+trigger1 = roundno=1
+trigger1 = roundstate<2
+flag = nomusic
+ignorehitpause = 1
+
+
+[state -3, 1]
+type = varset
+trigger1 = statetype != A && ctrl
+v = 6
+value = 0
+
+[state -3, 2]
+type = varset
+trigger1 = statetype != A && ctrl && stateno != 100
+v = 9
+value = 0
+
+[state -3, 2]
+type = varset
+trigger1 = statetype != A && ctrl
+v = 11
+value = 0
+
+[State -3, 3]
+type = null;ScreenBound
+trigger1 = Var(9) = 1 && var(11) < 32 && stateno != 100
+value = 0
+movecamera = 0,0
+
+[State -3, 4]
+type = ScreenBound
+trigger1 = Var(9) = 0 || (statetype = A && var(11) = 32 && stateno != 100)
+value = 1
+movecamera = 1,1
+
+[state -3, 5]
+type = varadd
+trigger1 = var(9) = 1
+v = 11
+value = 1
+
+[State -3, Record Turn]
+type = VarSet
+triggerall = WinKO
+trigger1 = Anim = [5,6]
+v = 18
+value = 1
+
+

@@ -1,0 +1,399 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+
+[Info]
+name = "Wily Castle Ruins"
+
+[BGdef]
+spr = WilyRuins.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/Kazi_-_Wily_VS_Zero.mp3
+bgvolume = 255
+
+
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty = 0
+boundleft = -150
+boundright = 150
+boundhigh = -250
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 225
+autoturn = 1
+resetBG = 0
+
+[shadow]
+Intensity = 200
+color = 0,0,0
+yscale = .5
+fade.range = -400,-100
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = anim
+spriteno = 0, 0
+layerno = 0                
+start = -160, 0
+delta = 0,0
+trans = none
+actionno = 4
+;-------
+[Begin Action 4]
+0,0, 0,0, 6
+1,1, 0,0, 6
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+;----------------------------------------
+[BG Waves]
+type  = anim
+layerno = 0                
+start = 0, 200
+delta = 0,0
+actionno = 2
+tile = 1,0
+sin.y = 0,-93
+tilespacing = 60,0
+velocity = -0.3
+;----------------------------------------
+[BG Waves 2]
+type  = anim
+layerno = 0                
+start = 0, 215
+delta = 0,0
+actionno = 1
+tile = 1,0
+sin.y = 0,-93
+tilespacing = 90,0
+velocity = -0.5
+;----------------------------------------
+[BG Waves 3]
+type  = anim
+layerno = 0                
+start = 0, 230
+delta = 0,0
+actionno = 1
+tile = 1,0
+sin.y = 0,-93
+tilespacing = 120,0
+velocity = -0.7
+;----------------------------------------
+[BG Waves 4]
+type  = anim
+layerno = 0                
+start = 0, 239
+delta = 0,0
+actionno = 3
+tile = 1,0
+sin.y = 0,-93
+tilespacing = 150,0
+velocity = -0.8
+;-------
+[Begin Action 1]
+7,2, 0,0, 10
+7,1, 0,0, 10
+7,0, 0,0, 10
+7,1, 0,0, 10
+7,2, 0,0, 10
+7,3, 0,0, 10
+;5,30, 0,0, 50
+;-------
+[Begin Action 2]
+7,2, 0,0, 14
+7,1, 0,0, 14
+7,0, 0,0, 14
+7,1, 0,0, 14
+7,2, 0,0, 14
+7,3, 0,0, 14
+;5,30, 0,0, 50
+;-------
+[Begin Action 3]
+7,2, 0,0, 8
+7,1, 0,0, 8
+7,0, 0,0, 8
+7,1, 0,0, 8
+7,2, 0,0, 8
+7,3, 0,0, 8
+5,30, 0,0, 10
+;---------------------------------------
+[BG Rocks]
+type  = normal
+spriteno = 8,7
+start = -220,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.9,8
+tilespacing = 800,3000
+;---------------------------------------
+[BG Rocks2]
+type  = normal
+spriteno = 8,7
+start = 220,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.9,8.5
+tilespacing = 500,3000
+;---------------------------------------
+[BG Twisted Junk]
+type  = normal
+spriteno = 8,0
+start = 500,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 2,1
+actionno = 10
+velocity = -.9,6.7
+tilespacing = 520,1000
+;---------------------------------------
+[BG Bolt Pc 1]
+type  = normal
+spriteno = 8,4
+start = 900,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 2,1
+actionno = 10
+velocity = -.9,8
+tilespacing = 530,800
+;---------------------------------------
+[BG Bolt Pc 2]
+type  = normal
+spriteno = 8,4
+start = 800,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.9,4.4
+tilespacing = 534,900
+;---------------------------------------
+[BG Bolt 1]
+type  = normal
+spriteno = 8,5
+start = 1090,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.9,5.4
+tilespacing = 334,800
+;---------------------------------------
+[BG Bolt 2]
+type  = normal
+spriteno = 8,5
+start = 190,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.9,8.4
+tilespacing = 834,730
+;---------------------------------------
+[BG Pebble 1]
+type  = normal
+spriteno = 8,6
+start = 100,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.9,10
+tilespacing = 634,800
+;---------------------------------------
+[BG Pebble 2]
+type  = normal
+spriteno = 8,6
+start = 600,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.9,8.5
+tilespacing = 934,700
+;---------------------------------------
+[BG Metal Bar]
+type  = normal
+spriteno = 8,2
+start = 0,120
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.8,8
+tilespacing = 800,2000
+;---------------------------------------
+[BG Metal Sheet]
+type  = normal
+spriteno = 8,3
+start = 120,0
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.9,6
+tilespacing = 800,1000
+;---------------------------------------
+[BG Metal Sheet2]
+type  = normal
+spriteno = 8,1
+start = 120,90
+delta = 1, 1
+mask = 1
+tile = 1,1
+sin.y = 5,1
+actionno = 10
+velocity = -.9,5
+tilespacing = 800,1200
+;---------------------------------------
+[BG Ground Back]
+type  = normal
+spriteno = 0,5
+start = -310,220
+mask = 1
+delta = 1, 1
+;---------------------------------------
+[BG Hologram Pad]
+type  = normal
+spriteno = 5,0
+start = 50,210
+mask = 1
+;---------------------------------------
+[BG Hologram Pad Light]
+type  = normal
+spriteno = 6,1
+start = 50,210
+trans = addalpha
+alpha = 186,256
+sin.x = 3,5
+mask = 1
+;---------------------------------------
+[Begin Action 6]
+6,0, 0,0, 5,,AS224D150
+6,2, 0,0, 5,,AS224D150
+6,0, 0,0, 5,,AS224D150
+6,3, 0,0, 5,,AS224D150
+6,0, 0,0, 5,,AS224D150
+6,4, 0,0, 5,,AS224D150
+6,0, 0,0, 5,,AS224D150
+6,2, 0,0, 5,,AS224D150
+6,0, 0,0, 5,,AS224D150
+6,3, 0,0, 5,,AS224D150
+6,0, 0,0, 5,,AS224D150
+6,4, 0,0, 5,,AS224D150
+6,0, 0,0, 5,,AS224D150
+6,2, 0,0, 5,,AS224D150
+6,0, 0,0, 5,,AS224D150
+6,3, 0,0, 5,,AS224D150
+6,0, 0,0, 5,,AS224D150
+6,4, 0,0, 5,,AS224D150
+6,5, 0,0, 2,,AS224D150
+;---------------------------------------
+[BG Zero Back]
+type  = anim
+delta = 1, 1
+start = 50,155
+actionno = 6
+sin.x = 3,150
+sin.y = 3,150
+mask = 1
+;---------------------------------------
+[BG Zero Hologram]
+type  = anim
+spriteno = 5,1
+delta = 1, 1
+start = 50,175
+mask = 1
+actionno = 5
+sin.y = 2,150
+;-------
+[Begin Action 5]
+5,3, 0,0, 100
+5,3, 0,0, 90,,AS224D224
+5,3, 0,0, 100
+5,30, 0,0, 5
+5,3, 0,0, 5,,AS224D224
+5,30, 0,0, 5
+5,3, 0,0, 5,,AS224D224
+5,30, 0,0, 5
+5,3, 0,0, 20,,AS224D224
+5,8, 0,0, 2,,AS224D224
+5,7, 0,0, 2,,AS224D224
+5,6, 0,0, 2,,AS224D224
+5,5, 0,0, 2,,AS224D224
+5,4, 0,0, 100
+5,5, 0,0, 5,,AS224D224
+5,4, 0,0, 100
+5,5, 0,0, 5,,AS224D224
+5,4, 0,0, 100
+5,5, 0,0, 2,,AS224D224
+5,6, 0,0, 2,,AS224D224
+5,7, 0,0, 2,,AS224D224
+5,8, 0,0, 2,,AS224D224
+5,3, 0,0, 5,,AS224D224
+;---------------------------------------
+;[BG Fighting Ground2]
+;type  = normal
+;spriteno = 0,6
+;start = 310,240  
+;mask = 1
+;---------------------------------------
+[BG Fighting Ground]
+type  = normal
+spriteno = 0,1
+start = -310,240
+tile = 1,0
+mask = 1
+;---------------------------------------[/PCX IMAGE]
+
+

@@ -1,0 +1,1261 @@
+;===========================================================================
+;Robot Master Mayhem - Screen Pack VH.1
+;Screen Pack by Trasgo7
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name = "Rockman_IMT"
+author = "Trasgo7 & O Ilusionista"
+localcoord = 640,480
+
+[Files]
+spr = system.sff
+snd = system.snd
+logo.storyboard = ;logo.def
+intro.storyboard = intro.def 
+fight = data/RMM/fight.def
+select = select.def
+font1 = font/f-4x6.fnt
+font2 = font/f-6x9.fnt
+font3 = font/jg.fnt
+font4 = font/qoh_big.fnt
+font5 = font/qoh_small.fnt
+font6 = F_test.def
+font7 = font/X1d.fnt
+font8 = font/X1w.fnt
+font9 = F_test2.def
+font0 =  LETTERS3.def
+
+[FightFx]
+scale = 2
+
+
+[Music]
+title.bgm = sound/Title_new.mp3
+title.bgm.loop = 1
+title.bgm.loopstart = 1769691
+title.bgm.loopend = 2900000;1911012
+select.bgm =   sound/select_MM3.mp3;Select.mp3
+select.bgm.loop = 1
+vs.bgm = sound/stagestart.mp3
+vs.bgm.loop = 0
+victory.bgm = sound/victory.mp3
+victory.bgm.loop = 1
+
+[Title Info]
+cursor.move.snd = 100,0
+cursor.done.snd = 100,1
+cancel.snd = 100,2
+menu.pos = 520,300;158
+menu.item.font = 6,0,0, 0,153,255
+menu.item.active.font = 6,0,0;4
+menu.item.spacing = 0, 20
+
+; Submenu: Arcade
+menu.itemname.menuarcade = "ARCADE"                          ;Ikemen feature
+menu.itemname.menuarcade.arcade = "SINGLE MODE"
+menu.itemname.menuarcade.teamarcade = "TEAM ARCADE"
+menu.itemname.menuarcade.teamcoop = "TEAM CO-OP"
+menu.itemname.menuarcade.back = "BACK"                       ;Ikemen feature
+
+; Submenu: Versus
+menu.itemname.menuversus = "VS MODE"
+menu.itemname.menuversus.versus = "1P VS 2P"
+menu.itemname.menuversus.teamversus = "TEAM VERSUS"
+menu.itemname.menuversus.versuscoop = "VERSUS CO-OP"         ;Ikemen feature
+menu.itemname.menuversus.freebattle = "QUICK MATCH"          ;Ikemen feature
+menu.itemname.menuversus.back = "BACK"                       ;Ikemen feature
+
+; Submenu: Story Mode
+menu.itemname.storymode = "STORY MODE"                       ;Ikemen feature
+; story arcs menu items are automatically added before storymode.back
+menu.itemname.storymode.back = "BACK"                        ;Ikemen feature
+
+; Submenu: Network
+menu.itemname.menunetwork = "NETWORK"                        ;Ikemen feature
+menu.itemname.menunetwork.serverhost = "HOST GAME"           ;Ikemen feature
+menu.itemname.menunetwork.serverjoin = "JOIN GAME"           ;Ikemen feature
+menu.itemname.menunetwork.back = "BACK"                      ;Ikemen feature
+
+; known IP addresses show up before serverjoin.back item
+menu.itemname.menunetwork.serverjoin.joinadd = "NEW ADDRESS" ;Ikemen feature
+menu.itemname.menunetwork.serverjoin.back = "BACK"           ;Ikemen feature
+
+; This group is hidden and should not be moved to other menus.
+; It's opened automatically, after synchronization with online player.
+menu.itemname.server.netplayversus = "VERSUS 2P"             ;Ikemen feature
+menu.itemname.server.netplayteamcoop = "ARCADE CO-OP"        ;Ikemen feature
+menu.itemname.server.netplaysurvivalcoop = "SURVIVAL CO-OP"  ;Ikemen feature
+menu.itemname.server.back = "EXIT"                           ;Ikemen feature
+
+; Submenu: Practice
+menu.itemname.menupractice = "PRACTICE"                      ;Ikemen feature
+menu.itemname.menupractice.training = "TRAINING"             ;Ikemen feature
+;menu.itemname.menupractice.trials = "TRIALS"                 ;Ikemen feature (not implemented yet)
+menu.itemname.menupractice.back = "BACK"                     ;Ikemen feature
+
+; Submenu: Watch Mode
+menu.itemname.menuwatch = "WATCH MODE"                       ;Ikemen feature
+menu.itemname.menuwatch.watch = "CPU MATCH"
+menu.itemname.menuwatch.randomtest = "RANDOMTEST"            ;Ikemen feature
+menu.itemname.menuwatch.replay = "REPLAY"                    ;Ikemen feature
+menu.itemname.menuwatch.back = "BACK"                        ;Ikemen feature
+
+; Options
+menu.itemname.options = "OPTIONS"
+
+; Exit Game
+menu.itemname.exit = "EXIT"
+
+menu.window.visibleitems = 8
+menu.boxcursor.coords = -122,-12,970,7
+menu.boxcursor.visible = 0
+
+
+[TitleBGdef]
+bgclearcolor = 0,0,0
+
+;================= Background Image ==================
+[TitleBG 0.selec_bg]
+Type = normal
+spriteno =  0, 1
+layerno = 0
+start = 0,0
+tile = 1,1
+velocity = 0,1
+
+;=========== Pallete Subtract =========== 
+[xTitleBG Subtract blue]; Blank
+type = normal
+layerno = 0
+spriteno = 517,0
+start = 128,120
+tile = 1,1
+trans = sub
+
+;================ logo ==============
+[TitleBG Megaman Picture]
+type  = Anim
+actionno = 5
+;spriteno = 0, 5
+start = -100, 240
+mask = 1
+sin.x = 5,270,0 
+sin.y = 5,500,0 
+
+
+[TitleBG logo]
+type  = anim;normal
+actionno = 0
+;spriteno = 0, 0
+start = 140, 90
+mask = 1
+
+[TitleBG NAME]
+type  = anim;normal
+actionno = 4
+;spriteno = 0, 4
+start = -34, 145
+mask = 1
+
+[TitleBG IMT]
+type  = anim;normal
+actionno = 99
+;spriteno = 99, 0
+start = -120,459
+mask = 1
+
+;============== Screen Transitions ================
+[TitleBG 1.b1];fader
+type = normal
+layerno = 0
+spriteno = 900,0
+start = 0,0
+velocity = 0,-12
+trans = add
+tile = 1,0
+
+[TitleBG 1.b1];fader
+type = normal
+layerno = 1
+spriteno = 900,0
+start = 0,120
+velocity = 0,-15
+trans = add
+tile = 1,0
+
+[TitleBG Menu shadow 4]
+type  = normal
+spriteno = 445,10;0,444
+start = 0, 0
+mask = 1
+trans = sub
+
+[TitleBG Menu Bar 5]
+type  = anim;normal
+actionno = 445
+;spriteno = 445,0;0,445
+start = 0, 0
+mask = 1
+
+
+;=======================================================
+;Character select definition
+[Select Info]
+rows = 12
+columns = 17
+wrapping = 0
+pos = -95,215
+showemptyboxes = 0
+moveoveremptyboxes = 0
+cell.size = 48,48
+cell.spacing = 1
+cell.bg.anim = 150
+cell.random.spr = 180,0
+cell.random.switchtime = 5
+
+;-------- P1 Cursor Data ----------
+p1.cursor.startcell = 0,6
+p1.cursor.active.anim = 160,0
+p1.cursor.done.anim = 161,0
+p1.cursor.move.snd = 100,0
+p1.cursor.done.snd = 100,1
+p1.random.move.snd = 100,0
+
+;-------- P2 Cursor Data ----------
+p2.cursor.startcell = 0,10
+p2.cursor.active.anim = 170,0
+p2.cursor.done.anim = 171,0
+p2.cursor.blink = 1
+p2.cursor.move.snd = 100,0
+p2.cursor.done.snd = 100,1
+p2.random.move.snd = 100,0
+
+;-------- Misc Cursor Sounds ---------
+random.move.snd.cancel = 0
+stage.move.snd = 100,0
+stage.done.snd = 100,1
+cancel.snd = 100,2
+
+;---------- Portrait Data ------------
+portrait.offset = 8,8
+portrait.scale = .5,.5
+title.offset = -500,-500
+title.font = -1;3,0,0
+
+;Portrait
+p1.face.offset = 145,41
+p1.face.facing = 1
+p1.face.scale = 0.25,0.25
+p2.face.offset = 496,41
+p2.face.scale = 0.25,0.25
+p2.face.facing = -1
+
+;Name
+p1.name.offset  =  143,195
+p1.name.font =   6,0,1;-1
+p2.name.offset  = 498,195;375,195
+p2.name.font =   6,0, -1
+
+;Stage select
+stage.pos = 320,20
+stage.active.font = 7,0,0
+stage.active2.font = 7,0,0      ;Second font color for blinking
+stage.done.font = 8,0,0
+;Sounds
+
+;~~~~~~~~~~~ Team Menu ~~~~~~~~~~~~      
+
+teammenu.move.wrapping = 1
+
+;------------ P1 Data --------------
+p1.teammenu.pos = 290, 50
+;p1.teammenu.bg.spr =
+
+p1.teammenu.selftitle.font = 8,0, 1
+p1.teammenu.selftitle.text = PLAYER 1
+p1.teammenu.enemytitle.font = 8,0, 1
+p1.teammenu.enemytitle.text =  ENEMY
+
+p1.teammenu.move.snd = 100,0
+p1.teammenu.value.snd = 100,0
+p1.teammenu.done.snd = 100,1
+
+p1.teammenu.item.offset = 0,20
+p1.teammenu.item.spacing = 0,12
+p1.teammenu.item.font = 7,0, 1
+p1.teammenu.item.active.font = 7,0,1
+p1.teammenu.item.active2.font = 7,0,1
+p1.teammenu.item.cursor.offset = -10, 0
+p1.teammenu.item.cursor.anim = 183
+
+p1.teammenu.value.icon.offset = 60,1
+p1.teammenu.value.icon.spr = 181,0
+p1.teammenu.value.empty.icon.offset = 50,1
+p1.teammenu.value.empty.icon.spr = 182,0
+p1.teammenu.value.spacing = 6,0
+
+;------------ P2 Data --------------
+
+p2.teammenu.pos = 350, 120
+;p2.teammenu.bg.spr =
+
+p2.teammenu.selftitle.font = 8,0, -1
+p2.teammenu.selftitle.text = PLAYER 2
+p2.teammenu.enemytitle.font = 8,0, -1
+p2.teammenu.enemytitle.text = ENEMY
+
+p2.teammenu.move.snd = 100,0
+p2.teammenu.value.snd = 100,0
+p2.teammenu.done.snd = 100,1
+
+p2.teammenu.item.offset = 0,20
+p2.teammenu.item.spacing = 0,12
+p2.teammenu.item.font = 7,0, -1
+p2.teammenu.item.active.font = 7,0, -1
+p2.teammenu.item.active2.font = 7,0, -1
+p2.teammenu.item.cursor.offset = 10, 0
+p2.teammenu.item.cursor.anim = 184
+
+p2.teammenu.value.icon.offset = -60,1
+p2.teammenu.value.icon.spr = 181,0
+p2.teammenu.value.empty.icon.offset = -70,1
+p2.teammenu.value.empty.icon.spr = 182,0
+p2.teammenu.value.spacing = 6,0
+
+; Megaman Badge
+[Begin Action 5]
+0,5, 0,0, 60
+loopstart
+1,0, 0,0, 2
+1,1, 0,0, 2
+1,2, 0,0, 2
+1,3, 0,0, 2
+1,4, 0,0, 2
+0,5, 0,0, 120
+
+; MM logo
+[Begin Action 0]
+-1,0, 0,-200, 30
+0,0, 0,-200, 2
+0,0, 0,-180, 2
+0,0, 0,-160, 2
+0,0, 0,-140, 2
+0,0, 0,-120, 2
+0,0, 0,-100, 2
+0,0, 0,-80, 2
+0,0, 0,-60, 2
+0,0, 0,-40, 2
+0,0, 0,-20, 2
+0,0, 0,0, 2
+0,0, 0,5, 2
+0,0, 0,4, 2
+0,0, 0,3, 2
+0,0, 0,2, 2
+0,0, 0,1, 2
+0,0, 0,0, -1
+
+; COPYRIGHT
+[Begin Action 99]
+-1,0, 0,200, 40
+99,0, 0,200, 2
+99,0, 0,180, 2
+99,0, 0,160, 2
+99,0, 0,140, 2
+99,0, 0,120, 2
+99,0, 0,100, 2
+99,0, 0,80, 2
+99,0, 0,60, 2
+99,0, 0,40, 2
+99,0, 0,20, 2
+99,0, 0,0, 2
+99,0, 0,-10, 2
+99,0, 0,-9, 2
+99,0, 0,-8, 2
+99,0, 0,-7, 2
+99,0, 0,-6, 2
+99,0, 0,-5, 2
+99,0, 0,-4, 2
+99,0, 0,-3, 2
+99,0, 0,-2, 2
+99,0, 0,-1, 2
+99,0, 0,0, -1
+
+; Name
+[Begin Action 4]
+-1,0, 0,0, 35
+0,4, 200,0, 2
+0,4, 180,0, 2
+0,4, 160,0, 2
+0,4, 140,0, 2
+0,4, 120,0, 2
+0,4, 100,0, 2
+0,4, 80,0, 2
+0,4, 60,0, 2
+0,4, 40,0, 2
+0,4, 20,0, 2
+0,4, 0,0, 2
+0,4, -5,0, 2
+0,4, -4,0, 2
+0,4, -3,0, 2
+0,4, -2,0, 2
+0,4, -1,0, 2
+0,4, 0,0, -1
+
+; Empty cell
+[begin action 150]
+150,0,0,0,2, ,
+
+; 1P cell animation
+[begin action 160]
+160,1, 0,0, 4
+171,0, 0,0, 4
+160,1, 0,0, 4
+171,1, 0,0, 3, , 
+171,1, 0,0, 3, , A1
+171,1, 0,0, 3, , A
+;646,0,0,0,1, ,A
+
+; 1p OK
+[begin action 161]
+171,2, 0,0, 1, , A1
+
+; 2P cell animation
+[begin action 170]
+160,2, 0,0, 4
+161,0, 0,0, 4
+160,2, 0,0, 4
+161,1, 0,0, 3, , 
+161,1, 0,0, 3, , A1
+161,1, 0,0, 3, , A
+;646,0,0,0,1, ,A
+
+; 2P OK
+[begin action 171]
+161,2, 0,0, 1, , A1
+
+[begin action 183]
+183,0,0,0,1, ,A
+183,0,0,0,1, ,A
+183,1,0,0,1, ,
+183,1,0,0,1, ,
+
+[begin action 184]
+184,0,0,0,1, ,
+184,0,0,0,1, ,
+184,1,0,0,1, ,A
+184,1,0,0,1, ,A
+
+;-----------------------
+;Character select screen background
+[SelectBGdef]
+
+;============== Background Image =================
+[SelectBG 1.a1]; Background
+type = normal
+layerno = 0
+spriteno = 500,4
+start = 0,120
+;tile = 1,1
+
+[SelectBG Anim]
+type = anim
+actionno = 500
+layerno = 0
+start = 0,120
+
+;=========== Pallete Subtract =========== 
+[xSelectBG Subtract blue]; Blank
+type = normal
+layerno = 0
+spriteno = 517,0
+start = 128,120
+tile = 1,1
+trans = sub
+
+;=========== Marquees ===================
+;p1 side 
+
+[SelectBG Select Marquee - left]; Blank
+type = normal
+layerno = 0
+spriteno = 510,0
+start = -280,120
+velocity = 0,0.95
+tile = 0,1
+trans = add
+
+[SelectBG Select Marquee - left]; Blank
+type = normal
+layerno = 0
+spriteno = 510,2
+start = -250,120
+velocity = 0,0.6
+tile = 0,1
+trans = add
+
+[SelectBG Select Marquee - left]; Blank
+type = normal
+layerno = 0
+spriteno = 510,2
+start = -310,120
+velocity = 0,0.6
+tile = 0,1
+trans = add
+
+[SelectBG Select Marquee - right]; Blank
+type = normal
+layerno = 0
+spriteno = 510,1
+start = 280,120
+velocity = 0,-0.95
+tile = 0,1
+trans = add
+
+[SelectBG Select Marquee - right]; Blank
+type = normal
+layerno = 0
+spriteno = 510,3
+start = 250,120
+velocity = 0,-0.6
+tile = 0,1
+trans = add
+
+[SelectBG Select Marquee - left]; Blank
+type = normal
+layerno = 0
+spriteno = 510,3
+start = 310,120
+velocity = 0,-0.6
+tile = 0,1
+trans = add
+
+;=========== Portraits ===========
+;animation of the background
+
+;p1 side
+
+[SelectBG darkbg1]
+type = normal
+spriteno = 514,0
+layerno = 0
+start = -115,40
+mask = 1
+trans = add1
+
+
+[SelectBG Static left]
+type = anim
+actionno = 515
+layerno = 0
+start = -115,40
+
+[SelectBG Static left2]
+type = normal
+spriteno = 515,6
+layerno = 1
+start = -115,40
+mask = 1
+
+;p2 side
+
+[SelectBG darkbg1]
+type = normal
+spriteno = 514,0
+layerno = 0
+start = 116,40
+mask = 1
+trans = add1
+
+[SelectBG Static right]
+type = anim
+actionno = 515
+layerno = 0
+start = 116,40
+
+[SelectBG Static right2]
+type = normal
+spriteno = 515,7
+layerno = 1
+start = 116,40
+mask = 1
+
+;============== Screen Transitions ================
+[SelectBG 1.b1];fader
+type = normal
+layerno = 0
+spriteno = 900,0
+start = 0,0
+velocity = 0,-12
+trans = add
+tile = 1,0
+
+[SelectBG 1.b1];fader
+type = normal
+layerno = 1
+spriteno = 900,0
+start = 0,0
+velocity = 0,-30
+trans = add
+tile = 1,0
+
+[begin action 321]
+321,1,0,0,2, ,A
+321,2,0,0,2, ,A
+321,3,0,0,2, ,A
+321,4,0,0,2, ,A
+321,5,0,0,2, ,A
+321,1,0,0,2, ,A
+321,2,0,0,2, ,A
+321,3,0,0,2, ,A
+321,4,0,0,2, ,A
+321,5,0,0,2, ,A
+
+[begin action 322]
+322,1,0,0,2, ,A
+322,2,0,0,2, ,A
+322,3,0,0,2, ,A
+322,4,0,0,2, ,A
+322,5,0,0,2, ,A
+322,1,0,0,2, ,A
+322,2,0,0,2, ,A
+322,3,0,0,2, ,A
+322,4,0,0,2, ,A
+322,5,0,0,2, ,A
+
+[Begin ACtion 370];
+370,0,0,0,8,,
+370,1,0,0,8,,
+370,2,0,0,8,,
+370,3,0,0,8,,
+Loopstart
+370,4,0,0,8,,
+370,5,0,0,8,,
+370,6,0,0,8,,
+370,7,0,0,8,,
+370,8,0,0,8,,
+370,9,0,0,8,,
+
+
+[Begin Action 380]; Versus Sign
+380,8,0,0,20, ,S
+380,7,0,0,5, ,S
+380,6,0,0,4, ,S
+380,5,0,0,3, ,S
+380,4,0,0,2, ,S
+380,3,0,0,1, ,S
+380,2,0,0,1, ,S
+380,1,0,0,1, ,S
+380,0,0,0,1, ,S
+380,1,0,0,1, ,S
+380,2,0,0,1, ,S
+380,3,0,0,1, ,S
+380,4,0,0,1, ,S
+380,5,0,0,1, ,S
+380,6,0,0,1, ,S
+380,0,0,0,2, ,A
+380,8,0,0,1, ,S
+380,6,0,0,1, ,S
+380,4,0,0,1, ,S
+380,2,0,0,1, ,S
+loopstart
+380,0,0,0,90, ,S
+
+;=============== animations ==============
+[Begin Action 390];VS Sign Static
+390,0,0,0,3, ,A
+390,1,0,0,3, ,A
+390,2,0,0,3, ,A
+390,3,0,0,3, ,A
+390,4,0,0,3, ,A
+390,5,0,0,3, ,A
+390,6,0,0,3, ,A
+
+
+[Begin action 447]
+ 447,0,0,0,2
+ 447,1,0,0,2
+
+[Begin Action 500]
+500,0, 0,0, 5, , AS150D256
+500,1, 0,0, 5, , AS150D256
+500,2, 0,0, 5, , AS150D256
+500,3, 0,0, 5, , AS150D256
+
+[begin action 515]
+515,0,0,0,2, ,A
+515,1,0,0,2, ,A
+515,2,0,0,2, ,A
+515,3,0,0,2, ,A
+515,4,0,0,2, ,A
+515,5,0,0,2, ,A
+
+[begin action 520]
+515,3,0,0,4, ,A
+515,5,0,0,1, ,A
+515,2,0,0,2, ,A
+515,1,0,0,3, ,A
+515,0,0,0,2, ,A
+515,4,0,0,1, ,A
+
+;-------------------------------------------------------------------
+[VS Screen]
+time = 600 
+
+p1.spr = 9000,2
+p1.offset = -9999,-9999;0,0
+p1.scale = 0.25,0.25
+p1.facing = 1
+;p1.window = 60,30, 539,589
+
+p2.spr = 9000,2
+p2.offset = 322,381;-25,85
+p2.scale = 0.5,0.5
+p2.facing = 1
+p2.window = 0,0, 680,395
+
+p1.name.offset  =  -9999,-9999;85,10
+p1.name.font = 6,0,1
+p1.name.spacing = 0,20
+
+p2.name.pos  = 320,425
+p2.name.font =   9,0, 0
+p2.name.spacing = 0,25
+
+;-----------------------
+;VS Match up screen background
+[VersusBGdef] 
+
+;============== Background Image ==================
+
+[VersusBG 1.a1]; Background
+type = normal
+layerno = 0
+spriteno = 0,1
+start = -260,0
+velocity = -1.5,0
+tile = 1,1
+
+;=========== Pallete Subtract =========== 
+
+[xVersusBG Subtract blue]; Blank
+type = normal
+layerno = 0
+spriteno = 517,0
+start = 128,120
+tile = 1,1
+trans = sub
+
+;=========== Portraits ===========
+[VersusBG Static left]
+type = anim
+actionno = 515
+layerno = 0
+start = -259,97
+
+[VersusBG Static left2]
+type = anim
+actionno = 515
+layerno = 0
+start = -137,97
+
+[VersusBG Static left3]
+type = anim
+actionno = 515
+layerno = 0
+start = -15,97
+
+[VersusBG Static left4]
+type = anim
+actionno = 515
+layerno = 0
+start = 107,97
+
+[VersusBG Static left5]
+type = anim
+actionno = 515
+layerno = 0
+start = 229,97
+
+[VersusBG Static left6]
+type = anim
+actionno = 515
+layerno = 0
+start = 351,97
+
+
+
+[VersusBG Static right]
+type = anim
+actionno = 515
+layerno = 0
+start = -259,239
+
+[VersusBG Static r2]
+type = anim
+actionno = 515
+layerno = 0
+start = -137,239
+
+[VersusBG Static r3]
+type = anim
+actionno = 515
+layerno = 0
+start = -15,239
+
+[VersusBG Static r4]
+type = anim
+actionno = 515
+layerno = 0
+start = 107,239
+
+[VersusBG Static r5]
+type = anim
+actionno = 515
+layerno = 0
+start = 229,239
+
+[VersusBG Static r6]
+type = anim
+actionno = 515
+layerno = 0
+start = 351,239
+
+;---------- MegaMan VS Sign -----------
+[VersusBG MManim]]
+type = anim
+actionno = 370
+layerno = 0
+start = -320,-5
+
+[VersusBG Streak]]
+type = normal
+spriteno = 375,0
+layerno = 0
+tile = 1,0
+mask = 1
+trans = add
+velocity = 6,0
+
+;============== Screen Transitions ================
+[VersusBG 1.b1];fader
+type = normal
+layerno = 0
+spriteno = 900,0
+start = 0,0
+velocity = 0,-12
+trans = add
+tile = 1,0
+
+[VersusBG 1.b1];fader
+type = normal
+layerno = 1
+spriteno = 900,0
+start = 0,0
+velocity = 0,-15
+trans = add
+tile = 1,0
+
+;-------------------------------------------------------------------
+;Demo mode definition
+[Demo Mode]
+enabled = 1
+select.enabled = 0
+vsscreen.enabled = 0
+title.waittime = 900
+fight.endtime = 900
+fight.playbgm = 0
+fight.bars.display = 0
+intro.waitcycles = 1
+debuginfo = 0
+
+;-------------------------------------------------------------------
+;Continue screen definition
+[Continue Screen]
+enabled = 1               ;Set to 1 to show continue screen, 0 to disable
+pos = 320,120            ;Position
+;***Known issue*** The display elements below use the fight.def resources
+;instead of the ones defined in this file.
+continue.text = "C"
+continue.font = 7,0,0
+continue.offset = 0,360
+;Inactive and active (selected) YES/NO text
+yes.text = "Y"
+yes.font = 9,0,0
+yes.offset = -120, 60
+yes.active.text = "Y"
+yes.active.font = 8,0,0
+yes.active.offset = -120, 60
+no.text = "N"
+no.font = 9,0,0
+no.offset = 120, 60
+no.active.text = "N"
+no.active.font = 8,0,0
+no.active.offset = 120, 60
+
+;-------------------------------------------------------------------
+;Game over screen definition
+[Game Over Screen]
+enabled = 1
+storyboard = gameover.def
+
+;-------------------------------------------------------------------
+;Victory screen definition
+[Victory Screen]
+enabled = 1
+time = 1500                
+fadein.time = 15
+fadeout.time = 20
+;Winner's portrait and name
+p1.offset = 15,166
+p1.spr = 9000,1
+p1.facing = 1
+p1.scale = 0.25,0.25
+p1.name.offset = 22,116
+p1.name.font = 6,0,1
+;Win quote text
+winquote.text = "Winner!" 
+winquote.offset = 151,180
+;winquote.font =  0,0,1
+winquote.font =  6,0,1
+winquote.textwrap = w   
+
+;-----------------------
+;Victory screen background
+[VictoryBGdef] 
+
+[VictoryBG 0] ;black
+type  = normal
+spriteno = 910,0
+start = 0,0
+mask = 1
+
+[VictoryBG 1] ;blue lines
+type  = anim
+actionno = 911
+start = 0,0
+mask = 1
+
+[VictoryBG 2] ;blue shadow
+type  = anim
+actionno = 913
+start = 0,0
+mask = 1
+
+[VictoryBG 3] ;blue box
+type  = normal
+spriteno = 910,1
+start = 0,0
+mask = 1
+
+[VictoryBG 4] ;blue grid
+type  = anim
+actionno = 912
+start = 0,0
+mask = 1
+
+[VictoryBG 4] ;blue grid 2
+type  = anim
+actionno = 914
+start = 0,0
+mask = 1
+
+[VictoryBG 5] ;blue box 2
+type  = normal
+spriteno = 915,0
+start = 0,0
+layerno = 1
+mask = 1
+[VictoryBG 5] ;blue box name
+type  = normal
+spriteno = 916,0
+start = 0,0
+mask = 1
+
+;-------------------------------------------------------------------
+;Win screen definition
+[Win Screen]
+enabled = 1
+wintext.text = "Congratulations!"
+wintext.font = 6,0,0
+wintext.offset = 159,70
+wintext.displaytime = -1
+wintext.layerno = 2
+fadein.time = 32
+pose.time = 300
+fadeout.time = 64
+
+;-------------------------------------------------------------------
+
+;Game ending screen definition
+;This screen shows up after the Win Screen.
+;It will not be displayed if the winning character has an ending.
+[Default Ending]
+enabled = 0               ;Set to 1 to show default ending, 0 to disable
+storyboard = ending.def             ;Default ending storyboard filename
+
+;-------------------------------------------------------------------
+;Ending credits screen definition
+;This screen shows up after the Win Screen and Ending
+[End Credits]
+enabled = 1               ;Set to 1 to show credits, 0 to disable
+storyboard = credits.def             ;Credits storyboard filename
+
+;-------------------------------------------------------------------
+;Options screen definition
+[Option Info]
+cursor.move.snd = 100,0
+cursor.done.snd = 100,1
+cancel.snd = 100,2
+
+;-------------------
+;Options screen background
+[OptionBGdef]
+bgclearcolor = 0,0,0
+
+;============== Background Image =================
+[OptionBG 1.a1]; Background
+type = normal
+layerno = 0
+spriteno = 0,1
+start = 260,0
+velocity = .4,.5
+tile = 1,1
+
+;=========== Pallete Subtract =========== 
+[xOptionBG Subtract blue]; Blank
+type = normal
+layerno = 0
+spriteno = 517,0
+start = 128,120
+tile = 1,1
+trans = sub
+
+
+;============== Screen Transitions ===============
+
+[OptionBg 1.b1];fader
+type = normal
+layerno = 0
+spriteno = 900,0
+start = 0,0
+velocity = 0,-12
+trans = add
+tile = 1,0
+
+[OptionBg 1.b1];fader
+type = normal
+layerno = 1
+spriteno = 900,0
+start = 0,0
+velocity = 0,-30
+trans = add
+tile = 1,0
+
+[OptionBg 1.b1];earth
+type = normal
+layerno = 0
+spriteno = 0,446
+start = 0,0
+mask = 1
+
+[OptionBg 1.b1]
+type  		= anim
+actionno 	=  447
+ID              =  447
+start 		= 0,0
+sin.x = 90,270,0 
+sin.y = 85,500,0 
+delta = 1,1
+layerno = 0
+mask = 1
+
+;----------------------------
+[Infobox] ;(new in MUGEN 1.0)
+text.font = 4,0,1
+
+;----------------------------
+[Infobox Text] ;(new in MUGEN 1.0)
+******************************************************** 
+_
+This game is a work done by fans, as a tribute to CAPCOM.
+_
+********************************************************
+_
+It is not endorsed by Capcom, but it understands that it is a fan art. There is no intention of copyright infringement, commercial damage or profit.
+_
+This game is free and can not be sold or distributed in magazines, CDs or other media. If you paid for it, you were cheated. 
+_
+_
+_
+_
+______________________________________________________________________
+_
+You can download this game for free at http://www.infinitymugenteam.com
+_
+______________________________________________________________________
+
+
+_
+* 2009/2019 - Infinity Mugen Team - All rights reserved for the respective companies.
+; New title animation
+[Begin Action 445]
+445,0, 0,0, 10
+445,1, 0,0, 10
+445,2, 0,0, 10
+445,3, 0,0, 10
+
+;New victory animation by oldgamer 
+
+; blue shadow
+[Begin Action 913]
+910,2, 0,0, 1, , S
+
+;blue line
+[Begin Action 911]
+911,0, 0,0, 2
+911,1, 0,0, 2
+911,2, 0,0, 2
+911,3, 0,0, 2
+911,4, 0,0, 2
+911,5, 0,0, 2
+911,6, 0,0, 2
+911,7, 0,0, 2
+911,8, 0,0, 2
+911,9, 0,0, 2
+911,10, 0,0, 2
+911,11, 0,0, 2
+911,12, 0,0, 2
+911,13, 0,0, 2
+911,14, 0,0, 2
+911,15, 0,0, 2
+911,16, 0,0, 2
+911,17, 0,0, 2
+911,18, 0,0, 2
+911,19, 0,0, 2
+911,20, 0,0, 2
+911,21, 0,0, 2
+911,22, 0,0, 2
+911,23, 0,0, 2
+911,24, 0,0, 2
+911,25, 0,0, 2
+911,26, 0,0, 2
+911,27, 0,0, 2
+911,28, 0,0, 2
+911,29, 0,0, 2
+911,30, 0,0, 2
+911,31, 0,0, 2
+911,32, 0,0, 2
+911,33, 0,0, 2
+911,34, 0,0, 2
+911,35, 0,0, 2
+911,36, 0,0, 2
+911,37, 0,0, 2
+911,38, 0,0, 2
+911,39, 0,0, 2
+911,40, 0,0, 2
+911,41, 0,0, 2
+911,42, 0,0, 2
+911,43, 0,0, 2
+911,44, 0,0, 2
+911,45, 0,0, 2
+911,46, 0,0, 2
+911,47, 0,0, 2
+911,48, 0,0, 2
+911,49, 0,0, 2
+911,50, 0,0, 2
+911,51, 0,0, 2
+911,52, 0,0, 2
+911,53, 0,0, 2
+911,54, 0,0, 2
+911,55, 0,0, 2
+911,56, 0,0, 2
+911,57, 0,0, 2
+911,58, 0,0, 2
+911,59, 0,0, 2
+911,60, 0,0, 2
+911,61, 0,0, 2
+911,62, 0,0, 2
+911,63, 0,0, 2
+911,64, 0,0, 2
+911,65, 0,0, 2
+911,66, 0,0, 2
+911,67, 0,0, 2
+911,68, 0,0, 2
+911,69, 0,0, 2
+911,70, 0,0, 2
+911,71, 0,0, 2
+911,72, 0,0, 2
+911,73, 0,0, 2
+911,74, 0,0, 2
+911,75, 0,0, 2
+911,76, 0,0, 2
+911,77, 0,0, 2
+911,78, 0,0, 2
+911,79, 0,0, 2
+911,80, 0,0, 2
+911,81, 0,0, 2
+911,82, 0,0, 2
+911,83, 0,0, 2
+911,84, 0,0, 2
+911,85, 0,0, 2
+911,86, 0,0, 2
+911,87, 0,0, 2
+911,88, 0,0, 2
+911,89, 0,0, 2
+911,90, 0,0, 2
+911,91, 0,0, 2
+911,92, 0,0, 2
+911,93, 0,0, 2
+911,94, 0,0, 2
+911,95, 0,0, 2
+911,96, 0,0, 2
+911,97, 0,0, 2
+911,98, 0,0, 2
+911,99, 0,0, 2
+911,100, 0,0, 2
+911,101, 0,0, 2
+911,102, 0,0, 2
+911,103, 0,0, 2
+911,104, 0,0, 2
+911,105, 0,0, 2
+911,106, 0,0, 2
+
+; blue gird
+[Begin Action 912]
+912,0, 0,0, 2
+912,1, 0,0, 2
+912,2, 0,0, 2
+912,3, 0,0, 2
+912,4, 0,0, 2
+912,5, 0,0, 2
+912,6, 0,0, 2
+912,7, 0,0, 2
+912,8, 0,0, 2
+912,9, 0,0, 2
+912,10, 0,0, 2
+912,11, 0,0, 2
+912,12, 0,0, 2
+912,13, 0,0, 2
+912,14, 0,0, 2
+912,15, 0,0, 2
+
+; blue gird 2
+[Begin Action 914]
+914,0, 0,0, 2
+914,1, 0,0, 2
+914,2, 0,0, 2
+914,3, 0,0, 2
+914,4, 0,0, 2
+914,5, 0,0, 2
+914,6, 0,0, 2
+914,7, 0,0, 2
+914,8, 0,0, 2
+914,9, 0,0, 2
+914,10, 0,0, 2
+914,11, 0,0, 2
+914,12, 0,0, 2
+914,13, 0,0, 2
+914,14, 0,0, 2
+914,15, 0,0, 2

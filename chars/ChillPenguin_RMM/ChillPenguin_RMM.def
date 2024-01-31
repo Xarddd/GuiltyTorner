@@ -1,0 +1,47 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Chill Penguin RMM"
+displayname = "Chill Penguin"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion = 1.0
+author = "MugenPlayer21 && O Ilusionista"
+pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+sprite = ChillPenguin_RMM.sff
+anim = ChillPenguin_RMM.air
+sound = ChillPenguin_RMM.snd
+cmd = ChillPenguin_RMM.cmd
+cns = ChillPenguin_RMM.cns
+stcommon = common1.cns
+st = ChillPenguin_RMM.cns
+pal1 = Chill01.act
+pal2 = Chill02.act
+pal3 = Chill03.act
+pal4 = Chill04.act
+pal5 = Chill05.act
+pal6 = Chill06.act
+pal7 = Chill07.act
+pal8 = Chill08.act
+pal9 = Chill09.act
+pal10 = Chill10.act
+pal11 = Chill11.act
+pal12 = new_pal.act
+
+
+
+
+st1 = -2.cns
+st2 = -3.cns
+st3 = specials.cns
+st4 = hypers.cns
+
+; Arcade mode
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_chill penguin.def
+

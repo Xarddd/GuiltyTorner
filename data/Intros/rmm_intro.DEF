@@ -1,0 +1,803 @@
+Megaman Arcade Intro
+;------------------------------------
+
+[Info]
+localcoord = 640,480
+
+[SceneDef]; 
+spr = rmm_intro.sff
+font0 = rmm640.def
+snd = rmm_intro.snd
+startscene = 0
+
+;------------------------------------ START
+[Scene 0]
+bgm = rmm_intro.mp3
+bgm.loop = 1 
+fadein.time = 30
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG0          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 90,0     ;Plays sound 90,0 from rmm_intro.snd
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+;----- scene 0 text
+layer1.text = "We interrupt this program to bring \nyou this urgent news flash."  ;Text to show
+layer1.font = 0,0,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG0Def] ; BG definition
+
+[BG0 bg] ; bg background
+type = normal
+spriteno = 0,0
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG0 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------
+[Scene 1]
+fadein.time = 0
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG0          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 90,1     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+;----- scene 0 text
+layer1.text = "An army of Robot Masters have\nbegun causing havoc and panic\nin Mega City."  ;Text to show
+layer1.font = 0,0,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+
+;------------------------------------
+[Scene 2]
+fadein.time = 0
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG0          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 90,2     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+;----- scene 0 text
+layer1.text = "Unfortunately, authorities have\nbeen unable to detain these\nmonstrous creations."  ;Text to show
+layer1.font = 0,0,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+
+;------------------------------------
+[Scene 3]
+fadein.time = 0
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG0          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 90,3     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+;----- scene 0 text
+layer1.text = "It seems that Mega Man is once\nagain being challenged by the\nderanged, villainous, Doctor..."  ;Text to show
+layer1.font = 0,0,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+;------------------------------------ STACTIC
+[Scene 4] 
+fadein.time = 0
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 36
+
+; Sounds
+sound0.value = 10,0     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+; BG
+bg.name = BG1          ;Name of BG to show (no spaces allowed)
+
+[BG1Def] ; BG definition
+
+[BG1 static] ; bg background
+type = anim
+actionno = 10
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------ WILY
+[Scene 5]
+fadein.time = 30
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 270
+
+; BG
+bg.name = BG2          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 100,0     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+;----- scene 0 text
+layer1.text = "WHA-HA-HA-HA-HAA!\nQuake in fear simpletons!"  ;Text to show
+layer1.font = 0,1,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG2Def] ; BG definition
+
+[BG2 bg] ; bg background
+type = normal
+spriteno = 0,5
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG2 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------
+[Scene 6] 
+fadein.time = 0
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 350
+
+; BG
+bg.name = BG2          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 100,1    ;Plays sound
+
+
+;----- scene 0 text
+layer1.text = "For I, Dr. Albert W. Wily,\nhave set my master plan in motion!"  ;Text to show
+layer1.font = 0,1,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG2Def] ; BG definition
+
+[BG2 bg] ; bg background
+type = normal
+spriteno = 0,5
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG2 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------ CITY NORMAL
+[Scene 7] 
+fadein.time = 30
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 500
+
+; BG
+bg.name = BG3          ;Name of BG to show (no spaces allowed)
+; Sounds
+sound0.value = 100,2    ;Plays sound
+sound1.value = 100,3    ;Plays sound
+sound1.starttime = 250
+
+;----- scene 0 text
+layer1.text = "I have unleashed my Robot Masters to\nall of the major capitals around\nthe world..."  ;Text to show
+layer1.font = 0,1,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+layer1.endtime = 250
+
+;----- scene 0 text
+layer2.text = "And unless the world leaders agree\nto my terms..."  ;Text to show
+layer2.font = 0,1,1        ;Use font0
+layer2.textdelay = 2
+layer2.starttime = 250
+layer2.endtime = 500
+layer2.offset = 40,400
+
+[BG3Def] ; BG definition
+
+[BG3 bg] ; bg background
+type = normal
+spriteno = 0,7
+start = -320,0
+velocity = 0,-0.25
+tile = 0,0
+
+[BG3 black window] ; bg background
+type = normal
+spriteno = 30,0
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG3 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+
+;------------------------------------ EXPLOSION
+[Scene 8]  
+fadein.time = 0
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 36
+
+; BG
+bg.name = BG4          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 2,0     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+;----- scene 0 text
+layer1.text = ""  ;Text to show
+layer1.font = 0,1,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+
+[BG4Def] ; BG definition
+
+[BG4 bg] ; bg background
+type = normal
+spriteno = 0,7
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG4 Explosion] ; bg background
+type = anim
+actionno = 2
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG4 black window] ; bg background
+type = normal
+spriteno = 30,0
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+
+;------------------------------------ BURNING CITY
+[Scene 9]
+fadein.time = 0
+fadout.time = 30 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG5          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 2,1     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+sound1.value = 100,4    ;Plays sound
+sound1.starttime = 15
+
+
+
+;----- scene 0 text
+layer1.text = "Your capitals will be destroyed!"  ;Text to show
+layer1.font = 0,1,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG5Def] ; BG definition
+
+[BG5 bg] ; bg background
+type = normal
+spriteno = 0,8
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG5 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------ WILY AGAIN
+[Scene 10] 
+fadein.time = 30
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG2          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 100,5     ;Plays sound 0,1
+
+;----- scene 0 text
+layer1.text = "Not even that blue bother,\nMega Man, can stop me this time!"  ;Text to show
+layer1.font = 0,1,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG2Def] ; BG definition
+
+[BG2 bg] ; bg background
+type = normal
+spriteno = 0,5
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG2 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------ CASTLE
+[Scene 11] 
+fadein.time = 30
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 350
+
+; BG
+bg.name = BG6         ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 100,6 
+
+
+;----- scene 0 text
+layer1.text = "I have some special tricks\nand traps especially for him!\nEYAA-HA-HA-HAA!"  ;Text to show
+layer1.font = 0,1,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG6Def] ; BG definition
+
+[BG6 bg] ; bg background
+type = normal
+spriteno = 0,10
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG6 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------ STACTIC
+[Scene 12] 
+fadein.time = 0
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 36
+
+; Sounds
+sound0.value = 10,0     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+; BG
+bg.name = BG1          ;Name of BG to show (no spaces allowed)
+
+[BG1Def] ; BG definition
+
+[BG1 static] ; bg background
+type = anim
+actionno = 10
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------ BACK TO NEWS GIRL
+[Scene 13] 
+fadein.time = 30
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG8          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 90,4     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+;----- scene 0 text
+layer1.text = "This just in! Dr. Wily has sent\na robot named Quint to... to...\nthis can't be right..."  ;Text to show
+layer1.font = 0,0,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG8Def] ; BG definition
+
+[BG8 bg] ; bg background
+type = normal
+spriteno = 0,11
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG8 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG8 box anim] ; bg background
+type = anim
+actionno = 4
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------
+[Scene 14] ; 
+fadein.time = 0
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG8          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 90,5     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+
+;----- scene 0 text
+layer1.text = "It looks like he is opening a rift\nin the time stream and is recruiting\nRobot Masters from all over?"  ;Text to show
+layer1.font = 0,0,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+;------------------------------------ PORTAL
+[Scene 15] 
+fadein.time = 90
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG7         ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 3,0     ;Plays sound 0,1
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+
+; Sounds
+sound1.value = 90,6     ;Plays sound 0,1
+sound1.starttime = 20  ;Starts playing the sound 60 ticks after the start of the scene
+
+;----- scene 0 text
+layer1.text = "With Robot Masters from the past,\npresent and future..."  ;Text to show
+layer1.font = 0,0,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG7Def] ; BG definition
+
+[BG7 bg] ; bg background
+type = normal
+spriteno = 0,13
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG7 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG4 blue window] ; bg background
+type = normal
+spriteno = 30,1
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------
+[Scene 16] ; 
+fadein.time = 0
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; BG
+bg.name = BG7         ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound1.value = 90,7     ;Plays sound 0,1
+sound1.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+;----- scene 0 text
+layer1.text = "Dr. Wily will create\ncomplete Mayhem!"  ;Text to show
+layer1.font = 0,0,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG7Def] ; BG definition
+
+[BG7 bg] ; bg background
+type = normal
+spriteno = 0,13
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG7 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG4 blue window] ; bg background
+type = normal
+spriteno = 30,1
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------ TRIO
+[Scene 17] 
+fadein.time = 30
+fadout.time = 0 
+fadein.col = 0,0,0 
+fadeout.col = 0,0,0 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 280
+
+; BG
+bg.name = BG9          ;Name of BG to show (no spaces allowed)
+
+; Sounds
+sound0.value = 90,8     ;Plays sound 90,0 from rmm_intro.snd
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+
+;----- scene 0 text
+layer1.text = "Will Mega Man stop the army of\nRobot Masters and thwart\nDr. Wily's sinister plans?"  ;Text to show
+layer1.font = 0,0,1        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 40,400
+
+[BG9Def] ; BG definition
+
+[BG9 bg] ; bg background
+type = normal
+spriteno = 0,15
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+[BG9 white fx] ; bg background
+type = anim
+actionno = 20
+start = -320,0
+velocity = 0,0
+tile = 0,0
+
+;------------------------------------ TRIO end
+[Scene 18] 
+fadein.time = 0
+fadout.time = 60
+fadein.col = 0,0,0 
+fadeout.col = 255,255,255 
+clearcolor = 0,0,0
+layerall.pos = 0,0
+end.time = 250
+
+; Sounds
+sound0.value = 90,9     ;Plays sound 90,0 from rmm_intro.snd
+sound0.starttime = 0  ;Starts playing the sound 60 ticks after the start of the scene
+
+
+; BG
+bg.name = BG9          ;Name of BG to show (no spaces allowed)
+
+;----- scene 0 text
+layer1.text = "Get ready for the\nfiercest battle yet!"  ;Text to show
+layer1.font = 0,0,0        ;Use font0
+layer1.textdelay = 2
+layer1.offset = 320,410
+
+
+
+
+;------------------------------------ ANIMATIONS
+; static fx
+[Begin Action 10]
+10,0, 0, 0, 3
+10,1, 0, 0, 3
+10,0, 0, 0, 3
+10,1, 0, 0, 3
+10,0, 0, 0, 3
+10,1, 0, 0, 3
+10,0, 0, 0, 3
+10,1, 0, 0, 3
+10,0, 0, 0, 3
+10,1, 0, 0, 3
+10,0, 0, 0, 3
+10,1, 0, 0, 3
+
+; white
+[Begin Action 20]
+-1,0, 0,0, 2
+20,0, 0,0, 2, , AS10D256
+
+; Explosion
+[Begin Action 2]
+2,0, 0, 0, 4
+2,1, 0, 0, 4
+2,2, 0, 0, 4
+2,3, 0, 0, 4
+2,4, 0, 0, 4
+2,5, 0, 0, 4
+2,6, 0, 0, 4
+2,7, 0, 0, 4
+2,8, 0, 0, 4
+
+; box
+[Begin Action 4]
+-1,0, 0,0, 6
+4,0, 0,0, 6
+
+
+;[Begin Action 0]
+;0,0, 0, 0, 250
+;0,1, 0, 0, 250
+;0,2, 0, 0, 250
+;0,3, 0, 0, 250
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;0,5, 0, 0, 250
+;0,6, 0, 0, 250
+;0,7, 0, 0, 250
+;0,8, 0, 0, 250
+;2,0, 0, 0, 4
+;2,1, 0, 0, 4
+;2,2, 0, 0, 4
+;2,3, 0, 0, 4
+;2,4, 0, 0, 4
+;2,5, 0, 0, 4
+;2,6, 0, 0, 4
+;2,7, 0, 0, 4
+;2,8, 0, 0, 4
+;0,9, 0, 0, 250
+;0,10, 0, 0,250 
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;10,0, 0, 0, 3
+;10,1, 0, 0, 3
+;0,11, 0, 0,250
+;0,12, 0, 0,250
+;0,13, 0, 0,250
+;0,14, 0, 0,250
+;0,15, 0, 0,250
+;0,16, 0, 0,250
+
+

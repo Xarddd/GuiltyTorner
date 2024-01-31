@@ -1,0 +1,23 @@
+----------
+Mega Man
+----------
+
+QCF+P (air-ok): Mega Buster
+QCB+P (air-ok): Top Spin
+QCB+K: Mega Slide
+QCB+K (air): Flying Kick
+
+D, D, any button: Change Weapon
+	LP: Mega Ball
+	MP: Leaf Shield
+	HP: Quick Boomerang
+	LK: Super Arm
+	MK: Thunder Beam
+	HK: Metal Blade
+	Start: Rush
+QCF+K: Use Weapon
+
+QCF+PP (air-ok): Hyper Megaman
+QCB+PP: Power Adaptor
+QCF+KK (air-ok): Magnetic Shockwave
+QCB+KK: Jet Adaptor

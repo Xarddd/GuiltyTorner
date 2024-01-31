@@ -1,0 +1,61 @@
+;===========================================================================
+;Robot Master Mayhem - Constants Template (Statedef -2) V.1
+;Template by Acey
+;Based on Megaman by Chaotic
+;www.infinitymugenteam.com
+;===========================================================================
+
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+
+[Statedef -2]
+
+[State 0, VelAdd]
+type = null;VelAdd
+triggerall = Roundstate = 2
+trigger1 = Pos Y <= -150 ;&& Pos Y < -20
+y = 1
+
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = !var(10)
+value = 0
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Stateno <3000 || MoveType = H
+id = 750
+
+;For debugging purposes
+[State -2, Debug Info]
+type = DisplayToClipboard
+trigger1 = 1
+text = "HELPERS = %d - AI = %d - TRANSFORM Var(10) = %d - RS = %d"
+params = NumHelper,AiLevel, var(10), Roundstate
+
+
+[State 0, AppendToClipboard]
+type = AppendToClipboard
+trigger1=1
+text="\npos x=%.0f, pos y=%.0f, var(11) = %d, vel x=%.0f, vel y=%.0f"
+params=pos x, pos y, Var(11),vel x, vel y
+ignorehitpause=1
+
+[State -2, Danger, Will Robinson! - Variable]
+type = VarSet
+trigger1 = Life < 350
+var(1) = 1
+
+[State -2, Danger, Will Robinson! - Flashing]
+type = PalFX
+trigger1 = var(1) = 1 && Life != 0
+trigger1 = TimeMod = 8, 2
+add = 128, -64, -64
+time = 4
+
+

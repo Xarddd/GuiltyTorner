@@ -1,0 +1,166 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+
+[Info]
+name = "Dr. Light's Lab - Roll"
+
+[BGdef]
+spr = LightsLab.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/ym_thr058_rw4_wily.mp3
+;bgmusic = sound/12 Cutie Roll.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -120
+boundright = 120
+boundhigh = -113
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15 
+
+[StageInfo]
+zoffset = 215
+autoturn = 1
+resetBG = 0
+
+[shadow]
+Intensity = 90
+color = 40,40,40
+yscale = .25
+fade.range = 0,0
+
+[Reflection]
+intensity = 0
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = normal
+spriteno = 0, 0
+layerno = 0                
+start = 0, 100
+delta = 1.0, 1.0
+trans = none
+
+;---------------------------------------
+[BG lights]
+type  = anim
+actionno = 1
+mask = 0
+delta = 1.0, 1.0
+[BG Elec]
+type  = anim
+actionno = 2
+mask = 0
+delta = 1.0, 1.0
+
+[BG DrLight]
+type  = anim
+actionno = 3
+mask = 1
+delta = 1.0, 1.0
+
+[BG Tango]
+type  = anim
+actionno = 5
+mask = 1
+delta = 1.0, 1.0
+
+[BG Mega]
+type  = anim
+actionno = 4
+mask = 1
+delta = 1.0, 1.0
+
+;Animations
+[Begin Action 1]
+1,0,0,0,20
+2,0,0,0,20
+3,0,0,0,20
+4,0,0,0,20
+99,0,0,0,20
+
+[Begin Action 2]
+5,0,0,0,5
+6,0,0,0,5
+7,0,0,0,5
+8,0,0,0,5
+7,0,0,0,5
+6,0,0,0,5
+5,0,0,0,5
+99,0,0,0,10
+
+[Begin Action 3]
+9,0,0,0,5
+10,0,0,0,5
+11,0,0,0,5
+10,0,0,0,5
+9,0,0,0,110
+
+
+[Begin Action 4]
+14,0,0,0,5
+14,1,0,0,5
+14,2,0,0,5
+14,3,0,0,5
+14,4,0,0,5
+14,5,0,0,5
+14,6,0,0,5
+14,7,0,0,5
+14,8,0,0,5
+14,9,0,0,5
+14,10,0,0,30
+14,9,0,0,5
+14,8,0,0,5
+14,7,0,0,5
+14,6,0,0,5
+14,5,0,0,5
+14,4,0,0,5
+14,3,0,0,5
+14,2,0,0,5
+14,1,0,0,5
+14,0,0,0,25
+
+[Begin Action 5]
+15,0,0,0,5
+15,1,0,0,5
+15,2,0,0,5
+15,1,0,0,5
+15,0,0,0,110
+
+;---------------------------------------[/PCX IMAGE]
+
+

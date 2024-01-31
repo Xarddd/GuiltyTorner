@@ -1,0 +1,3148 @@
+;---------------------------------------------------------------------------
+;Super Moves
+;---------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------------
+;Special1_X
+;Shotgun Ice (low)
+[StateDef 1000]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 1000
+poweradd = 20
+facep2 = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 4
+helpertype = Normal ;Player
+name = "spark fx"
+ID = 1015 
+stateno =  1015
+pos = 35,-40
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal =1
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 1000, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 4    ;sends out projectile at this point in animation
+helpertype = normal
+name = "shotgunIce"
+ID = 4000                  ;ID of projectile helper
+stateno = 4000             ;stateNo of projectile helper
+pos = 51,-19               ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 0
+
+
+
+[State 1000, ice shot]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 12,5
+
+[State 1000, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;--------------------------------------
+;Shotgun Ice Helper (***referenced from Ken-X by LimitedMoonX!!***)
+[statedef 4000]
+type = S
+movetype = A
+physics = N
+anim = 4000
+velset = 0,0
+ctrl = 0
+
+[State 4000, AssertSpecial] ;no shadow for projectile helper
+type = AssertSpecial
+trigger1 = 1
+flag = noShadow
+
+[State 4000, SprPriority]  ;priority of the sprite
+type = SprPriority
+trigger1 = 1
+value = 1
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+v = 10    ;fv = 10
+value = root, stateno
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time && var(10) < 1299
+x = ifelse(var(10)=1000,3,ifelse(var(10)=1020,6,5))
+y = ifelse(var(10)=1000,3,ifelse(var(10)=1020,-6,0))
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time && var(10) >1299
+x = ifelse(var(10)=1300,3,ifelse(var(10)=1320,6,5))
+y = ifelse(var(10)=1300,3,ifelse(var(10)=1320,-6,0))
+
+[State 4000, NotHitBy]     ;projectile cannot be hit by physical attacks/throws
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NT,ST,HT
+time = 99
+ignorehitpause = 1
+
+[State 4000, HitBy]        ;projectile can be hit by another projectile
+type = HitBy
+trigger1 = 1
+value = SCA,AP
+time = 99
+ignorehitpause = 1
+
+[State 4000, HitOverride] ;overrides the hitstate for projectile
+type = HitOverride
+trigger1 = 1
+attr = SCA,AP
+slot = 0
+stateno = 4001
+time = 99
+ignorehitpause = 1
+
+[State 4000, HitDef]        ;hit definitions for projectile
+type = HitDef
+trigger1 = time = 0 && var(10)=1000
+attr = S,SP
+hitflag = MAF 
+guardflag = MA
+animtype = Hard  
+damage = 80,2
+sparkno = S25010+random%2
+guard.sparkno= S25008
+sparkxy = -2,-15
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+ground.slidetime = 25
+ground.hittime  = 25
+air.hittime = 20
+ground.velocity = 0,-2
+air.velocity = -4, -3
+fall = 1
+fall.recover = 0
+down.velocity = -3, -4
+down.bounce = 1
+air.juggle = 5
+envshake.time = 10
+envshake.ampl = 7
+
+[State 4000, HitDef]        ;hit definitions for projectile
+type = HitDef
+trigger1 = time = 0 && var(10)!=1000
+attr = A,SP
+hitflag = MAF 
+guardflag = MA
+animtype = Hard  
+damage = 80,2
+sparkno = S25010+random%2
+guard.sparkno= S25008
+sparkxy = -2,-15
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Heavy
+ground.slidetime = 25
+ground.hittime  = 25
+air.hittime = 20
+ground.velocity = -4,-3
+air.velocity = -4, -3
+down.velocity = -3, -4
+down.bounce = 1
+air.juggle = 5
+envshake.time = 10
+envshake.ampl = 7
+
+
+[State 4000]
+type = PlaySnd
+trigger1 = MoveContact = 1
+value = 12,4
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%8=0
+anim = 20011
+ID = 2011
+pos = 0,-20
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0.02
+random = 5,5
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = Pos Y >= 12 
+value = 4002
+ctrl = 0
+
+[State 4000, ChangeState]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = MoveContact                      ;the projectile hits the opponent
+value = 4001
+ctrl = 0
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = FrontEdgeBodyDist < -20
+trigger2 = time = 180
+
+
+;---------------------------------------------------------------------------
+;Shotgun Ice hits/misses: (***referenced from Ken-X by LimitedMoonX!!***)
+[Statedef 4001]
+type = S
+movetype = A
+physics = N
+poweradd = 0
+velset = 0,0
+ctrl = 0
+
+[State 0, Stone FX helper]
+type = Helper
+trigger1 = !time
+helpertype = Normal ;Player
+name = "stone call"
+ID = 16024
+stateno = 16025
+pos = 0,-10
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+
+[State 4001, shotgun ice breaks]        ;explode state for projectile
+type = Explod
+trigger1 = Time = 0
+anim = 4001
+ID = 4001
+pos = 0,0
+postype = p1
+sprpriority = 1
+bindtime = 1
+removetime = -2
+shadow = -1,0,0
+ownpal = 1
+ignorehitpause = 0
+
+[State 4001, End]          ;removes projectile after explod animation
+type = DestroySelf
+trigger1 = Time = 0
+
+;--------------------------------------
+;Ice Helper land
+[statedef 4002]
+type = S
+movetype = A
+physics = N
+anim = 4000
+velset = 3,0
+ctrl = 0
+
+[State 4000, AssertSpecial] ;no shadow for projectile helper
+type = AssertSpecial
+trigger1 = 1
+flag = noShadow
+
+[State 4000, PosSet]        ;sets the projectile to slide on the ground
+type = PosSet
+trigger1 = !time
+y = 12
+
+[State 100, NEW DASH FX]
+type = Explod
+Anim = 6004
+triggerall = vel X > 0 && Pos Y >= 12
+trigger1 = time%12=0
+postype = P1
+pos = 8,-10
+random = 5,0
+ownpal = 1
+scale = 1,1
+sprpriority = 4
+vel = -vel x/2
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = vel X > 0
+trigger1 = time%12=0
+value = S4,2
+
+
+[State 4000, NotHitBy]     ;projectile cannot be hit by physical attacks/throws
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NT,ST,HT
+time = 99
+ignorehitpause = 1
+
+[State 4000, HitBy]        ;projectile can be hit by another projectile
+type = HitBy
+trigger1 = 1
+value = SCA,AP
+time = 99
+ignorehitpause = 1
+
+[State 4000, HitOverride] ;overrides the hitstate for projectile
+type = HitOverride
+trigger1 = 1
+attr = SCA,AP
+slot = 0
+stateno = 4001
+time = 99
+ignorehitpause = 1
+
+[State 4000, HitDef]        ;hit definitions for projectile
+type = HitDef
+trigger1 = time = 0
+attr = C,SP
+hitflag = MAF 
+guardflag = L
+animtype = Hard   
+damage = 60,5
+sparkno = S25010+random%2
+guard.sparkno= S25008
+sparkxy = -2,-15
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+ground.slidetime = 25
+ground.hittime  = 25
+air.hittime = 20
+ground.velocity = 0,-2
+air.velocity = -4, -3
+down.velocity = -3, -4
+down.bounce = 1
+air.juggle = 5
+envshake.time = 15
+envshake.ampl = 10
+
+
+[State 4000]
+type = PlaySnd
+trigger1 = MoveContact = 1
+value = 12,4
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%12=0
+anim = 20011
+ID = 2011
+pos = 0,-20
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0.02
+random = 5,5
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 4000, ChangeState]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = FrontEdgeBodyDist < -20          ;the projectile hits end of screen
+trigger2 = MoveContact                      ;the projectile hits the opponent
+value = 4001
+ctrl = 0
+
+;---------------------------------------------------------------------------------------------
+;Spark FX
+[Statedef 1015]
+type    = A
+movetype= I
+physics = N
+juggle  = 3
+velset = 0,0
+anim = 428
+ctrl = 0
+sprpriority = 10
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+v = 10    ;fv = 10
+value = root, stateno
+
+[State 0, AngleSet]
+type = AngleSet
+trigger1 = time >=0 && var(10) < 1299
+value = ifelse(var(10)=1000,-45,ifelse(var(10)=1020,45,0))
+ignorehitpause = 1
+
+[State 0, AngleSet]
+type = AngleSet
+trigger1 = time >=0 && var(10) > 1299
+value = ifelse(var(10)=1300,-45,ifelse(var(10)=1320,45,0))
+ignorehitpause = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+ignorehitpause = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = !AnimTime
+
+;---------------------------------------------------------------------------------------------
+;Special1_Y
+;Shotgun Ice (straight)
+[Statedef 1010]
+type    = S
+movetype= A
+physics = S
+juggle  = 3
+velset = 4,0
+poweradd = 40
+anim = 1000
+ctrl = 0
+sprpriority = 2
+facep2 = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1010, ice shot]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 12,5
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 4
+helpertype = Normal ;Player
+name = "spark fx"
+ID = 1015 
+stateno =  1015
+pos = 35,-40
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal =1
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 1000, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 4    ;sends out projectile at this point in animation
+helpertype = normal
+name = "shotgunIce"
+ID = 4000                  ;ID of projectile helper
+stateno = 4000             ;stateNo of projectile helper
+pos = 51,-19               ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 0
+
+[State 1010, ice hits]
+type = PlaySnd
+trigger1 = ProjContact = 1
+value = 12,4
+
+[State 1010, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------------------------
+;Special1_Z
+;Shotgun Ice (High)
+[Statedef 1020]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+poweradd = 60
+anim = 1001
+ctrl = 0
+sprpriority = 3
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 4
+helpertype = Normal ;Player
+name = "spark fx"
+ID = 1015 
+stateno =  1015
+pos = 35,-40
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal =1
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 1000, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 4    ;sends out projectile at this point in animation
+helpertype = normal
+name = "shotgunIce"
+ID = 4000                  ;ID of projectile helper
+stateno = 4000             ;stateNo of projectile helper
+pos = 41,-19               ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 0
+
+[State 1020, ice shot]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 12,5
+
+
+[State 1020, End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------------------------
+;Special2_A
+;Toboggan Slide 
+[Statedef 1100]
+type    = S
+movetype= A
+physics = N
+ctrl = 0
+poweradd = 30
+anim = 1100
+velset =0,0
+
+[State 0, Strenght Variable]
+type = VarSet
+trigger1 = !time && !AiLevel
+v = 13
+value = ifelse(command = "QCFc",12,ifelse(command = "QCFb",10,6))
+
+[State 0, Strenght Variable]
+type = VarSet
+trigger1 = !time && AiLevel
+v = 13
+value = ifelse(random<300,6,ifelse(random>600,12,10))
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1100, VelSet]
+type = VelSet
+trigger1 = AnimElem = 4
+x =  var(13)
+
+[State 1100, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s4,3
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%6=0
+anim = 910+random%3
+ID = 910
+pos = 20,-10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = -1-random%3,0
+accel = -0.25,ifelse(random<500,0.1,-0.1)
+random = 30,10
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 10
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+scale = 0.25,0.25
+
+[State 100, NEW DASH FX]
+type = Explod
+Anim = 6004
+triggerall = vel X > 0
+trigger1 = time%8=0
+postype = P1
+pos = 15,5
+random = 5,0
+ownpal = 1
+scale = 1,1
+bindtime = 1
+sprpriority = 4
+accel = -0.15,0
+vel = -vel x/2
+
+[State 250, HitDef]
+type = HitDef
+Triggerall = Var(13)>8
+trigger1 = !time
+attr = S,SA
+damage = 100+var(13),1
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4, Hit
+pausetime = 4,4
+sparkno = S25010+random%2;0
+sparkxy = -10, -10
+guard.sparkno= S25008
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+ground.slidetime = 12
+ground.hittime = 12
+ground.velocity = 0,-8
+air.type = Trip
+air.hittime = 5
+air.velocity = -1,10
+fall = 1
+envshake.time = 10
+envshake.ampl = 7
+
+[State 250, HitDef]
+type = HitDef
+triggerall = Var(13)<=8
+trigger1 = !time
+attr = S,SA
+damage = 100+var(13),1
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4, Hit
+pausetime = 4,4
+sparkno = S25010+random%2;0
+sparkxy = -10, -10
+guard.sparkno= S25008
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Low
+ground.slidetime = 12
+ground.hittime = 12
+ground.velocity = -3,0
+air.type = Low
+air.hittime = 5
+air.velocity = -3,-6
+fall = 0
+envshake.time = 15
+envshake.ampl = 10
+fall.recover=0
+p1stateno = 1102
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = MoveHit && Var(13)>8
+value = 0
+
+[State 1100, ScreenBound]
+type = ScreenBound
+trigger1 = AnimElem = 4
+value = 1
+movecamera = 0,0
+
+[State 1100, End]
+type = ChangeState
+trigger1 = FrontEdgeDist < 30
+value = 1103
+ctrl = 0
+
+[State 1100, End]
+type = ChangeState
+trigger1 = AnimTime = 0 || MoveGuarded
+value = 1101
+ctrl = 0
+
+;---------------------------------------------------------------------------------------------
+;Special2_A
+;Toboggan End
+[Statedef 1101]
+type    = S
+movetype= I
+physics = N
+ctrl = 0
+anim = 1101
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = 0.9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S2,0
+
+[State 1100, End]
+type = ChangeState
+trigger1 = FrontEdgeDist < 30
+value = 1103
+ctrl = 0
+
+[State 1100, End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------------------------
+;Special2_A
+;Toboggan Hit
+[Statedef 1102]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1102
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S2,0
+
+[State 1100, End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------------------------
+;Special2_A
+;Toboggan End rebound
+[Statedef 1103]
+type    = S
+movetype= I
+physics = N
+ctrl = 0
+anim = 1103
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S1103,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 30
+value = S2,0
+
+[State 0, Turn]
+type = Turn
+trigger1 = !time
+persistent = 0
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x = var(13)
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = 0.92
+
+[State 1100, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s4,3
+
+[State 100, NEW DASH FX]
+type = Explod
+Anim = 6004
+triggerall = vel X > 0 && time < 30
+trigger1 = time%8=0
+postype = P1
+pos = 15,5
+random = 5,0
+ownpal = 1
+scale = 1,1
+bindtime = 1
+sprpriority = 4
+accel = -0.15,0
+vel = -vel x/2
+
+[State 250, HitDef]
+type = HitDef
+Triggerall = Var(13)>8
+trigger1 = !time
+attr = S,SA
+damage = 100+var(13),1
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4, Hit
+pausetime = 4,4
+sparkno = S25010+random%2;0
+sparkxy = -10, -10
+guard.sparkno= S25008
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+ground.slidetime = 12
+ground.hittime = 12
+ground.velocity = 0,-8
+air.type = Trip
+air.hittime = 5
+air.velocity = -1,10
+fall = 1
+envshake.time = 15
+envshake.ampl = 10
+
+[State 1100, End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;--------------------------------------------------------------------------------------------
+;Special3_A
+;Ice Shield (light shield)
+[Statedef 1200]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+poweradd = 60
+anim = 1200
+juggle  = 4
+facep2 = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 3305, Super Armor Activation] ;gains superarmor during attack
+type = VarSet
+trigger1 = AnimElem = 4
+var(3) = 1
+
+[State 1200, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 4    ;sends out projectile at this point in animation
+helpertype = normal
+name = "iceShield"
+ID = 4010                  ;ID of projectile helper
+stateno = 4010             ;stateNo of projectile helper
+pos = 69,-4               ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 1
+
+[State 1200, ice breath]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 4009
+ID = 4009
+pos = 55,-16
+postype = p1  
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 40
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 1200, ice breath]
+type = Explod
+trigger1 = AnimElem = 5
+anim = 4009
+ID = 4009
+pos = 75,-16
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 45
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 2506, 1]
+type = HitDef
+trigger1 = !time
+attr = S,SA
+damage    = 10,0
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3;, Hit
+pausetime = 0,0
+sparkno = s913
+sparkxy = 20,-15
+hitsound   = s1,2
+guardsound = S8500,0
+ground.type = Low
+ground.slidetime = 15
+ground.hittime  = 20
+ground.velocity = 0,0
+air.velocity = 0,0
+p2stateno = 4950
+
+[State 1200, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 12,6
+
+[State 1200, End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 12
+ctrl = 1
+
+
+;--------------------------------------------------------------------------------------------
+;Special3_B
+;Ice Shield (double shield)
+[Statedef 1210]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+poweradd = 60
+anim = 1200
+juggle  = 4
+facep2 = 1
+
+[State 2506, 1]
+type = HitDef
+trigger1 = !time
+attr = S,SA
+damage    = 10,0
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3;, Hit
+pausetime = 0,0
+sparkno = s913
+sparkxy = 20,-15
+hitsound   = s1,2
+guardsound = S8500,0
+ground.type = Low
+ground.slidetime = 15
+ground.hittime  = 20
+ground.velocity = 0,0
+air.velocity = 0,0
+p2stateno = 4950
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1210, Super Armor Activation] ;gains superarmor during attack
+type = VarSet
+trigger1 = AnimElem = 4
+var(3) = 1
+
+[State 1210, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 4    ;sends out projectile at this point in animation
+helpertype = normal
+name = "iceShield"
+ID = 4010                  ;ID of projectile helper
+stateno = 4010             ;stateNo of projectile helper
+pos = 69,-4               ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 1
+
+[State 1210, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 4    ;sends out projectile at this point in animation
+helpertype = normal
+name = "iceShield"
+ID = 4010                  ;ID of projectile helper
+stateno = 4010             ;stateNo of projectile helper
+pos = 124,-4               ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 1
+
+[State 1210, ice breath]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 4009
+ID = 4009
+pos = 55,-16
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 40
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 1210, ice breath]
+type = Explod
+trigger1 = AnimElem = 5
+anim = 4009
+ID = 4009
+pos = 75,-16
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 45
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 1210, ice breath]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 4009
+ID = 4009
+pos = 77,-16
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 40
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 1210, ice breath]
+type = Explod
+trigger1 = AnimElem = 5
+anim = 4009
+ID = 4009
+pos = 97,-16
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 45
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 1210, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 12,6
+
+[State 1210, End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 12
+ctrl = 1
+
+;------------------------------------------------------
+;Ice Shield (creation FX)
+[statedef 4010]
+type = S
+movetype = A
+physics = N
+anim = 4010
+ctrl = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = Time%4=0
+anim = 910+random%3
+ID = 910
+pos = -20,-40
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = random%4,0
+accel = 0.12,0
+random = 10,10
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 0.5,0.5
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+
+
+[State 4010, AssertSpecial] ;no shadow for helper
+type = AssertSpecial
+trigger1 = 1
+flag = noShadow
+
+[State 4010, SprPriority]  ;priority of the sprite
+type = SprPriority
+trigger1 = 1
+value = 3
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+v = 1
+value = 2
+
+
+[State 4010, ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 4011
+ctrl = 0
+
+;------------------------------------------------------
+;Ice Shield helper (creation FX)
+[statedef 4011]
+type = S
+movetype = I
+physics = n
+anim = 4011
+ctrl = 0
+sprpriority = 3
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = 0.9
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%12=0
+anim = 20011
+ID = 2011
+pos = 0,-30
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0.02
+random = 40,40
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 4011, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AT
+time = 99
+
+[State 4011, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 99
+ignorehitpause = 1
+
+[State 4011, HitOverride] ;overrides the hitstate for helper
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AP
+slot = 0
+stateno = 4012
+time = 99
+ignorehitpause = 1
+
+[State 4011, PlayerPush]    ;shield won't overlap the opponent
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 4011, HitDef]        ;hit definitions for projectile
+type = HitDef
+trigger1 = time = 0
+attr = S,SP
+hitflag = MAF
+guardflag = LMH
+affectteam = B
+animtype = light
+damage = 40,10
+sparkno = S25000+random%2
+guard.sparkno= S25008
+sparkxy = -2,-15
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+;air.type = High
+ground.slidetime = 25
+ground.hittime  = 25
+;guard.slidetime = 0
+;guard.hittime = 0
+air.hittime = 20
+;guard.ctrltime = 0
+ground.velocity = 0,-2
+air.velocity = -4, -3
+down.velocity = -3, -4
+down.bounce = 1
+
+[State 4011, HitAdd]       ;prevents helper being hit from adding to combo meter
+type = HitAdd
+trigger1 = MoveContact
+value = -2
+;ignorehitpause =
+;persistent =
+
+[State 4011, ChangeState when hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = MoveHit
+value = 4012
+ctrl = 0
+
+[State 4011, ChangeState when hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = time >= 300
+value = 4013
+ctrl = 0
+
+;For debugging purposes
+[State -2, Debug Info]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Root X = %0.0f"
+params = rootDist X
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = rootDist X = [-90,0]
+trigger1 = root,stateno = 250 && Root, AnimElem = 4
+trigger2 = root,stateno = 220 && Root, AnimElem = 3
+value = 4025
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root,stateno = 3801
+value = 4025
+ctrl = 0
+
+;------------------------------------------------------
+;Shield Kicked
+[statedef 4025]
+type = S
+movetype = A
+physics = N
+anim = 4025
+ctrl = 0
+sprpriority = 3
+velset = 6,0
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = !time
+v = 1    ;fv = 
+value = -1
+
+[State 1100, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s4,3
+
+[State 100, NEW DASH FX]
+type = Explod
+Anim = 6004
+triggerall = vel X > 0
+trigger1 = time%8=0
+postype = P1
+pos = 15,5
+random = 5,0
+ownpal = 1
+scale = 1,1
+bindtime = 1
+sprpriority = 4
+accel = -0.15,0
+vel = -vel x/2
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 25000+random%2
+pos = 0,-40
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 10
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S8000,5
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%12=0
+anim = 20011
+ID = 2011
+pos = 0,-30
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0.02
+random = 40,40
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 4011, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AT
+time = 99
+
+[State 4011, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 99
+ignorehitpause = 1
+
+[State 4011, HitOverride] ;overrides the hitstate for helper
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AP
+slot = 0
+stateno = 4012
+time = 99
+ignorehitpause = 1
+
+[State 4011, PlayerPush]    ;shield won't overlap the opponent
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 4011, HitDef]        ;hit definitions for projectile
+type = HitDef
+trigger1 = time = 0
+attr = S,SP
+hitflag = MAF
+guardflag = LMH
+animtype = light
+damage = 40,10
+sparkno = S25000+random%2
+guard.sparkno= S25008
+sparkxy = -2,-15
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+ground.slidetime = 25
+ground.hittime  = 25
+air.hittime = 20
+ground.velocity = 0,-2
+air.velocity = -4, -3
+down.velocity = -3, -4
+down.bounce = 1
+envshake.time = 10
+envshake.ampl = 7
+
+[State 4011, HitAdd]       ;prevents helper being hit from adding to combo meter
+type = HitAdd
+trigger1 = MoveContact
+value = -2
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = !AnimTime
+value = 4011
+ctrl = 0
+
+[State 4011, ChangeState when hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = MoveHit
+value = 4011
+ctrl = 0
+
+[State 4011, ChangeState when hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = time >= 300
+trigger2 = var(1)=0
+value = 4013
+ctrl = 0
+
+
+;---------------------------------------------------------------------------
+;1st hit connects...
+[Statedef 4012]
+type = S
+movetype = I
+physics = N
+anim = 4020
+ctrl = 0
+sprpriority = 3
+
+[State 4012, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AT
+time = 99
+
+[State 4012, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 99
+ignorehitpause = 1
+
+[State 4012, HitOverride] ;overrides the hitstate for helper
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AP
+slot = 0
+stateno = 4013
+id = 4013
+time = 99
+ignorehitpause = 1
+
+[State 4012, PlayerPush]    ;shield won't overlap the opponent
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 4012, HitDef]        ;hit definitions for projectile
+type = HitDef
+trigger1 = time = 0
+attr = S,SP
+hitflag = MAF
+guardflag = LMH
+affectteam = B
+animtype = light
+damage = 40,10
+sparkno = S25000+random%2
+guard.sparkno= S25008
+sparkxy = -2,-15
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+;air.type = High
+ground.slidetime = 25
+ground.hittime  = 25
+;guard.slidetime = 0
+;guard.hittime = 0
+air.hittime = 20
+;guard.ctrltime = 0
+ground.velocity = 0,-2
+air.velocity = -4, -3
+down.velocity = -3, -4
+down.bounce = 1
+juggle = 5
+
+[State 4012, ChangeState when hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = MoveHit
+trigger2 = Time >= 200
+value = 4013
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;final hit breaks shield...
+[Statedef 4013]
+type = S
+physics = A
+movetype = U
+anim = 4012
+
+[State 0, Stone FX helper]
+type = Helper
+trigger1 = !time
+helpertype = Normal ;Player
+name = "stone call"
+ID = 16024
+stateno = 16024
+pos = 0,-20
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 25005
+ID = 25005
+pos = 0,-10
+postype = P1  ;P2, Front, Back, Left, Right
+facing = ifelse(random<500,1,-1)
+facing = ifelse(random<500,1,-1)
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 8
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = !time
+time = 10
+ampl = 7
+
+
+[State 4013, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = 12,7
+
+[State 4013, End]          ;removes projectile after explod animation
+type = DestroySelf
+trigger1 = Time = 0
+
+;--------------------------------------------------------------------------------------------
+;Ice Shield (reinforced double shield)
+[Statedef 1220]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+poweradd = 60
+anim = 1200
+juggle  = 4
+facep2 = 1
+
+[State 2506, 1]
+type = HitDef
+trigger1 = !time
+attr = S,SA
+damage    = 10,0
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3;, Hit
+pausetime = 0,0
+sparkno = s913
+sparkxy = 20,-15
+hitsound   = s1,2
+guardsound = S8500,0
+ground.type = Low
+ground.slidetime = 15
+ground.hittime  = 20
+ground.velocity = 0,0
+air.velocity = 0,0
+p2stateno = 4950
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1220, Super Armor Activation] ;gains superarmor during attack
+type = VarSet
+trigger1 = AnimElem = 4
+var(3) = 1
+
+[State 1220, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 4    ;sends out projectile at this point in animation
+helpertype = normal
+name = "HeavyShield"
+ID = 4020                  ;ID of projectile helper
+stateno = 4020             ;stateNo of projectile helper
+pos = 64,-4               ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 1
+
+[State 1220, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 4    ;sends out projectile at this point in animation
+helpertype = normal
+name = "HeavyShield"
+ID = 4020                  ;ID of projectile helper
+stateno = 4020             ;stateNo of projectile helper
+pos = 124,-4               ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 1
+
+[State 1220, ice breath]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 4009
+ID = 4009
+pos = 47,-10
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 40
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 1220, ice breath]
+type = Explod
+trigger1 = AnimElem = 5
+anim = 4009
+ID = 4009
+pos = 67,-10
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 45
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 1220, ice breath]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 4009
+ID = 4009
+pos = 77,-10
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 40
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 1220, ice breath]
+type = Explod
+trigger1 = AnimElem = 5
+anim = 4009
+ID = 4009
+pos = 97,-10
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 45
+ontop = 1
+ownpal = 0
+removeongethit = 1
+
+[State 1220, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 12,6
+
+[State 1220, End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 12
+ctrl = 1
+
+;------------------------------------------------------
+;Reinforced Ice Shield (creation FX)
+[statedef 4020]
+type = S
+movetype = A
+physics = N
+anim = 4010
+ctrl = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = Time%4=0
+anim = 910+random%3
+ID = 910
+pos = -20,-40
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = random%4,0
+accel = 0.12,0
+random = 10,10
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 0.5,0.5
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+
+
+[State 4020, AssertSpecial] ;no shadow for helper
+type = AssertSpecial
+trigger1 = 1
+flag = noShadow
+
+[State 4020, SprPriority]  ;priority of the sprite
+type = SprPriority
+trigger1 = 1
+value = 3
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+v = 1
+value = 2
+
+[State 4020, ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 4021
+ctrl = 0
+
+;----------------------------------
+;Reinforced Ice Shield
+[statedef 4021]
+type = S
+movetype = I
+physics = N
+anim = 4011
+ctrl = 0
+sprpriority = 3
+
+[State 4021, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AT
+time = 99
+
+[State 4021, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 99
+ignorehitpause = 1
+
+[State 4021, HitOverride] ;overrides the hitstate for helper
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AP
+slot = 0
+stateno = 4022
+id = 4022
+time = 99
+ignorehitpause = 1
+
+[State 4021, PlayerPush]    ;shield won't overlap the opponent
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 4021, HitDef]        ;hit definitions for projectile
+type = HitDef
+trigger1 = time = 0
+attr = S,SP
+hitflag = MAF
+guardflag = LMH
+affectteam = B
+animtype = light
+damage = 40,10
+sparkno = S25000+random%2
+guard.sparkno= S25008
+sparkxy = -2,-15
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+;air.type = High
+ground.slidetime = 25
+ground.hittime  = 25
+;guard.slidetime = 0
+;guard.hittime = 0
+air.hittime = 20
+;guard.ctrltime = 0
+ground.velocity = 0,-2
+air.velocity = -4, -3
+down.velocity = -3, -4
+down.bounce = 1
+juggle = 5
+
+[State 4011, HitAdd]       ;prevents helper being hit from adding to combo meter
+type = HitAdd
+trigger1 = MoveContact
+value = -2
+;ignorehitpause =
+;persistent =
+
+[State 4021, ChangeState when hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = MoveHit
+value = 4022
+ctrl = 0
+
+[State 4021, break when not hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = time >= 450
+value = 4024
+ctrl = 0
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+ignorehitpause = 1
+
+;For debugging purposes
+[State -2, Debug Info]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Root X = %0.0f"
+params = rootDist X
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = rootDist X = [-90,0]
+trigger1 = root,stateno = 250 && Root, AnimElem = 4
+trigger2 = root,stateno = 220 && Root, AnimElem = 3
+value = 4025
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root,stateno = 3801
+value = 4025
+ctrl = 0
+
+
+;---------------------------------------------------------------------------
+;1st hit connects...
+[Statedef 4022]
+type = S
+movetype = I
+physics = N
+anim = 4020
+ctrl = 0
+sprpriority = 3
+
+[State 4022, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AT
+time = 99
+
+[State 4022, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 99
+ignorehitpause = 1
+
+[State 4022, HitOverride] ;overrides the hitstate for helper
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AP
+slot = 0
+stateno = 4023
+id = 4023
+time = 99
+ignorehitpause = 1
+
+[State 4022, PlayerPush]    ;shield won't overlap the opponent
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 4022, HitDef]        ;hit definitions for projectile
+type = HitDef
+trigger1 = time = 0
+attr = S,SP
+hitflag = MAF
+guardflag = LMH
+affectteam = B
+animtype = light
+damage = 40,10
+sparkno = S25000+random%2
+guard.sparkno= S25008
+sparkxy = -2,-15
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+;air.type = High
+ground.slidetime = 25
+ground.hittime  = 25
+;guard.slidetime = 0
+;guard.hittime = 0
+air.hittime = 20
+;guard.ctrltime = 0
+ground.velocity = 0,-2
+air.velocity = -4, -3
+down.velocity = -3, -4
+down.bounce = 1
+juggle = 5
+
+[State 4022, ChangeState when hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = MoveHit
+value = 4023
+ctrl = 0
+
+[State 4022, ChangeState when hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = time >= 300
+value = 4024
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;2nd hit connects...
+[Statedef 4023]
+type = S
+movetype = I
+physics = N
+anim = 4020
+ctrl = 0
+sprpriority = 3
+
+[State 4023, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AT
+time = 99
+
+[State 4023, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 99
+ignorehitpause = 1
+
+[State 4023, HitOverride] ;overrides the hitstate for helper
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AP
+slot = 0
+stateno = 4024
+id = 4024
+time = 99
+ignorehitpause = 1
+
+[State 4023, PlayerPush]    ;shield won't overlap the opponent
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 4023, HitDef]        ;hit definitions for projectile
+type = HitDef
+trigger1 = time = 0
+attr = S,SP
+hitflag = MAF
+guardflag = LMH
+affectteam = B
+animtype = light
+damage = 40,10
+sparkno = S25000+random%2
+guard.sparkno= S25008
+sparkxy = -2,-15
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Trip
+;air.type = High
+ground.slidetime = 25
+ground.hittime  = 25
+;guard.slidetime = 0
+;guard.hittime = 0
+air.hittime = 20
+;guard.ctrltime = 0
+ground.velocity = 0,-2
+air.velocity = -4, -3
+down.velocity = -3, -4
+down.bounce = 1
+juggle = 5
+
+[State 4023, ChangeState when hit]
+type = ChangeState                      ;changes the projectile state when...
+trigger1 = MoveHit
+trigger2 = time >= 200
+value = 4024
+ctrl = 0
+
+
+;---------------------------------------------------------------------------
+;final hit breaks shield...
+[Statedef 4024]
+type = S
+physics = A
+movetype = U
+anim = 4013
+
+[State 4024, break FX]        ;explode state for projectile
+type = Explod
+trigger1 = Time = 0
+anim = 4012
+ID = 4012
+pos = 2,-20
+postype = p1
+sprpriority = 1
+bindtime = 1
+removetime = 35
+vel = -0.75
+accel = -0.04,0.25
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 0
+
+[State 4024, break FX]        ;explode state for projectile
+type = Explod
+trigger1 = Time = 0
+anim = 4013
+ID = 4013
+pos = -2,-20
+postype = p1
+sprpriority = 1
+bindtime = 1
+removetime = 35
+vel = 0.75
+accel = 0.04,0.25
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 0
+
+[State 4024, break FX]        ;explode state for projectile
+type = Explod
+trigger1 = Time = 0
+anim = 4012
+ID = 4012
+pos = -2,0
+postype = p1
+sprpriority = 1
+bindtime = 1
+removetime = 35
+vel = -0.75
+accel = -0.04,0.25
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 0
+
+[State 4024, break FX]        ;explode state for projectile
+type = Explod
+trigger1 = Time = 0
+anim = 4013
+ID = 4013
+pos = 2,0
+postype = p1
+sprpriority = 1
+bindtime = 1
+removetime = 35
+vel = 0.75
+accel = 0.04,0.25
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 0
+
+
+[State 4024, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = 12,7
+
+[State 4024, End]          ;removes projectile after explod animation
+type = DestroySelf
+trigger1 = Time = 0
+
+;---------------------------------------------------------------------------------------------
+;Air Shotgun Ice (diagonal down)
+[Statedef 1300]
+type    = A
+movetype= A
+physics = N
+juggle  = 3
+velset = (Vel X / 3),1
+poweradd = 40
+anim = 1300
+ctrl = 0
+sprpriority = 2
+
+[State 1300, AssertSpecial] ;no shadow for projectile
+type = AssertSpecial
+trigger1 = 1
+flag = noShadow
+
+[State 1300, ice shot]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 12,5
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 2
+helpertype = Normal ;Player
+name = "spark fx"
+ID = 1015 
+stateno =  1015
+pos = 0,-44
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal =1
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 1000, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 2    ;sends out projectile at this point in animation
+helpertype = normal
+name = "shotgunIce"
+ID = 4000                  ;ID of projectile helper
+stateno = 4000             ;stateNo of projectile helper
+pos = 0,-34             ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 0
+
+
+[State 1300, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+
+;---------------------------------------------------------------------------------------------
+;Air Shotgun Ice (straight)
+[Statedef 1310]
+type    = A
+movetype= A
+physics = N
+juggle  = 3
+velset = (Vel X / 3),1
+poweradd = 40
+anim = 1310
+ctrl = 0
+sprpriority = 2
+
+[State 1310, AssertSpecial] ;no shadow for projectile helper
+type = AssertSpecial
+trigger1 = 1
+flag = noShadow
+
+[State 1310, ice shot]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 12,5
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 2
+helpertype = Normal ;Player
+name = "spark fx"
+ID = 1015 
+stateno =  1015
+pos = 19,-42
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal =1
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 1000, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 2    ;sends out projectile at this point in animation
+helpertype = normal
+name = "shotgunIce"
+ID = 4000                  ;ID of projectile helper
+stateno = 4000             ;stateNo of projectile helper
+pos = 19,-32             ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 0
+
+
+[State 1310, ice hits]
+type = PlaySnd
+trigger1 = ProjContact = 1
+value = 12,4
+
+[State 1310, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;---------------------------------------------------------------------------------------------
+;Air Shotgun Ice (diagonal up)
+[Statedef 1320]
+type    = A
+movetype= A
+physics = N
+juggle  = 3
+velset = (Vel X / 3),1
+poweradd = 40
+anim = 1320
+ctrl = 0
+sprpriority = 2
+
+[State 1320, AssertSpecial] ;no shadow for projectile
+type = AssertSpecial
+trigger1 = 1
+flag = noShadow
+
+[State 1320, ice shot]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 12,5
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 2
+helpertype = Normal ;Player
+name = "spark fx"
+ID = 1015 
+stateno =  1015
+pos = 22,-49
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal =1
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 1000, Helper] ;Projectile Helper
+type = Helper
+trigger1 = AnimElem = 2    ;sends out projectile at this point in animation
+helpertype = normal
+name = "shotgunIce"
+ID = 4000                  ;ID of projectile helper
+stateno = 4000             ;stateNo of projectile helper
+pos = 22,-39             ;position of projectile
+postype = p1               ;position facing from Player1
+keyctrl = 0
+ownpal = 0
+
+[State 1320, ice hits]
+type = PlaySnd
+trigger1 = ProjContact = 1
+value = 12,4
+
+[State 1320, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;---------------------------------------------------------------------------------------------
+;Penguin Missile (downward)
+[Statedef 1400]
+type    = A
+movetype= A
+physics = N
+juggle  = 2
+velset = 0,0.7
+poweradd = 40
+anim = 1400
+ctrl = 0
+hitcountpersist = 1
+sprpriority = 2
+facep2 = 1
+
+[State 100, NEW DASH FX]
+type = Explod
+Anim = 25017+random%2;ifelse(random >=500,8050,8051)
+triggerall = vel X > 0
+trigger1 = random < 400 
+postype = P1
+pos = 0,-45
+random = 10,45
+ownpal = 1
+scale = (ifelse(random <=500,1,0.5)),(ifelse(random <=500,1,0.5))
+sprpriority = (ifelse(random <=500,10,-10))
+vel = -(const(velocity.run.fwd.x)/2)
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 2
+anim = 1832
+ID = 1832
+pos = 0,-30
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1400, VelSet]
+type = VelSet
+trigger1 = AnimElem = 2
+x = 8
+y = 3
+
+[State 1400, VelSet]
+type = VelSet
+trigger1 = AnimElem >= 3
+x = Vel X
+y = Vel Y
+
+[State 1400, VelAdd]
+type = VelAdd
+trigger1 = MoveContact = 1
+x = -5
+y = -5.5
+
+[State 1400, "whoosh"]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 54,17
+
+[State 1400, limit counter]     ;Adds a variable for each time the move hits
+type = VarAdd
+trigger1 = MoveContact = 1 || MoveGuarded
+var(4) = 1
+
+[State 1400, HitDef]
+type = HitDef
+trigger1 = time = 0
+givepower = 60
+getpower = 70
+attr = A,SA
+damage = 80, 5
+animtype = Hard
+guardflag = MA
+hitflag = MA
+priority = 4, Hit
+pausetime = 5,12
+sparkno = S25010+random%2
+sparkxy = -10, -30
+guard.sparkno= S25008
+hitsound = s8000,2
+guardsound = S8500,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 15
+ground.velocity = -5,-2
+fall = 1
+air.type = High
+air.hittime = 15
+air.velocity = -3,-6
+envshake.time = 10
+envshake.ampl = 7
+
+[State 1400, move hits]
+type = ChangeState
+trigger1 = MoveHit || MoveGuarded
+value = 50
+ctrl = 1
+
+[State 1400, move misses]
+type = ChangeState
+trigger1 = AnimTime = 0 || Pos Y >=0
+value = 50
+ctrl = 0
+
+
+;---------------------------------------------------------------------------------------------
+;Penguin Missile (straight)
+[Statedef 1410]
+type    = A
+movetype= A
+physics = N
+juggle  = 2
+velset = 0,0.7
+poweradd = 40
+anim = 1410
+ctrl = 0
+hitcountpersist = 1
+sprpriority = 2
+facep2 = 1
+
+[State 100, NEW DASH FX]
+type = Explod
+Anim = 25017+random%2;ifelse(random >=500,8050,8051)
+triggerall = vel X > 0
+trigger1 = random < 400 
+postype = P1
+pos = 0,-45
+random = 10,45
+ownpal = 1
+scale = (ifelse(random <=500,1,0.5)),(ifelse(random <=500,1,0.5))
+sprpriority = (ifelse(random <=500,10,-10))
+vel = -(const(velocity.run.fwd.x)/2)
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 2
+anim = 1832
+ID = 1832
+pos = 0,-30
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+
+[State 1410, VelSet]
+type = VelSet
+trigger1 = AnimElem = 2
+x = 8
+
+[State 1410, VelSet]
+type = VelSet
+trigger1 = AnimElem >= 3
+x = 4
+y = 0
+
+[State 1410, VelAdd]
+type = VelAdd
+trigger1 = MoveContact = 1
+x = -7
+y = -2.5
+
+[State 1410, "whoosh"]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 54,17
+
+[State 1410, limit counter]     ;Adds a variable for each time the move hits
+type = VarAdd
+trigger1 = MoveContact = 1 || MoveGuarded
+var(4) = 1
+
+[State 1410, HitDef]
+type = HitDef
+trigger1 = time = 0
+givepower = 60
+getpower = 70
+attr = A,SA
+damage = 30, 15
+animtype = Medium
+guardflag = MA
+hitflag = MA
+priority = 4, Hit
+pausetime = 5,12
+sparkno = S25010+random%2
+sparkxy = -10, -30
+guard.sparkno= S25008
+hitsound = s8000,2
+guardsound = S8500,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 15
+ground.velocity = -5,-2
+fall = 1
+air.type = High
+air.hittime = 15
+air.velocity = -3,-6
+envshake.time = 10
+envshake.ampl = 7
+
+
+[State 1410, move hits]
+type = ChangeState
+trigger1 = MoveHit || MoveGuarded
+value = 50
+ctrl = 1
+
+[State 1410, move misses]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 0
+
+;---------------------------------------------------------------------------------------------
+;Penguin Missile (upward)
+[Statedef 1420]
+type    = A
+movetype= A
+physics = N
+juggle  = 2
+velset = 0,0.7
+poweradd = 40
+anim = 1420
+ctrl = 0
+hitcountpersist = 1
+sprpriority = 2
+facep2 = 1
+
+[State 100, NEW DASH FX]
+type = Explod
+Anim = 25017+random%2;ifelse(random >=500,8050,8051)
+triggerall = vel X > 0
+trigger1 = random < 400 
+postype = P1
+pos = 0,-45
+random = 10,45
+ownpal = 1
+scale = (ifelse(random <=500,1,0.5)),(ifelse(random <=500,1,0.5))
+sprpriority = (ifelse(random <=500,10,-10))
+vel = -(const(velocity.run.fwd.x)/2)
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 2
+anim = 1832
+ID = 1832
+pos = 0,-30
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+
+[State 1420, VelSet]
+type = VelSet
+trigger1 = AnimElem = 2
+x = 8.5
+y = -4
+
+[State 1420, VelSet]
+type = VelSet
+trigger1 = AnimElem >= 3
+x = 3
+y = 0
+
+[State 1420, VelAdd]
+type = VelAdd
+trigger1 = MoveContact = 1
+x = -7
+y = -2.5
+
+[State 1420, "whoosh"]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 54,17
+
+[State 1420, limit counter]     ;Adds a variable for each time the move hits
+type = VarAdd
+trigger1 = MoveContact = 1 || MoveGuarded
+var(4) = 1
+
+
+[State 1420, HitDef]
+type = HitDef
+trigger1 = time = 0
+givepower = 60
+getpower = 70
+attr = A,SA
+damage = 60, 15
+animtype = Hard
+guardflag = MA
+hitflag = MA
+priority = 4, Hit
+pausetime = 5,12
+sparkno = S25010+random%2
+sparkxy = -10, -30
+guard.sparkno= S25008
+hitsound = s8000,2
+guardsound = S8500,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 15
+ground.velocity = -5,-2
+fall = 1
+air.type = High
+air.hittime = 15
+air.velocity = -3,-6
+envshake.time = 10
+envshake.ampl = 7
+
+
+[State 1420, move hits]
+type = ChangeState
+trigger1 = MoveHit || MoveGuarded
+value = 50
+ctrl = 1
+
+[State 1420, move misses]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 0
+
+;---------------------------------------------------------------------------------------------
+;Chill Torpedo
+[Statedef 1500]
+type    = S
+movetype= A
+physics = N
+ctrl = 0
+poweradd = 30
+anim = 1500
+velset =0,0
+
+[State 0, Strenght Variable]
+type = VarSet
+trigger1 = !time && !AiLevel
+v = 13
+value = ifelse(command = "QCBc",12,ifelse(command = "QCBb",10,6))
+
+
+[State 0, Strenght Variable]
+type = VarSet
+trigger1 = !time && AiLevel
+v = 13
+value = 6
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = AnimElem=1
+x = -var(13)
+y = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6012
+ID = 6012
+pos = 0,10
+postype = p1  ;p2,front,back,left,right
+facing = -1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 100, 3]
+type = PlaySnd
+trigger1 = time = 1
+value = 1100,1
+
+;============================================================== DASH BACK
+
+[State 100, NEW DASH FX]
+type = Explod
+Anim = 25017+random%2;ifelse(random >=500,8050,8051)
+triggerall = vel X < 0
+trigger1 = random < 400 
+postype = P1
+pos = 0,-45
+random = 10,45
+ownpal = 1
+scale = (ifelse(random <=500,1,0.5)),(ifelse(random <=500,1,0.5))
+sprpriority = (ifelse(random <=500,10,-10))
+vel = (const(velocity.run.fwd.x)/2)
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = floor(var(13)*1.5)
+value = 1505
+ctrl = 0
+
+;---------------------------------------------------------------------------------------------
+;Chill Torpedo Go
+[Statedef 1505]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+poweradd = 30
+anim = 1505
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S0,4
+
+[State 650]
+type = PlaySnd
+trigger1 = AnimElem = 1 && random < 500
+value = s13,4
+channel = 0
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x = var(13)
+y = -7
+
+[State 0, Gravity]
+type = Gravity
+trigger1 = Pos y <0
+ignorehitpause = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = Pos y <0
+statetype = A
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 1110
+ID = 1110
+pos = 39,-22
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+
+;================================================================ DASH FWD
+
+[State 100, NEW DASH FX]
+type = Explod
+Anim = 25017+random%2;ifelse(random >=500,8050,8051)
+triggerall = vel X > 0
+trigger1 = random < 400 
+postype = P1
+pos = 0,-45
+random = 10,45
+ownpal = 1
+scale = (ifelse(random <=500,1,0.5)),(ifelse(random <=500,1,0.5))
+sprpriority = (ifelse(random <=500,10,-10))
+vel = -(const(velocity.run.fwd.x)/2)
+
+[State 100, New Dash start fx]
+type = Explod
+trigger1 = !time
+ID = 6088
+anim = 6088
+postype = p1
+pos = 10,0
+bindtime = 1
+removetime = -2
+vel = 0, 0
+ownpal = 1
+sprpriority = 5
+removeongethit = 0
+
+[State 650, HitDef]
+type = HitDef
+trigger1 = time = 0
+attr = A,SA
+damage = 90,0
+animtype = Hard
+guardflag = H
+hitflag = MAF
+priority = 4, Hit
+pausetime = 13,8;13,14
+sparkno = S25020+random%2
+sparkxy=-10,-23-(Pos Y<0)*20
+guard.sparkno = S25008
+hitsound = s8250,3
+guardsound = S8500,0
+ground.type = High
+ground.slidetime = 18
+ground.hittime  = 25
+ground.velocity = -10,-4
+air.velocity = -13, 4
+fall = 1
+air.hittime = 25
+envshake.time = 7
+envshake.ampl = 4
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Pos Y >=0  && vel Y > 0
+id = 1110
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = Pos Y >=0  && vel Y > 0
+value = 101
+ctrl = 0
+
+;-------------------------------------------
+; Stone Helper
+[StateDef 16023]
+type    = A
+movetype= I
+physics = N
+ctrl = 0
+anim = 1623+random%5
+sprpriority = 20
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x =(IfElse(Random <= 499,Random/120,Random/(-120)))
+y = Random/(-120)-ifelse(random<500,5,8)
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = Pos Y < 0
+y = 0.5
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = pos Y >= 0
+x = 0
+y = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = pos Y >= 0
+y = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = pos Y >= 0
+value = S8100,0
+persistent = 0
+
+[State 40, Rock Land]
+type = Explod
+trigger1 = Pos Y >=0 ;&& Vel Y > 0
+anim = 16023
+sprpriority = 20
+Ownpal = 1
+persistent = 0
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = Pos Y >=0; && Vel Y > 0
+trigger2 = Pos Y < -440
+trigger3 = FrontEdgeDist < -40
+trigger4 = BackEdgeDist < -40
+
+;-------------------------------------------
+; Stone Helper call
+[StateDef 16024]
+type    = A
+movetype= I
+physics = N
+ctrl = 0
+anim = 9999
+sprpriority = 20
+
+[State 0, Stone FX helper]
+type = Helper
+trigger1 = time < 3 
+trigger2 = random < 500 && time =[4,6] 
+helpertype = Normal ;Player
+name = "stone call"
+ID = 16023
+stateno = 16023
+pos = random%20,-10-random%10
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 6
+
+;-------------------------------------------
+; Stone Helper call 2
+[StateDef 16025]
+type    = A
+movetype= I
+physics = N
+ctrl = 0
+anim = 9999
+sprpriority = 20
+
+[State 0, Stone FX helper]
+type = Helper
+trigger1 = !time
+helpertype = Normal ;Player
+name = "stone call"
+ID = 16023
+stateno = 16023
+pos = random%20,-10-random%10
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 6
+
+;---------------------- Integer variable list ----------------------
+
+; var(0):= -2 - States that are always executed (use statedef -2)
+;          40 - Jump Start
+;          45 - AirJump Start
+;          50 - Jump Up
+;          70 - Wall Jump
+;          132 - AIR GUARD (guarding)
+;          155 - AGUARDHIT2 (knocked away)
+;          4428 - Trip Laydown
+;          5080 - HITL_SHAKE
+;          5081 - HITL_SLIDE
+;          5100 - HIT_BOUNCE (hit ground)
+;          5110 - HIT_LIEDOWN
+; var(1):= 19100 - Intro1 (original Intro)
+;          19200 - Intro2 (Sliding in)
+;          19300 - Intro3 (ice breaker)
+;          19000 - Turns Mode Intros (***referenced from Ken-X by LimitedMoonX!!***)
+; var(3):= 1200 - Ice Shield (light shield)
+;          1210 - Ice Shield (double shield)
+;          1220 - Ice Shield (reinforced double shield)
+;          -2 - States that are always executed (use statedef -2)
+;          3305 - Absolute Zero (attack)
+; var(4):= 1400 - Penguin Missile (downward)
+;          1410 - Penguin Missile (straight)
+;          1420 - Penguin Missile (upward)
+;          -2 - States that are always executed (use statedef -2)
+;          890
+;          895
+;          898
+; var(5):= 3000 - Shotgun Hailstorm (low)
+;          3010 - Shotgun Hailstorm (straight)
+;          3011 - Air Shotgun Hailstorm
+; var(8):= -2 - States that are always executed (use statedef -2)
+; var(9):= -2 - States that are always executed (use statedef -2)
+;          199 - NEW Move around before match
+;var(10):= -2 - States that are always executed (use statedef -2)
+;var(11):= -2 - States that are always executed (use statedef -2)
+;          7000 - Start Super Jump
+;var(12):= -3
+;          7001 - Super Jump GO
+;var(21):= -3
+;var(28):= 195
+;var(30):= -1 - Artificial Intelligence
+;          860 - Far Backward Recovery Roll
+;var(50):= 199 - NEW Move around before match
+
+;---------------------- Float variable list ----------------------
+
+

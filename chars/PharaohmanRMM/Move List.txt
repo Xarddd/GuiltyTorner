@@ -1,0 +1,22 @@
+----------
+Pharaoh Man
+----------
+
+QCF+P (air-ok): Pharaoh Shot
+DP+P: Mummy Upper
+QCB+P (air-ok): Scissor Kick
+QCB+K (air-ok): Spiral Kick
+
+D, D, any button: Change Weapon
+	LP: Pharaoh Blast
+	MP: Pharaoh Curse
+	HP: Pharaoh Trap
+	LK: Egyptian Rush 
+	MK: Sand Coffin
+	HK: Ring Man
+QCF+K: Use Weapon
+
+QCF+PP (air-ok): Anubis Judgment
+QCB+PP (air-ok): Seth is Calling
+QCB+KK: Ankh of Power
+QCF+KK (air-ok): TRUE POWER OF EGYPTIAN GODS

@@ -1,0 +1,243 @@
+;Stage by UltraRoboninja
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+
+[Info]
+name = "Pipe Tower - Crash Man"
+
+[BGdef]
+spr = XR-Crashman.sff
+debugbg = 0
+
+[Music]
+bgmusic = Sound/crashman.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -300
+boundright = 300
+boundhigh = -350
+boundlow = 0
+verticalfollow = 1;.65;1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 205
+autoturn = 1
+resetBG = 1
+
+[shadow]
+Intensity = 90
+color = 0,0,0
+yscale = .05
+fade.range = -400,-100
+
+[Reflection]
+intensity = 0
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = normal
+spriteno = 0, 0
+layerno = 0                
+start = -160, 0
+delta = 0,0
+trans = none
+
+;---------------------------------------
+[BG Backpipes]
+type  = normal
+spriteno = 3,0
+start = -310,210
+mask = 1
+delta = .2, .8
+
+
+;---------------------------------------
+
+[BG telly]
+type  = anim
+layerno = 0
+actionno = 2
+start = 100,50
+sin.x = 30,223
+sin.y = 0,153
+
+;---------------------------------------
+
+[BG telly2]
+type  = anim
+layerno = 0
+actionno = 2
+start = -250,95
+sin.x = 30,223
+sin.y = 0,153
+
+;---------------------------------------
+
+[BG telly3]
+type  = anim
+layerno = 0
+actionno = 2
+start = 110,-150
+sin.x = 30,223
+sin.y = 0,153
+;---------------------------------------
+
+[BG Fence]
+type  = normal
+spriteno = 6,0
+start = -310,255  
+mask = 1
+
+;---------------------------------------
+[BG Fence2]
+type  = normal
+spriteno = 6,0
+start = 310,255  
+mask = 1
+
+;---------------------------------------
+[BG Floor]
+type  = normal
+spriteno = 1,0
+start = -500,255  
+mask = 1
+
+;---------------------------------------
+;[BG Platform]
+;type  = normal
+;spriteno = 2,0
+;layerno = 1
+;start = -310,210
+;mask = 0
+;delta = 2, 2
+
+;----------------------------------------
+
+[BG met]
+type  = anim
+layerno = 0
+actionno = 1
+start = 0,15
+mask = 1
+delta = 1, 1
+
+;---------------------------------------
+[BG Pillar]
+type  = normal
+spriteno = 7,0
+layerno = 1
+start = -310,210
+mask = 1
+delta = 2, 2
+
+
+
+;---------------------------------------[/PCX IMAGE]
+
+[Begin Action 1]
+4,0,0,0,8
+4,1,0,0,8
+4,2,0,0,8
+4,1,0,0,8
+4,0,0,0,8
+4,3,0,0,8
+4,4,0,0,8
+4,3,0,0,8
+4,0,0,0,8
+4,1,0,0,8
+4,2,0,0,8
+4,1,0,0,8
+4,0,0,0,8
+4,3,0,0,8
+4,4,0,0,8
+4,3,0,0,8
+4,0,0,0,8
+4,1,0,0,8
+4,2,0,0,8
+4,1,0,0,8
+4,0,0,0,8
+4,3,0,0,8
+4,4,0,0,8
+4,3,0,0,8
+4,0,0,0,8
+4,5,0,0,4
+4,6,0,0,4
+4,7,0,0,150
+4,8,0,0,8
+4,9,0,0,8
+4,10,0,0,5
+4,11,0,0,5
+4,12,0,0,15
+4,11,0,0,5
+4,10,0,0,5
+4,11,0,0,5
+4,12,0,0,25
+4,13,0,0,8
+4,0,0,0,35
+
+
+[Begin Action 2]
+
+loopstart
+5,0,0,0,4
+5,1,0,0,4
+5,3,0,0,4
+5,5,0,0,4
+5,7,0,0,4
+5,9,0,0,4
+5,11,0,0,4
+5,10,0,0,4
+5,8,0,0,4
+5,6,0,0,4
+5,4,0,0,4
+5,2,0,0,4
+
+
+
+
+
+;5,2,0,0,4
+;5,4,0,0,4
+;5,6,0,0,4
+;5,8,0,0,4
+;5,10,0,0,4
+;5,11,0,0,4
+;5,9,0,0,4
+;5,7,0,0,4
+;5,5,0,0,4
+;5,3,0,0,4
+;5,1,0,0,4
+;5,0,0,0,4

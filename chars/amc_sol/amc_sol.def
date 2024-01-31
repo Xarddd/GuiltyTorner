@@ -1,0 +1,39 @@
+[Info]
+name		= "Sol=Badguy"
+displayname	= "Sol"
+versiondate	= 04,21,2006
+author		= "Amachi"
+pal.defaults	= 1,2,3,7,8,9
+
+[Files]
+cmd		= sol.cmd
+cns		= sol.cns
+st		= sol.cns
+st2		= -2-3.cns
+st3		= sol-n.cns
+st4		= sol-s.cns
+st5		= sol-h.cns
+st6		= option.txt
+st7		= solex-n.cns
+st8		= solex-s.cns
+st9		= solex-h.cns
+stcommon	= common1.cns
+sprite		= sol.sff
+anim		= sol.air
+sound		= sol.snd
+pal1		= color/sol_01.act
+pal2		= color/sol_02.act
+pal3		= color/sol_tamega02.act
+pal4		= color/sol_04.act
+pal5		= color/sol_05.act
+pal6		= color/sol_boukun.act
+pal7		= color/sol_07.act
+pal8		= color/sol_08.act
+pal9		= color/sol_ikoma.act
+pal10		= color/sol_10.act
+pal11		= color/sol_11.act
+pal12		= color/sol_tamega01.act
+
+;[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

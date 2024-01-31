@@ -1,0 +1,41 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Crash Man RMM"
+displayname ="Crash Man"
+versiondate =2021,08,21 ; RMM 3.1
+mugenversion =1.0 
+author ="Laspacho & O Ilusionista (powersets)"
+pal.defaults =1,2,3,4,5,6
+
+[Files]
+sprite =animation\Crashman.sff
+anim =animation\Crashman.air
+sound =sound\Crashman.snd
+cmd =command\Crashman.cmd
+cns =cns\Crashman.cns
+stcommon =cns\common1.cns
+st =cns\Crashman.cns
+pal1=act\Crashman.act
+pal2=act\Crashman1.act
+pal3=act\Crashman2.act
+pal4=act\Crashman3.act
+pal5=act\Crashman4.act
+pal6=act\Crashman5.act
+pal7=act\Crashman6.act
+pal8=act\Crashman7.act
+pal9=act\Crashman8.act
+pal10=act\Crashman9.act
+pal11=act\Crashman10.act
+pal12=act\Crashman11.act
+st1=cns\supers.cns
+st2=cns\hypers.cns
+st3=cns\powersets.cns
+
+[Arcade]
+intro.storyboard  =Intros/rmm_intro.def
+ending.storyboard =Endings/ending_crashman.def
+

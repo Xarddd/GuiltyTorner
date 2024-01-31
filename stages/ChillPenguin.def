@@ -1,0 +1,286 @@
+;Chill Penguin stage by me, Magma MK II
+;Credits goes to:
+;Capcom and Keiji Inafune
+;The Spriters Resource
+[Info]
+name 		= "South Pole Outpost - Chill Penguin"
+displayname 	= "South Pole Outpost - Chill Penguin"
+mugenversion 	= 1.0
+author 		= "Magma MK-II && O Ilusionista"
+
+[Camera]
+startx 		= 0
+starty 		= 0
+boundleft 	= -160
+boundright 	= 160
+boundhigh 	= -125
+boundlow 	= 0
+tension 	= 50
+verticalfollow 	= 1
+floortension 	= 100
+overdrawhigh 	= 120
+overdrawlow 	= 120
+cuthigh 	= 0
+cutlow 		= 0
+
+[PlayerInfo]
+p1startx 	= -70
+p1starty 	= 0
+p1facing 	= 1
+p2startx 	= 70
+p2starty 	= 0
+p2facing 	= -1
+p3startx 	= -100
+p3starty 	= 0
+p3facing 	= 1
+p4startx 	= 100
+p4starty 	= 0
+p4facing 	= -1
+leftbound 	= -1000
+rightbound 	= 1000
+
+[Bound]
+screenleft 	= 15
+screenright 	= 15
+
+[StageInfo]
+zoffset 	= 220
+autoturn 	= 1
+resetBG 	= 0
+localcoord 	= 320, 240
+xscale 		= 1
+yscale 		= 1
+
+[Scaling]
+topz     	= 0
+botz     	= 50
+topscale 	= 1
+botscale 	= 1.2
+
+[Shadow]
+color 		= 0,0,0
+yscale 		= .2
+intensity 	= 95
+
+[Music]
+bgmusic 	= sound/Mega_Man_Maverick_Hunter_X_Chill_Penguin.mp3;MHX - 14 - Chill Penguin Stage - Abandoned Missile Base.mp3
+bgvolume 	= 255
+bgmloopstart = 761267
+bgmloopend = 2206830
+
+[BGdef]
+spr 		= stages/ChillPenguin.sff
+debugbg 	= 0
+
+[BG sky high]
+type  		= normal
+spriteno 	= 0, 1
+start = -116, -172
+delta 		= 0.7,1
+mask     	= 1
+velocity        = 0.3, 0
+tile            = 1, 0
+tilespacing     = 0,0
+
+[BG sky mid]
+type  		= normal
+spriteno 	= 0, 4
+start = -116, -172
+delta 		= 0.7,1
+mask     	= 1
+velocity        = 0.2, 0
+tile            = 1, 0
+tilespacing     = 0,0
+
+[BG sky bottom]
+type  		= normal
+spriteno 	= 0, 5
+start = -116, -172
+delta 		= 0.7,1
+mask     	= 1
+velocity        = 0.1, 0
+tile            = 1, 0
+tilespacing     = 0,0
+
+[BG background]
+type  		= normal
+spriteno 	= 0, 2
+start 		= 0,60
+delta 		= 0.8,1
+mask     	= 1
+velocity        = 0, 0
+tile            = 1, 0
+tilespacing     = 0,0
+
+[BG background]
+type  		= normal
+spriteno 	= 0, 3
+start 		= 0,116
+delta 		= 0.9,1
+mask     	= 1
+velocity        = 0, 0
+tile            = 1, 0
+tilespacing     = 0,0
+
+[BG floor]
+type  		= normal
+spriteno 	= 0, 0
+start 		= 0,108
+delta 		= 1,1
+mask     	= 1
+
+[BG bunny]
+type  		= anim
+actionno        = 1
+start 		= -220,180
+delta 		= 1,1
+mask     	= 1
+
+[BG ostrich]
+type  		= anim
+actionno        = 3
+start 		= 100,200
+delta 		= 1,1
+mask     	= 1
+
+[BG center lights 1]
+type  		= anim
+actionno = 2
+start 		= 0,108
+delta 		= 1,1
+mask     	= 1
+
+[BG center lights 2]
+type  		= anim
+actionno = 4
+start 		= 0,108
+delta 		= 1,1
+mask     	= 1
+
+[BG center lights 3]
+type  		= anim
+actionno = 5
+start 		= 0,108
+delta 		= 1,1
+mask     	= 1
+
+[BG left light]
+type  		= anim
+actionno = 6
+start 		= 0,108
+delta 		= 1,1
+mask     	= 1
+
+
+[BG snow test]
+type  		= normal
+spriteno 	= 3, 1
+start 		= 0,108
+delta 		= 1.4,1
+mask     	= 1
+layerno = 0
+tile = 1,1
+velocity = 2,2
+sin.y = 120,840
+sin.x = 120,480
+
+
+;--------- FRONT
+
+[BG front]
+type  		= normal
+spriteno 	= 1, 0
+start 		= 0,108
+delta 		= 1.2,1
+mask     	= 1
+layerno = 1
+
+[BG snow test 2]
+type  		= normal
+spriteno 	= 3, 0
+start 		= 0,108
+delta 		= 1.4,1
+mask     	= 1
+layerno = 1
+tile = 1,1
+velocity = 3,3
+sin.y = 120,840
+sin.x = 120,480
+
+;---------- ANIMATIONS
+
+; center lights 1
+[Begin Action 2]
+2,0, 0,0, 10
+2,1, 0,0, 10
+2,2, 0,0, 10
+2,3, 0,0, 10
+; center lights 2
+[Begin Action 4]
+4,0, 0,0, 33
+4,1, 0,0, 33
+; center lights 3
+[Begin Action 5]
+-1,0, 0,0, 61
+5,0, 0,0, 61
+; left light
+[Begin Action 6]
+-1,0, 0,0, 10
+6,0, 0,0, 10
+6,1, 0,0, 10
+6,2, 0,0, 10
+6,3, 0,0, 10
+-1,0, 0,0, 10
+7,0, 0,0, 60
+7,1, 0,0, 60
+7,0, 0,0, 60
+7,1, 0,0, 60
+7,0, 0,0, 60
+7,1, 0,0, 60
+7,0, 0,0, 60
+7,1, 0,0, 60
+-1,0, 0,0, 10
+6,0, 0,0, 10
+6,1, 0,0, 10
+6,2, 0,0, 10
+6,3, 0,0, 10
+-1,0, 0,0, 10
+6,0, 0,0, 10
+6,1, 0,0, 10
+6,2, 0,0, 10
+6,3, 0,0, 10
+-1,0, 0,0, 10
+6,0, 0,0, 10
+6,1, 0,0, 10
+6,2, 0,0, 10
+6,3, 0,0, 10
+-1,0, 0,0, 10
+6,0, 0,0, 10
+6,1, 0,0, 10
+6,2, 0,0, 10
+6,3, 0,0, 10
+-1,0, 0,0, 10
+6,0, 0,0, 10
+6,1, 0,0, 10
+6,2, 0,0, 10
+6,3, 0,0, 10
+
+; bunny
+[Begin Action 1]
+8,0,0,0,200
+8,1,0,0,7
+8,2,0,0,100
+8,1,0,0,7
+
+; ostrich
+[Begin Action 3]
+9,2,0,0,200
+9,1,0,0,10
+9,0,0,0,10
+9,1,0,0,10
+9,2,0,0,200
+9,3,0,0,10
+9,4,0,0,10
+9,5,0,0,100
+9,4,0,0,10
+9,3,0,0,10

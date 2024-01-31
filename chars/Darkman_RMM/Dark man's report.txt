@@ -1,0 +1,323 @@
+Dev's diary and note-worthy details:
+Updated as of 21/03/2021
+
+- Mistah Jorge
+	01/11/2020:
+	Like the original games where dark man (all versions except dark man 4) appears he becomes slightly faster the more damaged he is, but it works differently
+	 in this game:
+		- Dark man gets a small horizontal increase of velocity for each time he loses a quarter of his health;
+		- This means that Dark man can get up to 3 small boosts of speed in, per example his walk forward;
+		- This also includes his walk backwards, the horizontal speed of his jumps, forward dash and backward dash;
+		- To clarify, i'm not changing the vertical speed of any of his movement, that can potentially cause issues that break the character; (example: by accidentaly making his super jump too high to combo opponents from the launcher)
+	His chain combos are restricted compared to the other characters, here's a list of what you can/can't do:
+		You can:
+			- Chain standing normals into crouching normals like everyone else, as long as the restrictions below doesn't apply;
+			- Chain Light normal into a medium normal OR a hard normal; (normal --> a basic attack)
+		You can't:
+			- Chain directly a normal into another normal of the same strength; (examples include:	Standing light punch into crouching light kick and Standing medium punch into crouching medium punch)
+			- Chain directly ANY medium normal into a hard one; (example: Standing medium punch into Standing Hard kick)
+	Although it sounds intimidating at first, this is compensated by giving generally more damage with his normal attacks;
+	All changes to chain combos mentioned above are not final, and can be changed back;
+	Other note worthy info's about Dark man's basic attacks:
+		- Dark man's launcher is his crouching medium punch;
+		- His standing light punch can be ducked under by opponents without getting hit, but it's his most damage dealing ground light normal;
+		- Use standing light kick (or the other light normals) instead in case you think your stanting light punch will miss a crouching opponent;
+		- His Standing medium punch is an overhead, meaning it can't be blocked low, stand up and block it when you see it comming; (Also block-able in the air)
+		- Another noteworthy detail about said medium punch is that it pimp slaps the opponent so hard it forces to stand up if they were crouching when hit;
+		- Also works somewhat okay as an slow anti air, this move is not meant to be over used in any way;
+		- His Standing medium kick is an anti-air move, some kind of a mini launcher only against air opponents, knock them up and follow up with a short combo after;
+		- His Air light kick is his cross-up tool;
+		- Made a new Air hard kick, the old one is fine, but i find it really too fast (Also there's a limit to how slow i can make an animation play without it looking sloppy);
+			His new Air hard kick is quite slow tho, but is the most damaging normal attack;
+			It does not combo from Chained A.LP/A.LK unless the opponent's falling, use Air hard Punch instead for that;
+			(Also kind of a joke-ish reference to "Q", the sprites i added to the animation I mean.
+		- Recommended Jump in attacks in order: A.MK (The fastest) > A.HP (Slower than A.MP but It's damage and hitboxes make A.HP a better option) > A.MP > A.HK (The most damaging one, but it's speed makes it ackward to time it, you'll have to get used to it);
+	
+	09/11/2020:
+	Notes about Dark man's intros:
+		- Dark man's intros 1 and 2 are done-ish, all that's left is adding sounds and voices that fits, will need help with those later;
+		- Dark man's third intro will be state 194, state no. 193 is for the cape that's been tossed in the second intro on state 192;
+		- Dark man's intro against mega man should be 196 if all goes well;
+	Finished building his palettes:
+		- Fake proto man's colors have been fixed;
+		- The real proto man's will have his own palette;
+		- All 4 dark man's in the third intro have their colors separated from the playable one... it's just for palette making freedom, nothing else really;
+		- It looks like i needed to add dark man #1's tank colors to the playable one's palette for later sprites;
+	Finished Dark man's dodge and slide thanks to Magma's idea of using dark man #1's sprites as the slides, that's kind of genius really;
+	Added in sprites for crouching guard and pushblock;	
+	
+	16/11/2020:
+	Decided to start separating the dev notes by the dates; (like you were supposed to!! Jorge you fucking idiot... -Mistah Jorge)		
+	Added in his forward/backwards recovery roll;
+		- Visually dark man's not rolling, he's levitating as he gets up while moving;
+		- Dark man's normal get up's animation is the same as the recovery roll, while cool i had my doubts because i thought i couldn't tell the difference between getting up normaly or doing the backwards recovery roll in the back corner, turns out the bla bla bla, this will only get even longer so TL:DR backwards recovery is different because it's slower by default;
+	Added in more hit sprites, not finished yet, there are temporary sprites marked with a red X, if you find it it's because I didn't find a sprite that fits the animation frame at the time and they should be replaced;
+	Standard get up sprites are added in, unused, but just in case;
+	So, what's left of hit animations?:
+		- "Continue?";
+		- Dizzy;
+		- Fall-recovery in mid-air;
+		- Fall-recovery near ground; (I will probably make it look like he's levitating like on get up)
+		- (Done... i think?) I have no clue on what this "DM hit" is, can somebody explain to me? I guess it looks like it's supposed to be a spin animation? guys?
+		
+	26/11/2020:
+	Changed His crouching hard kick, here's a list of details, with this, his basic attacks should be more or less finished; :)
+		- It works like some kind of a horizontal launcher, it slams the opponent against the wall and bounces off;
+		- Opponents hit by this are not able to recover control;
+		- Does not give that much damage for balancing reasons;
+		- Can hit up to 3 times; (But why would anybody do this? It's not even worth it! see point above)
+	Hit hit sprites are nearly complete, should show Magma what frames are left to make;
+	His taunt is added in;
+	Dark man can now Wrryyyyyyyy!; (Voices included on taunt and this winpose are temporary and should be replaced...)
+	
+	27/11/2020:
+	Dark man now has a throw; :D
+		- Tosses opponent against the wall behind him;
+		- Opponents bounces off from the wall like when they're hit by his crouching hard kick;
+		- However they Dark man cannot combo from this for balancing issues;
+		(He might need a throw version where he throws forwards, i'll probably come up with something with);
+	Added in jumping hit sprites, i just noticed i forgot to add them in;
+	
+	28/11/2020 to 29/11/2020:
+	If i haven't forgot anything hit sprites are complete;
+	Palettes are now in the correct order now;
+	
+- O'Ilusionista
+	
+	29/11/2020:
+	Gave some movement on the arms on standing light kick;
+	All throws turn if you hold back:
+	Edited punch throw;
+	Created kick throw;
+	Created air throw;
+	Gave voices to throws;
+	Teleport beam intro added;
+	Created new transformation win pose;
+	Created new laughing win pose;
+	Win poses are now states 18000, 18100, 18200, etc;
+	Intro poses are now states 19000, 19100, 19200, etc;
+	Added intro against mega man (with voices) and protoman (unfinished, template only);
+	
+- Mistah Jorge
+
+	08/12/2020:
+	Added in voices for Dark man's basic attacks with O'Ilu;
+	Made a new Special attack named Dark "Semple" tank drop, born as a planned April fools joke (a one-hit k.o. move), later made into a porpusefully terrible move (google "bob semple" tank if you don't know the joke), then edited to be balanced-ish:
+		- Air only!;
+		- Slow-ish move (slow start up, rapid descent into the ground);
+		- Unblockable, must be dodged;
+		- Has a restriction of how close to the ground can you perform this move; (i mean what sense would it have to do this move in like, 3 pixels away from the ground? that would be stupid and useless!) 
+		- Can hit opponents laying on the ground;
+		- Crush opponents with this, command is D, DB, B, Kick.
+
+	12/12/2020:
+	Edited Dark "Semple" Tank Drop with what O'Ilusionista gave me some time ago, don't remember what;
+	It also works less janky now, an attempt to made the move hit opponents bellow dark man was made, not perfect but it's fine now;
+	Made a beta for Dark Shot, a charge (guile/deejay/remy) projectile:
+		- Ground only!;
+		- Light punch version is faster but smaller than the others, does not knock down ground opponents, can be combo'd from all normal attacks;
+		- Medium punch is lightly bigger, but a bit slower, knocks down ground opponents can be comboed from st. medium punch and all (hard) normal attacks;
+		- Hard punch's is the biggest projectile out of the 3, also the slowest, works like Reptile's Froce ball from Mortal Kombat, to balance this the move can't be combo from all normal attacks (except cr. hard kick);
+		- All versions knock down Air opponents;
+		- Light version completly misses Roll when she's crouching;
+		- Command is B (hold it for like a sec), F, P;
+	
+	15/12/2020:
+	Edited Dark Shot from feedback, eletrical effects are more consistent with other characters, added an explod and added sounds;
+	Made a beta for Dark thunder:
+		- All versions have the same damage, frame data, etc... 
+		- Has a difference between versions however which is punch button used determines the distance the thunder strikes (light closest, hard furthest);
+		- Command is equal to Shoryuken;
+	Added portraits provided by Laspacho;
+	Realized Dark man's colors on the shoulders are different from the rest of the body (thanks to the portraits) so i color separated those two in the sprites;
+	Erased a lot of code that won't be of any use and are only occupiying state numbers, also some small organization;
+
+	15/12/2020 - Ilu
+
+	Fixed an error on his SFF, which mades him revert to the old palette
+	Dark Thunder now has effects and shake.
+	Dark Thunder now has velvet 0,0 or it would slide while executing it
+
+	16/12/2020 - Ilu
+
+	- Fixed the grey colors on his shoulders
+	- Changed the Proto Man colors for each palette
+	- Working on Dark Net
+
+- Mistah Jorge
+	Somewhere between 15/12 and 19/12
+	Essentially just fixed some color loss on all of projectile, green-shock and thunder (took a bit longer than expected to be honest):
+		- Added 2 new colors to the palette for the effects;
+		- Re-added in the sprites mentioned above with the new colors;
+		- Edited all palettes, each one has new colors for the eletric effects;
+
+	19/12/2020 - Ilu
+	- Added Power Set animation and code (2000)
+	- Power Set 1 - Dark Net (2100-2108) - sprites needs smart pal
+	- Power Set 2 - Tank Mode (2200-2235) 
+	- Adde one more frame to taunt animation
+	
+- Mistah Jorge
+	19/12/2020 - 20/12/2020:
+	Started developing Dark man 3's hyper move:
+		- The command i intended is the same as Dark Shot/Projectile, difference being that you use two punch buttons instead of one;
+		- It basically just does 5 shots (like in the game, just without jumping)... i don't know what to do with it more;
+		- Will give this move an Air version... i think;
+	Fixed something incredibly weird while making the hyper... the hyper background started flashing red (lvl3) when it was supposed to be all blue (lvl1), 
+		the weird thing is... i checked code, i checked the animations, nothing... the solution was, and i kidd you not, 
+		was to reorganize the sprites... wtf? the sense i could make of this is something related with the sprites/palette organization like 
+		having the same groups and indexes, but no... the groups were diferent, what is this sorcery?
+
+======================================== ILU - 20/12/2020
+
+	- Set the default palette to RMM00.Act, so we can add the sprites with the smart pal
+	- Added power set 4 - Proto Mode
+	- Added new palettes done by PsyKai (the old ones will be used on some moves)
+	- Added new sounds (group 0)
+	- Polished Dark Net, Tank Mode.
+	- Dark Thunder now is executed with QCB+K
+	- Dark Projectile (strong) now acts like Reptile’s force ball
+	- Hyper 1 (Hyper Dark Tank - QCF+KK) done. Works on air too.
+	- Added Power set 3 - Shooter mode
+
+======================================== ILU - 21/12/2020
+
+	- Added Tank and Proto Man palettes (2,3 and 2,4)
+	- Added palete change to some power sets
+	- Added a code to revert to the default palette if hit
+	- Changed projectiles to helpers, to bypass the color change and palfx
+
+======================================== ILU - 22/12/2020
+
+	- New hyper - Dark Barrage (QCB+PP)
+	- New sounds for some moves
+	- New special - Power Slam (DP+P)
+	- Removed air throw
+	- Power Set 5 - Shield mode added (absorbs projectiles and damage upon hit)
+	  You can throw the shields if you input the same command again.
+	  
+- Mistah Jorge
+	23/12/2020
+	- Since we started using remapPal to change colors to the other dark men when using power sets i adapted the transform win pose to also work this way;
+	- With this i removed sprites that were rendundant (they were duplicate sprites) and duplicate colors (and i mean MANY duplicate colors) used by those sprites in all palettes;
+	- Also added a variation where he transforms into dark man #2 so he wouldn't feel left out;
+	- Discovered some sprites used the wrong colors assigned in palette and fixed (mainly the white-ish dots on shoulders and head glass);
+	- Added in all of the needed sprites of Dark man #4's hyper and placed them in group 3200, i kind of needed some of them for the win pose too;
+	- Made animations to save O'Ilu work later, check animations 3200 and 3201;
+	- Changed Dark man #4's palette to be more accurate to his depictions (Shoulder of the same color of the body);
+
+======================================== ILU - 23/12/2020
+	- Made Dark barrage;
+	- Made Dark energy;
+	
+- Mistah Jorge
+	23/12/2020
+	- Most projectiles now are affected by damage dampener, i could've sworn i already did that but my memory's fails me... either way it's in there now;
+	- Tank mode is no longer an unblockable, it's too fast for that, it's now an overhead attack;
+	- Changed slam throw a little bit:
+		- It now counts as a special Air throw, (one that you can combo into, but alas, it's great this way);
+		- Since Dark man can combo normal attacks into this throw, it's damage needs to be dampened accordingly;
+		- Transfered all the damage from the Hitdef to when Dark man lands the opponent on the floor (targetlifeadd);
+		- Like Zangief's Anti Air throw, Power slam now grabs only Aerial (and falling) opponents, to give a good reason for players to use other special attacks when on the ground and not just the one that does more damage;
+			(You can still combo into this move from Standing Hard Kick, since that always knocks opponents into the air);
+	- Adapted Stateno 3300 to work in the Air instead of the ground;
+	- Also changed the command to be B(charge), F, PP;
+	- Changed the ammount of time players need to hold B to do any charged input hyper, to be done easier on the Air;
+
+
+======================================== ILU - 25/12/2020
+
+- Removed unused Burst Man sounds
+- Removed unused Burst Man sprites
+- Added air guard sprites
+- Added Guard push sprites
+- Added recovery roll sprites
+- Finished Ai routines
+
+- Mistah Jorge
+	25/12/2020
+	- Based on the video, i changed sprpriority of stateno 3200 to 5;
+	- Reduced the shields damage by half, it also won't hit opponents lying down (too strong needed a nerf!);
+	- Applied damage dampener to shields as well, i forgot...
+	- Fixed Dark shot (hard punch version)'s projectile not coliding with other helpers by using targetstate controller instead of p2stateno;
+	- Made a new intro, the fusion intro;
+
+
+======================================== ILU - 26/12/2020
+
+- Finished morph intro (added sounds, fx and made it a bit faster when morphing is over)
+- Finished Win Match Over animation
+- Fixed Shield velocities 
+- Changed the default palete from the smart pal (purple shoulders)
+- Fixed Fusion intro remap issue
+- Added Weapons icons
+- Fix for the remap effect with pelf
+- Finished Power Set 6
+- Changed Dark Thunder command to QCF+P
+
+- Mistah Jorge
+	27/12/2020
+	(Dark man's basically finished, i'm just doing some real minor adjustments at this point)
+	- Saved Dark man #1's palette as "green.act";
+	- Restored the green with white-ish shoulder palette we had earlier as the default;
+	- Small portrait (not in the select screen, the other one...) has now the correct palette;
+	- Added RemapPal to Dark Energy;
+	- Fixed an issue where the pillares won't hit the opponent anymore if he guards the attacks (However I need to find a more stable  fix);
+	- Made an intro against Tengu man;
+
+======================================== ILU - 26/12/2020
+
+- Fixed AI air combos (he can’t execute zig zag combos)
+- Improved AI Power Slam usage
+- Improved AI Dark Projectile usage
+- Fixed sprites 5070
+
+
+- Mistah Jorge
+	06/01/2021
+	- Buffed dark man's chain attack possibilities: can now chain basic medium attacks into hard, but still not the full 1-2-3 combo;
+	- Nerfed his basic attack damage a bit, combo-ing st.mp-cr.HK was really strong;
+	- Added back in Dark man's "cross up" to Air.LK;
+	- Revised all air attacks hitdef.
+
+	17/02/2021
+	(All of the following changes were made to pave way for the intro against mega man, some stuff seems pointless and a lot of work to make sure nothing's broken sprite-wise... but whatever, a fix's a fix)
+	- Slightly changed the "normal" fake protoman intro;
+	- Modified the palettes's layout... again;
+	- Ditched the literal darker darkman and protoman sprites and respective colors in palettes, now the shadowy look they have's anchieve in the animations;
+	- Added colors from protoman's to the palettes (Skin color, "ears", etc except scarf...);
+	- Added sprites for the "real" protoman to be used in intro vs mega man;
+
+	Unknown
+	- Made the mega man special intro;
+
+	20/03/2021
+	(All of the following changes were related with that damn palette changing related bugs, some changes were made to some states to organize everything, 
+	but there's nothing pratically different, anyways the bug i mentioned should now be fixed, surelly... hopefully... maybe... guys?)
+	- Implemented new code for the palette change using variables, code should be in -2 states;
+	- Re-organized palettes in group 2 in sff file, organization to make things easier and less confusing (2,1 for darkman#1; 2,2 for darkman#2; etc; etc...);
+	- Changed the Dark barrage hyper (air ver.) to 3110 and reorganized the hyper states by number;
+
+	21/03/2021
+	- Changed sound on both throws to make them feel they have more impact when opponent hits the wall;
+	- Changed kick throw's palfx to have the neutral shock color and added the (palette shared) electric explod fx;
+
+	21/03/2021 - 22/03/2021
+	(An absurd ammount of work for something that's garanteed to go unnoticed, at least everything's final i think, i hope there's no need to color separate dark man again)
+	- Color separated the little white shine dots on the shoulders, glass head, and the rest of the body;
+	- Reorganized palettes;
+	- Added a 255 white color used in some sprites like the morphing hand;
+	- Deleted pink background color from bottom right of the palettes, it's a duplicate and unneded now that every sprite's added in;
+	
+	03/06/2021
+	- Small A.I. tweak that prevents Dark man from backdashing if too close to the back corner;
+	- Small change to Dark energy regarding ground.velocity and air.velocity's hit parameters... it's not exactly to fix a bug per-se, it's just odd looking;
+	- Also regarding Dark energy, i've made his hitboxes more detailed, normally i'm against too many hitboxes on frames, but just three hitboxes should be enough to cover a circle well enough;
+	- Made some changes for Dark man's power bomb special:
+		- Set control to 1 in the back jump after landing the bomb, meaning you can attack right after!
+		- Reduced the speed of said back jump horizontally, helps dark man hitting opponents with something like... "Hyper Dark Tank".
+		- Reduced the damage of the power bomb by 20 to nerf the move a bit, damage would be broken other wise;
+		
+	To finish:
+	- Remove Burst Man leftovers;
+	- bug checks here and there;

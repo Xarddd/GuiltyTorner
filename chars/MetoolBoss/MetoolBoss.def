@@ -1,0 +1,34 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Metool Daddy RMM"
+displayname ="Metool Daddy"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author ="O Ilusionista & RamzaNeko"
+pal.defaults =1,2,3,4
+
+
+[Files]
+sprite =!MetoolBoss.sff
+anim =!MetoolBoss.air
+sound =!MetoolBoss.snd
+cmd =!MetoolBoss.cmd
+cns =cns\!MetoolBoss.cns
+stcommon =cns\common.st
+st =cns\special.st
+pal1=act\1.act
+pal2=act\2.act
+pal3=act\3.act
+pal4=act\4.act
+st1=cns\Hyper.st
+st2=cns\Armor.cns
+st3=cns\-2-3.cns
+st4=cns\FX.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/wily_gameover.def

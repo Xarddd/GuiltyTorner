@@ -1,0 +1,123 @@
+NOTE: This stage was design for Rockless,
+      It is still a test version, update 
+      version will be release with Rockless.
+
+;---------------------------------;
+;Author  : Etg			  ;
+;Email   : Eternaga@hotmail.com   ;
+;Website : www.before3d.com       ;
+;---------------------------------;
+; [Release Date: April 18, 2008]  ;
+;- Sprite Ripped and Edit         ;
+;  By Eternaga                    ;
+;- This stage is incomplete but   ;
+;  it is still playable ;).       ;
+;- Will update in the future      ;
+;             (20XX)              ;
+;---------------------------------;
+;   Original Stage with a couple  ;
+;   of sprites from MMX4          ;
+;---------------------------------;
+
+[Info]
+name ="Mega Man's Realm"
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -160
+boundright = 160
+boundhigh = -240
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 50
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -75          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1            
+p2startx = 90
+p2starty = 0
+p2startz = 0
+p2facing = -1
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0    
+
+[Scaling]
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15   
+screenright = 15   
+
+[StageInfo]
+zoffset = 220
+autoturn = 1
+resetBG = 1
+
+[Shadow]
+color = 0,0,0
+yscale = 0
+
+[Reflection]
+intensity = 
+
+[Music]
+bgmusic = sound/flashman.mp3
+bgvolume = 255
+
+[BGdef]
+spr = MegaManRealm.sff
+debugbg = 0
+
+[BG 9]
+type  = anim
+start = -320,-240
+actionno = 2
+delta = 0,0
+
+[begin action 2]
+5,1,0,0,5
+
+[BG 5]
+type  = normal
+spriteno = 1,2
+start = -320,-240
+delta = .9, 1
+
+[BG 4]
+type  = normal
+spriteno = 1,1
+start = -320,-240
+delta = 0.75, 1
+
+[BG 3]
+type  = normal
+spriteno = 1,0
+start = -320,-240
+delta = 0.9, 1
+
+[BG 2]
+type  = anim
+actionno = 1
+start = -320,-240
+[begin action 1]
+0, 1, 0, 0, -1, , A
+
+[BG 1]
+type  = parallax
+spriteno = 1, 3
+start = 0,-240
+width = 400,600
+delta = 0.75, 1
+tile = 1,0
+mask = 1

@@ -1,0 +1,337 @@
+                                                                                                      
+                                                                                ;;ii;;                
+                                                                          ::iiiiiiii                  
+                                                                    ..iiii;;..  ii..                  
+                                                                ..ttii..      ii::                    
+      ..;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iiiiii..    ::;;                      
+    ..::                                                    ..;;ii;;..      ii..                      
+  ..::                                                ::;;ii;;..            ;;;;..................    
+..::                                            ..;;ii::..                    ..iiiiffffffffffffjjii  
+::..        http://infinitymugenteam.com/     ..,,ii....                        ..iifffffffffffffftt..
+  ::..                                              ..;;;;....              ..;;;;;;;;;;;;;;;;;;;;    
+    ::..         Share & Create                           ,,;;;;....        ii..                      
+      ::......................................................;;iiii;;..    ;;,,                      
+        ........................................................,,iiii        ii..                    
+                                                                  ,,;;ii;;..  ..ii                    
+                                                                        ;;iiii,,;;;;                  
+                                                                              ;;iitt..                
+                                                                                  ;;;; 
+
+; Cutman's stage for Marvel Vs. Capcom - Eternity Of Heroes,Project.
+; Made by Eternaga - Eternaga@hotmail.com  
+; http://infinitymugenteam.com/
+; Release Date: April 24, 2007
+
+[Info]
+name = "Cutter Arena - Cut Man"
+author = "Eternaga, Edited by AVPboy6754"
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -175
+boundright = 175
+boundhigh = -300
+boundlow = 16
+verticalfollow = 1
+floortension = 95
+tension = 50
+zoomin = 1
+zoomout = .85
+
+[PlayerInfo]
+p1startx=-70
+p1starty=0
+p1startz=0
+p1facing=1
+
+p2startx=70
+p2starty=0
+p2startz=0
+p2facing=-1
+
+leftbound=-1000
+rightbound=1000
+topbound=0
+botbound=0
+
+[Scaling]
+topz=0
+botz=50
+topscale=1
+botscale=1.2
+
+[Bound]
+screenleft=15
+screenright=15
+
+[StageInfo]
+zoffset=225
+autoturn=1
+resetBG=1
+
+[Shadow]
+intensity = 0
+yscale = 0
+fade.range = -100,100
+
+[Reflection]
+intensity = 50
+
+[BGdef]
+spr = Cutter_stage.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/Cutman.mp3
+bgvolume = 255
+
+[BG Color]
+type  = normal
+spriteno = 0,5
+layerno = 0                
+start = 0,50
+delta = .35,.35
+trans = none
+mask  = 1
+tile  = 0, 0
+tilespacing = 0,0
+zoomdelta=.35
+
+[BG Forest]
+type  = normal
+spriteno = 0,1
+layerno = 0                
+start = 0,50
+delta = .4,.4
+trans = none
+mask  = 1
+tile  = 0,0
+tilespacing = 0,0
+zoomdelta = .4
+
+[BG Forest]
+type  = parallax
+spriteno = 0,1
+start = 0,50
+delta = .4,.4
+scalestart = .5,1
+yscalestart = 100
+yscaledelta = 0
+width = 768, 1200
+velocity = 0,0
+zoomdelta = .4
+tile = 1,0
+mask = 1
+
+[BG Forest]
+type  = parallax
+spriteno = 0,1
+start = 0,50.5
+delta = .4,.4
+scalestart = .5,1
+yscalestart = 100
+yscaledelta = 0
+width = 768, 1200
+velocity = 0,0
+zoomdelta = .4
+tile = 1,0
+trans = addalpha
+alpha = 90,180
+mask = 1
+
+[BG Fore Sky]
+type  = normal
+spriteno = 0,4
+layerno = 0                
+start = 0,50
+delta = .35,.35
+zoomdelta = .35
+trans = none
+mask  = 1
+tile  = 1,0
+
+[BG Clouds]
+type  = normal
+spriteno = 0,3
+layerno = 0                
+start = 0,50
+delta = .285,.285
+zoomdelta = .285
+trans = none
+mask  = 1
+tile  = 1,0
+tilespacing = 100,0
+velocity = .075,0
+
+[BG Clouds]
+type  = normal
+spriteno = 0,2
+layerno = 0                
+start = 0,50
+delta = .3125,.3125
+zoomdelta = .3125
+trans = none
+mask  = 1
+tile  = 1,0
+velocity = .1125,0
+
+[BG Leaves] 
+type = anim
+actionno = 100
+start = 0,0
+delta = .4,.4
+zoomdelta = .4
+layerno = 0
+sin.x = 45,900
+sin.y = -45,450
+tile = 1,1
+tilespacing = 500,500
+velocity = 2,.5
+mask = 1
+
+[Begin Action 100]
+2,1, 0,0, 8
+2,2, 0,0, 7
+2,3, 0,0, 8
+2,4, 0,0, 7
+2,5, 0,0, 8
+2,6, 0,0, 7
+2,7, 0,0, 8
+2,8, 0,0, 7
+2,9, 0,0, 8
+
+[BG Leaves] 
+type = anim
+actionno = 101
+start = 0,0
+delta = .5,.5
+zoomdelta = .5
+layerno = 0
+sin.x = -45,900
+sin.y = 45,450
+tile = 1,1
+tilespacing = 500,500
+velocity = 1.5,.75
+mask = 1
+
+[Begin Action 101]
+2,6, 0,0, 7
+2,7, 0,0, 8
+2,8, 0,0, 7
+2,9, 0,0, 8
+2,1, 0,0, 8
+2,2, 0,0, 7
+2,3, 0,0, 8
+2,4, 0,0, 7
+2,5, 0,0, 8
+
+[BG Floor]
+type = parallax
+spriteno = 1,2
+start = 0,0
+delta = .75,.75
+xscale = .775,1.1
+zoomdelta = .75
+mask = 1
+
+[BG Wall's Reflex] 
+type = anim
+actionno = 0
+start = 0,400
+delta = .75,.75
+layerno = 0
+zoomdelta = .75
+mask = 1
+
+[Begin Action 0]
+1,0, 0,0, 1,V,AS45d256
+
+[BG Wall]
+type  = normal
+spriteno = 1,0
+start = 0,0
+delta = .75,.75
+zoomdelta = .75
+mask = 1
+
+[BG Side Covering Shadow]
+type  = normal
+spriteno = 1,3
+start = 0,27
+mask = 1
+zoomdelta = 1
+delta = 1,1
+tile = 1,0
+
+[BG Side Covering Shadow]
+type  = normal
+spriteno = 1,4
+start = 0,27
+mask = 1
+layerno = 1
+delta = 1,1
+zoomdelta = 1
+tile = 1,0
+
+[BG Side Covering Shadow]
+type  = normal
+spriteno = 1,3
+start = 0,27
+mask = 1
+layerno = 1
+delta = 1,1
+zoomdelta = 1
+tile = 1,0
+trans = addalpha
+alpha = 128, 128
+
+[BG Leaves] 
+type = anim
+actionno = 102
+start = -50,-50
+delta = 1.1,1.1
+layerno = 1
+sin.x = -50,450
+sin.y = 50,900
+tile = 1,1
+tilespacing = 500,500
+velocity = 1.75,-.75
+zoomdelta = 1.1
+mask = 1
+
+[Begin Action 102]
+2,7, 0,0, 8
+2,8, 0,0, 7
+2,9, 0,0, 8
+2,1, 0,0, 8
+2,2, 0,0, 7
+2,3, 0,0, 8
+2,4, 0,0, 7
+2,5, 0,0, 8
+2,6, 0,0, 7
+
+[BG Leaves] 
+type = anim
+actionno = 103
+start = 50,50
+delta = 1.2,1.2
+layerno = 1
+sin.x = -50,900
+sin.y = 50,450
+tile = 1,1
+tilespacing = 500,500
+velocity = 1.9,.75
+zoomdelta = 1.2
+mask = 1
+
+[Begin Action 103]
+2,6, 0,0, 7
+2,7, 0,0, 6
+2,8, 0,0, 7
+2,9, 0,0, 8
+2,1, 0,0, 6
+2,2, 0,0, 7
+2,3, 0,0, 8
+2,4, 0,0, 7
+2,5, 0,0, 6

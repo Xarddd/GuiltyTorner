@@ -1,0 +1,45 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.1
+;Template by Acey
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name="Heat Man RMM"
+displayname="Heat Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="AJrenaln (coding) && Laspacho & Daeron (Sprites)"
+;Updated and fixed by O Ilusionista
+pal.defaults=1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+cmd 	 =HeatmanRMM.cmd
+cns 	 =HeatmanRMM.cns
+stcommon =common1.cns
+st	 =HeatmanRMM.cns
+sprite	 =HeatmanRMM.sff
+anim	 =HeatmanRMM.air
+sound 	 =HeatmanRMM.snd
+pal1=ACT/HeatmanRMM.act
+pal2=ACT/HeatmanLightBlue.act
+pal3=ACT/HeatmanBlue.act
+pal4=ACT/HeatmanPurple.act
+pal5=ACT/HeatmanBlack.act
+pal6=ACT/HeatmanGreen.act
+pal7=ACT/HeatmanRed.act
+pal8=ACT/8.act
+pal9=ACT/9.act
+pal10=ACT/10.act
+pal11=ACT/11.act
+pal12=ACT/12.act
+
+st1=-2.cns
+st2=-3.cns
+st3 = Powersets.cns
+st4 = specials.cns
+st5 = hypers.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_heatman.def

@@ -1,0 +1,596 @@
+;Magmaman stage by me, Magma MK II
+;Original Blast Furnace stage by Lightflare/Vegaz Parelli
+;Credits goes to:
+;Capcom and Keiji Inafune
+;MAMEdev Team
+;--------------------------------------------------------
+[Info]
+name = "Geothermal Plant - Magma Man"
+
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty = 0
+boundleft = -220
+boundright = 220
+boundhigh = -200
+boundlow = 0
+verticalfollow = .75
+floortension = 100
+tension = 60
+
+;--------------------------------------------------------
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1startz = 0
+p1facing = 1
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+leftbound = -1000
+rightbound = 1000
+topbound = 0
+botbound = 0
+
+;--------------------------------------------------------
+[Scaling]
+topz = 0
+botz = 50
+topscale = 1
+botscale = 1.2
+
+;--------------------------------------------------------
+[Bound]
+screenleft = 25
+screenright = 25
+
+;--------------------------------------------------------
+[StageInfo]
+zoffset = 216
+autoturn = 1
+resetBG = 0
+
+;--------------------------------------------------------
+[Shadow]
+color = 112,144,240
+yscale = 1
+reflect = 0
+intensity = 8
+
+
+;--------------------------------------------------------
+[Music]
+bgmusic = sound/Magma Man Stage.mp3
+bgvolume = 255
+bgmloopstart = 261588
+bgmloopend = 3627347
+
+;--------------------------------------------------------
+[BGdef]
+spr = stages/Magmaman.sff
+debugbg = 0
+
+;--------------------------------------------------------
+;--------------------------------------------------------
+
+[BG BackgroundHighPart]
+type = normal 
+spriteno = 0, 0
+start = 0, 0
+delta = .8, 1
+
+[BG BackgroundLowPart]
+type = anim
+actionno = 1
+start = 0, 96
+delta = .8, 1
+
+[BG LiquidMetal]
+type = anim
+actionno = 2
+start = 0, 167
+delta = .8, 1
+
+[BG LeftLight]
+type = anim
+actionno = 4
+start = -306, 80
+delta = .8, 1
+
+[BG RightLight]
+type = anim
+actionno = 6
+start = 230, 96
+delta = .8, 1
+
+[BG Scene]
+type = anim
+actionno = 7
+start = 0, 0
+delta = .8, 1
+
+[BG PouredMetalDark]
+type = anim
+actionno = 11
+start = -13, 115
+delta = .8, 1
+id = 1
+
+[BG PouredMetalMedium]
+type = anim
+actionno = 21
+start = -13, 115
+delta = .8, 1
+id = 2
+
+[BG PouredMetalLight]
+type = anim
+actionno = 31
+start = -13, 115
+delta = .8, 1
+id = 3
+
+[BG Chain]
+type = anim
+actionno = 9
+start = -128, 0
+delta = .957589 , 1
+
+[BG GroundSprite1]
+type = normal
+spriteno = 3, 0
+start = 0, 72
+delta = 1, 1
+mask = 1
+
+[BG Fence]
+type = normal
+spriteno = 90, 0
+start = 0, 72
+delta = 1.4, 1.4
+mask = 1
+layerno = 1
+
+;________________________________
+
+[Begin Action 1]	; Background (Low Part)
+1,0, 0, 0, 12
+1,1, 0, 0, 12
+1,2, 0, 0, 12
+1,1, 0, 0, 12
+
+[Begin Action 2]	; Liquid Metal
+2,0, 0, 0, 9
+2,1, 0, 0, 8
+2,2, 0, 0, 9
+2,3, 0, 0, 9
+2,4, 0, 0, 9
+2,5, 0, 0, 8
+2,6, 0, 0, 9
+2,7, 0, 0, 9
+
+;--
+
+[Begin Action 4]	; Left Light
+4,0, 0, 0, 1
+4,1, 0, 0, 1
+4,2, 0, 0, 1
+4,3, 0, 0, 1
+4,4, 0, 0, 1
+4,5, 0, 0, 1
+4,6, 0, 0, 1
+4,7, 0, 0, 1
+4,8, 0, 0, 1
+4,7, 0, 0, 1
+4,6, 0, 0, 1
+4,5, 0, 0, 1
+4,4, 0, 0, 1
+4,3, 0, 0, 1
+4,2, 0, 0, 1
+4,1, 0, 0, 1
+
+[Begin Action 6]	; Right Light
+6,0, 0, 0, 2
+6,1, 0, 0, 2
+6,2, 0, 0, 2
+6,3, 0, 0, 2
+6,4, 0, 0, 2
+6,5, 0, 0, 2
+6,6, 0, 0, 2
+6,7, 0, 0, 2
+6,8, 0, 0, 2
+6,9, 0, 0, 2
+6,10, 0, 0, 2
+6,11, 0, 0, 2
+6,10, 0, 0, 2
+6,9, 0, 0, 2
+6,8, 0, 0, 2
+6,7, 0, 0, 2
+6,6, 0, 0, 2
+6,5, 0, 0, 2
+6,4, 0, 0, 2
+6,3, 0, 0, 2
+6,2, 0, 0, 2
+6,1, 0, 0, 2
+
+[Begin Action 7]	; Scene
+7,0, 0, 0, 12
+7,1, 0, 0, 12
+7,2, 0, 0, 12
+7,1, 0, 0, 12
+
+[Begin Action 9]	; Chain
+9,0, 0, 0, 12
+9,1, 0, 0, 12
+9,2, 0, 0, 12
+9,1, 0, 0, 12
+
+;Dark vat
+[Begin Action 11]
+5, 8, 0,0, 6
+5, 9, 0,0, 6
+5,10, 0,0, 6
+5, 0, 0,0, 6
+5, 1, 0,0, 7
+
+[Begin Action 12]
+5,15, 0,0, 6
+5,16, 0,0, 7
+
+[Begin Action 13]
+5,25, 0,0, 6
+5,26, 0,0, 6
+5,27, 0,0, 6
+5,31, 0,0, 6
+5,32, 0,0, 7
+
+[Begin Action 14]
+5,16, 0,0, 6
+5,15, 0,0, 7
+
+;Medium vat
+[Begin Action 21]
+5, 3, 0,0, 6
+5, 4, 0,0, 6
+5,11, 0,0, 6
+5,12, 0,0, 6
+5, 2, 0,0, 7
+
+[Begin Action 22]
+5,34, 0,0, 6
+5,17, 0,0, 7
+
+[Begin Action 23]
+5,18, 0,0, 6
+5,19, 0,0, 6
+5,28, 0,0, 6
+5,23, 0,0, 6
+5,24, 0,0, 7
+
+[Begin Action 24]
+5,17, 0,0, 6
+5,34, 0,0, 7
+
+;Light vat
+[Begin Action 31]
+5,14, 0,0, 6
+5, 5, 0,0, 6
+5, 6, 0,0, 6
+5, 7, 0,0, 6
+5,13, 0,0, 7
+
+[Begin Action 32]
+5,35, 0,0, 6
+5,33, 0,0, 7
+
+[Begin Action 33]
+5,30, 0,0, 6
+5,20, 0,0, 6
+5,21, 0,0, 6
+5,22, 0,0, 6
+5,29, 0,0, 7
+
+[Begin Action 34]
+5,33, 0,0, 6
+5,35, 0,0, 7
+
+
+[BGCtrlDef PouredMetal]
+looptime = 48
+ctrlID = 1,2,3
+
+[BGCtrl DarkOn]
+type = Visible
+time = 0
+ctrlID = 1
+value = 1
+
+[BGCtrl OthersOff]
+type = Visible
+time = 0
+ctrlID = 2,3
+value = 0
+
+[BGCtrl DarkOff]
+type = Visible
+time = 12
+ctrlID = 1
+value = 0
+
+[BGCtrl MediumOn1]
+type = Visible
+time = 12
+ctrlID = 2
+value = 1
+
+[BGCtrl MediumOff]
+type = Visible
+time = 24
+ctrlID = 2
+value = 0
+
+[BGCtrl LightOn]
+type = Visible
+time = 24
+ctrlID = 3
+value = 1
+
+[BGCtrl LightOff]
+type = Visible
+time = 36
+ctrlID = 3
+value = 0
+
+[BGCtrl MediumOn2]
+type = Visible
+time = 36
+ctrlID = 2
+value = 1
+
+
+[BGCtrlDef Dark]
+looptime = 646
+ctrlID = 1
+
+[BGCtrl Dark1]
+type = Anim
+time = 0
+value = 11
+
+[BGCtrl Dark2]
+type = Anim
+time = 310
+value = 12
+
+[BGCtrl Dark3]
+type = Anim
+time = 323
+value = 13
+
+[BGCtrl Dark4]
+type = Anim
+time = 633
+value = 14
+
+[BGCtrlDef Medium]
+looptime = 646
+ctrlID = 2
+
+[BGCtrl Medium1]
+type = Anim
+time = 0
+value = 21
+
+[BGCtrl Medium2]
+type = Anim
+time = 310
+value = 22
+
+[BGCtrl Medium3]
+type = Anim
+time = 323
+value = 23
+
+[BGCtrl Medium4]
+type = Anim
+time = 633
+value = 24
+
+[BGCtrlDef Light]
+looptime = 646
+ctrlID = 3
+
+[BGCtrl Light1]
+type = Anim
+time = 0
+value = 31
+
+[BGCtrl Light2]
+type = Anim
+time = 310
+value = 32
+
+[BGCtrl Light3]
+type = Anim
+time = 323
+value = 33
+
+[BGCtrl Light4]
+type = Anim
+time = 633
+value = 34
+
+[BG floor light center]
+type  		= anim
+actionno = 110
+start 		= 0,198
+delta 		= 1,1
+mask     	= 1
+
+[BG floor light right 1]
+type  		= anim
+actionno = 111
+start 		= 80,198
+delta 		= 1,1
+mask     	= 1
+
+[BG floor light right 2]
+type  		= anim
+actionno = 112
+start 		= 240,198
+delta 		= 1,1
+mask     	= 1
+
+[BG floor light left 1]
+type  		= anim
+actionno = 113
+start 		= -80,198
+delta 		= 1,1
+mask     	= 1
+
+[BG floor light left 2]
+type  		= anim
+actionno = 114
+start 		= -240,198
+delta 		= 1,1
+mask     	= 1
+
+; Luz
+[Begin Action 110]
+110,6, 0,0, 1200
+loopstart
+110,0, 0,0, 4
+110,1, 0,0, 4
+110,2, 0,0, 4
+110,3, 0,0, 4
+110,4, 0,0, 4
+110,5, 0,0, 4
+
+; Luz
+[Begin Action 111]
+110,6, 0,0, 2400
+loopstart
+110,0, 0,0, 4
+110,1, 0,0, 4
+110,2, 0,0, 4
+110,3, 0,0, 4
+110,4, 0,0, 4
+110,5, 0,0, 4
+
+; Luz
+[Begin Action 112]
+110,6, 0,0, 3600
+loopstart
+110,0, 0,0, 4
+110,1, 0,0, 4
+110,2, 0,0, 4
+110,3, 0,0, 4
+110,4, 0,0, 4
+110,5, 0,0, 4
+
+; Luz
+[Begin Action 113]
+110,6, 0,0, 2400, H
+loopstart
+110,0, 0,0, 4, H
+110,1, 0,0, 4, H
+110,2, 0,0, 4, H
+110,3, 0,0, 4, H
+110,4, 0,0, 4, H
+110,5, 0,0, 4, H
+
+; Luz
+[Begin Action 114]
+110,6, 0,0, 3600, H
+loopstart
+110,0, 0,0, 4, H
+110,1, 0,0, 4, H
+110,2, 0,0, 4, H
+110,3, 0,0, 4, H
+110,4, 0,0, 4, H
+110,5, 0,0, 4, H
+
+[BG toto heli]
+type  		= anim
+actionno        = 50
+start 		= 100,40
+delta 		= 1,1
+mask     	= 1
+velocity        = -0.2, 0
+tile            = 1, 0
+tilespacing     = 500,0
+
+[Begin Action 50]
+10,0,0,0,7
+10,1,0,0,7
+10,2,0,0,7
+10,3,0,0,7
+
+[BG ember]
+type  		= anim
+actionno        = 51
+start 		= 94,75
+delta 		= 1,1
+mask     	= 1
+velocity        = -0.2, 0
+tile            = 1, 0
+tilespacing     = 500,0
+
+[Begin Action 51]
+11,6,0,500,300
+11,4,0,0,5
+11,0,0,0,5
+11,1,0,0,5
+11,2,0,0,5
+11,3,0,0,5
+11,4,0,0,5
+11,5,0,0,5
+11,6,0,0,5
+
+[BG ember]
+type  		= anim
+actionno        = 52
+start 		= 84,75
+delta 		= 1,1
+mask     	= 1
+velocity        = -0.2, 0
+tile            = 1, 0
+tilespacing     = 500,0
+
+[Begin Action 52]
+11,6,0,500,330
+loopstart
+11,4,0,0,5
+11,0,0,0,5
+11,1,0,0,5
+11,2,0,0,5
+11,3,0,0,5
+11,4,0,0,5
+11,5,0,0,5
+11,6,0,0,5
+11,6,0,500,300
+
+[BG ember]
+type  		= anim
+actionno        = 53
+start 		= 74,75
+delta 		= 1,1
+mask     	= 1
+velocity        = -0.2, 0
+tile            = 1, 0
+tilespacing     = 500,0
+
+[Begin Action 53]
+11,6,0,500,360
+loopstart
+11,4,0,0,5
+11,0,0,0,5
+11,1,0,0,5
+11,2,0,0,5
+11,3,0,0,5
+11,4,0,0,5
+11,5,0,0,5
+11,6,0,0,5
+11,6,0,500,300

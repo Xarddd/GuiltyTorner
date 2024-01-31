@@ -1,0 +1,1346 @@
+;---------------------------------------------------------------------
+;Servbot States (1001, 3900 - 4010)
+;---------------------------------------------------------------------
+
+;-----------------------
+;Servbot Teleport
+[Statedef 3900]
+type = S
+ctrl = 0
+anim = 4000
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = -2
+;ignorehitpause =
+;persistent =
+
+[State 3100, Sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,1
+persistent = 0
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time = 0
+time = 86
+add = 100,100,100
+mul = 256,256,256
+sinadd = 150,150,150,50
+invertall = 0
+color = 256
+;ignorehitpause =
+;persistent =
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time<=15
+flag = invisible
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 80
+trigger2 = roundstate >= 2
+value = 4000
+ctrl = 0
+
+;-----------------------
+; Servbot Standing
+[Statedef 4000]
+type = S
+ctrl = 0
+anim = 4000+random%3
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[state 1102,1]
+type = posset
+trigger1 = 1
+y = -2
+
+[state 1102,2]
+type = turn
+trigger1 = facing != root, facing
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 0
+
+[state 1102,4]
+type = palfx
+trigger1 = 1
+add = 0,0,0
+time = 1
+
+[State 1107,2] ;Standing
+type = Changeanim
+triggerall = Anim != [4000,4003]
+trigger1 = Root, Stateno != [10,12]
+value = 4000+random%3
+
+[State 1107,2] ;Standing
+type = Changeanim
+triggerall = Anim != 4019
+trigger1 = Root, Stateno = 10
+value = 4019
+
+[State 1107,2] ;Standing
+type = Changeanim
+triggerall = Anim != 4020
+trigger1 = Root, Stateno = 11
+value = 4020
+
+[State 1107,2] ;Standing
+type = Changeanim
+triggerall = Anim != 4021
+trigger1 = Root, Stateno = 12
+value = 4021
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 1200 && Root,Var(22)=0
+value = 4020
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = [3000,3004]
+trigger2 = Root, Stateno = [3100,3104]
+value = 4030
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 1210
+value = 4021
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x > 75
+value = 4001
+
+[state 3000,5]; backward
+type = changestate
+trigger1 = parentdist x < 0
+value = 4002
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = root, stateno = 182
+value = 4005
+persistent = 0
+
+[State 1102,9] ;Servbot Trip
+type = ChangeState
+trigger1 = root, stateno = 1000 && root,var(25) = 1
+value = 1001
+persistent = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4075
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4091
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4090
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4095
+
+;--------------------------------------
+;Servbot Walk Fwd
+[Statedef 4001]
+type = S
+ctrl = 0
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AA,AT,AP
+time = 1
+ignorehitpause = 1
+
+[state 3000,5]; forward
+type = changeanim
+trigger1 = parentdist x < 121
+trigger1 = anim != 4003
+value = 4003
+
+[state 3000,5]; forward
+type = changeanim
+trigger1 = parentdist x > 120
+trigger1 = anim != 4004
+value = 4004
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x > 120
+x = 5
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x < 121
+x = 3
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x < 70
+value = 4000
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x < 0
+value = 4002
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 1200 && Root,Var(22)=0
+value = 4020
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = [3000,3004]
+trigger2 = Root, Stateno = [3100,3104]
+value = 4030
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = root, stateno = 182
+value = 4005
+persistent = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4075
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4091
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4090
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4095
+
+;----------------------------------------------------------
+;Servbot Walk Back
+[Statedef 4002]
+type = S
+ctrl = 0
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AA,AT,AP
+time = 1
+ignorehitpause = 1
+
+[state 3000,5]; forward
+type = changeanim
+trigger1 = parentdist x >= -70
+trigger1 = anim != 4008
+value = 4008
+
+[state 3000,5]; forward
+type = changeanim
+trigger1 = parentdist x < -70
+trigger1 = anim != 4009
+value = 4009
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x < -70
+x = -5
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x >= -70
+x = -3
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x > 67
+value = 4000
+
+[state 3000,5]; forward
+type = changestate
+trigger1 = parentdist x > 70
+value = 4001
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = 1200 && Root,Var(22)=0
+value = 4020
+
+[State 1107,2] 
+type = ChangeState
+trigger1 = Root, Stateno = [3000,3004]
+trigger2 = Root, Stateno = [3100,3104]
+value = 4030
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = root, stateno = 182
+value = 4005
+persistent = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4075
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4091
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4090
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4095
+
+;------------------------------------------------------
+;Servbot Run Fwd
+[Statedef 4003]
+type = S
+ctrl = 0
+anim = 4004
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AA,AP,AT
+time = 1
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = rootdist x = [-30, 70]
+value = 4000
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [121, 220]
+trigger1 = root, animelem = 5, = 0
+value = 4001
+
+[State 1102,7] ;Run Forward
+type = ChangeState
+trigger1 = rootdist x = [-180, -81]
+trigger1 = root, animelem = 5, = 0
+value = 4002
+
+[State 1102,8] ;Run Backward
+type = ChangeState
+trigger1 = rootdist x = [-3080, -181]
+trigger1 = root, animelem = 5, = 0
+value = 4004
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = root, stateno = 182
+value = 4005
+persistent = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4075
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4091
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4090
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4095
+
+;----------------------------------------------------------
+;Servbot Run Back
+[Statedef 4004]
+type = S
+ctrl = 0
+anim = 4004
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AA,AP,AT
+time = 1
+
+[state 1102,2]
+type = turn
+trigger1 = time= 0
+persistent =  0
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = rootdist x = [-30, 70]
+value = 4000
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [121, 220]
+trigger1 = root, animelem = 5, = 0
+value = 4001
+
+[State 1102,6] ;Walk Backward
+type = ChangeState
+trigger1 = rootdist x = [-180, -81]
+trigger1 = root, animelem = 5, = 0
+value = 4002
+
+[State 1102,7] ;Run Forward
+type = ChangeState
+trigger1 = rootdist x = [221, 4020]
+trigger1 = root, animelem = 5, = 0
+value = 4003
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = root, stateno = 182
+value = 4005
+persistent = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4075
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4091
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4090
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4095
+
+;---------------------------------------------------------
+; Servbot Attack Light
+[Statedef 4020]
+type = S
+movetype = A
+Physics = N
+ctrl = 0
+anim = 4050;4004
+velset = 0,0
+sprpriority = -5
+
+[State 0, ParentVarSet]
+type = ParentVarSet
+trigger1 = time = 0
+v = 22
+value = 1
+
+[state 1107,1]
+type = null;velset
+trigger1 = time = 0
+x = 5
+
+[State 0, VarSet]
+type = Varset
+trigger1 = time = 0
+v = 20
+value = 0
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = Varadd
+trigger1 = movecontact
+v = 20
+value = 1
+ignorehitpause = 1
+
+[State 0, Projectile]
+type = Hitdef
+trigger1 = !movehit
+trigger1 = !moveguarded
+attr = S,SA   
+hitflag = MAFD
+guardflag = MA
+getpower = 56,28
+givepower = 56,28
+animtype = Heavy
+ground.type = Trip
+air.type = Low
+priority = 7
+damage = 50,8
+pausetime = 0,5
+sparkno = S25010+random%2
+guard.sparkno = S25008
+sparkxy = -10, -25
+guardsound = s8500,0
+hitsound = s8000,5
+guardsound = 0,0
+ground.slidetime = 18
+ground.hittime = 20
+ground.velocity = -2,-4
+air.velocity = -1, -3
+down.velocity = -2, -4
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+down.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+envshake.time = 7
+envshake.ampl = 4
+
+[State 2051, ]
+type = NotHitBy
+trigger1 = 1
+time = 99
+value = SCA, NT, ST, HT
+ignorehitpause = 1
+
+[State 2051, ]
+type = HitBy
+trigger1 = 1
+time = 99
+value = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 2051]
+type = HitOverride
+trigger1 = 1
+time = 99
+slot = 1
+stateno = 4023
+attr = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = MoveReversed
+value = 4023
+ignorehitpause = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = time >= 240
+trigger2 = MoveContact
+value = 4029
+
+;---------------------------------------------------------
+; Servbot Attack Light
+[Statedef 4029]
+type = S
+movetype = A
+Physics = N
+ctrl = 0
+anim = 4004
+velset = 0,0
+sprpriority = 2
+
+[State 0, Turn]
+type = Turn
+trigger1 = !time 
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = 6, 0
+channel = 1
+
+[State 0, ParentVarSet]
+type = ParentVarSet
+trigger1 = time = 0
+v = 22
+value = 1
+
+[state 1107,1]
+type = velset
+trigger1 = time = 0
+x = 5
+
+[State 0, VarSet]
+type = Varset
+trigger1 = time = 0
+v = 20
+value = 0
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = Varadd
+trigger1 = movecontact
+v = 20
+value = 1
+ignorehitpause = 1
+
+[State 0, Projectile]
+type = Hitdef
+trigger1 = !movehit
+trigger1 = !moveguarded
+attr = S,SA   
+hitflag = MAFD
+guardflag = MA
+getpower = 56,28
+givepower = 56,28
+animtype = Heavy
+ground.type = Trip
+air.type = Low
+priority = 7
+damage = 50,8
+pausetime = 0,5
+sparkno = S25010+random%2
+guard.sparkno = S25008
+sparkxy = -10, -25
+guardsound = s8500,0
+hitsound = s8000,5
+guardsound = 0,0
+ground.slidetime = 18
+ground.hittime = 20
+ground.velocity = -2,-4
+air.velocity = -1, -3
+down.velocity = -2, -4
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+down.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+envshake.time = 7
+envshake.ampl = 4
+
+[State 2051, ]
+type = NotHitBy
+trigger1 = 1
+time = 99
+value = SCA, NT, ST, HT
+ignorehitpause = 1
+
+[State 2051, ]
+type = HitBy
+trigger1 = 1
+time = 99
+value = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 2051]
+type = HitOverride
+trigger1 = 1
+time = 99
+slot = 1
+stateno = 4023
+attr = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = MoveReversed
+value = 4023
+ignorehitpause = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = frontedgedist <= -25
+trigger1 = time >= 10
+value = 4000
+
+;---------------------------------------------------------
+; Servbot Attack Medium
+[Statedef 4021]
+type = S
+movetype = A
+Physics = N
+ctrl = 0
+anim = 4004
+velset = 0,0
+sprpriority = 2
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = 6, 0
+channel = 1
+
+[State 0, ParentVarSet]
+type = ParentVarSet
+trigger1 = time = 0
+v = 22
+value = 1
+
+[state 1107,1]
+type = velset
+trigger1 = time = 0
+x = 5
+
+[State 0, VarSet]
+type = Varset
+trigger1 = time = 0
+v = 20
+value = 0
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = Varadd
+trigger1 = movecontact
+v = 20
+value = 1
+ignorehitpause = 1
+
+[State 0, Projectile]
+type = Hitdef
+trigger1 = !movehit
+trigger1 = !moveguarded
+attr = S,SA   
+hitflag = MAF  
+guardflag = MA
+getpower = 56,28
+givepower = 56,28
+animtype = Medium
+ground.type = Low
+air.type = Low
+priority = 7
+damage = 50,8
+pausetime = 0,5
+sparkno = S25010+random%2
+guard.sparkno = S25008
+sparkxy = -10, -25
+guardsound = s8500,0
+hitsound = s8000,1
+guardsound = 0,0
+ground.slidetime = 1
+ground.hittime  = 20
+ground.velocity = 0
+guard.velocity = -1
+air.velocity = 0,0
+airguard.velocity = -1,-1
+p2facing = 1
+p2stateno = 4050
+forcestand = 1
+
+[State 2051, ]
+type = NotHitBy
+trigger1 = 1
+time = 99
+value = SCA, NT, ST, HT
+ignorehitpause = 1
+
+[State 2051, ]
+type = HitBy
+trigger1 = 1
+time = 99
+value = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 2051]
+type = HitOverride
+trigger1 = 1
+time = 99
+slot = 1
+stateno = 4023
+attr = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = MoveReversed
+value = 4023
+ignorehitpause = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = movehit
+value = 4025
+
+[State 21481]
+type = ChangeState
+trigger1 = frontedgedist <= 25
+trigger1 = time >= 10
+value = 4000
+
+;---------------------------------------------------------------------------
+; Servbot Fly
+[Statedef 4022]
+type = S
+movetype = A
+physics = N
+anim = 4092
+velset = 7, 3
+sprpriority = 3
+
+[State 2560, 1]
+type = VelAdd
+trigger1 = 1
+y = -.12
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = 6, 0
+channel = 1
+
+[State 2180, 4]
+type = HitDef
+trigger1 = time%5 = 0
+attr = S, SP
+damage = 20,13
+getpower = 13, 6
+givepower = 13, 6
+animtype = hard
+ground.type = high
+air.type = low
+hitflag = MAF
+guardflag = MA
+priority = 7
+pausetime = 1, 11
+sparkxy = -5, -45
+sparkno = S25010+random%2
+guard.sparkno = S25008
+guardsound = s8500,0
+hitsound = s8000,1
+ground.slidetime = 12        
+ground.hittime  = 12            
+ground.velocity = -4
+air.hittime = 12
+air.velocity = -1,-3
+down.velocity = -2,-3
+guard.slidetime = 10
+guard.hittime = 10
+guard.ctrltime = 10
+guard.velocity = -4.3
+airguard.velocity = -4.3
+
+[State 2051, ]
+type = NotHitBy
+trigger1 = 1
+time = 99
+value = SCA, NT, ST, HT
+ignorehitpause = 1
+
+[State 2051, ]
+type = HitBy
+trigger1 = 1
+time = 99
+value = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 2051]
+type = HitOverride
+trigger1 = 1
+time = 99
+slot = 1
+stateno = 4026
+attr = SCA, NA, SA, HA, NP, SP, HP
+ignorehitpause = 1
+
+[State 21481]
+type = ChangeState
+trigger1 = MoveReversed
+value = 4026
+ignorehitpause = 1
+
+[State 21481]
+type = DestroySelf
+trigger1 = FrontEdgeDist < -100
+ignorehitpause = 1
+
+;----------------------------------------------------------
+;Servbot Run Back Sad
+[Statedef 4023]
+type = S
+ctrl = 0
+anim = 4075
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[state 1102,2]
+type = turn
+trigger1 = time= 0
+persistent =  0
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 1102,5] ;Stand Still
+type = ChangeState
+trigger1 = rootdist x = [-30, 70]
+value = 4000
+
+[State 1102,5] ;Walk Forward
+type = ChangeState
+trigger1 = rootdist x = [121, 220]
+trigger1 = root, animelem = 5, = 0
+value = 4001
+
+[State 1102,6] ;Walk Backward
+type = ChangeState
+trigger1 = rootdist x = [-180, -81]
+trigger1 = root, animelem = 5, = 0
+value = 4002
+
+[State 1102,7] ;Run Forward
+type = ChangeState
+trigger1 = rootdist x = [221, 4020]
+trigger1 = root, animelem = 5, = 0
+value = 4003
+
+[State 1102,9] ;Angry
+type = ChangeState
+trigger1 = root, movetype = H
+trigger1 = root, stateno = [5000,5999]
+trigger2 = root, stateno = 182
+value = 4005
+persistent = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4075
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 181
+value = 4091
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 183
+value = 4090
+
+[State 1107,2] ;Standing
+type = ChangeState
+trigger1 = Root, Stateno = 195
+value = 4095
+
+;------------------------------------------------------------------------------------------------------------
+;Servbot Hold
+[Statedef 4025]
+type = A
+movetype = I
+physics = N
+anim = 4007
+velset = 0,0
+sprpriority = 3
+
+[state 6031]
+type = posadd
+trigger1 = 1
+x = -10 + floor(p2dist X)
+y = -15 + floor(p2dist Y)
+
+[State 21487]
+type = ChangeState
+trigger1 = time = 100
+trigger2 = p2stateno != 4050
+ignorehitpause = 1
+value = 4000
+
+;---------------------------------------------------------
+;Servbot fall
+[Statedef 4026]
+type = S
+ctrl = 0
+velset = 0,0
+physics = S
+anim = 4093
+sprpriority = 3
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = 0.5
+
+[State 0, ChangeAnim]
+type = Changestate
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 4027
+
+;---------------------------------------------------------------
+;Servbot leave
+[Statedef 4027]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+velset = 0,0
+sprpriority = 3
+anim = 4075
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+y = 0 
+
+[state 1102,2]
+type = turn
+trigger1 = time= 0
+persistent =  0
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5
+
+[State 21481]
+type = DestroySelf
+trigger1 = FrontEdgeDist < -100
+ignorehitpause = 1
+
+;---------------------------------------------------------
+;Servbot Hyper jump up
+[Statedef 4030]
+type = S
+ctrl = 0
+velset = 0,-10
+physics = N
+sprpriority = -2
+anim = 4091
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = 0.5
+
+[State 0, ChangeAnim]
+type = Changestate
+trigger1 = vel y = 0
+value = 4031
+
+;---------------------------------------------------------
+;Servbot Hyper flying
+[Statedef 4031]
+type = S
+ctrl = 0
+physics = N
+sprpriority = -2
+anim = 4092
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AA,AT,AP
+time = 1
+ignorehitpause = 1
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x >= -70
+trigger1 = parentdist x <= 120
+x = 0
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x > 120
+x = 5
+
+[state 3000,5]; forward
+type = velset
+trigger1 = parentdist x < -70
+x = -5
+
+[state 3000,5]; forward
+type = velset
+trigger1 = root, stateno = [3100,3199]
+trigger2 = root, stateno = 3105
+trigger3 = root, stateno = 4150
+y = ifelse (Pos Y>=0,0,(root, vel y))
+
+[State 0, ChangeAnim]
+type = Changestate
+trigger1 = root, stateno != [3000,3199]
+trigger1 = root, stateno != 4150
+trigger2 = root, stateno = 3005
+trigger3 = root, stateno = 3105
+value = 4032
+
+;---------------------------------------------------------
+;Servbot Hyper fall
+[Statedef 4032]
+type = S
+ctrl = 0
+physics = N
+sprpriority = -2
+anim = 4093
+
+[state hm]
+type = statetypeset
+trigger1 = vel y >= 0
+movetype = I
+persistent = 0
+
+[State 722, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .5
+
+[State 4520, 9]
+type = posSet
+trigger1 = Vel Y >= 0
+trigger1 = pos y >= -10
+y = -10
+
+[state 810, grab sound]
+type = changestate
+trigger1 = Pos Y >= -10 && Vel Y > 0
+value = 4033
+
+;---------------------------------------------------------
+;Servbot Hyper land
+[Statedef 4033]
+type = S
+ctrl = 0
+physics = N
+sprpriority = -2
+anim = 4094
+
+[state 1102,1]
+type = posset
+trigger1 = 1
+y = -10
+
+[state 810, grab sound]
+type = changestate
+trigger1 = animtime = 0
+value = 4000
+
+;-----------------------------------
+;Captured
+[statedef 4050]
+type    = U
+movetype= H
+physics = n
+velset = 0,0
+sprpriority = 2
+
+[state 183, 3]
+type = changeanim
+trigger1 = selfanimexist(5010)
+value = 5010
+persistent = 0
+
+[state 183, 3]
+type = selfstate
+trigger1 = time = 100
+trigger1 = statetype = A
+value = 5040
+
+[state 183, 3]
+type = selfstate
+trigger1 = time = 100
+trigger1 = statetype != A
+value = 5000
+
+;---------------------------------------------------------
+; Servbot Sad
+[Statedef 4005]
+type = S
+ctrl = 0
+velset = 0,0
+physics = S
+sprpriority = -1
+
+[state 3000,3]
+type = varset
+trigger1 = time = 0
+v = 1
+value = 0
+
+[state 3000,3]
+type = varadd
+trigger1 = 1
+v = 1
+value = 1
+
+[state 3000,2]
+type = changeanim
+trigger1 = var(1) < 30
+value = 4005
+persistent = 0
+
+[state 3000,2]
+type = changeanim
+Triggerall = Root, Stateno != 182
+trigger1 = var(1) > 30
+value = 4006
+persistent = 0
+
+[state 1107,1]
+type = velset
+trigger1 = 1
+x = 0
+
+[State 1107,2] ;Standing
+type = ChangeState
+Triggerall = Root, Stateno != 182
+trigger1 = Root, Stateno = 170
+trigger2 = Root, Stateno = 175
+trigger3 = Root, Stateno = 5150
+value = 4075
+
+[State 1107,2] ;Standing
+type = ChangeState
+Triggerall = Root, Stateno != 182
+trigger1 = root, movetype != H
+trigger1 = root, stateno != [5000,5999]
+value = 4000
+
+;---------------------------------------------------------
+;Servbot Winpose 1
+[Statedef 4090]
+type = S
+ctrl = 0
+anim = 4095
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+y = 0
+
+;---------------------------------------------------------
+;Servbot Winpose 2
+[Statedef 4091]
+type = S
+ctrl = 0
+velset = 0,0
+physics = S
+sprpriority = -2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 63
+value = 4091
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time = 63
+y = -10
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time > 63
+y = 0.5
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time >= 88
+y = -0.7
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 88
+value = 4092
+
+;---------------------------------------------------------------
+;Serbot Taunt
+[Statedef 4095]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+anim = 4095+random%2
+velset = 0,0
+sprpriority = -2
+
+[State 195, 2]
+type = ChangeState
+trigger1 = time = 54
+value = 4000
+
+;---------------------------------------------------------------
+;Servbot Lose
+[Statedef 4075]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+velset = 0,0
+sprpriority = -2
+anim = 4075
+
+[state 1102,2]
+type = turn
+trigger1 = time= 0
+persistent =  0
+
+[state 1102,3]
+type = velset
+trigger1 = 1
+x = 5

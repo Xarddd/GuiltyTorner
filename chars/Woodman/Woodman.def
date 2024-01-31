@@ -1,0 +1,43 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.1
+;Template by Acey
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name="Wood Man RMM"
+displayname="Wood Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="Laspacho, Nestor, O Ilusionista"
+pal.defaults=1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+cmd 	 =RMM.cmd
+cns 	 =RMM.cns
+stcommon =common1.cns
+st	 =RMM.cns
+sprite	 =RMM.sff
+anim	 =RMM.air
+sound 	 =RMM.snd
+pal1=ACT/Woodman01.act
+pal2=ACT/Woodman02.act
+pal3=ACT/Woodman03.act
+pal4=ACT/Woodman04.act
+pal5=ACT/Woodman05.act
+pal6=ACT/Woodman06.act
+pal7=ACT/Woodman07.act
+pal8=ACT/Woodman08.act
+pal9=ACT/Woodman09.act
+pal10=ACT/Woodman10.act
+pal11=ACT/Woodman11.act
+pal12=ACT/Woodman12.act
+st1=-2.cns
+st2=-3.cns
+st3=Powersets.cns
+st4 = supers.cns
+st5= hypers.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_woodman.def

@@ -1,0 +1,246 @@
+;---------------------------------;
+;Author  : Etg			  ;
+;Email   : Eternaga@hotmail.com   ;
+;Website : www.before3d.com       ;
+;---------------------------------;
+; [Release Date: April 18, 2008]  ;
+;- Sprite Ripped and Edit         ;
+;  By Eternaga                    ;
+;- This stage is incomplete but   ;
+;  it is still playable ;).       ;
+;- Will update in the future      ;
+;             (20XX)              ;
+;---------------------------------;
+;          Personal Stage         ;
+;---------------------------------;
+
+[Info]
+name = "Naval Base - Launch Octopus"
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -223
+boundright = 223
+boundhigh = -200
+boundlow = 0
+verticalfollow = .95
+floortension = 100
+tension = 50
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1            
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling]
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15   
+
+[StageInfo]
+zoffset = 218
+autoturn = 1
+resetBG = 0
+
+[Shadow]
+color = 0,50,0
+yscale = .5
+
+[Music]
+bgmusic = sound/Mega Man X - Launch Octopus theme [ Guitar Instrumental ].mp3
+bgvolume = 255
+
+[BGdef]
+spr = launch.sff
+debugbg = 0
+
+;----------
+[BG 1]
+type = normal
+spriteno = 0,0
+mask = 0
+start = 0, 100
+tile = 1,0
+delta = .25, .35
+
+
+[BG 1]
+type = anim
+actionno = 0
+start = 0, 90
+delta = .4, .4
+
+;water
+[Begin Action 0]
+2,0,0,0,10
+2,1,0,0,10
+2,2,0,0,10
+2,3,0,0,10
+2,4,0,0,10
+2,3,0,0,10
+2,2,0,0,10
+2,1,0,0,10
+
+;water
+[Begin Action 1]
+2,0,0,0,10
+2,1,0,0,10
+2,2,0,0,10
+2,3,0,0,10
+2,4,0,0,10
+2,3,0,0,10
+2,2,0,0,10
+2,1,0,0,10
+
+;sigma fortress
+[BG 1]
+type = normal
+spriteno = 5,0
+mask = 1
+start = 120, 60
+delta = .25, .35
+
+;glass
+[BG 1]
+type = normal
+spriteno = 7,0
+mask = 1
+start = -100, 115
+delta = .4, .4
+
+;watersplash
+[BG 1]
+type = anim
+actionno = 2
+start = -180,199
+delta = 1,1
+
+[BG 1]
+type = normal
+spriteno = 4,1
+mask = 1
+start = 0, 230
+delta = .90, 1
+sin.y = 40,600
+
+;Sea neck
+[BG 1]
+type = normal
+spriteno = 4,1
+mask = 1
+start = 0, 210
+delta = .85, 1
+sin.y = 40,600
+
+;Sea neck
+[BG 1]
+type = normal
+spriteno = 4,1
+mask = 1
+start = 0, 190
+delta = .8, 1
+sin.y = 40,600
+
+;Sea neck
+[BG 1]
+type = normal
+spriteno = 4,1
+mask = 1
+start = 0, 170
+delta = .75, 1
+sin.y = 40,600
+
+;Sea neck
+[BG 1]
+type = normal
+spriteno = 4,1
+mask = 1
+start = 0, 150
+delta = .7, 1
+sin.y = 40,600
+
+;Sea neck
+[BG 1]
+type = normal
+spriteno = 4,1
+mask = 1
+start = 0, 130
+delta = .65, 1
+sin.y = 40,600
+
+;Sea neck
+[BG 1]
+type = normal
+spriteno = 4,1
+mask = 1
+start = 0, 110
+delta = .6, 1
+sin.y = 40,600
+
+;Sea neck
+[BG 1]
+type = normal
+spriteno = 4,1
+mask = 1
+start = 0, 90
+delta = .55, 1
+sin.y = 40,600
+
+;Sea Head
+[BG 1]
+type = normal
+spriteno = 4,0
+mask = 1
+start = 0, 70
+delta = .5, 1
+sin.y = 40,600
+
+;watersplash
+[BG 1]
+type = anim
+actionno = 3
+start = 10,190
+delta = 1,1
+
+[BG 1]
+type = normal
+spriteno = 3,0
+mask = 1
+start = 0, 240
+delta = 1, 1
+
+[Begin Action 2]
+6,0,0,0,5
+6,1,0,0,5
+6,2,0,0,5
+6,3,0,0,5
+6,4,0,0,5
+6,5,0,0,7
+6,6,0,0,9
+
+[Begin Action 3]
+6,4,0,0,5
+6,5,0,0,7
+6,6,0,0,9
+6,0,0,0,5
+6,1,0,0,6
+6,2,0,0,6
+6,3,0,0,5

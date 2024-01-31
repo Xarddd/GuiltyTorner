@@ -1,0 +1,214 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+;By Manic and some pieces of background by Ultraroboninja
+
+[Info]
+name = "Snake Tower - Snake Man"
+
+[BGdef]
+spr = SnakemanStageV2.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/ym_thr001_rw3_snake.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -300
+boundright = 300
+boundhigh = -350
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 225
+autoturn = 1
+resetBG = 1
+
+[shadow]
+Intensity = 90
+color = 0,0,0
+yscale = .03
+fade.range = -400,-100
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = normal
+spriteno = 0, 30
+layerno = 0                
+start = -160, 0
+delta = .1,.1
+trans = none
+;---------------------------------------
+[BG Clouds2]
+type = normal
+spriteno = 0,33
+start = 0, 150
+delta = .2,.2
+velocity = .1,0
+tile = 1,0
+mask = 1
+trans = add1
+;---------------------------------------
+[BG SnakePipesBG]
+type  = normal
+spriteno = 0,32
+layerno = 0                
+start = 0, 120
+delta = .3,.3
+mask = 1
+;---------------------------------------
+[BG Tower]
+type  = normal
+spriteno = 0,35
+layerno = 0                
+start = -30, 250
+delta = .4,.3
+mask = 1
+;---------------------------------------
+[BG Tower 2]
+type  = normal
+spriteno = 0,35
+layerno = 0                
+start = 240, 100
+delta = .4,.3
+mask = 1
+;---------------------------------------
+[BG Cave2]
+type  = normal
+spriteno = 0,31
+layerno = 0                
+start = -310, 10
+delta = .5,.5
+mask = 1
+;---------------------------------------
+[BG Clouds1]
+type = normal
+spriteno = 0,33
+start = 0, 170
+delta = .5,.5
+velocity = .2,0
+tile = 1,0
+mask = 1
+trans = add1
+;---------------------
+[BG SnakePipes]
+type  = normal
+spriteno = 0,12
+start = -310,213 
+mask = 1
+actionno = 2
+tile = 1,0
+tilespacing = 450,0
+;---------------------------------------
+;[BG Big Snakey2]
+;type = normal
+;spriteno = 0,13
+;start = -260,180
+;mask = 1
+;sin.y = 12,90
+;---------------------------------------
+[BG Grating]
+type  = normal
+spriteno = 0,2
+start = -210,200  
+mask = 1
+tile = 2,36
+;---------------------------------------
+[BG SmallSnakey]
+type  = anim
+spriteno = 0,6
+start = 400,128 
+mask = 1
+actionno = 1
+;---------------------------------------
+[BG SnakeBody]
+type  = normal
+spriteno = 0,5
+start = -310,230
+mask = 1
+tile = 1,0
+tilespacing = 32,0
+sin.y = 5,90
+;---------------------------------------
+[BG SnakeBody2]
+type  = normal
+spriteno = 0,5
+start = -278,230
+mask = 1
+tile = 1,0
+tilespacing = 32,0
+sin.y = 5,-90
+;---------------------------------------
+[BG Big Snakey]
+type = normal
+spriteno = 0,9
+start = 10,220
+mask = 1
+delta = 0.4,0
+sin.y = -9,150
+sin.x = 0,150
+
+;---------------------------------------
+[BG Fighting Ground]
+type  = normal
+spriteno = 0,1
+start = -310,240  
+mask = 1
+tile = 1,0
+;---------------------------------------
+[BG Railing]
+type  = normal
+spriteno = 0,11
+start = -310,214  
+mask = 1
+tile = 1,0
+;---------------------------------------
+
+[Begin Action 1]
+0,6,0,0,300
+0,7,0,0,5
+0,8,0,0,5
+0,7,0,0,5
+
+;----------------------------------------
+[Begin Action 6]
+0,4,0,0,220,,AS128D128
+
+
+
+;---------------------------------------[/PCX IMAGE]
+
+

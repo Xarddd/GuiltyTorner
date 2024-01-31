@@ -1,0 +1,274 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+
+[Info]
+name ="Furnace - Heat Man"
+author="Fou"
+
+
+[BGdef]
+spr = Heatman.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/heatman.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -300
+boundright = 300
+boundhigh = -300
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70
+p1starty = 0            
+p1startz = 0          
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0    
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 220
+autoturn = 1
+resetBG = 1
+
+[shadow]
+Intensity = 180
+color = 0,0,0
+yscale = 0.5
+fade.range = 400,50
+
+
+;----------------------------------------[PCX IMAGE]
+
+[BG 0]
+type  = normal
+spriteno = 0, 2
+layerno = 0
+start = -160, 209
+delta = 0.81, 0.5
+mask = 1
+trans = none
+
+[BG 0]
+type  = normal
+spriteno = 0, 0
+layerno = 0
+start = -160, 0
+delta = 0.81, 0.5
+mask = 1
+trans = none
+
+[BG 0]
+type  = normal
+spriteno = 0, 2
+layerno = 0
+start = -160, 0
+delta = 0.81, 0.5
+mask = 1
+trans = none
+
+
+;---------------------------------------
+[BG block]
+type  = anim
+spriteno = 4,0
+start = 100,90
+mask = 1
+delta = 0.81, 0.5
+actionno = 3
+
+[BG block]
+type  = anim
+spriteno = 4,0
+start = -200,100
+mask = 1
+delta = 0.81, 0.5
+actionno = 3
+
+[Begin Action 3]
+4,-1, 0,0, 200
+4,3, 0,0, 2
+4,2, 0,0, 2
+4,1, 0,0, 1
+4,0, 0,0, 200
+4,1, 0,0, 1
+4,2, 0,0, 2
+4,3, 0,0, 2
+
+[BG block]
+type  = anim
+spriteno = 4,0
+start = 30,120
+mask = 1
+delta = 0.81, 0.5
+actionno = 4
+
+[Begin Action 4]
+4,-1, 0,0, 400
+4,3, 0,0, 2
+4,2, 0,0, 2
+4,1, 0,0, 1
+4,0, 0,0, 200
+4,1, 0,0, 1
+4,2, 0,0, 2
+4,3, 0,0, 2
+
+[BG block]
+type  = anim
+spriteno = 4,0
+start = 400,110
+mask = 1
+delta = 0.81, 0.5
+actionno = 5
+
+[Begin Action 5]
+4,-1, 0,0, 350
+4,3, 0,0, 2
+4,2, 0,0, 2
+4,1, 0,0, 1
+4,0, 0,0, 200
+4,1, 0,0, 1
+4,2, 0,0, 2
+4,3, 0,0, 2
+;---------------------------------------
+[BG Hole]
+type  = normal
+spriteno = 2, 0
+layerno = 0
+start = 280, 185
+delta = 0.81, 0.5
+mask = 1
+trans = none
+
+[BG Hole]
+type  = normal
+spriteno = 2, 0
+layerno = 0
+start = -100, 185
+delta = 0.81, 0.5
+mask = 1
+trans = none
+
+[BG Hole]
+type  = normal
+spriteno = 2, 0
+layerno = 0
+start = 520, 185
+delta = 0.81, 0.5
+mask = 1
+trans = none
+
+[BG Lavafall]
+type  = anim
+spriteno = 3,0
+start = 280,185
+mask = 1
+delta = 0.81, 0.5
+actionno = 1
+
+[BG Lavafall]
+type  = anim
+spriteno = 3,0
+start = -100,185
+mask = 1
+delta = 0.81, 0.5
+actionno = 1
+
+[BG Lavafall]
+type  = anim
+spriteno = 3,0
+start = 520,185
+mask = 1
+delta = 0.81, 0.5
+actionno = 1
+;-------
+[Begin Action 1]
+3,0, 0,0, 5
+3,1, 0,0, 5
+3,2, 0,0, 5
+3,3, 0,0, 5
+3,4, 0,0, 5
+3,5, 0,0, 5
+;---------------------------------------
+[BG Lava]
+type  = anim
+spriteno = 1,0
+start = -310,170
+mask = 1
+delta = 0.86, 0.6
+actionno = 2
+;-------
+[Begin Action 2]
+1,0, 0,0, 5
+1,1, 0,0, 5
+1,2, 0,0, 5
+1,3, 0,0, 10
+1,4, 0,0, 10
+
+;---------------------------------------
+[BG metal]
+type  = normal
+spriteno = 0,3
+start = -310,240
+delta = 0.91,0.7
+mask = 1
+
+[BG metal]
+type  = normal
+spriteno = 0,3
+start = -850,240
+delta = 0.91,0.7
+mask = 1
+;---------------------------------------
+
+
+[BG Fighting Ground]
+type  = parallax
+spriteno = 0,1
+start = -310,240
+delta = 0.91, 1
+tile = 1, 0
+width = 1480, 1680 
+mask = 1
+
+;---------------------------------------[/PCX IMAGE]
+
+
+[Files]
+sprite=
+sound=
+anim=
+cmd=
+cns=
+st=
+stcommon=
+[Arcade]
+intro.storyboard=
+ending.storyboard=

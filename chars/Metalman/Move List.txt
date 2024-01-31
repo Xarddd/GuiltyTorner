@@ -1,0 +1,63 @@
+﻿████████████████
+█              █
+█  Metal Man   █
+█              █
+████████████████
+---------------------------------------------------------------------
+Metal Man for the Robot Master Mayhem project.
+
+Sprites by Laspacho. Quick Man sprites by Manic and Rage
+Codes by O Ilusionista (over Acey's template) - Brazil - 2019-02-28
+(may use some code by AJrenalin, Excursion and Jenngra505)
+Quick Man voice by The Majin V
+
+www.infinitymugenteam.com - www.brazilmugenteam.com
+
+Model Number: DWN-009
+Apperance: Mega Man 2
+
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+				[ About ]
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+Metal Man (メタルマン Metaruman) is a Robot Master from Mega Man 2. 
+He was the first Robot Master built by Dr. Wily, created specifically for combat 
+for his revenge against Mega Man. Wily based Metal Man's design on Cut Man. 
+His Special Weapon is the Metal Blade, which are large, razor-sharp, 
+circular saw blades made of ceramic titanium that he can throw at a high 
+speed with deadly accuracy. His lightweight design also grants him high agility, 
+but because of a design flaw, Metal Man is particularly vulnerable 
+to Mega Man's Mega Buster and to his own Metal Blades.
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+				[ MOVES ]
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+QCF+P: Throw Metal Blade
+F,D,DF+P: Blade Uppercut
+D,DB,B+P: Spike Ball
+
+D, D, any button: Change Weapon
+	LP: Buzzsaw
+	MP: Mini Dragon attack
+	HP: Quickman
+	LK: Chainsaw
+	MK: Dust Explosion
+	HK: Blade Dive
+QCF+K: Use Weapon
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+				[ HYPERS ]
+
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+D,DF,F+PP: Metal Blade Barrage (Can be done in the Air too)
+D,DB,B+PP: Bladed Armed Fury (Can be done in the Air too)
+D,DF,F+KK: Mega Dragon
+QCB+PP:  Hyper Spiked Ball  (In Air Only)

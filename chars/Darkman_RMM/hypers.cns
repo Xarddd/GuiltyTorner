@@ -1,0 +1,1474 @@
+;---------------------------------------------------------------------------
+;Hyper Attacks
+;---------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------------
+;Hyper 1 - Hyper Dark Tank
+[Statedef 3000]
+type    = A
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3000
+ctrl = 0
+sprpriority = 2
+
+[State 3200, assertspecial]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3200, SuperPause]
+type = SuperPause
+trigger1 = AnimElem = 4
+Time = 30
+pos = 0,-30
+anim = S25100 ; new superpause
+sound = s8889,0
+poweradd = -1000
+movetime = 5
+
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 4
+helpertype = normal ;player
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3200, Hyper Portrait]
+type = explod
+trigger1 =  AnimElem = 4
+anim = 1080
+postype = back
+sprpriority = -1
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 3200, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volume = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 7
+anim = 8660
+ID = 8660
+pos = 20,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+pausemovetime = 9999
+scale = 1,1
+sprpriority = 20
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = AnimElem=7
+x = 12
+y = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = s3000,0
+channel = 0
+
+[State 100, 3]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = s0,4
+
+[State 100, New Dash start fx]
+type = Explod
+trigger1 = AnimElem = 7 && Pos Y = 0
+ID = 6088
+anim = 6088
+postype = p1
+pos = 10,0
+bindtime = 1
+removetime = -2
+vel = 0, 0
+ownpal = 1
+sprpriority = 5
+removeongethit = 0
+
+[State 100, NEW DASH FX FWD]
+type = Explod
+Anim = 25017+random%2;ifelse(random >=500,8050,8051)
+triggerall = vel X > 0
+trigger1 = random < 400 
+postype = P1
+pos = 0,-45
+random = 10,65
+ownpal = 1
+scale = (ifelse(random <=500,1,0.5)),(ifelse(random <=500,1,0.5))
+sprpriority = (ifelse(random <=500,10,-10))
+vel = -(const(velocity.run.fwd.x)/2)
+ignorehitpause = 1
+
+;------------------------- actual move section
+
+;Sets var(57) to 1, meaning the remappal in -2 states will change palette to green dark man (#1)
+;No white flash to be accompanied this time with, that palfx also affects hyper portrait, making it look weird :\
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(57) != 1
+trigger1 = !time
+v = 57
+value = 1
+
+[State 250, HitDef]
+type = HitDef
+trigger1 = time%4=0
+attr = A,HA
+damage = 42,5
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4, Hit
+pausetime = 4,4
+sparkno = S25030+random%2;0
+sparkxy = -10, -30
+guard.sparkno= S25008
+getpower = 0,0
+givepower = 1,1
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Low
+ground.slidetime = 12
+ground.hittime = 12
+ground.velocity = -3,-0.75
+air.type = Low
+air.hittime = 5
+air.velocity = -6,-0.25
+fall = 1
+fall.recover = 0
+envshake.time = 15
+envshake.ampl = 10
+fall.recover=0
+
+[State 30000, 6]
+type = AfterImage
+trigger1 = (AnimElemTime(2)=0)
+time = 9999
+length = 20
+palcolor = 0
+paladd = 0,0,250
+palbright = 0,0,100
+palpostbright = 0,0,-50
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time=90
+value = 3001
+ctrl = 0
+
+;---------------------------------------------------------------------------------------------
+;Hyper Dark Tank end
+[Statedef 3001]
+type    = A
+movetype= A
+physics = N
+anim = 3001
+ctrl = 0
+sprpriority = 2
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time 
+anim = 3002
+ID = 3002
+pos = 0,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+;ignorehitpause = 
+;persistent = 
+
+;Resets var(57) to 0, making remappal in -2 states change back to player selected palette
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(57) != 0
+trigger1 = animelem = 2
+v = 57
+value = 0
+
+;White blink to make the color change smoother and not look sudden
+[State 632, 1]
+type = palfx
+trigger1 = AnimElem = 2
+time = 16
+sinadd =  255,255,255,30
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = !AnimTime
+value = 50
+ctrl = 0
+
+;---------------------------------------------------------------------------------------------
+;Hyper 3 - Dark Barrage Ground
+[Statedef 3100]
+type    = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 3100
+ctrl = 0
+sprpriority = 2
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S3300,0+random%2
+channel = 0 
+
+[State 3300, assertspecial]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3300, SuperPause]
+type = SuperPause
+trigger1 = AnimElemTime(1) = 0
+Time = 50
+pos = 0,-40
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+movetime = 50
+
+[State 3300, Sound]
+type = PlaySnd
+trigger1 = Time = 12
+value = s8889,0
+
+[State 3300, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 2
+helpertype = normal ;player
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+;Sets var(57) to 3, meaning the remappal in -2 states will change palette to purple dark man (#3)
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(57) != 3
+trigger1 = animelem = 2
+v = 57
+value = 3
+
+;White blink to make the color change smoother and not look sudden
+[State 632, 1]
+type = palfx
+trigger1 = AnimElem = 2
+trigger2 = Time = 200
+time = 16
+sinadd =  255,255,255,30
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 5
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3120
+stateno = 3120 
+pos = 37,-43
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 9  || AnimElem = 33
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3121
+stateno = 3120 
+pos = 42,-49
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 13 || AnimElem = 29
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3122
+stateno = 3120 
+pos = 47,-60
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 17 || AnimElem = 25
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3123
+stateno = 3120 
+pos = 42,-74
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 21
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3124
+stateno = 3120 
+pos = 37, -82
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 3100, End]
+type = ChangeState
+trigger1 = time = 200
+value = 3115
+ctrl = 0
+
+;---------------------------------------------------------------------
+;Hyper 3 - Dark Barrage
+[Statedef 3110]
+type    = A
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3300
+ctrl = 0
+sprpriority = 2
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S3300,0+random%2
+channel = 0 
+
+[State 3300, assertspecial]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3300, SuperPause]
+type = SuperPause
+trigger1 = AnimElemTime(1) = 0
+Time = 50
+pos = 0,-40
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+movetime = 50
+
+[State 3300, Sound]
+type = PlaySnd
+trigger1 = Time = 12
+value = s8889,0
+
+
+[State 3300, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 2
+helpertype = normal ;player
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+;Sets var(57) to 3, meaning the remappal in -2 states will change palette to purple dark man (#3)
+[State 0, Varset]
+type = Varset
+trigger1 = animelem = 2
+v = 57
+value = 3
+
+;Resets var(57) to 0, making remappal in -2 states change back to player selected palette
+[State 0, Varset]
+type = Varset
+trigger1 = Time = 200
+v = 57
+value = 0
+
+;White blink to make the color change smoother and not look sudden
+[State 632, 1]
+type = palfx
+trigger1 = AnimElem = 2
+trigger2 = Time = 200
+time = 16
+sinadd =  255,255,255,30
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y =0
+anim = 6011
+ID = 6011
+pos = 30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, VelSet]
+type = null;VelSet
+trigger1 = AnimElem = 2
+;x = -10
+y = -5;10
+
+[State 0, VelSet]
+type = null;VelSet
+trigger1 = AnimElem = 4
+x = 0
+y = 0
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = Pos Y < 0
+statetype = A       ;S,A,C,L
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = S0,3
+
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 5
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3120
+stateno = 3120 
+pos = 37,-43
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 9  || AnimElem = 33
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3121
+stateno = 3120 
+pos = 42,-49
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 13 || AnimElem = 29
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3122
+stateno = 3120 
+pos = 47,-60
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 17 || AnimElem = 25
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3123
+stateno = 3120 
+pos = 42,-74
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 21
+helpertype = Normal ;Player
+name = "Proj"
+ID = 3124
+stateno = 3120 
+pos = 37, -82
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 200
+x = -1
+
+[State 3100, End]
+type = ChangeState
+trigger1 = time = 200
+value = 3115
+ctrl = 0
+
+
+;---------------------------------------------------------------------------------------------
+;Dark Barrage Hyper end
+[Statedef 3115]
+type    = U
+movetype= I
+physics = N
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = !time
+value = ifelse(pos y < 0, 41, 3101)
+ignorehitpause = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = anim = 41 && animelem = 1
+statetype = A
+physics = A         ;A,C,S,N
+ignorehitpause = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = anim = 3101 && animelem = 1
+statetype = S
+ignorehitpause = 1
+
+;Resets var(57) to 0, making remappal in -2 states change back to player selected palette
+[State 0, varset]
+type = varset
+trigger1 = var(57) != 0
+trigger1 = anim = 3101
+trigger1 = !time
+v = 57
+value = 0
+
+;White blink to make the color change smoother and not look sudden
+[State 632, 1]
+type = palfx
+trigger1 = anim = 3101
+trigger1 = !time
+time = 16
+sinadd =  255,255,255,30
+ignorehitpause = 1
+
+[State 3100, End]
+type = ChangeState
+trigger1 = anim = 3101
+trigger1 = !AnimTime
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------------------------
+;PS3 - Shooter Proj
+[Statedef 3120]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim = 2305
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S2300,0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+v = 1
+value = 2
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time && IsHelper(3120)
+x = 3+var(1)
+y = 3
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time && IsHelper(3121)
+x = 3+var(1)
+y = 2
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time && IsHelper(3122)
+x = 3+var(1)
+y = ifelse(root,Pos y =0,0,1.5)
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time && IsHelper(3123)
+x = 3+var(1)
+y = -1.5
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time && IsHelper(3124)
+x = 3+var(1)
+y = -3
+
+[State 195,1]
+type = Explod
+trigger1 = time%6=0;&& time <60
+anim = 503+random%3
+postype = p1
+pos = 0,0
+ownpal = 1
+bindtime = 1
+sprpriority = 5
+removetime = -2
+random = 15,15
+removeongethit = 1
+scale = 1,1
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = !time
+attr = A,HP
+damage = ceil(45 * root, fvar(10)), 7
+animtype = hard
+guardflag = MA
+hitflag = MAFD
+priority = 4, Hit
+pausetime = 3,15
+sparkno = S25030+random%2
+sparkxy = 0,0
+hitsound = s8000,2
+guard.sparkno = S25008
+guardsound = s8500,0
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -10
+air.type = High
+air.hittime = 18
+air.velocity = -6,-4
+air.animtype = Hard
+palfx.time = 45
+palfx.add = 75,25,95
+palfx.mul = 170,80,210
+palfx.sinadd = 40,10,50,5
+palfx.color = 0;
+envshake.time = 10
+envshake.ampl = 7
+fall = 1
+fall.recover = 0
+ID= 3305
+NoChainID = 3305
+air.juggle = 5
+
+[state 1150, SHOCK FX]
+type = explod
+triggerall = NumTarget
+trigger1 = numexplod(428) = 0
+trigger1 = movehit && target, MoveType = H && target, StateType != L
+anim = 428
+id = 428
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = 20
+sprpriority = 10
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NT,ST,HT
+time = 1
+ignorehitpause = 1
+
+[State 1005, 5.1]
+type = HitBy
+trigger1 = 1
+value = SCA,AP
+
+[State 1005, 5.2]
+type = HitOverride
+trigger1 = !(Time)
+slot = 0
+time = -1
+attr = SCA,AA,AT,AP
+stateno = 3125
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = FrontEdgeDist < -40
+trigger2 = MoveContact
+trigger3 = Pos Y >=0
+value = 3125
+
+;---------------------------------------------------------------------------------------------
+;PS3 - Shooter Proj end
+[Statedef 3125]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim = 2310
+velset = 0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = Pos Y >=0
+value = S2,1
+persistent = 0
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = !AnimTime 
+
+
+;-----------------------------------------------------------------------------
+;Hyper 2 - Dark Energy
+[Statedef 3200]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3200
+ctrl = 0
+sprpriority = 5
+
+[State 3200, assertspecial]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S3200,random%2
+
+[State 3200, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -1
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 3200, SuperPause]
+type = SuperPause
+trigger1 = AnimElemTime(1) = 0
+Time = 40
+pos = 5,-45
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+movetime = 40
+
+[State 3200, Sound]
+type = PlaySnd
+trigger1 = Time = 12
+value = s8889,0
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 2
+helpertype = normal ;player
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3200, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volume = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+;Sets var(57) to 4, meaning the remappal in -2 states will change palette to red dark man (#4)
+[State 0, RemapPal]
+type = varSet
+trigger1 = var(57) != 4
+trigger1 = animelem = 2
+v = 57
+value = 4
+
+;White blink to make the color change smoother and not look sudden
+[State 632, 1]
+type = palfx
+trigger1 = animelem = 2
+time = 16
+sinadd =  255,255,255,30
+ignorehitpause = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 8
+value = S3201,0
+
+[State 250, HitDef]
+type = HitDef
+trigger1 = time%4=0
+attr = A,HA
+damage = 42,5
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4, Hit
+pausetime = 4,4
+sparkno = S25030+random%2;0
+sparkxy = random&20,ceil(p2dist y)-35
+guard.sparkno= S25008
+getpower = 0,0
+givepower = 1,1
+hitsound = s8000,2
+guardsound = s8500,0
+ground.type = Low
+ground.slidetime = 12
+ground.hittime = 12
+ground.velocity = ifelse(p2dist x < 120, 0, 0.5),-1
+air.type = Low
+air.hittime = 5
+air.velocity = ifelse(p2dist x < 120, 0, 0.5),-1
+fall = 1
+fall.recover = 0
+envshake.time = 15
+envshake.ampl = 10
+fall.recover=0
+
+[State 3200, End]
+type = ChangeState
+trigger1 = Time = 160
+value = 3201
+ctrl = 0
+
+;-----------------------------------------------------------------------------
+;Hyper 2 - Dark Energy End
+[Statedef 3201]
+type    = S
+movetype= I
+physics = S
+juggle  = 1
+velset = 0,0
+anim = 3201
+ctrl = 0
+sprpriority = 2
+
+;Resets var(57) to 0, making remappal in -2 states change back to player selected palette
+[State 0, Varset]
+type = Varset
+trigger1 = var(57) != 0
+trigger1 = animelem = 4
+v = 57
+value = 0
+
+;White blink to make the color change smoother and not look sudden
+[State 632, 1]
+type = palfx
+trigger1 = animelem = 4
+time = 16
+sinadd =  255,255,255,30
+ignorehitpause = 1
+
+[State 3200, End]
+type = ChangeState
+trigger1 = !AnimTime
+value = 0
+ctrl = 1
+
+;-------------------------------------------------------------------------
+;Salt Water helper
+[Statedef 3210]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim = 1215
+juggle  = 4
+poweradd = 0
+sprpriority=15
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time && Root,stateno != 3000
+x =9+random%2
+y = 0+random%3*(ifelse(random<500,1,-1))
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time && Root,stateno = 3000
+x =7+random%4
+y =9+random%2
+
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%4
+anim = 6301
+pos = 0,-10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vel = -0.25,0
+accel = 0,0
+random = 10,10
+removetime=9
+scale = .5,.5
+sprpriority = 18
+ownpal = 1
+
+
+[State 6020, HitDef]
+type = HitDef
+trigger1 = !time && Root,stateno != [3200,3205]
+attr = A,HP
+damage = 6,2
+animtype = Hard
+guardflag = H
+hitflag = MAF
+priority = 4, Hit
+pausetime = 2,12
+getpower = 0,0
+givepower = 1,1
+sparkno = s6022
+sparkxy = -15,-35
+guard.sparkno= S25008
+hitsound = s6050,5
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime = 12
+ground.velocity = -2,-5
+air.type = high
+air.hittime = 5
+air.velocity = -1,-5
+fall=1
+fall.recover=0
+y.accel=0.5
+palfx.add = 0,50,240
+palfx.mul = 120,224,150
+palfx.time=40
+palfx.color=0
+envshake.time = 7
+envshake.ampl = 4
+
+[State 6020, HitDef]
+type = HitDef
+trigger1 = !time && Root,stateno = [3200,3205]
+attr = A,HP
+damage = 6,2
+animtype = Hard
+guardflag = M
+hitflag = MAF
+priority = 4, Hit
+pausetime = 2,12
+getpower = 0,0
+givepower = 1,1
+sparkno = S25030+random%2;s6022
+sparkxy = -15,-35
+guard.sparkno= S25008
+hitsound = s6050,5
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime = 12
+ground.velocity = -2,-5
+air.type = high
+air.hittime = 5
+air.velocity = -1,-5
+fall=1
+fall.recover=0
+y.accel=0.5
+palfx.add = 0,50,240
+palfx.mul = 120,224,150
+palfx.time=40
+palfx.color=0
+envshake.time = 7
+envshake.ampl = 4
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = FrontEdgeDist <-20 || Movecontact || Pos Y >= 0
+value =  3211
+ignorehitpause=1
+
+;-------------------------------------------------------------------------
+;Salt Water helper land
+[Statedef 3211]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim = 9999
+poweradd =0
+velset=0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = s6050,5
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 6022
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 20
+ownpal = 1
+
+
+[State 9706, water fx]
+type = helper
+trigger1 = !time
+helpertype = normal
+stateno = 9706
+ID = 9706
+name = "water"
+postype = p1
+pos = 0,-15
+facing = -1
+supermovetime = 999
+pausemovetime = 999
+ignorehitpause = 1
+ownpal = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = !Time
+
+;-------------------------------------------------------------------------
+;Salt Water helper2
+[Statedef 3212]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+anim = 6024
+juggle  = 4
+poweradd = 0
+sprpriority=15
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x =12
+
+[State 6023, HitDef]
+type = HitDef
+trigger1 = !time
+attr = S,SP
+damage = 0,0
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 4, Hit
+pausetime = 0,2
+sparkno = s7419
+sparkxy = 0, -10
+numhits=0
+guard.sparkno= S25008
+hitsound = -1
+guardsound = s8500,0
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 10
+ground.velocity = -4,-12
+air.hittime = 18
+ground.cornerpush.veloff  = 0
+air.cornerpush.veloff  = 0
+guard.cornerpush.veloff  = 0
+air.velocity = -1,-5
+;envshake.time = 2
+;envshake.ampl = 2
+palfx.time = 45
+palfx.color = 0
+palfx.add = 240,128,0
+palfx.sinadd = 48,50,32,16
+palfx.invertall = 0
+fall=1
+fall.recover = 0
+
+[state 1107, flame]
+type = explod
+triggerall = NumTarget
+trigger1 = numexplod(8020) = 0
+trigger1 = movehit && target, MoveType = H && target, StateType != L
+anim = 8020
+id = 8020
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = -2
+sprpriority = -1
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+
+
+[State 6023, ChangeState]
+type = ChangeState
+trigger1 = FrontEdgeDist <-60
+trigger2 = Movecontact
+value = 6024
+
+
+;----------------------------------------------
+;Hyper 4
+[Statedef 3400]
+type    = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+anim = 3400
+ctrl = 0
+sprpriority = 2
+
+[State 3400, assertspecial]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3400, SuperPause]
+type = SuperPause
+trigger1 = AnimElemTime(1) = 0
+Time = 40
+pos = 9999,-9951
+sound = 8889,0
+poweradd = -1000
+movetime = 40
+
+[State 3400, Sound]
+type = PlaySnd
+trigger1 = Time = 12
+value = s8889,0
+
+[State 3300, Hyper Explode]
+type = Explod
+trigger1 = time = 0
+anim = 4532
+ID = 4530
+postype = p1
+bindtime = -1
+pos = 10,-45
+ownpal = 1
+sprpriority = 5
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[State 3400, Ground Flash]
+type = Explod
+trigger1 = time = 35
+anim = F6666
+ID = 4540
+bindtime = -1
+postype = P1
+pos = -120,0
+ownpal = 1
+removetime = -2
+sprpriority = 5
+scale = 2,2
+removeongethit = 1
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[State 3400, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 3400, RRM HyperBg]
+type = explod
+trigger1 = time = 40
+anim = 750
+id = 750
+postype=left
+pos = 0,0
+scale = 1,1
+sprpriority = -2
+bindtime = -1
+removetime = -1
+removeongethit = 1
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[State 3400, RRM HyperBg Screen Pack High Res]
+type = explod
+trigger1 = time = 40
+anim = F750
+id = 750
+postype=left
+pos = 0,0
+scale = .5,.5
+sprpriority = -1
+bindtime = -1
+removetime = -1
+removeongethit = 1
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[State 3400, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volume = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 3400, End]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;-----------------------------------------------------------------------
+;Hyper FX
+[Statedef 25050]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoBG
+flag2= NoFg
+flag3= NoBarDisplay
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 25050
+ID = 25050
+pos = 160,120
+postype = back;left  ;p2,front,back,left,right
+facing = root,facing
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+scale = 0.6,0.6
+sprpriority = -10
+ownpal = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root, MoveType = H || root,Stateno <3000
+trigger2 = root,NumHelper(8400)=1
+value =  25051
+ctrl = 0
+
+;-----------------------------------------------------------------------
+;Hyper FX end
+[Statedef 25051]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 0, PalFXWiz]
+type = AllPalFX
+triggerAll = root,NumHelper(8400)=0
+trigger1 = !time
+time = 20
+add = 255,255,255
+mul = 256,256,256
+sinadd = -255,-255,-255,80
+invertall = 0
+color = 256
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 =!time
+value = S25000,0
+
+[state 8010]
+type = modifyexplod
+trigger1 = 1
+id = 25050
+scale = 1.0,1.0+time/-15.0
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 15

@@ -1,0 +1,205 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+
+[Info]
+name ="Symphony City"
+displayname="Symphony City - Mega Man"
+versiondate=1/17/2010
+mugenversion=04,14,2001
+author="UltraRoboNinja"
+pal.defaults=1,2,3,4,5
+
+[BGdef]
+spr = Megaman.sff
+debugbg = 0
+
+[Music]
+bgmusic = Sound/Megaman10.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -280
+boundright = 280
+boundhigh = -150
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+overdrawhigh = 0
+overdrawlow = 0
+cuthigh = 35
+cutlow = 25
+zoomin = 1
+zoomout =.85
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0           
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 50    
+screenright = 50  
+
+[StageInfo]
+zoffset = 190
+autoturn = 1
+resetBG = 1
+localcoord = 320, 240
+xscale = 1
+yscale = 1
+
+
+[shadow]
+Intensity = 90
+color = 0,0,0
+yscale = -.15
+fade.range = -400,-100
+
+[Reflection]
+intensity = 0
+
+;----------------------------------------[PCX IMAGE]
+[BG Sky]
+type  = normal
+spriteno = 0, 0
+layerno = 0                
+start = -160, 0
+delta = 0,0
+trans = none
+
+;---------------------------------------
+[BG Buildings]
+type  = normal
+spriteno = 3,0
+start = 0,0
+mask = 1
+delta = .2, .9
+
+;---------------------------------------
+[BG Floor]
+type  = normal
+spriteno = 1,0
+start = 0,0  
+mask = 1
+
+;---------------------------------------
+[BG Car1]
+type = anim
+actionno = 1
+start = 300, 0
+delta = 1,1
+tile = 1,0
+tilespacing = 8000
+velocity = -14
+
+;---------------------------------------
+[BG Van1]
+type = anim
+actionno = 2
+start = 520, 0
+delta = 1,1
+tile = 1,0
+tilespacing = 8000
+velocity = -14
+
+;---------------------------------------
+[BG Car2]
+type = anim
+actionno = 3
+start = 2300, 0
+delta = 1,1
+tile = 1,0
+tilespacing = 8000
+velocity = -14
+
+;---------------------------------------
+[BG Car3]
+type = anim
+actionno = 4
+start = 6000, 0
+delta = 1,1
+tile = 1,0
+tilespacing = 8000
+velocity = -14
+
+;---------------------------------------
+[BG Van2]
+type = anim
+actionno = 5
+start = 4000, 0
+delta = 1,1
+tile = 1,0
+tilespacing = 8000
+velocity = -14
+
+;---------------------------------------
+[BG Cone1]
+type  = normal
+spriteno = 8,0
+start = 20,-7  
+mask = 1
+
+;---------------------------------------
+[BG Cone2]
+type  = normal
+spriteno = 8,0
+start = 0,0  
+mask = 1
+
+
+;---------------------------------------
+[BG Tunnel]
+type  = normal
+spriteno = 1,1
+start = 0,0  
+mask = 1
+
+;---------------------------------------[/PCX IMAGE]
+
+; Car1Left
+[Begin Action 1]
+2,0,0,0,4
+2,1,0,0,4
+
+; Van1Left
+[Begin Action 2]
+4,0,0,0,4
+4,1,0,0,4
+
+; Car2Left
+[Begin Action 3]
+5,0,0,0,4
+5,1,0,0,4
+
+; Car3Left
+[Begin Action 4]
+6,0,0,0,4
+6,1,0,0,4
+
+; Van2Left
+[Begin Action 5]
+7,0,0,0,4
+7,1,0,0,4
+

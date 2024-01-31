@@ -1,0 +1,44 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Toad Man RMM"
+displayname ="Toad Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion =1.0
+author ="Laspacho & O Ilusionista"
+pal.defaults =1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+sprite =Toadman.sff
+anim =Toadman.air
+sound =Toadman.snd
+cmd =Toadman.cmd
+cns =Toadman.cns
+stcommon =common1.cns
+st =Toadman.cns
+pal1=RMM01.act
+pal2=RMM02.act
+pal3=RMM03.act
+pal4=RMM04.act
+pal5=RMM05.act
+pal6=RMM06.act
+pal7=RMM07.act
+pal8=RMM08.act
+pal9=RMM09.act
+pal10=RMM10.act
+pal11=RMM11.act
+pal12=RMM12.act
+st1=-2.cns
+st2=-3.cns
+st3=Rush.cns
+st4=specials.cns
+st5=Powersets.cns
+st6=hypers.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_toadman.def
+

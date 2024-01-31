@@ -1,0 +1,206 @@
+;Yellow Devil stage by me, Magma MK II
+;Credits goes to:
+;Capcom and Keiji Inafune
+;Sprites-Inc.
+;VGMaps.com
+
+;--------------------------------------------------------
+[Info]
+name = "Wily Fortress Warehouse - Yellow Devil"
+author = "Magma MK II"
+
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty = 0
+boundleft = -272
+boundright = 272
+boundhigh = -236
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 50
+zoomin = 1
+zoomout =.85
+
+;--------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+p1startx = -70
+p1starty = 0
+p1startz = 0
+p1facing = 1
+
+;--- Player 2 ---
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+;--- Common ---
+ ;Don't change these values.
+leftbound  = -1000
+rightbound =  1000
+topbound  =  0
+botbound  =  0
+
+;--------------------------------------------------------
+[Scaling]
+ ;No need to change these values
+topz     = 0
+botz     = 50
+topscale = 1
+botscale = 1.2
+
+;--------------------------------------------------------
+[Bound]
+screenleft = 15
+screenright = 15
+
+;--------------------------------------------------------
+[StageInfo]
+zoffset = 210
+autoturn = 1
+resetBG = 1
+
+;--------------------------------------------------------
+[Shadow]
+intensity = 96
+color = 0,0,0
+yscale = .3
+fade.range = 0,0
+
+;--------------------------------------------------------
+[Reflection]
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+bgmusic = sound/ym_thr015_r3_wilyboss.mp3
+bgvolume = 255
+
+;========================================================
+
+[BGdef]
+spr = YellowDevil.sff
+debugbg = 0
+
+;----------
+[BG back]
+type  = normal
+spriteno = 0, 0
+layerno = 0
+start = 0, -125
+delta = 0.9, 0.5
+mask  = 0
+
+;----------
+[BG back]
+type  = normal
+spriteno = 0, 2
+layerno = 0
+start = 0, -236
+delta = 1, 1
+mask  = 1
+
+;----------
+[BG enemy]
+type = anim
+actionno = 1
+start = 0, 100
+delta = 1, 1
+mask = 1
+sin.x = 50,300,0
+
+;----------
+[BG enemy]
+type = anim
+actionno = 1
+start = -250, 0
+delta = 1, 1
+mask = 1
+sin.x = 50,300,0
+sin.y = 50,300,0
+
+;----------
+[BG enemy]
+type = anim
+actionno = 1
+start = 300, -50
+delta = 1, 1
+mask = 1
+sin.y = 50,300,0
+
+;----------
+[BG enemy]
+type = anim
+actionno = 1
+start = -50, -100
+delta = 1, 1
+mask = 1
+sin.x = 50,300,0
+sin.y = -50,300,0
+
+;----------
+[Begin Action 1]
+1,0,0,0,3
+1,1,0,0,3
+1,0,0,0,3
+1,1,0,0,3
+1,0,0,0,3
+1,1,0,0,3
+1,0,0,0,3
+1,1,0,0,3
+1,0,0,0,3
+1,1,0,0,3
+1,0,0,0,3
+1,1,0,0,3
+1,0,0,0,3
+1,1,0,0,3
+1,0,0,0,3
+1,1,0,0,3
+1,2,0,0,3
+1,3,0,0,3
+1,2,0,0,3
+1,3,0,0,3
+1,2,0,0,3
+1,3,0,0,3
+1,2,0,0,3
+1,3,0,0,3
+1,2,0,0,3
+1,3,0,0,3
+1,2,0,0,3
+1,3,0,0,3
+1,2,0,0,3
+1,3,0,0,3
+1,2,0,0,3
+1,3,0,0,3
+
+;----------
+[BG floor]
+type  = normal
+spriteno = 0, 1
+start = 0, 190
+;delta = 0.75, 1
+;xscale = 1, 1.504
+mask  = 1
+;velocity = 0, 0
+;tile = 1, 0
+;tilespacing = 0, 0
+
+;----------
+[BG floor]
+type  = normal
+spriteno = 0, 4
+start = 0, 228
+mask  = 1
+layerno = 1
+
+;----------
+[BG grade]
+type  = normal
+spriteno = 0, 3
+layerno = 1
+start = 329, 116
+delta = 1, 1
+mask  = 1

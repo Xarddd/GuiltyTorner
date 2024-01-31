@@ -1,0 +1,614 @@
+;---------------------------------------------------------------------------
+; Throw - Attempt
+; CNS difficulty: medium-advanced
+; Description: Throws are not difficult to make, although then can be
+;     tedious at times. Throw attempt states have a HitDef of a
+;     special format. The key parameters in a throw are p1stateno
+;     and p2stateno. If the HitDef successfully connects, then
+;     the attacker will change to the state number specified by
+;     p1stateno, and the opponent will be change to the state
+;     number assigned to p2stateno. The special thing about p2stateno
+;     is that the opponent will be temporarily brought into the
+;     attacker's state file. In this case, no matter who the
+;     opponent is, he will be taken to state 820 of this file (kfm.cns)
+;     and remain here until the end of the throw (look at his debug
+;     information when he is being thrown; the text changes to yellow
+;     to mean that he is in another player's state file).
+[Statedef 800]
+type    = U
+movetype= A
+physics = U
+juggle  = 0
+velset = 0,0
+ctrl = 0
+
+; Notes: The '-' symbol in the hitflag field means that it only affects
+;   players who are not in a hit state. This prevents the player from combo-ing
+;   into the throw. The priority should be set to a low number, such as
+;   1 or 2, so that the throw does not take precedence over normal attacks.
+;   The type of priority must always be set to "Miss" or "Dodge" for throws,
+;   otherwise strange behavior can result.
+[State 800, 1]
+type = HitDef
+Trigger1 = statetype = S
+attr = S, NT          ;Attributes: Standing, Normal Throw
+hitflag = M-          ;Affect only ground people who are not being hit
+priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+sparkno = S25081
+sparkxy = 0,-50          ;No spark
+sprpriority = 1       ;Draw in front of p2
+p1facing = ifelse (command = "holdback", -1, 1) ;Turn if holding forwards
+p2facing = 1          ;Force p2 to face player
+p1stateno = 801       ;On success, player changes to state 810
+p2stateno = 810       ;If hit, p2 changes to state 820 in player's cns
+fall = 1              ;Force p2 into falling down
+fall.recover=0
+hitsound=S1,20
+yaccel = .8
+fall.xvelocity=0
+;fall.yvelocity=0
+
+[State 800, 1]
+type = HitDef
+Trigger1 = statetype = A
+attr = A, NT          ;Attributes: Standing, Normal Throw
+hitflag = M-          ;Affect only ground people who are not being hit
+priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+sparkno = S25081
+sparkxy = 0,-50           ;No spark
+sprpriority = 1       ;Draw in front of p2
+p1facing = ifelse (command = "holdback", -1, 1) ;Turn if holding forwards
+p2facing = 1          ;Force p2 to face player
+p1stateno = 801       ;On success, player changes to state 810
+p2stateno = 810       ;If hit, p2 changes to state 820 in player's cns
+fall = 1              ;Force p2 into falling down
+fall.recover=0
+hitsound=S1,20
+yaccel = .8
+fall.xvelocity=0
+;fall.yvelocity=0
+
+[State 800, 1]
+type = HitDef
+Trigger1 = statetype = C
+attr = C, NT          ;Attributes: Standing, Normal Throw
+hitflag = M-          ;Affect only ground people who are not being hit
+priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+sparkno = S25081
+sparkxy = 0,-50           ;No spark
+sprpriority = 1       ;Draw in front of p2
+p1facing = ifelse (command = "holdback", -1, 1) ;Turn if holding forwards
+p2facing = 1          ;Force p2 to face player
+p1stateno = 801       ;On success, player changes to state 810
+p2stateno = 810       ;If hit, p2 changes to state 820 in player's cns
+fall = 1              ;Force p2 into falling down
+fall.recover=0
+hitsound=S1,20
+yaccel = .8
+fall.xvelocity=0
+;fall.yvelocity=0
+
+[State 800, 2]
+type = ChangeState
+Trigger1 = Time = 1
+value = ifelse(statetype = A, 620, ifelse(statetype = C, 420, 220))
+
+;---------------------------------------------------------------------------
+; Throwing the opponent
+; Description: In this state, the player throws the opponent by binding him to
+;     various offsets based on his current frame of animation. For
+;     example, [State 810, Bind 1] binds the opponent to an offset of
+;     28 pixels in front of the player. That puts him around where the hand
+;     is at. Is is important to keep the opponent bound using a
+;     TargetBind controller at all times, until you let him go. This
+;     is especially important if your player has a Clsn2 box that
+;     allows him to get hit while throwing someone. Each time a player
+;     gets hit, all his bound targets will be set to a fall state. If
+;     the opponent is not bound, then he might get stuck in his thrown
+;     state when his attacker is knocked out of the throw halfway.
+; Notes: There is a TargetLifeAdd controller to decrease the opponent's
+;     life, and a TargetState controller to change his state to a
+;     falling state when KFM lets go of him.
+[Statedef 801]
+type    = A
+movetype= A
+physics = N
+anim = 800
+poweradd = 56
+
+[State 801, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 15
+value = S3,7
+channel = 5
+
+[State 801, TargetBind1]
+type = TargetBind
+trigger1 = AnimElemTime(2)<0 && anim = 800
+pos = ceil(40*const(size.xscale)),0
+
+[State 801, BindToTarget2]
+type=BindToTarget
+trigger1 = AnimElemTime(2)>= 0 && Time < 83 && anim = 800
+trigger2 = AnimElemTime(1)>= 0 && Time < 83 && anim = 801
+pos=(target,const(size.mid.pos.x)),(target,const(size.head.pos.y))
+ignorehitpause=1
+
+[State 801, PosAdd]
+type = PosAdd
+trigger1 = Time = 83
+y = -target,const(size.head.pos.y)
+ignorehitpause=1
+
+[State 801, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 1,0
+
+[State 801, VelSet]
+type = VelSet
+trigger1 = Time = 83
+x = -3
+y = -5
+
+[State 801, TargetLifeAdd]
+type = TargetLifeAdd
+trigger1 = AnimElem=4
+value = -37
+
+[State 801, Explod]
+type=Explod
+trigger1 = AnimElem=4
+anim=25020+random%2
+ID=8200
+pos=0,0
+postype=p1
+bindtime=1
+removetime=-2
+sprpriority=10
+ownpal=1
+removeongethit=0
+ignorehitpause=1
+
+[State 801, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem=4
+value = s1,11
+channel = 1
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = AnimElem=4
+time = 7
+ampl = 4
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = prevstateno != 801 && time = 0
+var(6) = 0
+
+[State 0, VarAdd]
+type = VarAdd
+triggerall = var(6) < 5
+trigger1 = command = "x"||command = "y"||command = "z"
+var(6) = 1
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = (gametime%12) = 0 && var(6)>0
+var(6) = -1
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = command = "x"||command = "y"||command = "z"
+time = 2
+add = 200,200,200
+
+[State 0, TargetState]
+type = TargetState
+triggerall = target,stateno != (anim+10)
+trigger1 = animtime = 0 && numtarget
+value = ifelse(anim=801, 811, 810)
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = animelemtime(2) >= 0
+trigger1 = (var(6)>=3 && anim != 801) || (var(6) < 3 && anim!=800)
+trigger1 = time = 0 || animtime = 0
+value = ifelse(var(6)>=3, 801, 800)
+
+[State 801, State End]
+type = ChangeState
+trigger1 = Time = 69;83
+value = 802
+
+;--------------------------------
+;End
+[Statedef 802]
+type    = A
+movetype= A
+physics = N
+anim = 802
+
+[State 0, TargetState]
+type = TargetState
+trigger1 = numtarget && time=0
+value = 812
+
+[State 801, BindToTarget2]
+type=BindToTarget
+trigger1 = AnimTime != 0
+pos=target,const(size.mid.pos.x),target,const(size.head.pos.y)
+ignorehitpause=1
+
+[State 801, PosAdd]
+type = PosAdd
+trigger1 = AnimTime = 0
+y = -target,const(size.head.pos.y)
+ignorehitpause=1
+
+[State 801, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 1,0
+
+[State 801, VelSet]
+type = VelSet
+trigger1 = AnimTime = 0
+x = -3
+y = -5
+
+[State 801, TargetLifeAdd]
+type = TargetLifeAdd
+trigger1 = AnimElem=2
+value = -37
+
+[State 801, Explod]
+type=Explod
+trigger1 = AnimElem=2
+anim=25020+random%2
+ID=8200
+pos=0,0
+postype=p1
+bindtime=1
+removetime=-2
+sprpriority=10
+ownpal=1
+removeongethit=0
+ignorehitpause=1
+
+[State 801, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem=2
+value = s1,8
+channel = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = prevstateno != 802 && time = 0
+var(6) = 0
+
+[State 801, State End]
+type = ChangeState
+trigger1 = Animtime = 0
+value = 803;51
+
+;--------------------------------
+;End jump
+[Statedef 803]
+type    = A
+movetype= A
+physics = A
+anim = 803
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S1,2
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 1
+anim = 25010+random%2
+pos = 40,-60
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 1
+time = 10
+ampl = 7
+
+
+
+
+;---------------------------------------------------------------------------
+; Opponent Thrown
+; (a custom gethit state)
+; Description: This is the state that the opponent changes to after being
+;     hit by the throw HitDef. The important thing here is to use a
+;     ChangeAnim2 controller. The difference between ChangeAnim2 and
+;     ChangeAnim is that ChangeAnim2 changes the player's animation to
+;     an action in the AIR file of the attacker (in this case, kfm.air),
+;     whereas ChangeAnim always changes the player to an action in his
+;     own AIR file. Look at Action 820 in kfm.air for some extra
+;     comments.
+[Statedef 810]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 820, 1]
+type = ChangeAnim2
+Trigger1 = Time = 0
+value = 810
+elem = ifelse(prevstateno=811, animelemno(0), 1)
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = Time = 83
+x = -5.625
+y = -4.1125
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = Time = 83
+trigger2 = !gethitvar(isbound)
+value = 5050
+
+[Statedef 811]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 820, 1]
+type = ChangeAnim2
+Trigger1 = Time = 0
+value = 811
+elem = ifelse(prevstateno=810, animelemno(0), 1)
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = Time = 83
+x = -5.625
+y = -4.1125
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = Time = 83
+value = 5050
+
+[Statedef 812]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 820, 1]
+type = ChangeAnim2
+Trigger1 = Time = 0
+value = 812
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = AnimTime = 0
+x = -5.625
+y = -4.1125
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = AnimTime = 0
+value = 5050
+
+;---------------------------------------------------------------------------
+; Throw 2- Attempt
+[Statedef 799]
+type    = U
+movetype= A
+physics = U
+juggle  = 0
+velset = 0,0
+ctrl = 0
+
+[State 800, 1]
+type = HitDef
+Trigger1 = !time
+attr = S, NT          ;Attributes: Standing, Normal Throw
+hitflag = M-          ;Affect only ground people who are not being hit
+priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+sparkno = S25081
+sparkxy = 0,-50          ;No spark
+sprpriority = 1       ;Draw in front of p2
+p1facing = ifelse (command = "holdback", -1, 1) ;Turn if holding forwards
+p2facing = 1          ;Force p2 to face player
+p1stateno = 815       ;On success, player changes to state 810
+p2stateno = 816       ;If hit, p2 changes to state 820 in player's cns
+fall = 1              ;Force p2 into falling down
+fall.recover=0
+hitsound=S1,20
+yaccel = .8
+fall.xvelocity=0
+
+[State 800, 2]
+type = ChangeState
+Trigger1 = Time = 1
+value = 250
+
+;-------------------------------------
+;THROW 2 - SUCCESS
+[Statedef 815]
+type = S
+movetype= A
+physics = N
+anim = 815
+poweradd = 60
+
+[State 809, Bind 1]
+type = TargetBind
+trigger1 = AnimElemTime(1) >= 0 && AnimElemTime(2) < 0
+pos = 30.0, 0.0
+
+[State 809, Bind 2]
+type = TargetBind
+trigger1 = AnimElemTime(2) >= 0 && AnimElemTime(3) < 0
+pos = 20.0, 0.0
+
+[State 809, Bind 3]
+type = TargetBind
+trigger1 = AnimElemTime(3) >= 0 && AnimElemTime(4) < 0
+pos = 10.0, 0.0
+
+[State 809, Bind 4]
+type = TargetBind
+trigger1 = AnimElemTime(4) >= 0 && AnimElemTime(5) < 0
+pos = -10.0, 0.0
+
+[State 809, Bind 5]
+type = TargetBind
+trigger1 = AnimElemTime(5) >= 0 && AnimElemTime(6) < 0
+pos = -20.0, 0.0
+
+[State 809, Bind 6]
+type = TargetBind
+trigger1 = AnimElemTime(6) >= 0 && AnimElemTime(7) < 0
+pos = -20.0, 0.0
+
+[State 809, Bind 7]
+type = TargetBind
+trigger1 = AnimElemTime(7) >= 0 && AnimElemTime(8) < 0
+pos = -25.0, 0.0
+
+[State 809, Hurt]
+type = TargetLifeAdd
+trigger1 = AnimElem = 8
+value = -78
+
+[State 809, Throw]
+type = TargetState
+trigger1 = AnimElem = 8
+value = 817
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 8
+value = S1,2
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 8
+anim = 25010+random%2
+pos = -40,-60
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 8
+time = 10
+ampl = 7
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = AnimElem = 8
+y = -10
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = AnimElem = 8
+x = 4
+y = -4
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = AnimElem = 8
+physics = A         ;A,C,S,N
+
+[State 0, Turn]
+type = Turn
+trigger1 = !AnimTime
+
+[State 809, State End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-----------------------------
+; P2 GRABBED 2
+[Statedef 816]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+
+[State 819, 1]
+type = ChangeAnim2
+trigger1 = Time = 0
+value = 816
+
+[State 820, 2]
+type = SelfState
+trigger1 = !gethitvar(isbound)
+value = 5050
+
+;-----------------------------
+; P2 THROWN 2
+[Statedef 817]
+type = A
+movetype = H
+physics = N
+velset = 8,-6
+poweradd = 40
+anim = 5050
+
+[State 0, Turn]
+type = Turn
+trigger1 = !time
+;ignorehitpause = 
+;persistent = 
+
+
+[State 820, 1] ;Gravity
+type = VelAdd
+trigger1 = 1
+y = .4
+
+[State 820, 4] ;Hit ground
+type = SelfState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 5100 ;Hit ground
+

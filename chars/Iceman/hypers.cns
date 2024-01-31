@@ -1,0 +1,2326 @@
+;---------------------------------------------------------------------------
+;Hyper Attacks
+;---------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------------
+;Hyper #1
+[Statedef 3000]
+type    = S
+movetype= A
+physics = C
+juggle  = 4
+ctrl = 0
+anim = 3000
+sprpriority = -1
+velset = 0,0
+
+[State 30000, 6]
+type = AfterImage
+trigger1 = (AnimElemTime(2)=0)
+time = 9999
+length = 20
+palcolor = 0
+paladd = 0,0,250
+palbright = 0,0,100
+palpostbright = 0,0,-50
+
+[State 1300,1] 
+type = PlaySnd
+trigger1 = animelem = 1
+value = s13,7
+
+[State 1300,1] 
+type = PlaySnd
+trigger1 = animelem = 3
+value = s5,0
+
+[State 3000, assertspecial]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3000, SuperPause]
+type = SuperPause
+trigger1 = animelem=1
+Time = 40
+pos = -10,-60
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+
+[State 3000, Sound]
+type = PlaySnd
+trigger1 = animelem=1
+value = s8889,0
+
+
+[State 3000, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 2
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3000, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volumescale = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 1300,3] 
+type = Helper
+trigger1 = time=16
+helpertype = normal ;player
+name = "Ice Beam"
+ID = 3090
+stateno = 3090
+pos = 43,-54
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+sprpriority = 9
+size.xscale =.75
+size.yscale =1
+ownpal = 0
+
+
+[State 1300,4] 
+type = ChangeState
+trigger1 = time = 136
+value = 3010
+ctrl = 0
+
+;--------------------------------------------------------------------------------
+;#1 G end
+[Statedef 3010]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3010
+ctrl = 0
+sprpriority = 0
+
+
+
+[State 1300,4] 
+type = ChangeState
+trigger1 = !animtime
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------------------------
+;Hyper #1 AIR
+[Statedef 3050]
+type    = A
+movetype= A
+physics = C
+juggle  = 4
+ctrl = 0
+anim = 3050
+sprpriority = 4
+velset = 0,0
+
+[State 30000, 6]
+type = AfterImage
+trigger1 = (AnimElemTime(2)=0)
+time = 9999
+length = 20
+palcolor = 0
+paladd = 0,0,250
+palbright = 0,0,100
+palpostbright = 0,0,-50
+
+[State 1300,1] 
+type = PlaySnd
+trigger1 = animelem = 1
+value = s13,7
+
+[State 1300,1] 
+type = PlaySnd
+trigger1 = animelem = 3
+value = s5,0
+
+
+
+[State 3000, assertspecial]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3000, SuperPause]
+type = SuperPause
+trigger1 = animelem=1
+Time = 40
+pos = 0,-60
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+
+[State 3000, Sound]
+type = PlaySnd
+trigger1 = animelem=1
+value = s8889,0
+
+[State 3000, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 2
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3000, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volumescale = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 1300,3] 
+type = Helper
+trigger1 = time=16
+helpertype = normal ;player
+name = "Ice Beam"
+ID = 3091
+stateno = 3091
+pos = 46,-61
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+sprpriority = 9
+size.xscale =.75
+size.yscale =.75
+ownpal = 0
+
+
+[State 1300,4] 
+type = ChangeState
+trigger1 = time = 136
+value = 3055
+ctrl = 0
+
+;--------------------------------------------------------------------------------
+;#1 A end
+[Statedef 3055]
+type    = A
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3055
+ctrl = 0
+sprpriority = 0
+
+
+
+[State 1300,4] 
+type = ChangeState
+trigger1 = !animtime
+value = 50
+ctrl = 1
+
+;--------------------------------------------------------------------------------
+;#1 Projectile
+[Statedef 3090]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3090
+ctrl = 0
+sprpriority = 9
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = 30
+ignorehitpause = 1
+persistent = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%2=0 
+anim = 911+random%2
+ID = 910
+pos = 40,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 8+random%3,0
+accel = 0.25,ifelse(random<500,0.1,-0.1)
+random = 30,60
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 20
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 1210, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+time = 1
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = animelem = 1
+time = 85
+pos = 53,-54
+
+[State 3405, 2]
+type = HitDef
+trigger1 = time%5=0
+attr = S,HP
+damage = 2,3;10,3
+animtype = Heavy
+air.animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 8, Hit
+pausetime = 0,5
+hitsound = s8000,3
+sparkno = s25030+random%2
+sparkxy = -10, 0
+guard.sparkno=S25008
+guardsound = S8500,0
+ground.type = High;Low
+ground.slidetime = 25;15
+ground.hittime  = 7;50;3
+ground.velocity = 0,0;-4,-1;-15
+ground.cornerpush.veloff =0
+air.velocity = 0,0;-4,-0.5;-8,-0.2
+air.hittime = 3;50
+air.cornerpush.veloff =  0
+fall=0
+air.fall = 1
+getpower = 0
+givepower = 6, 2
+palfx.time = 7
+palfx.add = 0,50,240
+palfx.mul = 120,224,150
+palfx.sinadd = 85,55,110,10
+Palfx.color = 0
+persistent =1
+envshake.time = 10
+envshake.ampl = 7
+kill = 0
+
+[State 0, TargetState]
+type = TargetState
+trigger1 = movehit = 1
+value = 4960
+
+[State 3007, 4]
+type = DestroySelf
+trigger1 = parent, stateno != 3000
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 85
+value = 3095
+ctrl = 0
+
+;--------------------------------------------------------------------------------
+;#1 AIR Projectile
+[Statedef 3091]
+type    = A
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3090
+ctrl = 0
+sprpriority = 9
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%2=0 
+anim = 911+random%2
+ID = 910
+pos = 40,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 8+random%3,0
+accel = 0.25,ifelse(random<500,0.1,-0.1)
+random = 30,60
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 20
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = 12
+ignorehitpause = 1
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = animelem = 1
+time = 85
+;facing = 0
+pos = 46,-61
+;ignorehitpause = 
+;persistent = 
+
+[State 1210, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+time = 1
+
+[State 3405, 2]
+type = HitDef
+trigger1 = time%5=0
+attr = S,HP
+damage = 5,3;10,3
+animtype = Heavy
+air.animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 8, Hit
+pausetime = 0,5
+hitsound = s8000,3
+sparkno = s25030+random%2
+sparkxy = -10, 0
+guard.sparkno=S25008
+guardsound = S8500,0
+ground.type = High;Low
+ground.slidetime = 25;15
+ground.hittime  = 7;50;3
+ground.velocity = 0,0;-4,-1;-15
+ground.cornerpush.veloff =0
+air.velocity = 0,0;-4,-0.5;-8,-0.2
+air.hittime = 3;50
+air.cornerpush.veloff =  0
+fall=0
+air.fall = 1
+getpower = 0
+givepower = 6, 2
+palfx.time = 7
+palfx.add = 0,50,240
+palfx.mul = 120,224,150
+palfx.sinadd = 85,55,110,10
+Palfx.color = 0
+persistent =1
+envshake.time = 10
+envshake.ampl = 7
+kill = 0
+
+[State 3007, 4]
+type = DestroySelf
+trigger1 = parent, stateno != 3050
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 85
+value = 3095
+ctrl = 0
+
+
+
+
+;--------------------------------------------------------------------------------
+;#1 Projectile Freeze
+[Statedef 3095]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3095
+ctrl = 0
+sprpriority = 9
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 1210, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+time = 1
+
+[State 0, BindToRoot]
+type = BindToRoot
+triggerall = root,pos y = 0
+trigger1 = animelem = 1
+time = 36
+;facing = 0
+pos = 43,-54
+;ignorehitpause = 
+;persistent = 
+
+[State 0, BindToRoot]
+type = BindToRoot
+triggerall = root,pos y != 0
+trigger1 = animelem = 1
+time = 36
+;facing = 0
+pos = 46,-61
+;ignorehitpause = 
+;persistent = 
+
+
+
+[State 3405, 2]
+type = HitDef
+trigger1 = animelem = 1;time%8
+attr = SCA, HP
+damage    = 0,0
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3;, Hit
+pausetime = 0,1
+sparkxy = 20,-15
+sparkno = s25030+random%2
+guard.sparkno=S25008
+hitsound   = s1,2
+guardsound = s8500,0
+ground.type = Low
+air.type = Low
+ground.slidetime = 0
+ground.hittime  = 0
+ground.velocity = 0,0
+air.velocity = 0,0
+;fall=1
+p2stateno = 4950
+envshake.time = 7
+envshake.ampl = 4
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = !animtime
+
+;--------------------------------------------------------------------------------------------------------------
+;Hyper #2 
+[Statedef 3100]
+type    = S
+movetype= A
+physics = C
+juggle  = 4
+ctrl = 0
+anim = 3100
+sprpriority = 2
+velset = 0,0
+poweradd = 0
+
+[State 30000, 6]
+type = AfterImage
+trigger1 = (AnimElemTime(2)=0)
+time = 9999
+length = 20
+palcolor = 0
+paladd = 0,0,250
+palbright = 0,0,100
+palpostbright = 0,0,-50
+
+[State 3050,1] 
+type = PlaySnd
+trigger1 = animelem = 1
+value = s13,6
+
+[State 3050, 2]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3050, SuperPause]
+type = SuperPause
+trigger1 = animelem=1
+Time = 40
+pos = 0,-60
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+
+[State 3000, Sound]
+type = PlaySnd
+trigger1 = animelem=1
+value = s8889,0
+
+[State 3050, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 2
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3050, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volumescale = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 3050,1] 
+type = PlaySnd
+trigger1 = animelem = 3
+value = s5,0
+
+[State 3050,2] 
+type = Explod
+trigger1 = animelem = 5
+anim = 1397
+;ID = 1301
+pos = 8,-47
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 24;-2
+pausemovetime = 0
+scale = .3,.3
+sprpriority = 7
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 1
+persistent = 1
+
+[State 3050,1] 
+type = PlaySnd
+trigger1 = animelem = 5 || animelem = 7
+value = s3,0
+
+[State 3050,3] 
+type = Helper
+trigger1 = animelem = 5 || animelem = 7
+helpertype = normal ;player
+name = "Ice spit"
+ID = 3198
+stateno = 3198
+pos = 20,-47
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+size.xscale =1;0.5
+size.yscale =1;0.5
+ownpal = 0
+
+
+[State 3050,4] 
+type = ChangeState
+trigger1 = time = 200
+value = 50
+ctrl = 1
+
+;--------------------------------------------------------------------------------------------------------------
+;Hyper #2 AIR
+[Statedef 3150]
+type    = A
+movetype= A
+physics = C
+juggle  = 4
+ctrl = 0
+anim = 3150
+sprpriority = 2
+velset = 0,0
+poweradd = 0
+
+[State 30000, 6]
+type = AfterImage
+trigger1 = (AnimElemTime(2)=0)
+time = 9999
+length = 20
+palcolor = 0
+paladd = 0,0,250
+palbright = 0,0,100
+palpostbright = 0,0,-50
+
+[State 3050,1] 
+type = PlaySnd
+trigger1 = animelem = 1
+value = s13,6
+
+[State 3050, 2]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3050, SuperPause]
+type = SuperPause
+trigger1 = animelem=1
+Time = 40
+pos = 0,-60
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+
+[State 3000, Sound]
+type = PlaySnd
+trigger1 = animelem=1
+value = s8889,0
+
+[State 3050, 4]
+type = Explod
+trigger1 = time = 0
+anim = 4532
+ID = 4530
+postype = p1
+bindtime = -1
+pos = 10,-45
+ownpal = 1
+sprpriority = 5
+supermovetime = 99999999
+pausemovetime = 99999999
+
+[State 3050, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 2
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+
+[State 3050, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volumescale = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 3050,1] 
+type = PlaySnd
+trigger1 = animelem = 3
+value = s5,0
+
+[State 3050,2] 
+type = Explod
+trigger1 = animelem = 5
+anim = 1397
+;ID = 1301
+pos = 18,-65
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 24;-2
+pausemovetime = 0
+scale = .3,.3
+sprpriority = 7
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 1
+persistent = 1
+
+[State 3050,1] 
+type = PlaySnd
+trigger1 = animelem = 5 || animelem = 7
+value = s3,0
+
+[State 3050,3] 
+type = Helper
+trigger1 = animelem = 5 || animelem = 7
+helpertype = normal ;player
+name = "Ice spit"
+;ID = 1398
+stateno = 3198
+pos = 38,-65
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+sprpriority = 9
+size.xscale =1;0.5
+size.yscale =1;0.5
+ownpal = 0
+
+
+[State 3050,4] 
+type = ChangeState
+trigger1 = time = 200
+value = 50
+ctrl = 1
+
+;--------------------------------------------------------------------------------
+;#2 Projectile
+[Statedef 3198]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3198;1398
+ctrl = 0
+sprpriority = 9
+
+[State 0, AngleDraw]
+type = null;AngleDraw
+trigger1 = time >= 0
+scale = .5,.5
+ignorehitpause = 1
+;persistent = 
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+x = .7
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 1
+x = 5
+y = ifelse(random<300,-0.5,ifelse(random>600,0.5,0))
+ignorehitpause = 0
+
+[State 1210, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+time = 1
+ 
+[State 1210, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA, NP, SP, HP
+time = 1
+ 
+[State 1210, HitOverride]
+type = HitOverride
+trigger1 = Time <= 0
+time = -1
+attr = SCA, NP, SP, HP
+slot = 0
+stateno = 3199
+
+[State 3405, 2]
+type = HitDef
+trigger1 = !movehit
+trigger1 = !moveguarded
+attr = SCA, HP
+damage    = 11,3
+animtype = Light
+air.animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3;, Hit
+pausetime = 0,10
+sparkxy = -10,0
+sparkno = s25040+random%2
+guard.sparkno=S25008
+hitsound   = s8250,3
+guardsound = s8500,0
+ground.type = High
+air.type = Low
+ground.slidetime = 15
+ground.hittime  = 12
+air.hittime = 12
+ground.velocity = -6,-2
+air.velocity = -6,-2
+palfx.time = 15
+palfx.add = 0,50,240
+palfx.mul = 120,224,150
+palfx.sinadd = 85,55,110,10
+Palfx.color = 0
+fall=1
+envshake.time = 10
+envshake.ampl = 7
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 60
+trigger2 = movecontact = 1
+value = 3199
+ctrl = 0
+;anim =
+;ignorehitpause = 
+;persistent = 
+
+;-----------------------------------------------------------------------------
+;#2 Explosions
+[Statedef 3199]
+type    = S
+juggle  = 0
+velset = 0,0
+anim = 9999
+ctrl = 0
+sprpriority = 9
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 3199
+ID = 3199
+pos = 0,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = ifelse(random<500,1,-1)
+vfacing =  ifelse(random<500,1,-1)
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 5
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Stone FX helper]
+type = Helper
+trigger1 = !time && random < 500
+helpertype = Normal ;Player
+name = "stone call"
+ID = 16023
+stateno = 16023
+pos = random%20,-10-random%10
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = !time
+
+
+;-----------------------------------------------------------------------------
+;Hyper #3
+[Statedef 3200]
+type    = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+anim = 3200
+ctrl = 0
+sprpriority = 0
+
+[State 30000, 6]
+type = AfterImage
+trigger1 = (AnimElemTime(2)=0)
+time = 9999
+length = 20
+palcolor = 0
+paladd = 0,0,250
+palbright = 0,0,100
+palpostbright = 0,0,-50
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 6
+value = 5,random%2
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 1
+value = 13, 2
+
+[State 3000, assertspecial]
+type = assertspecial
+trigger1 = time = 12;1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 5
+anim = 12041
+;ID = 
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 125
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 125
+pausemovetime = 0
+scale = 1,1
+sprpriority = 9
+ontop = 1
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 1
+;ignorehitpause =
+;trans = 
+;persistent =
+;supermove = 0
+;pausemove = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 15;animelem = 5
+anim = 6004
+;ID = 
+pos = 115,10
+postype = p1  ;p2,front,back,left,right
+facing = -1
+vfacing = 1
+bindtime = 125
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 110
+pausemovetime = 0
+scale = 1,1
+sprpriority = 6
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 1
+;ignorehitpause =
+;trans = 
+;persistent =
+;supermove = 0
+;pausemove = 0
+
+[State 3000, SuperPause]
+type = SuperPause
+trigger1 = AnimElem=5
+Time = 40;200;40
+pos = 0,-60
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+
+[State 3000, Sound]
+type = PlaySnd
+trigger1 = animelem=5
+value = s8889,0
+
+[State 3000, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 2
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3000, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volumescale = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Floor 1"
+ID = 3299
+stateno = 3299
+pos = 0,0;*216
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = 1
+size.yscale = 1
+;size.air.back = 
+;size.air.front = 
+;size.height = 
+;size.proj.doscale = 
+;size.head.pos = , 
+;size.mid.pos = , 
+;size.shadowoffset = 
+;ignorehitpause = 
+;persistent = 
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top -3"
+ID = 3290
+stateno = 3290
+pos = 175,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top -2"
+ID = 3290
+stateno = 3290
+pos = 115,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top -1"
+ID = 3290
+stateno = 3290
+pos = 55,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 1"
+ID = 3290
+stateno = 3290
+pos = -5,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 2"
+ID = 3290
+stateno = 3290
+pos = -65,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 3"
+ID = 3290
+stateno = 3290
+pos = -125,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 4"
+ID = 3290
+stateno = 3290
+pos = -185,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 5"
+ID = 3290
+stateno = 3290
+pos = -245,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 6"
+ID = 3290
+stateno = 3290
+pos = -305,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 7"
+ID = 3290
+stateno = 3290
+pos = -365,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 7"
+ID = 3290
+stateno = 3290
+pos = -425,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 7"
+ID = 3290
+stateno = 3290
+pos = -485,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal ;player
+name = "Ice Spike Top 7"
+ID = 3290
+stateno = 3290
+pos = -545,-225;*216
+postype = front    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 999999
+pausemovetime = 999999
+size.xscale = .75
+size.yscale = .75
+
+
+
+
+
+
+
+
+[State 3200, End]
+type = ChangeState
+trigger1 = !animtime
+value = 0
+ctrl = 1
+
+
+;--------------------------------------------------------------------------------
+;#3 Ice TOP
+[Statedef 3290]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3290
+ctrl = 0
+sprpriority = 9
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time >=0
+y = -200;floor(pos Y-screenpos Y)
+
+
+;[State 0, AngleDraw]
+;type = AngleDraw
+;trigger1 = time >= 0
+;scale = .5,.5
+;ignorehitpause = 1
+;;persistent = 
+
+
+
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+;[State 0, VelAdd]
+;type = VelAdd
+;trigger1 = 1
+;x = .7
+
+;[State 0, VelSet]
+;type = VelSet
+;trigger1 = time = 1
+;x = 5
+;y = 0
+;ignorehitpause = 0
+
+[State 1210, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+time = 1
+ 
+[State 1210, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA, NP, SP, HP
+time = 1
+ 
+[State 1210, HitOverride]
+type = HitOverride
+trigger1 = Time <= 0
+time = -1
+attr = SCA, NP, SP, HP
+slot = 0
+stateno = 3295
+
+[State 3405, 2]
+type = HitDef
+trigger1 = !movehit
+trigger1 = !moveguarded
+attr = SCA, HA;HP
+damage    = 55,5
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3;, Hit
+pausetime = 0,2
+sparkxy = 20,-15
+sparkno = s25030+random%2
+guard.sparkno=S25008
+hitsound   = s1,1
+guardsound = s1,1
+ground.type = Low
+air.type = Low
+ground.slidetime = 15
+ground.hittime  = 15
+ground.velocity = -2,0
+air.velocity = -2,1
+palfx.time = 15
+palfx.add = 0,50,240
+palfx.mul = 120,224,150
+palfx.sinadd = 85,55,110,10
+Palfx.color = 0
+fall=0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 600
+trigger2 = movecontact = 1
+value = 3295
+ctrl = 0
+;anim =
+;ignorehitpause = 
+;persistent = 
+
+;-----------------------------------------------------------------------------
+;#3 Break TOP
+[Statedef 3295]
+type    = S
+juggle  = 0
+velset = 0,0
+anim = 3295
+ctrl = 0
+sprpriority = 9
+
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 16
+
+;-----------------------------------------------------------------------------
+;#3 ICE FLOOR
+[Statedef 3299]
+type    = S
+movetype= A
+physics = C
+juggle  = 0
+velset = 0,0
+anim = 3299
+ctrl = 0
+sprpriority = -1
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = movehit = 1
+value = -4
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = time >=0
+value = 1
+movecamera = 1,0
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 420, HitDef]
+type = HitDef
+trigger1 = p2stateno = 52
+attr = S, HT
+animtype  = Medium
+damage    = 50,0
+getpower = 0,0
+givepower = 0,0
+hitflag = MAF
+pausetime = 0, 0
+sparkno = -1
+guard.sparkno = -1
+hitsound = -1
+guardsound = 6,0
+ground.type = trip
+ground.slidetime = 0
+ground.hittime  = 0
+ground.velocity = 3.5,-1.5
+air.velocity = 0,0
+air.hittime = 0   
+air.fall = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 600
+value = S1,1
+;volumescale = 10
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 600
+
+
+
+;---------------------------------------------------------------------------------------------
+;Hyper #4
+[Statedef 3300]
+type    = S
+movetype= A
+physics = C
+juggle  = 4
+ctrl = 0
+anim = 3300
+sprpriority = 0
+velset = 0,0
+
+[State 30000, 6]
+type = AfterImage
+trigger1 = (AnimElemTime(2)=0)
+time = 9999
+length = 20
+palcolor = 0
+paladd = 0,0,250
+palbright = 0,0,100
+palpostbright = 0,0,-50
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 1
+value = S13,5
+
+[State 3000, assertspecial]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3000, SuperPause]
+type = SuperPause
+trigger1 = animelem=1
+Time = 40
+pos = 0,-60
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+
+[State 3000, Sound]
+type = PlaySnd
+trigger1 = animelem=1
+value = s8889,0
+
+[State 3000, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 1
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3000, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volumescale = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 1300,3] 
+type = Helper
+trigger1 = animelem = 4
+helpertype = normal ;player
+name = "Ice Geiser"
+ID = 3390
+stateno = 3390
+pos = 30,0
+postype = p1   ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+[State 1300,4] 
+type = ChangeState
+trigger1 = !Animtime
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------------------------
+;Hyper #4
+[Statedef 3310]
+type    = S
+movetype= A
+physics = C
+juggle  = 4
+ctrl = 0
+anim = 3310
+sprpriority = 0
+velset = 0,0
+
+
+[State 1300,4] 
+type = ChangeState
+trigger1 = !animtime
+value = 0
+ctrl = 1
+ignorehitpause = 1
+
+
+;-----------------------------------------------------------------------
+; Ice Geiser
+[Statedef 3390]
+type    = S                     
+movetype= A                     
+physics = N  
+anim = 3390     
+juggle  = 0                                   
+ctrl = 0                                       
+poweradd = 0                    
+sprpriority = 5 
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S3300,0
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = !time
+time = 15
+ampl = 10
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%3=0 && time < 20
+anim = 910+random%3
+ID = 910
+pos = 0,-50
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 1+random%3,-3
+accel = 0.25,-0.25
+random = 30,50
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 3405, 2]
+type = HitDef
+trigger1 = !time
+attr = S,HP
+damage = 280,10
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 7,hit
+pausetime = 0,2
+sparkxy = -20,-75
+sparkno = s25030+random%2
+guard.sparkno = S25008
+hitsound = s8000,2
+guardsound = S8500,0
+ground.type = High
+air.type = Low
+ground.slidetime = 30
+ground.hittime  = 30
+ground.velocity = -8,-9
+air.velocity = -8,-9
+fall=1
+fall.recover = 0
+palfx.time = 45
+palfx.add = 0,50,240
+palfx.mul = 120,224,150
+palfx.sinadd = 85,55,110,10
+Palfx.color = 0
+
+[state 1107, flame]
+type = explod
+triggerall = NumTarget
+trigger1 = numexplod(8020) = 0
+trigger1 = movehit && target, MoveType = H && target, StateType != L
+anim = 8021
+id = 8020
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = -2
+sprpriority = 1
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+removeongethit =  1
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = !AnimTime
+
+;--------------------------------------------------------------------------------------------------------------
+;Hyper #5
+[Statedef 3400]
+type    = S
+movetype= A
+physics = C
+juggle  = 4
+ctrl = 0
+anim = 3400
+sprpriority = 2
+velset = 0,0
+poweradd = 0
+
+[State 30000, 6]
+type = AfterImage
+trigger1 = (AnimElemTime(2)=0)
+time = 9999
+length = 20
+palcolor = 0
+paladd = 0,0,250
+palbright = 0,0,100
+palpostbright = 0,0,-50
+
+[State 0, Turn]
+type = Turn
+trigger1 = (P2Dist X < 2)
+
+
+[State 3050,1] 
+type = PlaySnd
+trigger1 = animelem = 1
+value = s14,1
+
+[State 3050, 2]
+type = assertspecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+ignorehitpause = 1
+
+[State 3050, SuperPause]
+type = SuperPause
+trigger1 = animelem=1
+Time = 40
+pos = 0,-60
+anim = S25100 ; new superpause
+sound = 8889,0
+poweradd = -1000
+
+[State 3000, Sound]
+type = PlaySnd
+trigger1 = animelem=1
+value = s8889,0
+
+[State 3050, Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -2
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 0, Helper] ;===============NEW HYPER BG
+type = Helper
+trigger1 =  AnimElem = 2
+name ="Hyper fx"
+ID = 25050
+stateno = 25050
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3050, Hyper Combo Finish]
+type = PlaySnd
+triggerall = !p2life
+trigger1 = numexplod(8290) = 0
+value = S9999,6
+volumescale = 0
+channel = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+persistent = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 5
+helpertype = normal ;player
+name = "Snowman"
+ID = 3497
+stateno = 3497
+pos = 36,-30
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = !AnimTime
+value = 0
+ctrl = 1
+
+
+;--------------------------------------------------------------------------------
+;Drop Projectile
+[Statedef 3497]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+velset = 3,-3
+anim = 3497
+ctrl = 0
+sprpriority = 9
+
+[State 0, Gravity]
+type = Gravity
+trigger1 = 1
+
+[State 3405, 2]
+type = HitDef
+trigger1 = !movehit
+trigger1 = !moveguarded
+attr = A,SA
+damage    = 22,3
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3;, Hit
+pausetime = 0,2
+sparkxy = 20,-15
+sparkno = s25030+random%2
+guard.sparkno=S25008
+hitsound   = s8000,0
+guardsound = s8500,0
+ground.type = High
+air.type = Low
+ground.slidetime = 15
+ground.hittime  = 15
+ground.velocity = -2,0
+air.velocity = -2,-1.5
+palfx.time = 15
+palfx.add = 0,50,240
+palfx.mul = 120,224,150
+palfx.sinadd = 85,55,110,10
+Palfx.color = 0
+fall=0
+envshake.time = 10
+envshake.ampl = 7
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = Pos Y >=0
+value = 3498
+ctrl = 0
+;--------------------------------------------------------------------------------
+;Projectile
+[Statedef 3498]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+velset = 0,0
+anim = 3498
+ctrl = 0
+sprpriority = 9
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = !time
+y = 0
+
+[State 40, NEW DUST JUMP LAND]
+type = Explod
+trigger1 = AnimElem = 1
+anim = 25016
+sprpriority = -1
+Ownpal = 1
+
+[State 3405, 2]
+type = HitDef
+trigger1 = !time
+attr = S,HP
+damage    = 22,3
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 3;, Hit
+pausetime = 0,2
+sparkxy = 20,-15
+sparkno = s25030+random%2
+guard.sparkno=S25008
+hitsound   = s6,0;8000,0
+guardsound = s6,0;8500,0
+ground.type = High
+air.type = Low
+ground.slidetime = 30
+ground.hittime  = 30
+ground.velocity = -1,-1
+air.velocity = -2,-4
+palfx.time = 45
+palfx.color = 0
+palfx.add = 240,128,0
+palfx.sinadd = 48,50,32,16
+palfx.invertall = 0
+fall=0
+air.fall = 1
+
+[state 1107, flame]
+type = explod
+triggerall = NumTarget
+trigger1 = numexplod(8020) = 0
+trigger1 = movehit && target, MoveType = H && target, StateType != L
+anim = 8020
+id = 8020
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = -2
+sprpriority = -1
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time = 210
+time = 30
+add = 200,80,-250
+mul = 256,256,256
+sinadd = 29,200,200,4
+invertall = 0
+color = 256
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 240
+trigger2 = movecontact = 1
+value = 3499
+ctrl = 0
+
+;-----------------------------------------------------------------------------
+;Explosions
+[Statedef 3499]
+type    = S
+movetype= A
+physics = N
+juggle  = 0
+velset = 0,0
+anim = 3499
+ctrl = 0
+sprpriority = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S6202,0
+
+[State 0, Stone FX helper]
+type = Helper
+trigger1 = !time
+helpertype = Normal ;Player
+name = "stone call"
+ID = 16024
+stateno = 16024
+pos = 0,-50-random%25
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = !time
+time = 15
+ampl = 10
+
+[State 2244, Assert]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 3405, 2]
+type = HitDef
+trigger1 = !time
+attr = S,HP
+damage    = 280,10
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 7,hit
+pausetime = 0,2
+sparkxy = 20,-15
+sparkno = s25030+random%2
+guard.sparkno=S25008
+hitsound   = s6,0;8000,0
+guardsound = s6,0;8500,0
+ground.type = High
+air.type = Low
+ground.slidetime = 30
+ground.hittime  = 30
+ground.velocity = -8,-9
+air.velocity = -8,-9
+palfx.time = 45
+palfx.color = 0
+palfx.add = 240,128,0
+palfx.sinadd = 48,50,32,16
+palfx.invertall = 0
+fall=1
+fall.recover = 0
+
+[state 1107, flame]
+type = explod
+triggerall = NumTarget
+trigger1 = numexplod(8020) = 0
+trigger1 = movehit && target, MoveType = H && target, StateType != L
+anim = 8020
+id = 8020
+pos = Floor(enemynear, const(size.mid.pos.x)),Floor(enemynear, const(size.mid.pos.y))
+postype = p2
+removetime = -2
+sprpriority = -1
+bindtime = -1
+ownpal = 1
+ignorehitpause = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 24
+
+
+;-----------------------------------------------------------------------
+;Hyper FX
+[Statedef 25050]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoBG
+flag2= NoFg
+flag3= NoBarDisplay
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 25050
+ID = 25050
+pos = 160,120
+postype = back;left  ;p2,front,back,left,right
+facing = root,facing
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+scale = 0.6,0.6
+sprpriority = -10
+ownpal = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root, MoveType = H || root,Stateno <3000
+trigger2 = root,NumHelper(8400)=1
+value =  25051
+ctrl = 0
+
+;-----------------------------------------------------------------------
+;Hyper FX end
+[Statedef 25051]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 0, PalFXWiz]
+type = AllPalFX
+triggerAll = root,NumHelper(8400)=0
+trigger1 = !time
+time = 20
+add = 255,255,255
+mul = 256,256,256
+sinadd = -255,-255,-255,80
+invertall = 0
+color = 256
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 =!time
+value = S25000,0
+
+[state 8010]
+type = modifyexplod
+trigger1 = 1
+id = 25050
+scale = 1.0,1.0+time/-15.0
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 15
+
+;-----------------------------------------------------------------------
+;Hyper FX LVL 3
+[Statedef 25052]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoBG
+flag2= NoFg
+flag3= NoBarDisplay
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 25051
+ID = 25050
+pos = 160,120
+postype = back;left  ;p2,front,back,left,right
+facing = root,facing
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+scale = 0.6,0.6
+sprpriority = -10
+ownpal = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root, MoveType = H || root,Stateno <3000
+trigger2 = root,NumHelper(8400)=1
+value =  25051
+ctrl = 0
+
+;-----------------------------------------------------------------------
+;-----------------------------------------------------------------------

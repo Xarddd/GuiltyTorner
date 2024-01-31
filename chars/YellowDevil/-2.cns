@@ -1,0 +1,45 @@
+;===========================================================================
+;Robot Master Mayhem - Constants Template (Statedef -2) V.1
+;Template by Acey
+;Based on Megaman by Chaotic
+;www.infinitymugenteam.com
+;===========================================================================
+
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+
+[Statedef -2]
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Stateno <3000 || MoveType = H
+id = 750
+
+[State -2, assert]
+type=assertspecial
+trigger1=1
+flag=nostandguard
+flag2=nocrouchguard
+flag3=noairguard
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 =1 
+flag = nokoslow
+flag2 = nokosnd
+
+;For debugging purposes
+[State -2, Debug Info]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Var(35)= %d Var(16)= %d Var(10)= %d";, Var(16)= %d, Var(59)= %d"
+params = var(35), var(16) ,var(10)
+
+[State 0, AppendToClipboard]
+type = AppendToClipboard
+trigger1 = 1
+text = "\nHELPERS = %d - Var(50) = %d - AI:%d"
+params = NumHelper,Var(50), AiLevel
+
+

@@ -1,0 +1,90 @@
+;=======================<GAMEPLAY OPTIONS>=======================
+[StateDef 7650]
+physics = N
+velSet = 0,0
+anim = 9999
+;================================================================
+;--------------- Only modify stuff below this line --------------
+;================================================================
+
+
+
+
+
+;----------------------------------------------------------------
+; Aerial Rave (Air Combo)
+;----------------------------------------------------------------
+[State 7650, air combo]
+type = ParentVarSet
+trigger1 = 1
+var(41) = 1   ;<---------- Change this line
+
+;----------------------------------------------------------------
+; Set the above value to 0 to disable Aerial Rave. (simple launcher)
+; Set the above value to 1 to enable Aerial Rave. (MvC inspired launcher)
+
+
+
+
+
+;----------------------------------------------------------------
+; Guard Configuration
+;----------------------------------------------------------------
+[State 7650, guard config]
+type = ParentVarSet
+trigger1 = 1
+var(42) = 0   ;<---------- Change this line
+
+;----------------------------------------------------------------
+; Set the above value to 0 to disable Guard.
+; Set the above value to 1 to enable Guard.
+
+
+
+
+
+;----------------------------------------------------------------
+; Damage Configuration
+;----------------------------------------------------------------
+[State 7650, damage config]
+type = ParentVarSet
+trigger1 = 1
+var(43) = 5   ;<---------- Change this line
+
+;----------------------------------------------------------------
+; Set the number of hits before Dr. Wily gets to a temporaly invulnerability state;
+; A value of 0 or below it makes him always invunerable on hit.
+
+
+
+
+
+;----------------------------------------------------------------
+; Assists Icon Position
+;----------------------------------------------------------------
+[State 7650, assist pos]
+type = ParentVarSet
+trigger1 = 1
+var(46) = 9    ;<---------- Change this line
+
+;----------------------------------------------------------------
+; Change the position that the Assists Icon will appear, vertically;
+; A positive value sets the icon under it's default position.
+; A negative valeu sets the icon above it's default position.
+
+
+
+
+
+
+
+
+
+
+
+;================================================================
+;--------------- Only modify stuff above this line --------------
+;================================================================
+[State 7650, End]
+type = DestroySelf
+trigger1 = RoundState = 2

@@ -1,0 +1,46 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Elec Man RMM"
+displayname ="Elec Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion =1.0
+author ="Laspacho, AkitoSama, Rage (Sprites), O Ilusionista (coding)"
+pal.defaults = 1,2,3,4
+
+[Files]
+sprite =Elecman_RMM.sff
+anim =Elecman_RMM.air
+sound =Elecman_RMM.snd
+cmd =Elecman_RMM.cmd
+; PALETTES
+pal1=act\PAL1.act
+pal2=act\PAL2.act
+pal3=act\PAL3.act
+pal4=act\PAL4.act
+pal5=act\PAL5.act
+pal6=act\PAL6.act
+pal7=act\PAL7.act
+pal8=act\PAL8.act
+pal9=act\PAL9.act
+pal10=act\PAL10.act
+pal11=act\PAL11.act
+pal12=act\PAL12.act
+;CODES
+cns =cns\Elecman_RMM.cns
+stcommon =cns\common1.cns
+st =cns\Elecman_RMM.cns
+st1=cns\supers.cns
+st2=cns\hypers.cns
+st3=cns\weapons.cns
+st4=cns\-2.cns
+st5=cns\-3.cns
+
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_elecman.def
+

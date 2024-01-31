@@ -1,0 +1,191 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+
+[Info]
+name = "Boneyard - Skull Man"
+
+[BGdef]
+spr = SkullmanStage.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/ym_thr011_r4_skull.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -300
+boundright = 300
+boundhigh = -250
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70         
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  -250     
+botbound  =  0       
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 225
+autoturn = 1
+resetBG = 1
+
+[shadow]
+Intensity = 90
+color = 0,0,0
+yscale = .3
+fade.range = 0,0
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = normal
+spriteno = 0, 0
+layerno = 0                
+start = -185, -30
+delta = 0.05,0.05
+trans = none
+;----------------------------------------[PCX IMAGE]
+[BG 1]
+type  = normal
+spriteno = 4, 0               
+start = -185, 85
+mask = 1
+delta = 0.08,0.07
+;----------------------------------------[PCX IMAGE]
+[BG Arch]
+type  = normal
+spriteno = 4, 1               
+start = -95, 135
+mask = 1
+delta = 0.09,0.08
+;---------------------------------------
+[BG Flowing Spike]
+type  = anim
+spriteno = 0,4
+start = 210,15
+mask = 1
+sin.y = 20,90
+actionno = 3
+;---------------------------------------
+[BG GiantRockCaveArchBG]
+type  = normal
+spriteno = 4,2
+start = -375, -5
+mask = 1
+delta = 0.5,0.5
+;---------------------------------------
+[BG GiantRockCaveBG]
+type  = normal
+spriteno = 0,5
+start = -460,200
+mask = 1
+delta = 1, .8
+;---------------------------------------
+[BG SkullJoe BG Small]
+type  = anim
+start = -460,200
+spriteno = 3,0
+mask = 1
+delta = 1, .8
+actionno = 5
+;-------
+[Begin Action 5]
+3,0, 0,0, 30
+3,1, 0,0, 30
+;-------
+[Begin Action 3]
+0,6, 0,0, 5
+0,7, 0,0, 5
+0,8, 0,0, 5
+;--------------------------------------
+[BG Flowing Spike2]
+type  = anim
+spriteno = 0,4
+start = -190,120
+mask = 1
+sin.y = 2,90
+actionno = 3
+;-------
+[Begin Action 3]
+0,6, 0,0, 5
+0,7, 0,0, 5
+0,8, 0,0, 5
+;---------------------------------------
+[BG Bones]
+type  = normal
+spriteno = 0,3
+start = -460,240 
+mask = 1
+delta = 1, .9
+;---------------------------------------
+[BG Bones2]
+type  = normal
+spriteno = 0,3
+start = 205,240 
+mask = 1
+delta = 1, .9
+;---------------------------------------
+[BG Fighting Ground]
+type  = normal
+spriteno = 0,1
+start = -460,240  
+mask = 1
+;---------------------------------------
+[BG Fighting Ground]
+type  = normal
+spriteno = 1,0
+start = 307,240  
+mask = 1
+;---------------------------------------
+[BG SkullJoe BG Large]
+type  = anim
+start = 100,120
+spriteno = 5,0
+mask = 1
+delta = 1, .8
+actionno = 4
+;-------
+[Begin Action 4]
+5,0, 0,0, 10
+5,1, 0,0, 4
+5,2, 0,0, 4
+5,3, 0,0, 70
+5,2, 0,0, 3
+5,1, 0,0, 3
+;---------------------------------------
+[BG ForegroundSpikes]
+type  = normal
+spriteno = 0,2
+start = -360,240  
+mask = 1
+layerno = 1
+delta = 0.9,0.9
+;---------------------------------------[/PCX IMAGE]
+
+

@@ -1,0 +1,20 @@
+----------
+Needle Man
+----------
+
+QCF+P: Needle Hook
+QCB+P: Needle Counter
+QCB+K: Drill Bomb
+
+D, D, any button: Change Weapon
+	LP: Needle Mine
+	MP: Spike Bubble
+	HP: Spike Ball
+	LK: Needle Cannon
+	MK: Needle Blast
+	HK: Needle Swing
+QCF+K: Use Weapon
+
+QCB+PP: Needle Shower
+QCF+KK: Needle Whirlwind
+QCF+PP: Needle Barrage (Lv.3)

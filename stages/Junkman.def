@@ -1,0 +1,284 @@
+;stage template by Eternaga , Email: Eternaga@hotmail.com
+
+[Info]
+name ="Forgotten Factory - Junk Man"
+displayname="Forgotten Factory - Junk Man"
+versiondate=1/31/2010
+mugenversion=04,14,2001
+author="Fou"
+pal.defaults=1,2,3,4,5
+
+[BGdef]
+spr = Junkman.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/Junk - Man.mp3
+bgvolume = 255
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -453
+boundright = 453
+boundhigh = -150
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70        
+p1starty = 0            
+p1startz = 0          
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 180
+autoturn = 1
+resetBG = 1
+
+[shadow]
+Intensity = 100
+color = 0,0,0
+yscale = -0.1
+fade.range = 400,50
+
+[Reflection]
+intensity = 0
+
+;----------------------------------------[PCX IMAGE]
+[BG 0]
+type  = normal
+spriteno = 0, 0
+layerno = 0                
+start = -160, 0
+delta = 0.1,0
+trans = none
+
+;----------------------------------------
+[BG Junk]
+type  = normal
+spriteno = 0,2
+start = -310,240
+mask = 1
+
+;----------------------------------------
+[BG Junk]
+type  = normal
+spriteno = 0,2
+start = 180,240
+mask = 1
+
+;----------------------------------------
+[BG Junk]
+type  = normal
+spriteno = 0,2
+start = 680,240
+mask = 1
+
+;----------------------------------------
+[BG Pillar]
+type  = normal
+spriteno = 2,0
+start = 250,240
+mask = 1
+
+;----------------------------------------
+[BG Pillar2]
+type  = normal
+spriteno = 2,0
+start = -550,240
+mask = 1
+
+;----------------------------------------
+[BG Fighting Ground]
+type  = normal
+spriteno = 0,1
+start = -310,240
+mask = 1
+
+;----------------------------------------
+[BG Lava]
+type  = anim
+spriteno = 1,0
+start = -310,240
+mask = 1
+delta = 1, .8
+actionno = 4
+
+[BG Lava2]
+type  = anim
+spriteno = 1,0
+start = 170,240
+mask = 1
+delta = 1, .8
+actionno = 4
+
+[BG Lava3]
+type  = anim
+spriteno = 1,0
+start = 650,240
+mask = 1
+delta = 1, .8
+actionno = 4
+;-------
+[Begin Action 4]
+1,1, 0,0, 5
+1,2, 0,0, 5
+1,3, 0,0, 5
+1,4, 0,0, 5
+
+;----------------------------------------
+[BG Pillar3]
+type  = normal
+spriteno = 2,0
+start = -310,240
+mask = 1
+
+;----------------------------------------
+[BG Pillar3]
+type  = normal
+spriteno = 2,0
+layerno = 1
+start = -310,240
+mask = 1
+trans = addalpha
+alpha = 256, 128
+
+;----------------------------------------
+[BG lava Junk]
+type  = anim
+spriteno = 3,0
+layerno = 1
+start = 350,240
+mask = 1
+delta = 1, .8
+actionno = 1
+
+[BG lava Junk2]
+type  = anim
+spriteno = 3,0
+layerno = 1
+start = -350,240
+mask = 1
+delta = 1, .8
+actionno = 1
+;-------
+[Begin Action 1]
+3,1, 0,0, 30
+3,2, 0,0, 5
+3,3, 0,0, 5
+3,4, 0,0, 20
+3,3, 0,0, 5
+3,2, 0,0, 5
+
+;---------------------------------------
+[BG ennemi]
+type  = anim
+layerno = 0
+actionno = 2
+start = 100,50
+sin.x = 30,223
+sin.y = 0,153
+
+;---------------------------------------
+[BG ennemi]
+type  = anim
+layerno = 0
+actionno = 2
+start = -250,95
+sin.x = 30,223
+sin.y = 0,153
+
+;---------------------------------------
+[BG ennemi]
+type  = anim
+layerno = 0
+actionno = 2
+start = 110,-150
+sin.x = 30,223
+sin.y = 0,153
+
+[Begin Action 2]
+loopstart
+6,0,0,0,4
+6,1,0,0,4
+6,2,0,0,4
+6,3,0,0,4
+6,4,0,0,4
+6,5,0,0,4
+6,6,0,0,4
+5,0,0,0,4
+5,1,0,0,4
+5,2,0,0,4
+5,3,0,0,4
+5,4,0,0,4
+5,5,0,0,4
+5,6,0,0,4
+5,0,0,0,4
+5,1,0,0,4
+5,2,0,0,4
+5,3,0,0,4
+5,4,0,0,4
+5,5,0,0,4
+5,6,0,0,4
+5,0,0,0,4
+5,1,0,0,4
+5,2,0,0,4
+5,3,0,0,4
+5,4,0,0,4
+5,5,0,0,4
+5,6,0,0,4
+5,0,0,0,4
+5,1,0,0,4
+5,2,0,0,4
+5,3,0,0,4
+5,4,0,0,4
+5,5,0,0,4
+5,6,0,0,4
+6,0,0,0,4
+6,1,0,0,4
+6,2,0,0,4
+6,3,0,0,4
+6,4,0,0,4
+6,5,0,0,4
+6,6,0,0,4
+6,0,0,0,4
+6,1,0,0,4
+6,2,0,0,4
+6,3,0,0,4
+6,4,0,0,4
+6,5,0,0,4
+6,6,0,0,4
+6,0,0,0,4
+6,1,0,0,4
+6,2,0,0,4
+6,3,0,0,4
+6,4,0,0,4
+6,5,0,0,4
+6,6,0,0,4
+

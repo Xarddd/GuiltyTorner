@@ -1,0 +1,37 @@
+[Info]
+name="Snake Man RMM"
+displayname="Snake Man"
+versiondate=2019,12,21
+mugenversion=1.0
+author="Laspacho, DCL, O Ilusionista (powersets)"
+pal.defaults=1,2,3,4,5,6
+[Files]
+sprite=Snakeman_LasDCL.sff
+sound=sound.snd
+anim=anim.air
+cmd=command.cmd
+cns=constants.cns
+st=constants.cns
+stcommon=common1.cns
+pal1=02.act
+pal2=03.act
+pal3=04.act
+pal4=05.act
+pal5=06.act
+pal6=07.act
+pal7=08.act
+pal8=09.act
+pal9=10.act
+pal10=11.act
+pal11=12.act
+pal12=13.act
+st1=normals.cns
+st2=specials.cns
+st3=supers.cns
+st4=throws.cns
+st5=helpers.cns
+st6=Powersets.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_snakeman.def

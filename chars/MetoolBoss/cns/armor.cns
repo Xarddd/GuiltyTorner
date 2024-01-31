@@ -1,0 +1,491 @@
+;-------------------------------------------------------------------------------------------------------
+; Armor
+[Statedef 10000]
+type = A
+movetype = I
+physics = N
+ctrl = 0
+sprpriority = 0
+velset = 0,0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = invisible
+ignorehitpause =1 
+persistent=1
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = 1
+value = parent,Anim
+elem = parent, AnimElemNo(0)
+ignorehitpause =1 
+persistent=1
+
+[State 0, BindToRoot]
+type = BindToParent
+trigger1 = 1
+time = 1
+pos = 0,0
+ignorehitpause =1 
+persistent=1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = RoundState !=2
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time=2
+ignorehitpause =1 
+persistent=1
+
+[State 0, 4]
+type = HitOverride
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+trigger1 = 1
+stateno = 10010
+ignorehitpause =1 
+persistent=1
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = Root, Stateno = 150; || Root, Stateno = 0
+trigger2 = RoundState >2
+ignorehitpause = 1
+;persistent =
+
+
+;------------------------------------------------
+; Armor HIT
+[Statedef 10010]
+type = A
+movetype = H
+physics = N
+ctrl = 0
+anim = 9999
+sprpriority = 0
+velset = 0,0
+
+[State 0, ParentVarSet]
+type = ParentVarAdd
+trigger1 = !time
+v = 50
+value = ceil(GetHitVar(damage)/GetHitVar(hitcount))
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 15
+value = 10000
+ctrl = 0
+
+
+;-------------------------------------------------------------------------------------------------------
+; DEAD
+[Statedef 7050]
+type = A
+movetype = I
+physics = N
+ctrl = 0
+sprpriority = -1
+velset = 0,0
+anim = 7050
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+
+
+[State 0, PosSet]
+type = null;PosSet
+trigger1 =!time 
+y = 0
+
+[State 5150,Fire]
+type = Explod
+triggerall = Time = [0,105]
+trigger1 = GameTime%4 = 0
+anim = 7170
+sprpriority = 4
+postype = p1
+supermove = 1
+removetime = -2
+random = ceil(120*const(size.xscale)), ceil(120*const(size.yscale))
+facing = ifelse(random<500,1,-1)
+ownpal = 1
+bindtime = 1
+pos = 0,ceil(-120*const(size.yscale))
+scale = 1,1;0.45,0.45;ceil(1*const(size.xscale)),ceil(1*const(size.yscale))
+
+[State 5150, peças]
+type = Explod
+triggerall = Time = [0,105]
+trigger1 = GameTime%8 = 0
+anim = 2+random%3
+sprpriority = 4
+postype = p1
+pos = 0,-120
+random = ceil(120*const(size.xscale)), ceil(120*const(size.yscale))
+facing = ifelse(random<500,1,-1)
+ownpal = 1
+vel = 2+random%6*ifelse(random<500,1,-1),-4-random%4
+accel = 0,0.25
+
+
+[State 191, Snd 1]
+type = PlaySnd
+triggerall = Time = [0,105]
+trigger1 = GameTime%4 = 0
+value = s5,99
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = GameTime%4 = 0
+time = 4
+freq = 120
+
+[State 8400: PalFX]
+type = PalFX
+trigger1 = (Time < 50)
+time = 1
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 256-(Time*5)
+
+[State 8400: PalFX]
+type = PalFX
+trigger1 = Time>=50
+time = 1
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = Time>105
+value = 5150
+ctrl = 0
+
+;====================================================================================
+; DEAD helmet
+[Statedef 7051]
+type = A
+movetype = I
+physics = N
+ctrl = 0
+sprpriority = 0
+velset = 0,-1
+anim = 7051
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = 0.25
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = Pos Y >=0
+value = 7052
+
+;====================================================================================
+; DEAD helmet land
+[Statedef 7052]
+type = A
+movetype = I
+physics = N
+ctrl = 0
+sprpriority = 0
+velset = 0,0
+anim = 7051
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = !time
+y = 1
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = !time
+time = 60
+freq = 120
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S7,4
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 1005
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+bindtime = 1
+sprpriority = 5
+ownpal = 1
+scale = 1.5,1.5
+
+[State 0, Helper]
+type = Helper
+trigger1 = time = 30
+helpertype = normal ;player
+name = ":)"
+ID = 1250
+stateno = 1252;1250+random%2
+pos = 0,-84
+postype = p1
+ownpal = 1
+
+;---------------------------------------------------------------------------
+; HIT_LIEDEAD
+[Statedef 5150]
+type    = L
+movetype= H
+physics = S
+sprpriority = -1
+Anim = 5150
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = !time
+time = 60
+freq = 120
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = time>40
+value = 0
+movecamera = 0,0
+
+[State 0, PalFXWiz]
+type = AllPalFX
+trigger1 = !time
+time = 20
+add = 255,255,255
+mul = 256,256,256
+sinadd = -255,-255,-255,80
+invertall = 0
+color = 256
+
+[State 5150,Fire]
+type = Explod
+trigger1 = !time
+anim = 7170
+sprpriority = 4
+postype = p1
+supermove = 1
+removetime = -2
+facing = ifelse(random<500,1,-1)
+ownpal = 1
+bindtime = 1
+pos = 0,-120
+scale = 3.45,3.45;ceil(1*const(size.xscale)),ceil(1*const(size.yscale))
+
+[State 191, Snd 1]
+type = PlaySnd
+trigger1 = !time
+value = s5,5
+
+
+
+[State 0, Helper]
+type = Helper
+trigger1 = !time
+helpertype = normal ;player
+name = "helmet"
+ID = 7051
+stateno = 7051;1250+random%2
+pos = 0,-130
+postype = p1
+ownpal = 1
+
+[State 632, 1]
+type = palfx
+trigger1 = !time
+time = 35
+sinadd =  255,255,255,70
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 8061
+ID = 8062
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+sprpriority = 5
+ownpal = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time && var(20)=0
+v = 20    ;fv = 10
+value = 1
+;ignorehitpause = 
+;persistent = 
+
+
+
+
+
+;---------------------------------------------------------------------------
+; Custon Hit 
+;(just if you don't use the Armor Helper)
+[Statedef 5000]
+type = A
+movetype = H
+physics = A
+ctrl = 0
+hitdefpersist	= 0
+movehitpersist	= 0
+hitcountpersist	= 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = !time
+value = 5000
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !Time
+x = GetHitVar(xvel)*facing/2
+y = GetHitVar(yvel)/2
+ignorehitpause = 1
+persistent = 1
+
+[State 0, VelAdd]
+type =VelAdd
+trigger1 = 1
+x = 0.15*facing/2
+
+
+[State 0, PalFXWiz]
+type = null;PalFX
+trigger1 = !time
+time = 5
+add = 255,0,0
+mul = 150,0,0
+sinadd = 0,0,0,1
+invertall = 0
+color = 0
+ignorehitpause = 1
+
+[State 3]
+type = ChangeState
+trigger1 = !AnimTime && Pos Y >=0
+value = (1 - alive) * 5150;ifelse(alive,(ifelse (pos Y!=0,50,0)),5150);(1 - alive) * 5150
+ctrl = alive
+
+;=================================================
+; Guard
+; STAND GUARD (guarding)
+[Statedef 13000]
+type    = S
+physics = N
+velset = 0,0
+
+[State 130, 1]
+type = ChangeAnim
+trigger1 = 1
+value = ifelse((root,stateno=1100 || root,stateno =1105),150,130)
+
+[State 0, BindToRoot]
+type = BindToParent
+trigger1 = 1
+time = 1
+pos = 0,0
+ignorehitpause =1 
+persistent=1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = ,NT,ST,HT
+time=2
+ignorehitpause =1 
+persistent=1
+
+[State 150, Hit Override]
+type = HitOverride
+trigger1 = 1
+attr = SCA, NA, SA, HA, NP, SP, HP
+stateno = 13010
+
+
+
+;[State 0, NotHitBy]
+;type = NotHitBy
+;trigger1 = RoundState !=2
+;value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+;time=2
+;ignorehitpause =1 
+;persistent=1
+;
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = RoundState >2
+ignorehitpause = 1
+
+
+; Guard hit
+[Statedef 13010]
+type    = S
+physics = N
+movetype = H
+velset = 0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S6,0
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = RoundState =2
+value = SCA,NT,ST,HT
+time=2
+ignorehitpause =1 
+persistent=1
+
+[State 0, BindToRoot]
+type = BindToParent
+trigger1 = 1
+time = 1
+pos = 0,0
+ignorehitpause =1 
+persistent=1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time =1
+value = 13000
+;---------------------- Integer variable list ----------------------
+
+; var(1):= -2
+; var(3):= 6501 - Ninjitsu Effects
+;var(10):= 1250 - Metool helper
+;          1251 - Metool helper fly
+;          1252 - Metool helper end
+;var(50):= 10010 - Armor HIT
+;          -3
+
+;---------------------- Float variable list ----------------------
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+[Info]
+localcoord = 640,480
+;code it by OldGamer
+[SceneDef]
+spr		= gameover.sff		
+startscene	= 0
+
+
+[Scene 0]
+layerall.pos = 320,240
+clearcolor	= 0,0,0				
+fadein.time	= 80				
+fadein.col	= 0,0,0				
+fadeout.time	= 80				
+fadeout.col	= 0,0,0				
+bgm		= gameover.mp3	
+bgm.loop	= 0				
+bg.name		= Scene00BG			
+end.time	= 460
+
+[Scene00BGDef]
+;spr		= 
+debugbg		= 0
+
+[Scene00BG BACK_GROUND]
+type  = normal
+spriteno = 0,0
+start = 0,0
+mask = 1
+
+[Scene00BG BACK_GROUND]
+type  = normal
+spriteno = 0,1
+start = 0,0
+tile = 1,1
+velocity = 12,0
+mask = 1
+
+[Scene00BG BACK_GROUND]
+type  = normal
+spriteno = 0,2
+start = 0,0
+tile = 1,1
+mask = 1
+
+[Scene00BG BACK_GROUND]
+type  = normal
+spriteno = 0,3
+start = 0,0
+mask = 1
+
+[Scene00BG BACK_GROUND]
+type  = normal
+spriteno = 0,4
+start = 0,0
+tile = 1,0
+velocity = -6,0
+mask = 1
+
+[Scene00BG BACK_GROUND]
+type  = normal
+spriteno = 0,5
+start = 0,0
+tile = 1,0
+velocity = 6,0
+mask = 1

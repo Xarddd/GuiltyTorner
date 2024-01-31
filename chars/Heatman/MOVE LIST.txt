@@ -1,0 +1,21 @@
+----------
+Heat man
+----------
+
+QCF+P: Spit Fireball
+QCB+P: Flame on
+QCB+K: Flaming Headbutt
+QCB+K(In Air: Flaming Headbutt
+
+D, D, any button: Change Weapon
+	LP: Teleport
+	MP: Fire Wave
+	HP: Fire Explosion
+	LK: Spit fire on ground
+	MK: Launch in air
+	HK: Flaming Dive
+QCB+P: Use Weapon
+
+QCB+PP: Flaming Headbutt Hyper
+QCF+KK: Fire
+QCB+KK(In Air):  Four Way Fire

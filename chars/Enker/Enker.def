@@ -1,0 +1,47 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.3.0
+;Template by Acey - New effects and Updates by O Ilusionista
+;www.infinitymugenteam.com
+;===========================================================================
+
+
+[Info]
+name="Enker RMM"
+displayname="Enker"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="Rage & O Ilusionista" ; Palettes by Psykai
+pal.defaults=1,3,8,9,5,6,7,2,4
+
+[Files]
+cmd 	 =Enker.cmd
+cns 	 =Enker.cns
+stcommon =common1.cns
+st	 =Enker.cns
+sprite	 =Enker.sff
+anim	 =Enker.air
+sound 	 =Enker.snd
+pal1=RMM01.act
+pal2=RMM02.act
+pal3=RMM03.act
+pal4=RMM04.act
+pal5=RMM05.act
+pal6=RMM06.act
+pal7=RMM07.act
+pal8=RMM08.act
+pal9=RMM09.act
+pal10=RMM10.act
+pal11=RMM11.act
+pal12=RMM12.act
+
+st1=-2.cns
+st2=-3.cns
+;st3=Powersets.cns
+st3=supers.cns
+st4=hypers.cns
+
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_enker.def
+

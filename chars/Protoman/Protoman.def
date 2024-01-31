@@ -1,0 +1,41 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Proto Man RMM"
+displayname = "Proto Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion = 1.0
+author = "ChAoTiC and Laspacho"
+;Updated by O Ilusionista
+pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+sprite = Blues.sff
+anim = Blues.air
+sound = Blues.snd
+cmd = Blues.cmd
+cns = Blues.cns
+stcommon = common1.cns
+st = Blues.cns
+st2 = specials.cns
+st3 = hypers.cns
+
+pal1 = pal/MVC3.act
+pal2 = pal/Tornado.act
+pal3 = pal/Iron.act
+pal4 = pal/Blueboy.act
+pal5 = pal/Blues.act
+pal6 = pal/Ice.act
+pal7 = pal/Proto.act
+pal8 = pal/kfm.act
+pal9 = pal/9.act
+pal10 = pal/10.act
+pal11 = pal/11.act
+pal12 = pal/12.act
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_protoman.def

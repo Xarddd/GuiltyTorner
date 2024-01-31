@@ -1,0 +1,255 @@
+;Astroman stage by me, Magma MK II
+;Credits goes to:
+;Capcom and Keiji Inafune
+;ePSXe team
+;Agemo (PSX-vram)
+;SNES9x team
+[Info]
+name = "Space Maze - Astro Man"
+author = "Magma MK II"
+
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty = 0
+boundleft = -350
+boundright = 350
+boundhigh = -176
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 50
+overdrawhigh = 0
+overdrawlow = 0
+cuthigh = 35
+cutlow = 25
+
+;--------------------------------------------------------
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1facing = 1
+p2startx = 70
+p2starty = 0
+p2facing = -1
+leftbound  = -1000
+rightbound =  1000
+
+;--------------------------------------------------------
+[Bound]
+screenleft = 15
+screenright = 15
+
+;--------------------------------------------------------
+[StageInfo]
+zoffset = 190
+autoturn = 1
+resetBG = 0
+localcoord = 320, 240
+xscale = 1
+yscale = 1
+
+;--------------------------------------------------------
+[Shadow]
+intensity = 96
+color = 0,0,0
+yscale = .15
+fade.range = 0,0
+
+;--------------------------------------------------------
+[Reflection]
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+bgmusic = sound/Astro Man Guitar Remix.mp3
+bgmvolume = 255
+
+;-------------------------------------
+[BGdef]
+spr = Astroman.sff
+debugbg = 0
+
+[BG fundo 1]
+type  = anim
+actionno = 1
+start = 0, 0
+delta = 1, 1
+velocity = 0, 0
+tile = 1, 1
+tilespacing = 256, 256
+
+[Begin Action 1]
+1,0,0,0,15
+1,1,0,0,15
+1,2,0,0,15
+1,3,0,0,15
+
+[BG fundo 2]
+type  = anim
+actionno = 2
+start = 0, -176
+delta = 1, 1
+velocity = 0, 0
+tile = 1, 0
+tilespacing = 640, 0
+
+[Begin Action 2]
+3,4,0,1000,4376
+3,4,0,0,5
+3,4,0,1000,15
+3,4,0,0,5
+3,4,0,1000,100
+LoopStart
+3,0,0,0,15
+3,1,0,0,15
+3,2,0,0,15
+3,3,0,0,15
+3,4,0,0,15
+
+[BG wall teck]
+type  = anim
+actionno = 3
+start = -100, 40
+delta = .9, .95
+velocity = 0, 0
+tile = 1, 1
+tilespacing = 320, 240
+
+[Begin Action 3]
+5,0,0,0,15
+5,1,0,0,4
+5,2,0,0,4
+5,3,0,0,4
+5,4,0,0,4
+5,5,0,0,4
+5,6,0,0,15
+5,7,0,0,4
+5,8,0,0,4
+5,9,0,0,4
+5,10,0,0,4
+5,11,0,0,4
+5,12,0,0,15
+5,11,0,0,4
+5,10,0,0,4
+5,9,0,0,4
+5,8,0,0,4
+5,7,0,0,4
+5,6,0,0,15
+5,5,0,0,4
+5,4,0,0,4
+5,3,0,0,4
+5,2,0,0,4
+5,1,0,0,4
+
+[BG countdown]
+type  = anim
+actionno = 4
+start = 0, 50
+delta = 0, 0
+velocity = 0, 0
+tile = 0, 0
+tilespacing = 0, 0
+
+[Begin Action 4]
+4,0,0,1000,3900
+4,0,0,0,7,,A1
+4,1,0,0,7,,A1
+4,2,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,1,0,0,7,,A1
+4,2,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,1,0,0,7,,A1
+4,2,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,1,0,0,7,,A1
+4,2,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,1,0,0,7,,A1
+4,2,0,0,7,,A1
+4,3,0,0,7,,A1
+4,4,0,0,7,,A1
+4,1,0,0,7,,A1
+4,6,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,5,0,0,7,,A1
+4,2,0,0,7,,A1
+4,7,0,0,7,,A1
+4,4,0,0,7,,A1
+4,1,0,0,7,,A1
+4,6,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,5,0,0,7,,A1
+4,2,0,0,7,,A1
+4,7,0,0,7,,A1
+4,8,0,0,7,,A1
+4,1,0,0,7,,A1
+4,10,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,9,0,0,7,,A1
+4,2,0,0,7,,A1
+4,11,0,0,7,,A1
+4,8,0,0,7,,A1
+4,1,0,0,7,,A1
+4,10,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,9,0,0,7,,A1
+4,2,0,0,7,,A1
+4,11,0,0,7,,A1
+4,12,0,0,7,,A1
+4,1,0,0,7,,A1
+4,14,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,13,0,0,7,,A1
+4,2,0,0,7,,A1
+4,15,0,0,7,,A1
+4,12,0,0,7,,A1
+4,1,0,0,7,,A1
+4,14,0,0,7,,A1
+4,3,0,0,7,,A1
+4,0,0,0,7,,A1
+4,13,0,0,7,,A1
+4,2,0,0,7,,A1
+4,15,0,0,7,,A1
+4,0,0,1000,-1
+
+[BG piso]
+type  = normal
+spriteno = 0, 0
+start = 0, 168
+delta = 1, 1
+velocity = 0, 0
+tile = 1, 0
+tilespacing = 0, 0
+
+[BG piso]
+type  = normal
+spriteno = 0, 1
+start = -256, 130
+delta = 1, 1
+mask = 1
+velocity = 0, 0
+tile = 1, 0
+tilespacing = 320, 0
+
+[BG skull]
+type  = anim
+actionno = 5
+start = 0, 165
+delta = 1, 1
+
+[Begin Action 5]
+2,0,0,0,50
+2,1,0,0,10
+2,2,0,0,10
+2,1,0,0,10

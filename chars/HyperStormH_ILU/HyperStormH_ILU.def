@@ -1,0 +1,32 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Hyper Storm H RMM"
+displayname ="Hyper Storm H"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion =1.0
+author ="RamzaNeko(sprites) & O Ilusionista (codes)"
+pal.defaults =1,3,2
+
+[Files]
+sprite =	  HyperStormH_ILU.sff
+anim =	  HyperStormH_ILU.air
+sound =	  HyperStormH_ILU.snd
+cmd =	  HyperStormH_ILU.cmd
+cns =	  HyperStormH_ILU.cns
+stcommon =  common1.cns
+st =	  HyperStormH_ILU.cns
+pal1=	  ACT/RMM01.act
+pal2=	  ACT/RMM02.act
+pal3=	  ACT/RMM03.act
+st1=	  -2.cns
+st2=	  -3.cns
+st3=	  Armor.cns
+st4=	  Powersets.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/wily_gameover.def

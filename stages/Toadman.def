@@ -1,0 +1,240 @@
+;--------------------------------------------------------
+[Info]
+ ;Name of the stage.
+name = "Rainy City - Toad Man"
+author = "Enscripture"
+
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty = 0
+boundleft = -400
+boundright = 400
+boundhigh = -165
+boundlow = 0
+verticalfollow = 1;.5
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+;--------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+ ;Player 1 starting coordinates.
+ ;p1startx is typically -70 and p2startx is 70.
+ ;p1starty and p1startz should be 0.
+p1startx = -70          ;Starting x coordinates
+p1starty = 0           ;Starting y coordinates
+p1startz = 0          ;Starting z coordinates
+p1facing = 1            ;Direction player faces: 1=right, -1=left
+
+;--- Player 2 ---
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+;--- Common ---
+ ;Don't change these values.
+leftbound  = -1000 ;Left bound (x-movement)
+rightbound =  1000 ;Right bound
+topbound  =  0     ;Top bound (z-movement)
+botbound  =  0     ;Bottom bound
+
+;--------------------------------------------------------
+[Scaling]
+ ;No need to change these values
+topz     = 0       ;Top z-coordinate for scaling
+botz     = 50      ;Bottom z-coordinate for scaling
+topscale = 1       ;Scale to use at top
+botscale = 1.2     ;Scale to use at bottom
+
+;--------------------------------------------------------
+[Bound]
+ ;Distance from left/right edge of screen that player can move to
+ ;Typically 15
+screenleft = 15    ;Dist from left of screen that player can move to
+screenright = 15  ;Right edge
+
+;--------------------------------------------------------
+[StageInfo]
+ ;Z offset for drawing
+ ;Adjust this value to move the ground level up/down in the screen.
+ ;It's the position where the players stand at.
+ ;Up - smaller, Down - larger
+ ;***
+zoffset = 200
+
+ ;Leave this at 1. It makes the players face each other
+autoturn = 1
+
+ ;Set the following to 1 to have the background be reset between
+ ;rounds.
+resetBG = 0
+
+;--------------------------------------------------------
+[Shadow]
+color = 45,45,10
+yscale = .2
+reflect = 0
+;--------------------------------------------------------
+[Reflection]
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+bgmusic = sound/PBtoad.mp3
+bgvolume = 255
+
+;========================================================
+;--------------------------------------------------------
+; Background definition
+; ***
+;-------------------------------------
+; [BG x]
+; type = ?       "Normal"/"Parallax"  (def: "normal")
+; spriteno = ?, ? Sprite group and number: groupno, imgno  (req'd)
+; start = ?, ?   Starting location (integer)  (def: 0, 0)
+; delta = ?, ?   Change in location per camera unit moved (float)  (def: 1,1)
+; trans = ?      Transparency settings: "none"/"add"/"add1"/"sub"/"addalpha" (def: "none")
+; alpha = ?, ?   (only for trans=addalpha) Source,dest alpha (def: 256,0)
+; mask = ?       Masking (int): 0 - off, 1 - on  (def: 0)
+; velocity = ?, ? Velocity: x, y (float): speed background moves (def: 0, 0)
+; tile = ?, ?    Tiling: xtile, ytile (int): 0 - off, 1 - infinite,
+;                        >1 - tile that number of times  (def: 0, 0) - only for Normal BG
+; tilespacing = ?, ? Tiling: x, y (int) : space between tiles (def: 0, 0)
+;  Parallax-only:
+; xscale = ?, ?    Top xscale, bottom xscale (float)
+; width = ?, ?     Top width, bottom width (int)  (use either this or above, but not both)
+; yscalestart = ?  Starting y-scale (float, in percent)  (def: 100)
+; yscaledelta = ?  Change in y-scale per unit (float, in percent)  (def: 0)
+;-------------------------------------
+
+;-------------------------------------
+; Main background definition
+[BGdef]
+ ;Filename of sprite data
+spr = stages/Toadman.sff
+;-------------------------------------
+
+[BG Sky]
+type  = normal
+spriteno = 1, 0
+start = 30, 178
+tile = 0, 0
+delta = .2,1
+mask = 1
+
+
+[BG City]
+type  = normal
+spriteno = 0, 2
+start = 0, 220
+tile = 1, 0
+delta = .7,1
+mask = 1
+
+[BG Floor]
+type  = normal
+spriteno = 0, 0
+start = 0, 165;126
+tile = 1, 0
+delta = 1,1
+mask = 1
+
+[BG Rain]
+type = anim
+layerno = 0
+actionno = 1
+start = 0, 180
+tile = 1, 0
+tilespacing = 640
+delta = 1, 1
+mask = 1
+
+[Begin Action 1]
+3,0,0,0,2,,AS98D140
+3,1,0,0,2,,AS98D140
+3,2,0,0,2,,AS98D140
+3,3,0,0,2,,AS98D140
+
+[BG Rackaser]
+type = anim
+actionno = 2
+start = -50, 150
+delta = 1, 1
+mask = 1
+
+[Begin Action 2]
+4,0,0,0,100
+4,1,0,0,4
+4,2,0,0,4
+4,3,0,0,4
+4,3,1,0,4
+4,3,0,0,4
+4,3,1,0,4
+4,3,0,0,4
+4,2,0,0,4
+4,1,0,0,4
+
+[BG Met]
+type = anim
+actionno = 3
+start = -12, 160
+delta = 1, 1
+mask = 1
+
+[Begin Action 3]
+5,0,0,0,104
+5,1,0,0,4
+5,2,0,0,4
+5,2,1,0,4
+5,2,0,0,4
+5,2,1,0,4
+5,2,0,0,4
+5,1,0,0,4
+5,0,0,0,4
+
+[BG Floor]
+type  = normal
+spriteno = 0, 1
+start = 0, 210
+tile = 1, 0
+layerno =1
+delta = 1,1
+mask = 1
+
+
+[BG Rain2]
+type = anim
+layerno = 1
+actionno = 4
+start = -320, -240
+tile = 1, 0
+tilespacing = 224
+delta = 1.2, 1
+mask = 1
+
+[Begin Action 4]
+2,0,0,0,2,,AS98D244
+2,1,0,0,2,,AS98D244
+2,2,0,0,2,,AS98D244
+2,3,0,0,2,,AS98D244
+2,4,0,0,2,,AS98D244
+2,5,0,0,2,,AS98D244
+2,6,0,0,2,,AS98D244
+2,7,0,0,2,,AS98D244
+2,8,0,0,2,,AS98D244
+2,9,0,0,2,,AS98D244
+2,10,0,0,2,,AS98D244
+2,11,0,0,2,,AS98D244
+2,12,0,0,2,,AS98D244
+2,13,0,0,2,,AS98D244
+2,14,0,0,2,,AS98D244
+2,15,0,0,2,,AS98D244
+2,16,0,0,2,,AS98D244
+2,17,0,0,2,,AS98D244
+2,18,0,0,2,,AS98D244
+2,19,0,0,2,,AS98D244
+2,20,0,0,2,,AS98D244

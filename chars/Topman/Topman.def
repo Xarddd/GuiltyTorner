@@ -1,0 +1,49 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+;---------------------------------------------------------------------
+;Sprites by JFA, with help of Laspacho, Blizzard Buffalo and O Ilusionista
+;Codes by JFA (base) and reworked by O Ilusionista (over Acey's template) - Brazil - 04/02/2016
+;Voiced by TheMajinV
+;http://www.brazilmugenteam.com - douglasbaldan@hotmail.com
+;---------------------------------------------------------------------
+
+[Info]
+name ="Top Man RMM"
+displayname ="Top Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion =1.0
+author ="JFA & O Ilusionista"
+pal.defaults =1,5,12,11,2,6,7,8,9,10,4,3
+
+[Files]
+sprite =Topman.sff
+anim =Topman.air
+sound =Topman.snd
+cmd =Topman.cmd
+cns =Topman.cns
+stcommon =common1.cns
+st =Topman.cns
+pal1=topman22.act
+pal2=azul2.act
+pal3=verde.act
+pal4=top03.act
+pal5=top04.act
+pal6=top05.act
+pal7=top06.act
+pal8=top07.act
+pal9=top08.act
+pal10=top09.act
+pal11=top10.act
+pal12=top11.act
+st1=-2.cns
+st2=-3.cns
+st3=Powersets.cns
+st4=specials.cns
+st5=hypers.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_topman.def

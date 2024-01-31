@@ -1,0 +1,30 @@
+; Player information
+[Info]
+name ="Rush RMM"
+displayname ="Rush"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion =1.0
+author ="Trasgo7, Rage & O Ilusionista"
+pal.defaults =1,2,3,4,5,6
+
+; Files for the player
+[Files]
+cmd     =Rush.cmd
+cns     =Rush.cns
+st     =Rush.cns
+stcommon =RushCom.cns
+sprite  =Rush.sff
+anim    =Rush.air
+sound=Rush.snd
+pal1=RushCrew_01.act
+pal2=RushCrew_02.act
+pal3=RushCrew_03.act
+pal4=RushCrew_04.act
+pal5=RushCrew_05.act
+pal6=RushCrew_06.act
+st1=Beat.cns
+st2=Eddie.cns
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_rush.def

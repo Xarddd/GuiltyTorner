@@ -1,0 +1,720 @@
+; Definition of KFM's stage
+; *** denotes values you should change/check for each stage.
+; The term "background" is used to mean both backgrounds and foregrounds.
+
+;--------------------------------------------------------
+[Info]
+ ;Name of the stage.
+name = "Atmosphere City - Air Man"
+author = "Enscripture"
+
+;--------------------------------------------------------
+[Camera]
+ ;Camera starting position: Usually 0 for both
+startx = 0
+starty = 0
+
+ ;Left and right bound of camera
+ ;You may want to fiddle a bit with these values to make sure the
+ ;background doesn't move too far or too little
+ ;***
+boundleft = -680
+boundright = 680
+
+ ;High and low bound of camera
+ ;High is a negative number. Make is more negative if you want to
+ ;camera to be able to move higher.
+ ;Low should usually be 0.
+ ;If omitted, defaults to -25 and 0 respectively
+ ;***
+boundhigh = -300
+boundlow = 0
+
+ ;This is how much the camera will move vertically towards the
+ ;highest player. Valid values are from 0 to 1. A value of 0 will mean
+ ;the camera does not move up at all. A value of 1 will makes the camera
+ ;follow the highest player.
+ ;Typically .2 for normal-sized backgrounds. You may need to pull this
+ ;value up for taller backgrounds.
+verticalfollow = 1
+
+ ;Minimum vertical distance the highest player has to be from the floor,
+ ;before the camera starts to move up to follow him. For extremely
+ ;tall stages, a floor tension of about 20-30 coupled with a
+ ;vertical-follow of .8 allows the camera to follow the action.
+floortension = 95
+
+ ;Horizontal distance player is from edge before camera starts to move
+ ;left or right. Typically 50 or 60.
+tension = 60
+zoomin = 1
+zoomout =.85
+
+;--------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+ ;Player 1 starting coordinates.
+ ;p1startx is typically -70 and p2startx is 70.
+ ;p1starty and p1startz should be 0.
+p1startx = -70          ;Starting x coordinates
+p1starty = 0            ;Starting y coordinates
+p1startz = 0            ;Starting z coordinates
+p1facing = 1            ;Direction player faces: 1=right, -1=left
+
+;--- Player 2 ---
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+;--- Common ---
+ ;Don't change these values.
+leftbound  = -1000 ;Left bound (x-movement)
+rightbound =  1000 ;Right bound
+topbound  =  0     ;Top bound (z-movement)
+botbound  =  0     ;Bottom bound
+
+;--------------------------------------------------------
+[Scaling]
+ ;No need to change these values
+topz     = 0       ;Top z-coordinate for scaling
+botz     = 50      ;Bottom z-coordinate for scaling
+topscale = 1       ;Scale to use at top
+botscale = 1.2     ;Scale to use at bottom
+
+;--------------------------------------------------------
+[Bound]
+ ;Distance from left/right edge of screen that player can move to
+ ;Typically 15
+screenleft = 15    ;Dist from left of screen that player can move to
+screenright = 15   ;Right edge
+
+;--------------------------------------------------------
+[StageInfo]
+ ;Z offset for drawing
+ ;Adjust this value to move the ground level up/down in the screen.
+ ;It's the position where the players stand at.
+ ;Up - smaller, Down - larger
+ ;***
+zoffset = 200
+
+ ;Leave this at 1. It makes the players face each other
+autoturn = 1
+
+ ;Set the following to 1 to have the background be reset between
+ ;rounds.
+resetBG = 0
+
+;--------------------------------------------------------
+[Shadow]
+ ;This is the shadow color given in r,g,b. Valid values for each
+ ;range from 0 (lightest) to 255 (darkest).
+ ;Defaults to 92,92,92 if omitted.
+color = 45,45,10
+
+ ;This is the scale factor of the shadow. Use a big scale factor
+ ;to make the shadow longer. You can use a NEGATIVE scale factor
+ ;to make the shadow fall INTO the screen.
+ ;Defaults to 0.4 if omitted.
+yscale = .08
+
+ ;Set to 1 to draw "reflection" shadows. Defaults to 0.
+reflect = 0
+
+;--------------------------------------------------------
+[Music]
+ ;Put a filename for a MOD, MP3 or MIDI here, or just leave it
+ ;blank if you don't want music. If an invalid filename is
+ ;given, then no music will play. To play CD audio, put
+ ;the track number followed by ".da". Using a track number of
+ ;0 will play a random audio track. For example, to play
+ ;track 3 from a music CD, use:
+ ;  bgmusic = 3.da
+bgmusic = sound/airman.mp3
+
+ ;Adjust the volume. 0 is normal, negative for softer, and
+ ;positive for louder (only for mp3, mods and CDA)
+bgvolume = 255
+
+;========================================================
+;--------------------------------------------------------
+; Background definition
+; ***
+;-------------------------------------
+; [BG x]
+; type = ?       "Normal"/"Parallax"  (def: "normal")
+; spriteno = ?, ? Sprite group and number: groupno, imgno  (req'd)
+; start = ?, ?   Starting location (integer)  (def: 0, 0)
+; delta = ?, ?   Change in location per camera unit moved (float)  (def: 1,1)
+; trans = ?      Transparency settings: "none"/"add"/"add1"/"sub"/"addalpha" (def: "none")
+; alpha = ?, ?   (only for trans=addalpha) Source,dest alpha (def: 256,0)
+; mask = ?       Masking (int): 0 - off, 1 - on  (def: 0)
+; velocity = ?, ? Velocity: x, y (float): speed background moves (def: 0, 0)
+; tile = ?, ?    Tiling: xtile, ytile (int): 0 - off, 1 - infinite,
+;                        >1 - tile that number of times  (def: 0, 0) - only for Normal BG
+; tilespacing = ?, ? Tiling: x, y (int) : space between tiles (def: 0, 0)
+;  Parallax-only:
+; xscale = ?, ?    Top xscale, bottom xscale (float)
+; width = ?, ?     Top width, bottom width (int)  (use either this or above, but not both)
+; yscalestart = ?  Starting y-scale (float, in percent)  (def: 100)
+; yscaledelta = ?  Change in y-scale per unit (float, in percent)  (def: 0)
+;-------------------------------------
+
+;-------------------------------------
+; Main background definition
+[BGdef]
+ ;Filename of sprite data
+spr = stages/Airman.sff
+
+ ;Set to 1 if you want to clear the screen to magenta before
+ ;drawing layer 0 (the default background). Good for spotting "holes"
+ ;in your background.
+ ;Remember to turn this off when you are done debugging the background,
+ ;because it slows down performance.
+debugbg = 0
+
+;----------
+
+
+
+[BG Blue]
+type = normal
+spriteno = 0,5
+delta = 1,1
+start = 0,0
+tile = 1, 1
+mask = 1
+
+
+[BG Cloud]
+type = normal
+spriteno = 0,4
+delta = .5,1
+start = -50,-60
+tile = 1, 0
+mask = 1
+velocity = .2
+
+[BG Cloud]
+type = normal
+spriteno = 0,4
+delta = .5,1
+start = 200,-100
+tile = 1, 0
+mask = 1
+velocity = .3
+
+[BG Cloud]
+type = normal
+spriteno = 0,4
+delta = .5,1
+start = 333,-140
+tile = 1, 0
+mask = 1
+velocity = .4
+
+[BG Cloud]
+type = normal
+spriteno = 0,4
+delta = .5,1
+start = 11,-180
+tile = 1, 0
+mask = 1
+velocity = .5
+
+
+[BG Cloud]
+type = normal
+spriteno = 0,4
+delta = .5,1
+start = 56,-220
+tile = 1, 0
+mask = 1
+velocity = .6
+
+[BG Cloud]
+type = normal
+spriteno = 0,4
+delta = .5,1
+start = 98,-260
+tile = 1, 0
+mask = 1
+velocity = .7
+
+[BG Cloud]
+type = normal
+spriteno = 0,4
+delta = .5,1
+start = -40,-300
+tile = 1, 0
+mask = 1
+velocity = .8
+
+[BG Sky low]
+type = normal
+spriteno = 0,0
+delta = .7,1
+start = 0,240
+tile = 1, 0
+mask = 1
+
+
+[BG Windmills]
+
+type = anim
+actionno = 0
+start = -384, 0
+tile = 1, 0
+tilespacing = 768
+delta = .7, 1
+mask = 1
+
+[Begin Action 0]
+
+0,1,0,0,7
+0,2,0,0,7
+0,3,0,0,7
+
+
+[BG BG Cloud M]
+type  = normal
+spriteno = 0, 8
+layerno = 0
+start = 0, 190
+delta = .8,1
+mask = 1
+tile = 1, 0
+tilespacing = 512
+velocity = .11, 0
+
+[BG BG Cloud M2]
+type  = normal
+spriteno = 0, 8
+layerno = 0
+start = -90, 160
+delta = .8,1
+mask = 1
+tile = 1, 0
+tilespacing = 512
+velocity = .10, 0
+
+[BG BG Cloud S]
+type  = normal
+spriteno = 0, 7
+layerno = 0
+start = 0, 100
+delta = .8,1
+mask = 1
+tile = 1, 0
+tilespacing = 512
+velocity = .02, 0
+
+[BG BG Cloud S2]
+type  = normal
+spriteno = 0, 7
+layerno = 0
+start = -300, 120
+delta = .8,1
+mask = 1
+tile = 1, 0
+tilespacing = 512
+velocity = .0246, 0
+
+[BG BG Cloud M3]
+type  = normal
+spriteno = 0, 8
+layerno = 0
+start = -312, 213
+delta = .8,1
+mask = 1
+tile = 1, 0
+tilespacing = 512
+velocity = .15, 0
+
+[BG Suze]
+
+type = anim
+actionno = 2
+start = -40, -40
+tile = 1, 0
+tilespacing = 512
+delta = .8, 1
+mask = 1
+
+[Begin Action 2]
+
+2,0,0,0,6
+2,1,0,0,6
+
+[BG Pippi U]
+
+type = anim
+actionno = 11
+start = -290, 322
+tile = 0, 1
+tilespacing = 3224
+delta = 1, 1
+mask = 1
+velocity = 0, -3
+
+[BG Pippi U]
+
+type = anim
+actionno = 11
+start = -22, 450
+tile = 0, 1
+tilespacing = 3224
+delta = 1, 1
+mask = 1
+velocity = 0, -3.1
+
+[BG Pippi U]
+
+type = anim
+actionno = 11
+start = 290, 777
+tile = 0, 1
+tilespacing = 3224
+delta = 1, 1
+mask = 1
+velocity = 0, -3.2
+
+[BG BG Hoop]
+type  = normal
+spriteno = 5, 0
+start = 0, -31
+delta = 1,1
+tile = 1, 0
+tilespacing = 256
+mask = 1
+
+[BG Railing]
+type = normal
+spriteno = 12,1
+delta = 1,1
+start = 0,167
+tile = 1, 0
+mask = 1
+
+[BG Floor]
+
+type = anim
+actionno = 1
+start = -268, 208
+tile = 1, 0
+tilespacing = 112
+delta = 1, 1
+mask = 1
+
+[Begin Action 1]
+
+1,0,0,0,4
+1,1,0,0,4
+1,2,0,0,4
+1,3,0,0,4
+
+[BG Floor2]
+type = normal
+spriteno = 12,2
+delta = 1,1
+start = 0,198
+tile = 1, 0
+mask = 1
+
+[BG Floor2]
+type = normal
+spriteno = 12,2
+delta = 1,1
+start = 0,192
+tile = 1, 0
+mask = 1
+
+
+[BG Matasu Blow]
+
+type = anim
+actionno = 9
+start = 400,134;-27, 117
+delta = 1, 1
+mask = 1
+
+[Begin Action 9]
+
+9,0,0,0,12
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,2,0,0,4
+9,1,0,0,4
+9,0,0,0,40
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,9,0,0,15
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,2,0,0,4
+9,0,0,0,56
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,0,0,0,12
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,2,0,0,4
+9,1,0,0,4
+9,0,0,0,40
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,9,0,0,77
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,1,0,0,4
+9,2,0,0,4
+9,3,0,0,4
+9,2,0,0,4
+9,0,0,0,120
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+9,4,0,0,4
+9,5,0,0,4
+9,6,0,0,4
+9,7,0,0,4
+9,8,0,0,4
+9,7,0,0,4
+9,6,0,0,4
+9,5,0,0,4
+
+
+[BG FG Hoop]
+type  = normal
+layerno = 1
+spriteno = 5, 1
+start = -95, -13
+delta = 1,1
+tile = 1, 0
+tilespacing = 256
+mask = 1
+
+[BG Big Cloud]
+type  = normal
+spriteno = 0, 6
+layerno = 1
+start = 0, 178
+trans = addalpha
+alpha = 200,244
+delta = 1.1,1
+mask = 1
+tile = 1, 0
+velocity = .6, 0
+
+[BG Pippi D]
+
+type = anim
+actionno = 8
+layerno = 1
+start = -268, 191
+tile = 1, 1
+tilespacing = 812
+delta = 1, 1
+mask = 1
+velocity = 2, -3
+
+[Begin Action 8]
+
+8,0,0,0,4
+8,1,0,0,4
+
+
+[Begin Action 11]
+
+8,2,0,0,4
+8,3,0,0,4

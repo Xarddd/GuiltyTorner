@@ -1,0 +1,56 @@
+IICE MAN's MOVE LIST
+
+SPECIALS
+
+Ice Spit -   	  Spits a ice sickle at P2 (Ground and Air)
+                  QCF,x (1 ice) - QCF,y (2 ice) - QCF,z (3 ice)
+
+Ice Clone - 	  Creates different clones of ice, if P2 touches the ice, he is frozen for a few seconds (Ground and Air)
+                  This move can also block 1 projectile and will break upon impact.
+                  QCB,x,y,z (each command does a different clone (6 altogether 3 on ground and 3 in air) plus 3 different ones against Roll.
+                  Iceman trys to find his way into Rolls heart with these ice clones, he is telling a story to her.
+                  NOTE: Only 1 ice clone can be on screen at anytime. Cannot cast if P2 is already frozen.
+
+Snowbomb - 	   QCB,a,b,c
+
+
+
+
+POWERSETS
+
+1.Arctic wind -     Ice blows a cold air towards P2 there is only a short period of time before the cloud disappears, if P2 gets caught in it he
+                    will be frozen (Ground and Air)
+
+2.Wall Spikes -     Iceman triggers spikes and Large ice to come out the wall (Ground Only)
+                    1- ice spikes go up and down, 2 ice spikes go down than up, 3 ice blocks come out the wall together to knock P2 forward
+
+3.Ice Sled -        Iceman jumps on his sled to go for a ride, this ride will end after 1 second or when he hits P2 (Ground Only)
+
+
+4.Icy Floor -       Iceman creates a sheet of ice if P2 steps on it, it will break and cause P2 to trip. (Ground Only)
+                    If P2 does not walk on the ice than the ice will melt in time.
+                    NOTE: Only 1 icy floor can be cast at any time
+
+5.Icicles -         Icicles fall from the ceiling.
+
+6.Ice enhanced -    All basic attacks are now enhanced with Ice.
+
+HYPERS
+
+Ice Beam - 	    Cast a large beam if P2 is caught he will feel the frozen wind and freeze up
+                    QCF,x,y,z
+                    NOTE:This cannot be used if P2 is frozen instead he uses ice spitter hyper
+
+Ice Spitter -       Spits a bunch of ice projectiles towards P2
+                    QCF,x,y,z
+                    NOTE:This can ONLY be used if P2 is frozen, if he is NOT frozen he will use ice beam.
+
+North Pole -        Iceman freezes the entire stage creating spikes above as well, If p2 jumps and land he will fall, if P2 jumps he will hit a                                                     
+                    spike and than the ground and than fall, your best bet when this move is active is to charge iceman head-on (if he does
+                    not freeze you before you get to close)  
+
+Snowman Bombs -     Snowman bombs attack P2 and explode on impact
+                    QCB,a,b,c
+
+Freezing Wind -     Freezing Wind
+                    QCF,a,b,c

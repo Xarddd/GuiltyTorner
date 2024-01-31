@@ -1,0 +1,1416 @@
+;Um Furacão Pequeno (Frente)
+[Statedef 1000]
+type = S
+movetype = A
+physics = S
+anim = 1000
+velset = 0,0
+ctrl = 0
+poweradd = 50
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 6
+anim = 1645
+ID = 1645
+pos = 22,-42
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 10
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1000, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 72,0
+
+[State 1000, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s1000,random%2
+
+[State 1000, GP]
+trigger1 = AnimElem = 6
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1000, GP]
+trigger1 = AnimElem = 7
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1003, Helper]
+type = helper
+trigger1 = animelem = 8
+ID = 1004
+pos = 0,0
+postype = p1
+stateno = 1008
+helpertype = normal
+ownpal = 1
+keyctrl = 0
+
+;[State 1000, HD]
+;trigger1 = AnimElem = 8
+;type = Projectile
+;attr = S, SP
+;ignorehitpause = 1
+;projanim = 1010
+;offset = 0,0
+;velocity = 6
+;damage = 50,1
+;animtype = Hard
+;guardflag = MA
+;pausetime = 0,0
+;sparkxy = 50,-45
+;sparkno=s25010+random%2
+;hitsound = s8000,5			;Sound to play on hit
+;guardsound = s2,0
+;ground.type = High
+;ground.slidetime = 14
+;ground.hittime  = 16
+;ground.velocity = -4
+;air.velocity = -2.5,-5
+;projremove = 1
+
+
+[State 1000, CS]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;----------------------------------------------------------------------
+;Um Furacao Pequeno para Cima
+[Statedef 1001]
+type = S
+movetype = A
+physics = S
+anim = 1000
+velset = 0,0
+ctrl = 0
+poweradd = 50
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 6
+anim = 1645
+ID = 1645
+pos = 22,-42
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 10
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1001, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 72,0
+
+[State 1000, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s1000,random%2
+
+[State 1001, GP]
+trigger1 = AnimElem = 6
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1001, GP]
+trigger1 = AnimElem = 7
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1001, Helper]
+type = helper
+trigger1 = animelem = 8
+ID = 1002
+pos = 0,0
+postype = p1
+stateno = 1002
+helpertype = normal
+ownpal = 1
+keyctrl = 0
+
+[State 1001, CS]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;----------------------------------
+;Helper - Pequeno Tornado para cima
+[Statedef 1002]
+type = A
+movetype = A
+physics = N
+velset = 6,0
+anim = 1010
+ctrl = 0
+
+[State 1002, Avanza  y va poco a poco hacia arriba]
+type = VelAdd
+trigger1 = Time >= 5
+y = -.2
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%4=0
+anim = 1012
+ID = 1012
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause =1
+
+
+[State 1002, 7]
+type = HitDef
+trigger1 = Time = 0
+attr = A,SP
+hitflag = MA
+guardflag = MA
+damage = 50,5
+sparkxy = 50,-45
+sparkno=s25010+random%2
+guard.sparkno=s25008
+hitsound = s8000,5			;Sound to play on hit
+guardsound = s2,0
+pausetime = 1,0
+ground.type = High
+ground.slidetime = 14
+ground.hittime  = 16
+ground.velocity = -4
+air.velocity = -2.5,-5
+envshake.time = 10
+envshake.ampl = 7
+air.fall =1
+fall.recover = 0
+
+[State 0, Wind FX Hit]
+type = Explod
+trigger1 = MoveHit
+anim = 1019
+ID = 1019
+pos = 60,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 0.75,0.75
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+persistent = 0
+
+
+[State 1002, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+trigger2 = time = 150
+
+;------------------------------------------
+;Pequeno Tornado para Baixo
+[Statedef 1003]
+type = S
+movetype = A
+physics = S
+anim = 1000
+velset = 0,0
+ctrl = 0
+poweradd = 50
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 6
+anim = 1645
+ID = 1645
+pos = 22,-42
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+sprpriority = 10
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1003, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 72,0
+
+[State 1000, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s1000,random%2
+
+[State 1003, GP]
+trigger1 = AnimElem = 6
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1003, GP]
+trigger1 = AnimElem = 7
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1003, Helper]
+type = helper
+trigger1 = animelem = 8
+ID = 1004
+pos = 0,0
+postype = p1
+stateno = 1004
+helpertype = normal
+ownpal = 1
+keyctrl = 0
+
+[State 1003, CS]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;--------------------------------
+;Helper - Tornado para Baixo
+[Statedef 1004]
+type = A
+movetype = A
+physics = N
+velset = 6,0
+anim = 1010
+ctrl = 0
+
+[State 1004, Avanza  y va poco a poco hacia arriba]
+type = VelAdd
+trigger1 = Time >= 5
+y = .2
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = Pos Y>=25
+y = 0
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%4=0
+anim = 1012
+ID = 1012
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause =1
+
+
+
+[State 1004, 7]
+type = HitDef
+trigger1 = Time = 0
+attr = A,SP
+hitflag = MA
+guardflag = MA
+damage = 50,5
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = 50,-45
+hitsound = s8000,5			;Sound to play on hit
+guardsound = s2,0
+pausetime = 1,0
+ground.type = Trip
+ground.slidetime = 14
+ground.hittime  = 16
+ground.velocity = -4,-4
+air.velocity = -2.5,-5
+envshake.time = 7
+envshake.ampl = 4
+fall = 1
+fall.recover = 0
+
+[State 0, Wind FX Hit]
+type = Explod
+trigger1 = MoveHit
+anim = 1019
+ID = 1019
+pos = 60,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 0.75,0.75
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+persistent = 0
+
+
+[State 1002, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+trigger2 = time = 150
+;-------------------------------------------------------------------
+;Um Furacão Pequeno (Frente) - no Ar
+[Statedef 1005]
+type = A
+movetype = A
+physics = S
+anim = 1001
+velset = 0,0
+ctrl = 0
+poweradd = 50
+
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1400, Quieto parao]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+x = 0
+
+[State 1005, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 72,0
+
+[State 1005, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 24,5
+
+
+[State 1005, GP]
+trigger1 = AnimElem = 6
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1005, GP]
+trigger1 = AnimElem = 7
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1005, HD]
+trigger1 = AnimElem = 8
+type = Projectile
+attr = S, SP
+ignorehitpause = 1
+projanim = 1010
+offset = 0,-25
+velocity = 6
+damage = 50,1
+animtype = Hard
+guardflag = MA
+pausetime = 0,0
+sparkxy = 50,-45
+sparkno=s25010+random%2
+guard.sparkno=s25008
+hitsound = s8000,5			;Sound to play on hit
+guardsound = s2,0
+ground.type = High
+ground.slidetime = 14
+ground.hittime  = 16
+ground.velocity = -4
+air.velocity = -2.5,-5
+projremove = 1
+
+[State 1005, CS]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+;----------------------------------------------------------------------
+;Um Furacao Pequeno para Cima (no ar)
+[Statedef 1006]
+type = A
+movetype = A
+physics = S
+anim = 1001
+velset = 0,0
+ctrl = 0
+poweradd = 50
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+
+[State 1400, Quieto parao]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+x = 0
+
+[State 1006, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 72,0
+
+[State 1006, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 24,5
+
+[State 1006, GP]
+trigger1 = AnimElem = 6
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1006, GP]
+trigger1 = AnimElem = 7
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1006, Helper]
+type = helper
+trigger1 = animelem = 8
+ID = 1002
+pos = 0,-25
+postype = p1
+stateno = 1002
+helpertype = normal
+ownpal = 1
+keyctrl = 0
+
+[State 1006, CS]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+;------------------------------------------
+;Pequeno Tornado para Baixo (no ar)
+[Statedef 1007]
+type = A
+movetype = A
+physics = S
+anim = 1001
+velset = 0,0
+ctrl = 0
+poweradd = 50
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+
+[State 1400, Quieto parao]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+x = 0
+
+[State 1006, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 72,0
+
+[State 1006, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 24,5
+
+[State 1006, GP]
+trigger1 = AnimElem = 6
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1006, GP]
+trigger1 = AnimElem = 7
+type = HitDef
+attr = A, SP
+guardflag = MA
+damage = 1,1
+animtype = Light
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = -10, -45		;X-offset for the "hit spark" rel. to p2,
+hitsound = s8000,5
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 12
+ground.velocity = -3
+air.velocity = -1.2,-2
+
+[State 1006, Helper]
+type = helper
+trigger1 = animelem = 8
+ID = 1004
+pos = 0,-25
+postype = p1
+stateno = 1004
+helpertype = normal
+ownpal = 1
+keyctrl = 0
+
+[State 1006, CS]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;--------------------------------
+;Helper - Tornado reto
+[Statedef 1008]
+type = A
+movetype = A
+physics = N
+velset = 6,0
+anim = 1010
+ctrl = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = time%4=0
+anim = 1012
+ID = 1012
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause =1
+
+[State 1004, 7]
+type = HitDef
+trigger1 = Time = 0
+attr = A,SP
+hitflag = MA
+guardflag = MA
+damage = 50,5
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy = 50,-45
+hitsound = s8000,5			;Sound to play on hit
+guardsound = s2,0
+pausetime = 1,0
+ground.type = High
+ground.slidetime = 14
+ground.hittime  = 16
+ground.velocity = -4
+air.velocity = -2.5,-5
+envshake.time = 7
+envshake.ampl = 4
+air.fall = 1
+fall.recover = 0
+
+[State 0, Wind FX Hit]
+type = Explod
+trigger1 = MoveHit
+anim = 1019
+ID = 1019
+pos = 60,0
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 0.75,0.75
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+persistent = 0
+
+
+[State 1002, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+trigger2 = time = 150
+;-------------------------------------------------------------------
+; Tornado Spin
+[StateDef 1100]
+type = A
+movetype= A
+physics = N
+velset = 0,0
+ctrl = 0
+poweradd = 50
+anim = 1100
+sprpriority = 2
+
+[State 0, Strenght Variable]
+type = VarSet
+trigger1 = !time 
+fv = 4 
+value = ifelse(AiLevel,1,ifelse(command = "QCB_z",1,ifelse(command = "QCB_y",0.75,0.5)))
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim != 1400
+trigger1 = pos y <= -10
+value = 1400
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = s1100,random%2
+channel = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = S5,1
+volume = 0
+channel = -1
+persistent=0
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(1100)<=1
+;triggerall = anim = 1100
+trigger1 = animelem = 3
+helpertype = normal ;player
+name = "Tornado"
+ID = 1100
+stateno = 1190
+pos = 30,0
+postype = p1    ;p2,front,back,left,right
+keyctrl = 0
+ownpal = 1
+size.xscale = fvar(4)
+;size.yscale = fvar(4)
+
+[State 0, Helper2]
+type = Helper
+triggerall = numhelper(1100)<=1
+;triggerall = anim = 1100
+trigger1 = animelem = 3
+helpertype = normal ;player
+name = "Tornado2"
+ID = 1100
+stateno = 1191
+pos = -30,0
+postype = p1    ;p2,front,back,left,right
+keyctrl = 0
+ownpal = 1
+size.xscale = fvar(4)
+;size.yscale = fvar(4)
+
+[State 0, ChangeAnim]
+type = null;ChangeAnim
+triggerall = anim = 1100
+trigger1 = animelemtime(3) >= 0
+trigger1 = numhelper(1100) = 0
+value = 1101
+
+[State 1000, end]
+type = ChangeState
+;trigger1 = AnimTime = 0
+trigger1 = animelemtime(4) >= 0 && numhelper(1100) = 0
+;trigger1 = anim = 1101
+;trigger2 = time = 60
+;trigger2 = anim = 1400
+value = ifelse(Pos Y=0,1101,50)
+ctrl = 0
+
+;-------------------------------------------------------------------
+; Tornado Spin end
+[StateDef 1101]
+type = A
+movetype= A
+physics = N
+juggle  = 2
+velset = 0,0
+ctrl = 0
+anim = 1101
+sprpriority = 2
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = !AnimTime
+value = 0
+ctrl = 1
+;anim =
+;ignorehitpause = 
+;persistent = 
+
+
+
+;----------------------------------------------------------------------------
+; Dive Kick
+[Statedef 1600]
+type = A
+movetype = A
+physics = N
+anim = 1600
+ctrl = 0
+poweradd = 50
+
+[State 0, Strenght Variable]
+type = VarSet
+trigger1 = !time 
+v = 4 
+value = ifelse(AiLevel,14,ifelse(command = "echutec",14,ifelse(command = "echuteb",12,8)))
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 1000, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 1 && random <600
+value = s1600,random%2
+
+[State 1000, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 1 && random >=600
+value = s24,6
+
+[State 83, sonido]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S0,5
+
+[State 83, 1]
+type = VelAdd
+trigger1 = time <= 10
+;x = 1.7
+y = 1.4
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x = var(4)
+ignorehitpause = 1
+
+[State 83, AftImg]
+type = AfterImage
+trigger1 = time = 1
+time = 12
+FrameGap = 2
+length = 10
+PalBright = 0,0,0
+PalContrast = 128,128,128
+PalAdd = 0,0,0
+PalMul = 1,1,1
+Trans = Add1
+
+[State 83, 1]
+type = Hitdef
+trigger1 = !time
+attr = A, SA
+damage = 100,10
+animtype = Heavy
+hitflag = MAF
+guardflag = H
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy=-15,-25
+hitsound = s8000,5
+guardsound=s2,0
+pausetime = 8,8
+ground.hittime = 12
+ground.type = High
+ground.slidetime = 40
+ground.velocity = -6,-4
+air.velocity = -6,-4
+getpower = 30,25
+givepower  = 20,18
+fall = 1
+envshake.time = 10
+envshake.ampl = 7
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = MoveContact
+value = 1605
+ctrl = 0
+;anim =
+;ignorehitpause = 
+;persistent = 
+
+
+[State 83, 3]
+type = changestate
+trigger1 = Pos Y >=0
+value = 1601
+
+;----------------------------------------------------------------------------
+; Land
+[Statedef 1601]
+type = S
+movetype = I
+physics = S
+anim = 1601
+ctrl = 0
+velset = 0,0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = !time
+y = 0
+
+[State 83, 3]
+type = changestate
+trigger1 = !AnimTime
+value = 0
+ctrl = 1
+
+;----------------------------------------------------------------------------
+; Rebound
+[Statedef 1605]
+type = A
+movetype = I
+physics = N
+anim = 1605
+ctrl = 0
+velset = -3,-5
+
+[State 0, Gravity]
+type = Gravity
+trigger1 = 1
+
+[State 83, 3]
+type = changestate
+trigger1 = Pos Y >=0
+value = 1601
+
+
+;---------------------------------------------------------------------------
+;Stand Slide
+[Statedef 1610]
+type    = C
+movetype= A
+physics = N
+juggle  = 4
+anim = 1610
+velset = 0,0
+ctrl = 0
+poweradd = 50
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElemTime(2) = 0
+value = S100,4
+volume = 0
+
+[State 0, Strenght Variable]
+type = VarSet
+trigger1 = !time 
+v = 4 
+value = ifelse(AiLevel,14,ifelse(command = "echutec",14,ifelse(command = "echuteb",12,8)))
+
+[State 100, New Dash dust]
+type = Explod
+trigger1 = Vel X > 0 && time%3=0
+ID = 25007
+anim = 25007
+postype = p1
+pos = 0,0
+bindtime = 1
+removetime = -2
+vel = 0, 0
+ownpal = 1
+sprpriority = 5
+removeongethit = 0
+ignorehitpause = 1
+
+[State 100, NEW DASH FX FWD]
+type = Explod
+Anim = 25017+random%2;ifelse(random >=500,8050,8051)
+triggerall = vel X > 0
+trigger1 = random < 400 
+postype = P1
+pos = 0,-25
+random = 10,25
+ownpal = 1
+scale = (ifelse(random <=500,1,0.5)),(ifelse(random <=500,1,0.5))
+sprpriority = (ifelse(random <=500,10,-10))
+vel = -(const(velocity.run.fwd.x)/2)
+[State 83, AftImg]
+type = AfterImage
+trigger1 = time = 1
+time = 12
+FrameGap = 2
+length = 10
+PalBright = 0,0,0
+PalContrast = 128,128,128
+PalAdd = 0,0,0
+PalMul = 1,1,1
+Trans = Add1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time && Pos Y = 0
+anim = 6012
+ID = 6012
+pos = -30,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = -0.2,0
+random = 0,0
+removetime = -2
+pausemovetime = 0
+scale = 1,1
+sprpriority = 30
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, VelAdd]
+type = Velset
+triggerall = prevstateno != 100
+trigger1 = time = 0
+x = 0
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time=8
+x = var(4)
+ignorehitpause = 1
+
+[State 1800, VelAdd]
+type = VelAdd
+trigger1 = time > 8
+x = -.3
+
+[State 1800, VelSet]
+type = VelSet
+trigger1 = time>=36
+x = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,1
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = s1610,random%2
+channel = 1
+
+
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = Movehit
+value = 0
+ignorehitpause = 1
+;persistent = 
+
+
+[State 255, hit]
+type=hitdef
+trigger1=time = 0
+attr=C,SA
+damage=100,10
+animtype=Heavy
+guardflag = L
+hitflag = MAF
+priority=7,Hit
+pausetime=13,0
+sparkno=s25010+random%2
+guard.sparkno=s25008
+sparkxy=-15,-5
+hitsound = s8000,5
+guardsound=s2,0
+ground.type=Trip
+ground.slidetime=16
+ground.hittime=16
+ground.velocity=6,-3.85
+air.type=Low
+air.hittime=12
+air.velocity=6,-3.85
+air.cornerpush.veloff=0
+down.velocity=-4,-4
+fall=1
+fall.recover = 0
+envshake.time = 10
+envshake.ampl = 7
+
+
+[State 450, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+

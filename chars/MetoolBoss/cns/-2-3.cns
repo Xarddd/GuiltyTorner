@@ -1,0 +1,263 @@
+
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+
+[Statedef -2]
+
+[State 0, SelfState]
+type = SelfState
+triggerAll = RoundState =2
+trigger1 = MoveType = H
+value =0
+ctrl = 1
+ignorehitpause=1
+persistent=1
+
+[State -2, ChangeState]
+type = ChangeState
+triggerAll = RoundState =2
+trigger1 = MoveType = H
+value =0
+ctrl = 1
+ignorehitpause=1
+persistent=1
+
+;For debugging purposes
+[State -2, Debug Info]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Var(35)= %d Var(16)= %d Var(59)= %d HELPERS = %d - Var(50) = %d";, Var(16)= %d, Var(59)= %d"
+params = var(35), var(16) ,var(59),NumHelper,Var(50)
+
+[State 0, AppendToClipboard]
+type = AppendToClipboard
+trigger1 = 1
+text = "\nMetool Boss by Ramzaneko and O Ilusionista"
+
+[State -2, No auto guard!]
+type = AssertSpecial
+trigger1 = 1
+flag  = NoStandGuard
+flag2 = NoCrouchGuard
+flag3 = NoAirGuard
+ignorehitpause = 1
+persistent=1
+
+[State -2, Danger, Will Robinson! - Variable]
+type = VarSet
+trigger1 = Life < 150
+var(1) = 1
+
+[State -2, Danger, Will Robinson! - Flashing]
+type = PalFX
+trigger1 = var(1) = 1 && Life != 0
+trigger1 = TimeMod = 8, 2
+add = 128, -64, -64
+time = 4
+
+;--------------------------
+
+[State -2, Remove HyperBG]
+type = RemoveExplod
+trigger1 = MoveType = H || Stateno <3000
+ID = 8200
+
+;===================================================================
+;===================================================================
+;---------------------------------------------------------------------------
+; States that are executed while in self state (use statedef -3)
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+
+[State -3, Fffffinish!!]
+type = Helper
+triggerall = NumHelper(30000)=0
+trigger1 = Winko
+helpertype = normal
+name = "Finish"
+ID = 30000
+stateno = 30000
+ownpal = 1
+ignorehitpause = 1
+supermovetime = 9999
+pausemovetime = 9999
+
+
+[State 0, SelfState]
+type = SelfState
+triggerAll = RoundState =2
+trigger1 = MoveType = H
+value =0
+ctrl = 1
+ignorehitpause=1
+persistent=1
+
+
+[State -2, ChangeState]
+type = ChangeState
+triggerAll = RoundState =2
+trigger1 = MoveType = H
+value =0
+ctrl = 1
+ignorehitpause=1
+persistent=1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = RoundState !=2
+flag = nobardisplay
+ignorehitpause =1
+
+
+[State -3, Die]
+type = ChangeState
+trigger1 = Life = 0 && Stateno !=7050 && Stateno!= 5150; && StateNo = [5000, 5149]
+value = 7050
+ctrl = 0
+
+[State -3, armor]
+type = Helper
+trigger1 =!NumHelper(10000)
+helpertype = normal ;player
+name = "________________damage"
+ID = 10000
+stateno = 10000
+pos = 0,0
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+
+[State -3, armor]
+type = Helper
+trigger1 =!NumHelper(13000)
+helpertype = normal ;player
+name = "________________________block"
+ID = 13000
+stateno = 13000
+pos = 0,0
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+
+
+
+;[State -3, Clone]
+;type = Helper
+;trigger1 =!NumHelper(20000)
+;helpertype = player
+;name = "clone"
+;ID = 20000
+;stateno = 0
+;pos = 50,0
+;postype = p1
+;facing = 1
+;keyctrl = 0
+;ownpal = 1
+
+
+
+[State -3, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time=-1
+ignorehitpause=1
+persistent=1
+
+
+
+
+[State 0, LifeAdd]
+type = LifeAdd
+trigger1 = NumHelper(10000)
+value = -var(50)/2;/2;-Helper(10000),GetHitVar(Damage)
+kill = 1
+absolute = 0
+ignorehitpause = 1
+
+;[State 0, LifeAdd]
+;type = LifeAdd
+;triggerall = NumHelper(1000)
+;trigger1 = Helper(1000), MoveType = H
+;value = -var(50)/2
+;kill = 1
+;absolute = 0
+;ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = Var(50)
+v =50
+value = 0
+
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = Helper(10000), MoveType = H
+time = 5
+add = 0,-200,-200
+mul = 256,256,256
+sinadd = 40,80,40,10
+invertall = 1
+color = 0
+
+[State 0, PalFXWiz]
+type = PalFX
+triggerall = Helper(10000), MoveType != H
+trigger1 = Helper(13000), MoveType = H
+time = 1
+add = 100,100,100
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 256
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = RoundState >2
+movetype = I
+ignorehitpause = 1
+
+
+; Remove Special BG if ------------------------------------------------
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno < 3000
+trigger2 = MoveType = H
+trigger3 = (WinKO)
+id = 10010
+ignorehitpause = 1
+
+[State -3, AfterImageTime]
+type = AfterImageTime
+trigger1 = stateno < 3000
+trigger2 = MoveType = H
+trigger3 = (WinKO)
+time = 1
+
+;---------------------------------------------------------------------------
+; Super/Hyper Combo Finish - Background Effect
+
+[State -3: Helper]
+type = Helper
+triggerall = (WinKO) && (NumHelper(8400) = 0)
+trigger1 =  (hitdefattr = SCA, HA)
+trigger2 = Stateno = 3000
+helpertype = Normal
+name = "Hyper WinKO"
+id = 8400
+pos = 0,0
+postype = p1
+facing = 0
+stateno = 8400
+keyctrl = 0
+ownpal = 1
+supermovetime = 1000
+pausemovetime = 1000
+ignorehitpause = 1

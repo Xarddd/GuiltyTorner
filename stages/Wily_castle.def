@@ -1,0 +1,118 @@
+[Info]
+name = "Wily Castle" ; Super Jump 
+;Wily Castle Entrance Lift/Robot Maters Duel - For Metalman by laspacho.
+author = "SPAN"  ; ohm259@btinternet.com
+
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty = 0
+boundleft = -64
+boundright = 64
+boundhigh = -350
+boundlow = 0
+verticalfollow = 0.7
+floortension = 95
+tension = 50
+zoomin = 1
+zoomout =.85
+
+
+;--------------------------------------------------------
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1startz = 0
+p1facing = 1
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000
+rightbound =  1000
+topbound  =  0
+botbound  =  0
+
+;--------------------------------------------------------
+[Scaling]
+topz     = 0
+botz     = 50
+topscale = 1
+botscale = 1.2
+
+;--------------------------------------------------------
+[Bound]
+screenleft = 47
+screenright = 47
+
+;--------------------------------------------------------
+[StageInfo]
+zoffset = 209
+autoturn = 1
+resetBG = 0
+
+;--------------------------------------------------------
+[Shadow]
+intensity = 5
+yscale = 0.1
+
+;--------------------------------------------------------
+[Reflection]
+intensity = 0
+
+[Music]
+bgmusic = sound/quickman.mp3
+bgvolume = 255
+
+[BGdef]
+spr = stages/wily_castle.sff
+debugbg = 0
+
+
+[Begin Action 1]
+2,0, 0,0, 5
+2,1, 0,0, 5
+2,2, 0,0, 5
+2,3, 0,0, 5
+2,4, 0,0, 5
+2,5, 0,0, 5
+
+
+
+;--------------------------------------------------------
+[BG 1] ; Background Sky
+type = normal
+spriteno = 0,0
+layerno = 0                
+start = 0,0
+delta = 1,1
+mask = 1
+tile  = 1,1
+velocity = 0,0
+
+
+
+-----------
+[BG 2] ; Castle Wall
+type = normal
+spriteno = 1,0
+layerno = 0                
+start = 0,0
+delta = 1,1
+mask = 1
+tile  = 1,1
+velocity = 0, -1.2
+
+
+
+;----------
+[BG 3] ; Lift Platform
+type = anim
+actionno = 1
+spriteno = 2,0
+start = 0,0
+tile = 0,0
+delta = 1,1
+mask = 1
+

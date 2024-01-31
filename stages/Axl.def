@@ -1,0 +1,260 @@
+;Palace Road stage by me, Magma MK II
+;Credits goes to:
+;Capcom and Keiji Inafune
+;MAMEdev team
+;SNES9x team
+;The Spriters Resource
+;Sprites-inc
+;Rage and Manic
+;O Ilusionista
+[Info]
+name 		= "Palace Road - Axl"
+displayname 	= "Palace Road - Axl"
+versiondate 	= 
+mugenversion 	= 1.0
+author 		= "Magma MK-II"
+
+[Camera]
+startx 		= 0
+starty 		= 0
+boundleft 	= -290
+boundright 	= 290
+boundhigh 	= -160
+boundlow 	= 0
+tension 	= 50
+verticalfollow 	= .75
+floortension 	= 100
+overdrawhigh 	= 120
+overdrawlow 	= 120
+cuthigh 	= 0
+cutlow 		= 0
+
+[PlayerInfo]
+p1startx 	= -70
+p1starty 	= 0
+p1facing 	= 1
+p2startx 	= 70
+p2starty 	= 0
+p2facing 	= -1
+p3startx 	= -100
+p3starty 	= 0
+p3facing 	= 1
+p4startx 	= 100
+p4starty 	= 0
+p4facing 	= -1
+leftbound 	= -1000
+rightbound 	= 1000
+
+[Bound]
+screenleft 	= 15
+screenright 	= 15
+
+[StageInfo]
+zoffset 	= 200.0
+autoturn 	= 1
+resetBG 	= 0
+localcoord 	= 320, 240
+xscale 		= 1
+yscale 		= 1
+
+[Scaling]
+topz     	= 0
+botz     	= 50
+topscale 	= 1
+botscale 	= 1.2
+
+[Shadow]
+color 		= 0,0,0
+yscale 		= .2
+intensity 	= 95
+
+[Music]
+bgmusic 	= sound/Just Before Red-Palace Road Stage.mp3
+bgvolume 	= 255
+bgmloopstart    = 64885
+bgmloopend      = 2886296
+
+[BGdef]
+spr 		= stages/Axl.sff
+debugbg 	= 0
+
+;[BG background]
+;type  		= normal
+;spriteno 	= 0, 0
+;start 		= 0,-180
+;delta 		= 0.7,1
+;mask     	= 0
+;window = 0, 0, 319, 239
+
+[BG background]
+type  		= parallax
+spriteno 	= 0, 0
+start 		= 0,-180
+delta 		= 0.7, 1
+width    	= 2000,500
+xscale          = 0.25,1
+mask     	= 0
+window          = 0, 0, 319, 239
+velocity        = -0.25,0
+tile            = 1,0
+
+[BG tower]
+type  		= normal
+spriteno 	= 0, 4
+start 		= 40,55
+delta 		= 0.7,1
+mask     	= 1
+velocity        = 0,0
+tile            = 1, 0
+tilespacing     = 250, 0
+
+[BG tower]
+type  		= normal
+spriteno 	= 0, 3
+start 		= 150,50
+delta 		= 0.8,1
+mask     	= 1
+velocity        = 0,0
+tile            = 1, 0
+tilespacing     = 400, 0
+
+;[BG floor]
+;type  		= normal
+;spriteno 	= 0, 1
+;start 		= 0,20
+;delta 		= 1,1
+;mask     	= 1
+
+[BG lamppost]
+type  		= normal
+spriteno 	= 90, 1
+start 		= 9,20
+delta 		= 0.85,1
+mask     	= 1
+velocity        = 0,0
+tile            = 1,0
+tilespacing     = 260,0
+
+[BG floor]
+type  		= parallax
+spriteno 	= 90, 0
+start 		= 0,143
+delta 		= 0.85, 1
+width    	= 1500, 2000
+xscale          = 1, 0.25
+
+[BG ball de veux]
+type  		= anim
+actionno 	= 3
+start 		= 150,0;160
+delta 		= 1,1
+mask     	= 1
+velocity        = -1,0
+tile            = 1, 0
+tilespacing     = 400, 0
+
+[BG roadhog]
+type  		= anim
+actionno 	= 1
+start 		= 0,0
+delta 		= 1,1
+mask     	= 1
+velocity        = -1.5,0
+tile            = 1, 0
+tilespacing     = 500, 0
+
+[BG smoke]
+type  		= anim
+actionno 	= 2
+start 		= 123,151
+delta 		= 1,1
+mask     	= 1
+velocity        = -1.5,0
+tile            = 1, 0
+tilespacing     = 500, 0
+
+[BG roadhog]
+type  		= anim
+actionno 	= 4
+start 		= 0,0
+delta 		= 1,1
+mask     	= 1
+velocity        = -2,0
+tile            = 1, 0
+tilespacing     = 500, 0
+
+[BG smoke]
+type  		= anim
+actionno 	= 2
+start 		= 23,157
+delta 		= 1,1
+mask     	= 1
+velocity        = -2,0
+tile            = 1, 0
+tilespacing     = 500, 0
+
+[BG curb]
+type  		= normal
+spriteno 	= 0, 2
+start 		= 0,250
+delta 		= 1.1,1
+mask     	= 1
+velocity        = 0,0
+tile            = 1,0
+tilespacing     = 345,0
+layerno         = 1
+
+;[BG roadhog test]
+;type  		= anim
+;actionno 	= 4
+;start 		= 100,0
+;delta 		= 1,1
+;mask     	= 1
+;ID = 90 ; ID which BGCTRL WILL AFFECT
+;
+;[BGCtrlDef roadhog]
+;; reset the whole deal every 600 ticks.
+;looptime = -1
+;ctrlID = 90
+;
+;[BGCtrl Add Y Pos]
+;type = PosAdd ; Add y position
+;time = 0
+;y = 183
+;
+;; Set velocity of 2 pixels/sec rightward at time 0.
+;[BGCtrl Walk <- ]
+;type = VelSet
+;time = 0;,120,240
+;x = -2
+;
+;[BGCtrl POS]
+;type = PosSet
+;time = 120,240,241
+;x = 280
+
+[Begin Action 1]
+1,0,100,174,7
+1,1,100,174,7
+
+[Begin Action 2]
+2,0,0,500,25
+2,0,0,0,7
+2,1,0,0,7
+2,2,0,0,7
+2,3,0,0,7
+
+[Begin Action 3]
+3,0, 0,160, 7
+3,1,0,160,7
+3,2,0,160,7
+3,3,0,160,7
+3,4,0,160,7
+3,5,0,160,7
+3,6,0,160,7
+3,7,0,160,7
+
+[Begin Action 4]
+1,0,0,180,7
+1,1,0,180,7
+

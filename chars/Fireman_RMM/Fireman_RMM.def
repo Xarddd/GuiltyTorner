@@ -1,0 +1,45 @@
+;===========================================================================
+;Robot Master Mayhem - Definitions Template V.3.0
+;Template by Acey - Update by O Ilusionista
+;www.infinitymugenteam.com
+;===========================================================================
+
+[Info]
+name="Fire Man RMM"
+displayname="Fire Man"
+versiondate = 2021,08,21; RMM 3.1
+mugenversion=1.0
+author="Laspacho, !E, Nestor & O Ilusionista"
+pal.defaults=1,2,3,4,5,6
+
+[Files]
+cmd 	 =RMM.cmd
+cns 	 =RMM.cns
+stcommon =common1.cns
+st	 =RMM.cns
+sprite	 =RMM.sff
+anim	 =RMM.air
+sound 	 =RMM.snd
+pal1=ACT/Fireman1.act
+pal2=ACT/Fireman2.act
+pal3=ACT/Fireman3.act
+pal4=ACT/Fireman4.act
+pal5=ACT/Fireman5.act
+pal6=ACT/Fireman6.act
+pal7=ACT/Fireman7.act
+pal8=ACT/Fireman8.act
+pal9=ACT/Fireman9.act
+pal10=ACT/Fireman10.act
+pal11=ACT/Fireman11.act
+pal12=ACT/Fireman12.act
+st1=-2.cns
+st2=-3.cns
+st3=Powersets.cns
+st4=Powersets.cns
+st5=specials.cns
+st6=hypers.cns
+
+
+[Arcade]
+intro.storyboard  = Intros/rmm_intro.def
+ending.storyboard = Endings/ending_fireman.def

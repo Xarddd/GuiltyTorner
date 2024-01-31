@@ -1,0 +1,155 @@
+;MegaMan Boss Arena
+;by Acey - uodated by O Ilusionista
+;www.infinitymugenteam.com
+
+[Info]
+name = "Wily Fortress Hall - Metool - Boss Arena"
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -260;-182
+boundright = 267;182
+boundhigh = -200;-160
+boundlow = 0
+verticalfollow = 1
+floortension = 95
+tension = 60
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1startz = 0
+p1facing = 1
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000
+rightbound =  1000
+topbound  =  0
+botbound  =  0
+
+[Scaling]
+topz     = 0
+botz     = 50
+topscale = 1
+botscale = 1.2
+
+[Bound]
+screenleft = 25
+screenright = 25
+
+[Shadow]
+color = 30,30,30   
+yscale = .4            
+reflect = 0     
+
+[StageInfo]
+zoffset = 223
+autoturn = 1
+resetBG = 1
+
+[Shadow]
+color = 0,0,0
+yscale = .5
+
+[Music]
+bgmusic = sound/ym_thr025_r4_lastboss.mp3 
+bgvolume = 255
+
+[BGdef]
+spr = stages/Quickman.sff
+debugbg = 1
+
+[BG Wall]
+type  = anim;normal
+actionno = 1;,0
+start = 0, 0
+layerno = 0
+delta = 1,1;.3,.3
+mask     = 0
+
+[BG Screen]
+type            = normal
+spriteno        = 0, 4
+layerno         = 0
+start           = 0,0
+delta           = 1.15,1
+trans           = None
+mask            = 1
+
+[BG Ground]
+type            = normal
+spriteno        = 0, 1
+layerno         = 0
+start           = 0,0
+delta           = 1,1
+trans           = None
+mask            = 1
+
+[BG Ground Light]
+type            = anim
+actionno = 20
+layerno         = 0
+start           = 0,0
+delta           = 1,1
+trans           = None
+mask            = 1
+
+
+[BG Monitors]
+type            = normal
+spriteno        = 0, 3
+layerno         = 0
+start           = 0,0
+delta           = 1.1,1
+trans           = None
+mask            = 1
+
+
+; Floor light
+[begin action 1]
+1,7, 0,0, 500
+1,6, 0,0, 5
+1,5, 0,0, 5
+1,4, 0,0, 5
+1,3, 0,0, 5
+1,2, 0,0, 5
+1,1, 0,0, 5
+1,0, 0,0, 50
+1,1, 0,0, 5
+1,2, 0,0, 5
+1,3, 0,0, 5
+1,4, 0,0, 5
+1,5, 0,0, 5
+1,6, 0,0, 5
+1,8, 0,0, 2
+
+; Floor Light
+[Begin Action 20]
+20,0, 0,0, 10
+20,1, 0,0, 10
+20,2, 0,0, 10
+20,3, 0,0, 10
+20,4, 0,0, 10
+20,5, 0,0, 10
+20,6, 0,0, 10
+20,7, 0,0, 10
+20,8, 0,0, 10
+20,9, 0,0, 10
+20,10, 0,0, 10
+20,11, 0,0, 10
+20,12, 0,0, 10
+20,13, 0,0, 10
+20,14, 0,0, 10
+20,15, 0,0, 10
+20,16, 0,0, 10
+20,17, 0,0, 10
+20,18, 0,0, 10
+20,19, 0,0, 10
+20,20, 0,0, 10

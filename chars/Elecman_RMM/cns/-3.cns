@@ -1,0 +1,185 @@
+;---------------------------------------------------------------------------------------------
+[Statedef -3]
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = Roundstate>2
+flag = NoBarDisplay
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Movetype = H || Stateno != 1000
+id = 1006
+
+[State -3, Fffffinish!!]
+type = Helper
+triggerall = NumHelper(30000)=0
+trigger1 = Winko
+helpertype = normal
+name = "Finish"
+ID = 30000
+stateno = 30000
+ownpal = 1
+ignorehitpause = 1
+supermovetime = 9999
+pausemovetime = 9999
+
+[State -3, VarAdd]
+type = VarAdd
+trigger1 = (HitPauseTime = 1) && (P2MoveType = H) && (MoveHit = 1) && (StateNo < 3000)
+trigger2 = ProjHitTime(0) = 1
+v = 21
+value = 1
+ignorehitpause = 1
+
+[State -3, VarReset]
+type = VarSet
+trigger1 = P2MoveType != H
+v = 21
+value = 0
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+trigger1 = StateNo >= 3000
+value = 1
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) <= 1
+value = 1
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) = 2
+value = 0.8
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) = 3
+value = 0.6
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) = 4
+value = 0.4
+
+[State -3, AttackMulSet]
+type = AttackMulSet
+triggerall = StateNo < 3000
+trigger1 = Var(21) >= 5
+value = .2
+
+[State 8510, Explode]
+type = Explod
+trigger1 = Stateno = 52 && time = 1
+trigger2 = Stateno = 240 && animelem = 8
+trigger3 = Stateno = 1102 && time = 1
+trigger4 = Stateno = 1112 && time = 1
+trigger5 = Stateno = 1122 && time = 1
+trigger6 = Stateno = 106 && time = 1
+trigger7 = Stateno = 352 && AnimElemTime(2) = 1
+trigger8 = StateNo = 101 && Time = 1
+anim = 25016
+ID = 8510
+postype = P1
+pos = 0,4
+sprpriority = -1
+ownpal = 1
+
+[State -3, Aterrisagem]
+type = PlaySnd
+trigger1 = StateNo = 52 && Time = 1
+trigger2 = StateNo = 101 && Time = 1
+value = 8100,0
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = StateNo != [3000,4999]
+ID = 8900
+
+[State -3, Explod]
+type = RemoveExplod
+trigger1 = Roundstate = 4
+ID = 8901
+
+[State -3, MSSM]
+type = VarRandom
+trigger1 = 1
+v = 23
+range = 0,8
+
+[State -3, Super Jump]
+type = VarSet
+trigger1 = Stateno = 0
+v = 12
+value = 0
+
+
+[State -3, ctrl set]
+type = ctrlset
+trigger1 = roundstate = 4
+value = 0
+
+;--------------------------------------------------------------------------- Custom Combo
+
+[State -3, Timer]
+type = VarAdd
+trigger1 = Var(15) > 0
+v = 15
+value = -1
+ignorehitpause = 1
+
+[State -3, Cancel] ;Cancel CC Mode if you get hit or win the round
+type = VarSet
+trigger1 = (MoveType = H) || (Roundstate = 3)
+v = 15
+value = 0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+v = 17
+value = ifelse(var(15),4,0)
+
+;Sorrowedge's Haste Code (tm)
+;Modified for faster anims
+[State -3, Speed]
+type = ChangeAnim
+triggerall = (Var(15) > 0) && (RoundState = 2) && (MoveType != H) && (Stateno !=[800,899])
+trigger1 = AnimElemTime(AnimElemNo(0) + 1) < 0
+trigger1 = AnimElemTime(AnimElemNo(0)) > floor ((AnimElemTime(AnimElemNo(0)) - AnimElemTime(AnimElemNo(0) + 1))/3)
+ignorehitpause = 1
+value = anim
+elem = AnimElemNo(0) + 1
+
+[State -3, AfterImageTime] ;This ensures that afterimages are displaying during mode
+type = AfterimageTime
+trigger1 = var(15) > 0
+time = 2
+
+[State -3, NoJuggleCheck] ;Infinnite juggle points!
+type = AssertSpecial
+trigger1 = var(15) > 0
+flag = nojugglecheck
+
+[State -3, AttDwn] ;Tone down the damage
+type = AttackMulSet
+trigger1 = Var(15) > 0
+value = 0.5
+
+[State -3, AttUp] ;Back to normal
+type = AttackMulSet
+trigger1 = Var(15) = 0
+value = 1
+
+[State -3, velset no CC]
+type = Velset
+triggerall = Statetype != A && (Stateno !=[800,899])
+trigger1 = Var(15) > 0 && (Stateno != [6000,11000])
+trigger2 = var(15) && stateno != 3100
+x = 4
+

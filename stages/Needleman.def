@@ -1,0 +1,279 @@
+;Needleman stage by me, Magma MK II
+;Credits goes to:
+;Capcom and Keiji Inafune
+;Mamedev team
+;Sprites-Inc.
+;Vgmaps.com
+[Info]
+name 		= "Skyline - Needle Man"
+displayname 	= "Skyline - Needle Man"
+versiondate 	= 
+mugenversion 	= 1.0
+author 		= "Magma MK-II"
+; addition fx - O Ilusionista
+; Water splash sprites - Doorhenge
+
+[Camera]
+startx 		= 0
+starty 		= 0
+boundleft 	= -238
+boundright 	= 238
+boundhigh 	= -208
+boundlow 	= 0
+tension 	= 50
+verticalfollow 	= 1
+floortension 	= 100
+overdrawhigh 	= 120
+overdrawlow 	= 120
+cuthigh 	= 0
+cutlow 		= 0
+zoomin = 1
+zoomout =.85
+
+[PlayerInfo]
+p1startx 	= -70
+p1starty 	= 0
+p1facing 	= 1
+p2startx 	= 70
+p2starty 	= 0
+p2facing 	= -1
+p3startx 	= -100
+p3starty 	= 0
+p3facing 	= 1
+p4startx 	= 100
+p4starty 	= 0
+p4facing 	= -1
+leftbound 	= -1000
+rightbound 	= 1000
+
+[Bound]
+screenleft 	= 15
+screenright 	= 15
+
+[StageInfo]
+zoffset 	= 185
+autoturn 	= 1
+resetBG 	= 1
+localcoord 	= 320, 240
+xscale 		= 1
+yscale 		= 1
+
+[Scaling]
+topz     	= 0
+botz     	= 50
+topscale 	= 1
+botscale 	= 1.2
+
+[Shadow]
+color 		= 0,0,0
+yscale 		= .15
+
+[Music]
+bgmusic 	= sound/Stitch This, Needle Man! - MEGAMAN 3 Metal.mp3
+bgvolume 	= 255
+
+[BGdef]
+spr 		= stages/Needleman.sff
+debugbg 	= 0
+
+;====================================== BACKGROUND
+
+[BG Sky]
+type  		= normal
+spriteno 	= 0, 0
+start = 0, -212
+delta 		= 0.25,0.8
+mask     	= 0
+velocity = -0.1,0
+tile = 1,0
+
+[BG water]
+type  		= anim
+actionno = 40;20
+delta 		= 0.5,0.9
+mask     	= 0
+start = 0, 139
+sin.y = 4,400
+
+[BG City]
+type  		= normal
+spriteno 	= 0, 2
+start = 0, -208
+delta 		= 0.5,0.9
+mask     	= 1
+
+[BG splash R]
+type  		= anim
+actionno = 11
+delta 		= 0.5,0.9
+mask     	= 0
+start = -78, -26
+
+[BG splash l]
+type  		= anim
+actionno = 12
+delta 		= 0.5,0.9
+mask     	= 0
+start = 40, -70
+
+
+
+[BG giantmetall]
+type            = anim
+actionno        = 1
+start           = 0, 200
+delta           = 0.4, 0.9
+mask            = 1
+id              = 100
+sin.y           = 10, 140
+
+
+;====================================== FLOOR
+
+[BG floor]
+type  		= normal
+spriteno 	= 1, 0
+start 		= 0,168
+delta 		= 1,1
+mask     	= 0
+velocity        = 0, 0
+tile            = 1, 0
+tilespacing     = 0, 0
+
+[BG hari harri]
+type            = anim
+actionno        = 2
+start           = 0, 128
+delta           = 1, 1
+mask            = 1
+
+[BG floor]
+type  		= normal
+spriteno 	= 1, 1
+start 		= 0,207
+delta 		= 1,1
+layerno         = 1
+mask     	= 0
+velocity        = 0, 0
+tile            = 1, 0
+tilespacing     = 0, 0
+
+[BG Yambow]
+type            = anim
+actionno        = 10
+start = 300, 128
+delta           = 1, 1
+mask            = 1
+sin.x = 30,200
+sin.y = 30,100
+
+
+
+;====================================== CTRLS
+
+[BgCtrlDef 100]
+CtrlID          = 100
+
+[BgCtrl 100.1]
+type            = velset
+time            = 500, 1000
+x               = 0
+y               = -.55
+
+[BgCtrl 100.2]
+type            = velset
+time            = 1010
+x               = 0
+y               = 0
+
+[BGCtrlDef 100.3]
+CtrlID          = 100
+loopTime        = -1
+
+[BGCtrl 100]
+type            = SinX
+time            = 1070
+value           = 0, 0
+
+;====================================== ANIMS
+
+[Begin Action 1]
+3,0,0,0,1
+3,1,0,0,1
+3,2,0,0,1
+
+; Hari
+[Begin Action 2]
+2,0,0,0,50
+2,1,0,1,7
+2,2,0,2,7
+-1,0, 0,0, 0
+
+; Yambow
+[Begin Action 10]
+10,0, 0,0, 2
+10,1, 0,0, 2
+
+; Splash
+[Begin Action 11]
+-1,0, 0,0, 300
+11,0, 0,0, 8
+11,1, 0,0, 8
+11,2, 0,0, 8
+11,3, 0,0, 8
+11,4, 0,0, 8
+11,5, 0,0, 8
+11,6, 0,0, 8
+11,7, 0,0, 8
+-1,0, 0,0, 690
+11,0, -100,0, 8
+11,1, -100,0, 8
+11,2, -100,0, 8
+11,3, -100,0, 8
+11,4, -100,0, 8
+11,5, -100,0, 8
+11,6, -100,0, 8
+11,7, -100,0, 8
+
+; Slash L
+[Begin Action 12]
+-1,0, 0,0, 533
+12,0, 0,0, 8
+12,1, 0,0, 8
+12,2, 0,0, 8
+12,3, 0,0, 8
+12,4, 0,0, 8
+12,5, 0,0, 8
+12,6, 0,0, 8
+12,7, 0,0, 8
+-1,0, 0,0, 788
+12,0, 160,0, 8
+12,1, 160,0, 8
+12,2, 160,0, 8
+12,3, 160,0, 8
+12,4, 160,0, 8
+12,5, 160,0, 8
+12,6, 160,0, 8
+12,7, 160,0, 8
+
+; water new
+[Begin Action 40]
+40,0, 0,0, 6
+40,1, 0,0, 6
+40,2, 0,0, 6
+40,3, 0,0, 6
+40,4, 0,0, 6
+40,5, 0,0, 6
+40,6, 0,0, 6
+40,7, 0,0, 6
+40,8, 0,0, 6
+40,9, 0,0, 6
+40,10, 0,0, 6
+40,11, 0,0, 6
+40,12, 0,0, 6
+40,13, 0,0, 6
+40,14, 0,0, 6
+40,15, 0,0, 6
+40,16, 0,0, 6
+40,17, 0,0, 6
+40,18, 0,0, 6
